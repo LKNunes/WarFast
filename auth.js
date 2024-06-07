@@ -3,7 +3,7 @@ async function login() {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch('https://api-render-pet.onrender.com/usuarios', {
+        const response = await fetch('https://api-render-dbwar.onrender.com/usuarios', {
             method: 'GET',
         });
 
