@@ -21,7 +21,10 @@
 <body>
   <div class="container">
     <h1 id="lobbyName"></h1>
+    <p id="lobbyId" class="fw-bold"></p>
     <p id="lobbyDescription"></p>
+    <h2>Jogadores</h2>
+    <ul id="playersList" class="list-group"></ul>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -40,7 +43,17 @@
             if (lobby) {
               // Atualiza a página com os dados do lobby
               document.getElementById('lobbyName').textContent = lobby.name;
+              document.getElementById('lobbyId').textContent = `ID: ${lobby.id}`;
               document.getElementById('lobbyDescription').textContent = lobby.description;
+
+              // Lista os jogadores
+              const playersList = document.getElementById('playersList');
+              lobby.players.forEach(player => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+                listItem.textContent = `${player.name} (Score: ${player.score})`;
+                playersList.appendChild(listItem);
+              });
             } else {
               document.getElementById('lobbyName').textContent = 'Lobby não encontrado';
               document.getElementById('lobbyDescription').textContent = '';
