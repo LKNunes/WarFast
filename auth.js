@@ -3,7 +3,7 @@ async function login() {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch('https://api-render-dbwar.onrender.com/usuarios', {
+        const response = await fetch('https://dbwar.onrender.com', {
             method: 'GET',
         });
 
@@ -52,7 +52,7 @@ async function cadastrarUsuario() {
     const senhaUsuario = document.getElementById('senhaUsuario').value;
 
     try {
-        const response = await fetch('https://api-render-dbwar.onrender.com/usuarios', {
+        const response = await fetch('https://dbwar.onrender.com/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
