@@ -13,39 +13,7 @@
         <input type="submit" name="sair-lobby" value="Sair do Lobby">
     </form>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const queryParams = new URLSearchParams(window.location.search);
-            const lobbyId = queryParams.get('lobby_id');
-            if (!lobbyId) {
-                window.location.href = '/lobby-espera';
-            } else {
-                document.getElementById('lobbyId').value = lobbyId;
-                fetch(`/lobby-info?lobby_id=${lobbyId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('nomeUsuario').textContent = data.nomeUsuario;
-                        if (data.jogadores.length > 0) {
-                            let jogadoresHtml = '<h2>Jogadores no Lobby:</h2><ul>';
-                            data.jogadores.forEach(nomeJogador => {
-                                jogadoresHtml += `<li>${nomeJogador}</li>`;
-                            });
-                            jogadoresHtml += '</ul>';
-                            document.getElementById('jogadores').innerHTML = jogadoresHtml;
-                        } else {
-                            document.getElementById('jogadores').innerHTML = '<p>Nenhum jogador no lobby ainda.</p>';
-                        }
-
-                        if (data.lobbyOwner) {
-                            document.getElementById('startGameButton').innerHTML = `
-                                <form action="http://localhost:8080/war/GAME/index.php" method="post">
-                                    <input type="submit" name="start-game" value="Iniciar o Jogo">
-                                </form>
-                            `;
-                        }
-                    });
-            }
-        });
+  
     </script>
 </body>
 </html>
