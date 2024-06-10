@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body style="background-color: #48067f; color: white; font-family: Arial, sans-serif;">
+    <div id="loginModal" class="modal fade" tabindex="-1" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="modal-dialog" style="max-width: 400px; width: 100%; border: none; border-radius: 10px; overflow: hidden;">
+          <div class="modal-content" style="border: none;">
+            <div class="modal-header" style="background-color: rgb(214, 102, 10); color: white; display: flex; justify-content: space-between; align-items: center;">
+              <h5 class="modal-title">Faça login</h5>
+			  
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background: none; border: none; color: white; font-size: 20px;">&times;</button>
+            </div>
+            <div class="modal-body" style="background-color: white; color: #48067f; padding: 20px;">
+              <form id="formLogin">
+                <div class="mb-3">
+                  <label for="usuarioLogin" class="form-label">Usuário</label>
+                  <input type="text" class="form-control" id="usuarioLogin" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                <div class="mb-3">
+                  <label for="senhaLogin" class="form-label">Senha</label>
+                  <input type="password" class="form-control" id="senhaLogin" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                  <label for="senhaLogin" class="form-label">Confirmar Senha</label>
+                  <input type="password" class="form-control" id="senhaLogin" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer" style="background-color: white; padding: 10px; display: flex; justify-content: flex-end;">
+            <button type="button" class="btn btn-primary" onclick="criarconta()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Criar Conta</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="./auth.js"></script>
+</body>
+</html>
