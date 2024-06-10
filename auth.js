@@ -49,7 +49,7 @@ function logout() {
 
 async function signup() {
     const nomeUsuario = document.getElementById('usuarioLogin').value;
-    const senhaUsuario = document.getElementById('senhaUsuario').value;
+    const senhaUsuario = document.getElementById('senhaLogin').value;
 
     try {
         const response = await fetch('https://dbwar.onrender.com/usuarios', {
@@ -59,8 +59,8 @@ async function signup() {
             },
             body: JSON.stringify({
                 id: Date.now(), // Adicionando um ID fictício
-                usuario: nomeUsuario,
-                senha: senhaUsuario
+                usuario: usuarioLogin,
+                senha: senhaLogin
             })
         });
 
