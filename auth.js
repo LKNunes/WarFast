@@ -42,13 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function redirectCriarConta() {
-    window.location.href = 'cadastrarUsuario.html';
+function logout() {
+    localStorage.removeItem('loggedIn');
+    window.location.href = '../../index.html'; // Redireciona para a página inicial após logout
 }
 
-async function signup() {
-    const novoUsuario = document.getElementById('usuarioSignup').value;
-    const novaSenha = document.getElementById('senhaSignup').value;
+async function cadastrarUsuario() {
+    const nomeUsuario = document.getElementById('nomeUsuario').value;
+    const senhaUsuario = document.getElementById('senhaUsuario').value;
 
     try {
         const response = await fetch('https://dbwar.onrender.com/usuarios', {
@@ -56,10 +57,17 @@ async function signup() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ usuario: novoUsuario, senha: novaSenha })
+            body: JSON.stringify({
+                id: Date.now(), // Adicionando um ID fictício
+                usuario: nomeUsuario,
+                senha: senhaUsuario
+            })
         });
 
-function logout() {
-    localStorage.removeItem('loggedIn');
-    window.location.href = '../../index.html'; // Redireciona para a página inicial após logout
+        if (!response.ok) throw new Error('Erro ao cadastrar usuário');
+
+        alert('Usuário cadastrado com sucesso!');
+        $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
+    } catch (error) {
+    }
 }
