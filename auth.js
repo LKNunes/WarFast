@@ -48,7 +48,7 @@ function logout() {
 }
 
 async function signup() {
-    const nomeUsuario = document.getElementById('nomeUsuario').value;
+    const nomeUsuario = document.getElementById('usuarioLogin').value;
     const senhaUsuario = document.getElementById('senhaUsuario').value;
 
     try {
