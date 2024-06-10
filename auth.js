@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 function redirectCriarConta() {
     window.location.href = 'cadastrarUsuario.html';
-}
+};
 
 async function signup() {
     const novoUsuario = document.getElementById('usuarioSignup').value;
@@ -57,35 +57,6 @@ async function signup() {
             },
             body: JSON.stringify({ usuario: novoUsuario, senha: novaSenha })
         });
-
-        if (!response.ok) throw new Error('Erro ao criar novo usuário');
-
-        alert('Usuário registrado com sucesso!');
-        // Você pode redirecionar para a página de login após o registro bem-sucedido
-        // window.location.href = 'login.html';
-    } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao registrar novo usuário.');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const logarLink = document.getElementById('logarLink');
-    const inscreverLink = document.getElementById('inscreverLink');
-    const contaIcon = document.getElementById('contaIcon');
-    
-    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-
-    if (isLoggedIn) {
-        logarLink.style.display = 'none';
-        inscreverLink.style.display = 'none';
-        contaIcon.style.display = 'inline-block';
-    } else {
-        logarLink.style.display = 'inline-block';
-        inscreverLink.style.display = 'inline-block';
-        contaIcon.style.display = 'none';
-    }
-});
 
 function logout() {
     localStorage.removeItem('loggedIn');
