@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         contaIcon.style.display = 'none';
     }
 });
+function redirectCriarConta() {
+    window.location.href = 'cadastrarUsuario.html';
+}
 
 async function signup() {
     const novoUsuario = document.getElementById('usuarioSignup').value;
