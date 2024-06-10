@@ -36,7 +36,7 @@
 
       if (lobbyId) {
         // Faz uma requisição para obter os dados do db.json
-        fetch('https://dbwar.onrender.com/lobbies')
+        fetch('https://dbwar.onrender.com/usuarios')
           .then(response => response.json())
           .then(data => {
             const lobby = data.lobbies.find(lobby => lobby.id === lobbyId);
