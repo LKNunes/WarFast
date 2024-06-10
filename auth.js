@@ -14,7 +14,7 @@ async function login() {
 
         if (usuarioExistente && usuarioExistente.senha === senha) {
             localStorage.setItem('loggedIn', 'true');  // Salva o estado de login
-          window.location.href = 'https://lknunes.github.io/WarFast/inicio.html';  
+          window.location.href = 'WarFast/inicio.html';  
             // Redireciona para a página inicial
         } else {
             alert('Usuário ou senha incorretos.');
