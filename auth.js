@@ -72,6 +72,6 @@ async function cadastrarUsuario() {
     }
 }
 
-redirectCriarConta(){
+function redirectCriarConta(){
         window.location.href = 'cadastrarUsuario.html';
 }
