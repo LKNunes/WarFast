@@ -38,7 +38,7 @@
       
       if (lobbyId) {
         // Faz uma requisição para obter os dados do db.json
-        fetch('path/to/your/db.json')
+        fetch('https://dbwar.onrender.com/lobbies')
           .then(response => {
             console.log('Response status:', response.status); // Debug: Check the response status
             return response.json();
