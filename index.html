@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-color: #48067f; color: white; font-family: Arial, sans-serif;">
     <div id="loginModal" class="modal fade" tabindex="-1" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
@@ -11,7 +13,6 @@
           <div class="modal-content" style="border: none;">
             <div class="modal-header" style="background-color: rgb(214, 102, 10); color: white; display: flex; justify-content: space-between; align-items: center;">
               <h5 class="modal-title">Faça login</h5>
-			  
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background: none; border: none; color: white; font-size: 20px;">&times;</button>
             </div>
             <div class="modal-body" style="background-color: white; color: #48067f; padding: 20px;">
@@ -28,11 +29,15 @@
             </div>
             <div class="modal-footer" style="background-color: white; padding: 10px; display: flex; justify-content: flex-end;">
               <button type="button" class="btn btn-primary" onclick="login()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 20px; border-radius: 5px; color: white;">Entrar</button>
-	      <button type="button" class="btn btn-primary" onclick="redirectCriarConta()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Criar Conta</button>
-	    </div>
+              <button type="button" class="btn btn-primary" onclick="redirectCriarConta()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Criar Conta</button>
+            </div>
           </div>
         </div>
-      </div>
-      <script src="./auth.js"></script>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./auth.js"></script>
 </body>
 </html>
