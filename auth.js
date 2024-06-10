@@ -14,7 +14,8 @@ async function login() {
 
         if (usuarioExistente && usuarioExistente.senha === senha) {
             localStorage.setItem('loggedIn', 'true');  // Salva o estado de login
-            window.location.href = '../../warfast/inicio.html'; // Redireciona para a página inicial
+          window.location.href = 'Inicio.html';  
+            // Redireciona para a página inicial
         } else {
             alert('Usuário ou senha incorretos.');
         }
