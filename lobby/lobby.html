@@ -20,8 +20,8 @@
 
 <body>
   <div class="container">
-    <h1 id="lobbyName">Lobby</h1>
-    <p id="lobbyId" class="fw-bold">ID: </p>
+    <h1 id="lobbyName"></h1>
+    <p id="lobbyId" class="fw-bold"></p>
     <p id="lobbyDescription"></p>
     <h2>Jogadores</h2>
     <ul id="playersList" class="list-group"></ul>
@@ -33,21 +33,17 @@
       // Obtém o ID do lobby da URL
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
-      
-      console.log('Lobby ID from URL:', lobbyId); // Debug: Check if lobby ID is being retrieved
-      
+
       if (lobbyId) {
         // Faz uma requisição para obter os dados do db.json
-        fetch('https://dbwar.onrender.com/lobbies')
-          .then(response => {
-            console.log('Response status:', response.status); // Debug: Check the response status
-            return response.json();
-          })
+        fetch('path/to/your/db.json')
+          .then(response => response.json())
           .then(data => {
-            console.log('Data from JSON:', data); // Debug: Log the data received from JSON
             const lobby = data.lobbies.find(lobby => lobby.id === lobbyId);
-            console.log('Lobby found:', lobby); // Debug: Check if the correct lobby is found
+
             if (lobby) {
+              console.log('Lobby found:', lobby); // Debug: Check if the correct lobby is found
+
               // Atualiza a página com os dados do lobby
               document.getElementById('lobbyName').textContent = lobby.name;
               document.getElementById('lobbyId').textContent = `ID: ${lobby.id}`;
