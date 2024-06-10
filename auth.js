@@ -63,29 +63,3 @@ function logout() {
     localStorage.removeItem('loggedIn');
     window.location.href = '../../index.html'; // Redireciona para a página inicial após logout
 }
-
-async function cadastrarUsuario() {
-    const nomeUsuario = document.getElementById('nomeUsuario').value;
-    const senhaUsuario = document.getElementById('senhaUsuario').value;
-
-    try {
-        const response = await fetch('https://dbwar.onrender.com/usuarios', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: Date.now(), // Adicionando um ID fictício
-                usuario: nomeUsuario,
-                senha: senhaUsuario
-            })
-        });
-
-        if (!response.ok) throw new Error('Erro ao cadastrar usuário');
-
-        alert('Usuário cadastrado com sucesso!');
-        $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
-    } catch (error) {
-    }
-}
-
