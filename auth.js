@@ -47,7 +47,7 @@ function logout() {
     window.location.href = '../../index.html'; // Redireciona para a página inicial após logout
 }
 
-async function cadastrarUsuario() {
+async function signup() {
     const nomeUsuario = document.getElementById('nomeUsuario').value;
     const senhaUsuario = document.getElementById('senhaUsuario').value;
 
