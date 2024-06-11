@@ -3,7 +3,7 @@ async function login() {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch('https://dbwar.onrender.com/usuarios', {
+        const response = await fetch('https://github.com/LKNunes/DBWAR/blob/main/db.json', {
             method: 'GET',
         });
 
