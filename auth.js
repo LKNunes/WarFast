@@ -13,7 +13,6 @@ async function login() {
         const usuarioExistente = usuarios.find(u => u.usuario === usuario);
 
         console.log(usuarios)
-        
         console.log(usuarioExistente)
 
         if (usuarioExistente && usuarioExistente.senha === senha) {
