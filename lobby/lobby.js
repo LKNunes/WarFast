@@ -14,11 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(data => {
         console.log('Data from JSON:', data); // Debug: Log the data received from JSON
-        if (!data || !Array.isArray(data)) {
+
+        if (!data || !Array.isArray(data.lobbies)) {
           throw new Error('Estrutura do JSON inválida');
         }
 
-        const lobby = data.find(lobby => lobby.id === lobbyId);
+        const lobby = data.lobbies.find(lobby => lobby.id === lobbyId);
         console.log('Lobby found:', lobby); // Debug: Check if the correct lobby is found
 
         if (lobby) {
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
           lobby.players.forEach(player => {
             const listItem = document.createElement('li');
             listItem.classList.add('list-group-item');
-            listItem.textContent = `${player.name} (Score: ${player.score})`;
+            listItem.textContent = `${player.name} (Score: ${player.score ?? 'N/A'})`; // Use 'N/A' if score is undefined
             playersList.appendChild(listItem);
           });
         } else {
