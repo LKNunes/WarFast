@@ -5,7 +5,6 @@ async function login() {
     try {
         const response = await fetch('https://raw.githubusercontent.com/LKNunes/WarFast/main/DB/db.json', {
             method: 'GET',
-            mode: 'no-cors'
         });
 
         if (!response.ok) throw new Error('Erro ao buscar usuários');
