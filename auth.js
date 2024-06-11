@@ -73,7 +73,7 @@ function redirectCriarConta(){
 
 function signup(){
 // URL do servidor onde o JSON está hospedado
-const url = 'https://raw.githubusercontent.com/LKNunes/WarFast/main/DB/db.json';
+const url = 'DB/db.json';
 
 // Dados do novo usuário
 const novoUsuario = {
