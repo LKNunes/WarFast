@@ -66,6 +66,11 @@ function logout() {
     window.location.href = '../../index.html'; // Redireciona para a página inicial após logout
 }
 
+
+function redirectCriarConta(){
+        window.location.href = 'cadastrarUsuario.html';
+}
+
 async function signup() {
     const usuario = document.getElementById('usuarioLogin').value;
     const senha = document.getElementById('senhaLogin').value;
@@ -130,6 +135,3 @@ async function signup() {
 
 
 
-function redirectCriarConta(){
-        window.location.href = 'cadastrarUsuario.html';
-}
