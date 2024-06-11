@@ -71,15 +71,15 @@ async function signup() {
     const senhaUsuario = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch('https://github.com/LKNunes/DBWAR/blob/main/db.json', {
+        const response = await fetch('https://lknunes.github.io/WarFast/DB/db.json', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 id: Date.now(), // Adicionando um ID fictício
-                usuario: usuarioLogin,
-                senha: senhaLogin
+                usuario: nomeUsuario, // Corrigido para usar a variável correta
+                senha: senhaUsuario // Corrigido para usar a variável correta
             })
         });
 
@@ -88,8 +88,11 @@ async function signup() {
         alert('Usuário cadastrado com sucesso!');
         $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
     } catch (error) {
+        console.error('Erro ao cadastrar usuário:', error);
+        alert('Erro ao cadastrar usuário. Por favor, tente novamente.');
     }
 }
+
 
 function redirectCriarConta(){
         window.location.href = 'cadastrarUsuario.html';
