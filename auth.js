@@ -54,6 +54,8 @@ async function signup() {
     const nomeUsuario = document.getElementById('usuarioLogin').value;
     const senhaUsuario = document.getElementById('senhaLogin').value;
 
+     console.log(nomeUsuario)
+     console.log(senhaUsuario)
     try {
         const response = await fetch('https://dbwar.onrender.com/usuarios', {
             method: 'POST',
