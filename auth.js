@@ -67,8 +67,8 @@ function logout() {
 }
 
 async function signup() {
-    const usuario = document.getElementById('usuarioCadastro').value.trim();
-    const senha = document.getElementById('senhaCadastro').value.trim();
+    const usuario = document.getElementById('usuarioLogin').value.trim();
+    const senha = document.getElementById('senhaLogin').value.trim();
     
     // Validação básica dos campos de entrada
     if (!usuario || !senha) {
