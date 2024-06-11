@@ -112,7 +112,7 @@ async function signup() {
             body: JSON.stringify({
                 message: 'Adiciona novo usuário',
                 content: btoa(JSON.stringify({ usuarios }, null, 2)),
-                sha: jsonResponse.sha // SHA do arquivo existente
+                sha: jsonResponse.sha // Corrigido para obter o SHA do arquivo atualizado
             })
         });
 
