@@ -3,7 +3,7 @@ async function login() {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch('https://github.com/LKNunes/DBWAR/blob/main/db.json', {
+        const response = await fetch('https://raw.githubusercontent.com/LKNunes/DBWAR/main/db.json', {
             method: 'GET',
         });
 
