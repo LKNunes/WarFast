@@ -64,8 +64,8 @@ async function signup() {
             },
             body: JSON.stringify({
                 id: Date.now(), // Adicionando um ID fictício
-                usuario: usuarioLogin,
-                senha: senhaLogin
+                usuario: nomeUsuario,
+                senha: senhaUsuario
             })
         });
 
