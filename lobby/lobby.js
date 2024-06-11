@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (lobbyId) {
     // Faz uma requisição para obter os dados do db.json
-    fetch('https://dbwar.onrender.com/lobbies')
+    fetch('https://github.com/LKNunes/DBWAR/blob/main/db.json')
       .then(response => {
         console.log('Response status:', response.status); // Debug: Check the response status
         return response.json();
