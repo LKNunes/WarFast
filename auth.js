@@ -3,7 +3,7 @@ async function login() {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch('https://lknunes.github.io/WarFast/DB/db.json', {
+        const response = await fetch('https://raw.githubusercontent.com/LKNunes/WarFast/main/DB/db.json', {
             method: 'GET',
             mode: 'no-cors'
         });
