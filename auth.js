@@ -66,32 +66,68 @@ function logout() {
     window.location.href = '../../index.html'; // Redireciona para a página inicial após logout
 }
 
-async function signup() {
-    const nomeUsuario = document.getElementById('usuarioLogin').value;
-    const senhaUsuario = document.getElementById('senhaLogin').value;
+async function cadastrar() {
+    const usuario = document.getElementById('usuarioCadastro').value.trim();
+    const senha = document.getElementById('senhaCadastro').value.trim();
+    
+    // Validação básica dos campos de entrada
+    if (!usuario || !senha) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
 
     try {
-        const response = await fetch('https://lknunes.github.io/WarFast/DB/db.json', {
-            method: 'POST',
+        const response = await fetch('https://raw.githubusercontent.com/LKNunes/WarFast/main/DB/db.json', {
+            method: 'GET',
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar usuários');
+        }
+
+        const jsonResponse = await response.json();
+        const usuarios = jsonResponse.usuarios;
+
+        if (!Array.isArray(usuarios)) {
+            throw new Error('O formato do JSON não é válido. Esperado um array de usuários.');
+        }
+
+        const usuarioExistente = usuarios.find(u => u.usuario === usuario);
+
+        if (usuarioExistente) {
+            alert('Usuário já existe. Por favor, escolha outro nome de usuário.');
+            return;
+        }
+
+        // Adiciona o novo usuário à lista
+        usuarios.push({ usuario, senha });
+
+        // Atualiza o arquivo no GitHub
+        const updateResponse = await fetch('https://api.github.com/repos/LKNunes/WarFast/contents/DB/db.json', {
+            method: 'PUT',
             headers: {
+                'Authorization': 'Bearer SEU_TOKEN_DE_ACESSO',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: Date.now(), // Adicionando um ID fictício
-                usuario: nomeUsuario, // Corrigido para usar a variável correta
-                senha: senhaUsuario // Corrigido para usar a variável correta
+                message: 'Adiciona novo usuário',
+                content: btoa(JSON.stringify({ usuarios }, null, 2)),
+                sha: jsonResponse.sha // SHA do arquivo existente
             })
         });
 
-        if (!response.ok) throw new Error('Erro ao cadastrar usuário');
+        if (!updateResponse.ok) {
+            throw new Error('Erro ao atualizar o arquivo no GitHub');
+        }
 
         alert('Usuário cadastrado com sucesso!');
-        $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
+        window.location.href = 'login.html';  // Redireciona para a página de login
     } catch (error) {
-        console.error('Erro ao cadastrar usuário:', error);
-        alert('Erro ao cadastrar usuário. Por favor, tente novamente.');
+        console.error('Erro:', error);
+        alert(`Erro ao cadastrar usuário: ${error.message}`);
     }
 }
+
 
 
 function redirectCriarConta(){
