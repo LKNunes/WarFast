@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (lobbyId) {
     // Faz uma requisição para obter os dados do db.json
-    fetch('https://raw.githubusercontent.com/LKNunes/DBWAR/main/db.json')
+    fetch('https://raw.githubusercontent.com/LKNunes/WarFast/main/DB/db.json')
       .then(response => {
         console.log('Response status:', response.status); // Debug: Check the response status
         return response.json();
