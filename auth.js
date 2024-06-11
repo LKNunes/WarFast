@@ -12,6 +12,10 @@ async function login() {
         const usuarios = await response.json();
         const usuarioExistente = usuarios.find(u => u.usuario === usuario);
 
+        console.log(usuarios)
+        
+        console.log(usuarioExistente)
+
         if (usuarioExistente && usuarioExistente.senha === senha) {
             localStorage.setItem('loggedIn', 'true');  // Salva o estado de login
             window.location.href = '../../inicio.html'; // Redireciona para a página inicial
@@ -50,6 +54,7 @@ function logout() {
 async function signup() {
     const nomeUsuario = document.getElementById('usuarioLogin').value;
     const senhaUsuario = document.getElementById('senhaLogin').value;
+    log.
 
     try {
         const response = await fetch('https://dbwar.onrender.com/usuarios', {
