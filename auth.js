@@ -71,7 +71,7 @@ function redirectCriarConta(){
         window.location.href = 'cadastrarUsuario.html';
 }
 
-function signin(){
+function signun(){
 // URL do servidor onde o JSON está hospedado
 const url = 'https://raw.githubusercontent.com/LKNunes/WarFast/main/DB/db.json';
 
