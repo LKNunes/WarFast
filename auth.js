@@ -9,6 +9,7 @@ async function login() {
 
         if (!response.ok) {
             throw new Error('Erro ao buscar usuários');
+            
         }
 
         const jsonResponse = await response.json();
