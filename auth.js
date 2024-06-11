@@ -75,7 +75,6 @@ async function signup() {
         $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
     } catch (error) {
     }
-}
 
 function redirectCriarConta(){
         window.location.href = 'cadastrarUsuario.html';
