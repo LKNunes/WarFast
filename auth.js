@@ -7,15 +7,28 @@ async function login() {
             method: 'GET',
         });
 
-        if (!response.ok) throw new Error('Erro ao buscar usuários');
+        if (!response.ok) {
+            throw new Error('Erro ao buscar usuários');
+        }
 
-        const usuarios = await response.json();
+        const jsonResponse = await response.json();
+        const usuarios = jsonResponse.usuarios; // Acessa a lista de usuários dentro do JSON
+
+        // Verifique se `usuarios` é um array
+        if (!Array.isArray(usuarios)) {
+            throw new Error('O formato do JSON não é válido. Esperado um array de usuários.');
+        }
+
+        // Verifique se o array não está vazio e tem o formato esperado
+        if (usuarios.length === 0 || !usuarios[0].hasOwnProperty('usuario') || !usuarios[0].hasOwnProperty('senha')) {
+            throw new Error('O formato do JSON não é válido ou está vazio.');
+        }
+
         const usuarioExistente = usuarios.find(u => u.usuario === usuario);
 
         if (usuarioExistente && usuarioExistente.senha === senha) {
             localStorage.setItem('loggedIn', 'true');  // Salva o estado de login
-            window.location.href = 'inicio.html';
-            // Redireciona para a página inicial
+            window.location.href = 'inicio.html';  // Redireciona para a página inicial
         } else {
             alert('Usuário ou senha incorretos.');
         }
@@ -24,6 +37,10 @@ async function login() {
         alert('Erro ao autenticar usuário.');
     }
 }
+
+// Adiciona um Event Listener ao botão de login para chamar a função login
+document.getElementById('loginButton').addEventListener('click', login);
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const logarLink = document.getElementById('logarLink');
