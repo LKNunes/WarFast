@@ -106,7 +106,7 @@ async function signup() {
         const updateResponse = await fetch('https://api.github.com/repos/LKNunes/WarFast/contents/DB/db.json', {
             method: 'PUT',
             headers: {
-                'Authorization': 'Bearer SEU_TOKEN_DE_ACESSO',
+                'Authorization': 'Bearer DBJSONWAR',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
