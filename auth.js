@@ -71,5 +71,34 @@ function redirectCriarConta(){
         window.location.href = 'cadastrarUsuario.html';
 }
 
+function signin(){
+// URL do servidor onde o JSON está hospedado
+const url = 'https://raw.githubusercontent.com/LKNunes/WarFast/main/DB/db.json';
 
-
+// Dados do novo usuário
+const novoUsuario = {
+    "id": 1716161234277,
+    "usuario": "novo_usuario",
+    "senha": "nova_senha"
+};
+// Realizar uma requisição para obter o JSON atual
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            // Adicionar o novo usuário ao array de usuários
+            data.usuarios.push(novoUsuario);
+    
+            // Enviar uma requisição PUT para atualizar o JSON no servidor
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Usuário cadastrado com sucesso!'))
+            .catch(error => console.error('Erro ao cadastrar usuário:', error));
+        })
+        .catch(error => console.error('Erro ao obter o JSON do servidor:', error));
+}
