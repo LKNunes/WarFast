@@ -75,3 +75,42 @@ function verificarLogin() {
     window.location.href = '/index.html'; // Redirecionar para a página de login
   }
 }
+
+async function adicionarUsuarioAoLobby(lobbyId, usuarioId) {
+  try {
+      // Primeiro, busque o lobby existente pelo ID
+      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`);
+      if (!response.ok) {
+          throw new Error('Erro ao buscar lobby');
+      }
+
+      const lobby = await response.json();
+
+      // Encontre o primeiro slot vazio
+      const slotIndex = lobby.playerSlots.findIndex(slot => slot === '');
+      if (slotIndex === -1) {
+          alert('Não há slots vazios disponíveis no lobby');
+          return;
+      }
+
+      // Adicione o usuário ao primeiro slot vazio
+      lobby.playerSlots[slotIndex] = usuarioId;
+
+      // Envie a atualização de volta ao servidor
+      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`, {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(lobby)
+      });
+
+      if (!updateResponse.ok) {
+          throw new Error('Erro ao atualizar lobby');
+      }
+
+      alert('Usuário adicionado com sucesso ao lobby!');
+  } catch (error) {
+      console.error('Erro ao adicionar usuário ao lobby:', error);
+  }
+}
