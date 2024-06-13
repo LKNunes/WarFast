@@ -43,9 +43,14 @@
       <button type="button" class="btn btn-primary" onclick="criarlobby()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Criar Lobby</button>
       </div>
       <div class="mb-3" id="Perfil2" style="display: none;">
-        <label for="lobbyNumber" class="form-label fs-5">Número do Lobby</label>
-        <input type="text" class="form-control fs-5" id="lobbyNumber" placeholder="Digite o número do lobby">
-        <button id="goToLobby" class="btn btn-primary mt-3">Ir para o Lobby</button>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const usuarioLogado = getUsuarioLogado();
+          const usuarioElement = document.createElement('p');
+          usuarioElement.textContent = 'Usuário logado: ' + usuarioLogado;
+          document.body.appendChild(usuarioElement);
+        });
+      </script>
       </div>
       
     </div>
