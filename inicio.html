@@ -44,13 +44,28 @@
       </div>
       <div class="mb-3" id="Perfil2" style="display: none;">
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const usuarioLogado = getUsuarioLogado();
-          const usuarioElement = document.createElement('p');
-          usuarioElement.textContent = 'Usuário logado: ' + usuarioLogado;
-          document.body.appendChild(usuarioElement);
-        });
-      </script>
+          document.addEventListener('DOMContentLoaded', function() {
+          verificarLogin();
+          });
+            // Função para recuperar o usuário logado do localStorage
+            function getUsuarioLogado() {
+              const usuarioLogado = localStorage.getItem('usuarioLogado');
+              if (usuarioLogado) {
+                return usuarioLogado;
+              } else {
+                return 'Usuário não logado';
+              }
+            }
+        
+            // Atualizar o conteúdo da página com os dados do usuário logado
+            document.addEventListener('DOMContentLoaded', function() {
+              const usuarioLogado = getUsuarioLogado();
+              const usuarioElement = document.createElement('p');
+              usuarioElement.textContent = 'Usuário logado: ' + usuarioLogado;
+              document.body.appendChild(usuarioElement);
+            });
+        
+          </script>
       </div>
       
     </div>
