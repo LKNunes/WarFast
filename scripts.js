@@ -61,9 +61,7 @@
     }
 }
 
-function redirect(html){
-  window.location.href = html;
-}  
+
 
 
   function logoff() {
@@ -117,7 +115,14 @@ async function adicionarUsuarioAoLobby() {
       }
 
       alert('Usuário adicionado com sucesso ao lobby!');
+      redirect(`/lobby/lobby.html?id=${lobbyNumber}`); // Redirecionar para a página do lobby
+
   } catch (error) {
       console.error('Erro ao adicionar usuário ao lobby:', error);
   }
 }
+
+
+function redirect(html){
+  window.location.href = html;
+}  
