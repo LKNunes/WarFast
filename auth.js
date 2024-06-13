@@ -12,11 +12,9 @@ async function login() {
         const usuarios = await response.json();
         const usuarioExistente = usuarios.find(u => u.usuario === usuario);
 
-        console.log(usuarios)
-        console.log(usuarioExistente)
-
         if (usuarioExistente && usuarioExistente.senha === senha) {
             localStorage.setItem('loggedIn', 'true');  // Salva o estado de login
+            localStorage.setItem('usuarioLogado', usuario); // Salva o nome de usuário logado
             window.location.href = '../../inicio.html'; // Redireciona para a página inicial
         } else {
             alert('Usuário ou senha incorretos.');
@@ -26,6 +24,7 @@ async function login() {
         alert('Erro ao autenticar usuário.');
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const logarLink = document.getElementById('logarLink');
