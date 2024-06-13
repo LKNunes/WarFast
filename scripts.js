@@ -20,7 +20,7 @@ document.getElementById('entrarLobby').addEventListener('click', function() {
 
   const fs = require('fs');
 
-  async function criarlobby() {
+  async function criarlobby() { // Não finalizada ainda em construção
       const nomeUsuario = document.getElementById('usuarioLogin').value;
       const senhaUsuario = document.getElementById('senhaLogin').value;
   
