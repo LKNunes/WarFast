@@ -43,12 +43,9 @@
       <button type="button" class="btn btn-primary" onclick="criarlobby()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Criar Lobby</button>
       </div>
       <div class="mb-3" id="Perfil2" style="display: none;">
+        <div id="usuarioLogado" class="mb-3" style="display: none;"></div>  
         <script>
-          document.addEventListener('DOMContentLoaded', function() {
-          verificarLogin();
-          });
-            // Função para recuperar o usuário logado do localStorage
-            function getUsuarioLogado() {
+        function getUsuarioLogado() {
               const usuarioLogado = localStorage.getItem('usuarioLogado');
               if (usuarioLogado) {
                 return usuarioLogado;
@@ -56,15 +53,14 @@
                 return 'Usuário não logado';
               }
             }
-        
+
             // Atualizar o conteúdo da página com os dados do usuário logado
             document.addEventListener('DOMContentLoaded', function() {
               const usuarioLogado = getUsuarioLogado();
-              const usuarioElement = document.createElement('p');
+              const usuarioElement = document.getElementById('usuarioLogado');
               usuarioElement.textContent = 'Usuário logado: ' + usuarioLogado;
-              document.body.appendChild(usuarioElement);
+              usuarioElement.style.display = 'block'; // Mostrar o elemento agora que ele foi atualizado
             });
-        
           </script>
       </div>
       
