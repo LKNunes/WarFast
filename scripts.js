@@ -82,6 +82,9 @@ async function adicionarUsuarioAoLobby() {
       // Primeiro, busque o lobby existente pelo ID
 
       const lobbyNumber = document.getElementById('lobbyId').value; // Obter valor do campo de entrada
+      
+      console.log(lobbyNumber)
+      
       const usuarioLogado = localStorage.getItem('usuarioLogado'); // Obter ID do usuário logado do localStorage
       
       const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`);
