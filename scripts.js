@@ -96,6 +96,7 @@ async function adicionarUsuarioAoLobby() {
       const lobby = await response.json();
 
       const jaexiste = lobby.playerSlots.findIndex(slot => slot === usuarioLogado);
+      console.log(jaexiste);
       if(jaexiste === 1)
         {
           alert('Ja está no lobby, animal!');
