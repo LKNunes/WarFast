@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +15,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container d-flex flex-column align-items-center">
     <ul class="nav flex-column flex-md-row mb-4">
@@ -45,37 +43,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script>
-    document.getElementById('entrarLobby').addEventListener('click', function() {
-      document.getElementById('entrarLobbyForm').style.display = 'block';
-      document.getElementById('criarLobbyForm').style.display = 'none';
-    });
-
-    document.getElementById('criarLobby').addEventListener('click', function() {
-      document.getElementById('criarLobbyForm').style.display = 'block';
-      document.getElementById('entrarLobbyForm').style.display = 'none';
-    });
-
-    document.getElementById('goToLobby').addEventListener('click', function() {
-      const lobbyNumber = document.getElementById('lobbyNumber').value;
-      if (lobbyNumber) {
-        window.location.href = `/lobby/lobby.html?id=${lobbyNumber}`;
-      } else {
-        alert('Por favor, insira um número de lobby.');
-      }
-    });
-
-    document.getElementById('criarNovoLobby').addEventListener('click', function() {
-      const numeroJogadores = document.getElementById('numeroJogadores').value;
-      const lobbyNumberCriar = document.getElementById('lobbyNumberCriar').value;
-      // Aqui você pode realizar as ações necessárias com os dados do novo lobby
-      if (numeroJogadores && lobbyNumberCriar) {
-        alert('Lobby criado com sucesso!');
-      } else {
-        alert('Por favor, preencha todos os campos.');
-      }
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
-
 </html>
