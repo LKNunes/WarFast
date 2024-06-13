@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
           lobby.playerSlots.forEach(player => {
             const listItem = document.createElement('li');
             listItem.classList.add('list-group-item');
-            listItem.textContent = `${player.id}`;
+            listItem.textContent = `${player}`;
             playersList.appendChild(listItem);
           });
         } else {
