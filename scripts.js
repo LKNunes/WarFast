@@ -81,7 +81,7 @@ async function adicionarUsuarioAoLobby() {
   try {
       // Primeiro, busque o lobby existente pelo ID
 
-      const lobbyNumber = document.getElementById('lobbyId').value; // Obter valor do campo de entrada
+      const lobbyNumber = document.getElementById('lobbyId'); // Obter valor do campo de entrada
       
       console.log(lobbyNumber)
       
