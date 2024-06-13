@@ -2,7 +2,7 @@
     document.getElementById('entrarLobby').addEventListener('click', function() {
     document.getElementById('entrarLobbyForm').style.display = 'block';
     document.getElementById('criarLobbyForm').style.display = 'none';
-    document.getElementById('Perfil').style.display = 'none';
+    document.getElementById('Perfil2').style.display = 'none';
   });
   
   document.addEventListener('DOMContentLoaded', function() {
@@ -12,7 +12,7 @@
   document.getElementById('criarLobby').addEventListener('click', function() {
     document.getElementById('criarLobbyForm').style.display = 'block';
     document.getElementById('entrarLobbyForm').style.display = 'none';
-    document.getElementById('Perfil').style.display = 'none';
+    document.getElementById('Perfil2').style.display = 'none';
   });
   
   document.getElementById('goToLobby').addEventListener('click', function() {
