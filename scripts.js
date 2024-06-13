@@ -54,3 +54,9 @@ document.getElementById('entrarLobby').addEventListener('click', function() {
       }
   }
   
+
+  function logoff() {
+    localStorage.removeItem('loggedIn'); // Remover estado de login
+    localStorage.removeItem('usuarioLogado'); // Remover nome de usuário logado
+    window.location.href = '/index.html'; // Redirecionar para a página de login
+  }
