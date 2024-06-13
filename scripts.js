@@ -32,7 +32,7 @@
 
   const fs = require('fs');
 
-  async function criarLobby() {
+  async function criarlobby() {
     const nomeUsuario = localStorage.getItem('usuarioLogado');
     
     try {
