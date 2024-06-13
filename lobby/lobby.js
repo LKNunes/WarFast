@@ -26,15 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
           document.getElementById('lobbyName').textContent = lobby.lobbyName;
           document.getElementById('lobbyadm').textContent = lobby.leaderId;
           document.getElementById('lobbyId').textContent = `ID: ${lobby.id}`;
-          document.getElementById('lobbyDescription').textContent = lobby.playerSlots;
 
           // Lista os jogadores
           const playersList = document.getElementById('playersList');
           playersList.innerHTML = ''; // Clear any previous content
-          lobby.players.forEach(player => {
+          lobby.playerSlots.forEach(player => {
             const listItem = document.createElement('li');
             listItem.classList.add('list-group-item');
-            listItem.textContent = `${player.name} (Score: ${player.score})`;
+            listItem.textContent = `${player.id}`;
             playersList.appendChild(listItem);
           });
         } else {
