@@ -122,6 +122,10 @@ async function adicionarUsuarioAoLobby() {
   }
 }
 
+function lobbyhtml()
+{
+redirect(`/lobby/lobby.html?id=${lobbyNumber}`); // Redirecionar para a página do lobby
+}
 
 function redirect(html){
   window.location.href = html;
