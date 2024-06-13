@@ -33,9 +33,8 @@
   const fs = require('fs');
 
   async function criarlobby() { // Não finalizada ainda em construção
-      const nomeUsuario = document.getElementById('usuarioLogin').value;
-      const senhaUsuario = document.getElementById('senhaLogin').value;
-  
+      const nomeUsuario = localStorage.getItem('usuarioLogado');
+      
       try {
           const novoLobby = {
               lobbyId: Date.now().toString(), // Convertendo o ID para string
