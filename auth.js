@@ -76,6 +76,12 @@ async function signup() {
     } catch (error) {
     }
 }
+
+
+function redirect(html){
+        window.location.href = html;
+}
+
 function redirectCriarConta(){
         window.location.href = 'cadastrarUsuario.html';
 }
