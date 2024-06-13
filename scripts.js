@@ -132,6 +132,59 @@ const lobbyNumber = document.getElementById('lobbyNumber').value; // Obter valor
 redirect(`/lobby/lobby.html?id=${lobbyNumber}`); // Redirecionar para a página do lobby
 }
 
+async function removerUsuarioDoLobby() {
+  const lobbyNumber = getLobbyIdFromURL(); // Obter ID do lobby da URL
+  const usuarioLogado = localStorage.getItem('usuarioLogado'); // Obter ID do usuário logado do localStorage
+
+  if (!lobbyNumber) {
+      alert('Por favor, insira um número de lobby.');
+      return;
+  }
+
+  if (!usuarioLogado) {
+      alert('Usuário não está logado.');
+      return;
+  }
+
+  try {
+      // Buscar o lobby existente pelo ID
+      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`);
+      if (!response.ok) {
+          throw new Error('Erro ao buscar lobby');
+      }
+
+      const lobby = await response.json();
+
+      // Encontrar o índice do usuário no array de playerSlots
+      const slotIndex = lobby.playerSlots.findIndex(slot => slot === usuarioLogado);
+      if (slotIndex === -1) {
+          alert('Usuário não encontrado no lobby');
+          return;
+      }
+
+      // Remover o usuário do slot
+      lobby.playerSlots[slotIndex] = '';
+
+      // Enviar a atualização de volta ao servidor
+      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`, {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(lobby)
+      });
+
+      if (!updateResponse.ok) {
+          throw new Error('Erro ao atualizar lobby');
+      }
+
+      alert('Usuário removido com sucesso do lobby!');
+      redirect(`/lobby/lobby.html?id=${lobbyNumber}`); // Redirecionar para a página do lobby
+  } catch (error) {
+      console.error('Erro ao remover usuário do lobby:', error);
+  }
+}
+
 function redirect(html){
   window.location.href = html;
 }  
