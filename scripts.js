@@ -84,7 +84,7 @@ async function adicionarUsuarioAoLobby() {
       
       const lobbyNumber = params.get('id'); 
 
-      console.log(lobbyNumber)
+      console.log(lobbyNumber);
       
       const usuarioLogado = localStorage.getItem('usuarioLogado'); // Obter ID do usuário logado do localStorage
       
