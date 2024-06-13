@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (lobby) {
           // Atualiza a página com os dados do lobby
-          document.getElementById('lobbyName').textContent = lobby.name;
+          document.getElementById('lobbyName').textContent = lobby.lobbyName;
+          document.getElementById('lobbyadm').textContent = lobby.leaderId;
           document.getElementById('lobbyId').textContent = `ID: ${lobby.id}`;
-          document.getElementById('lobbyDescription').textContent = lobby.description;
+          document.getElementById('lobbyDescription').textContent = lobby.playerSlots;
 
           // Lista os jogadores
           const playersList = document.getElementById('playersList');
