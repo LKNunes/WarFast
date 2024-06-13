@@ -42,7 +42,7 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                lobbyId: Date.now().toString(),
+                id: Date.now().toString(),
                 leaderId: nomeUsuario,
                 lobbyName: `Lobby de ${nomeUsuario}`,
                 playerSlots: ['', '', '', '', '', '', '', '']
