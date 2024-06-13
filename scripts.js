@@ -21,7 +21,7 @@
     document.getElementById('Perfil2').style.display = 'block';
   });
 
-  const fs = require('fs');
+ // const fs = require('fs');
 
 async function criarlobby() {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
