@@ -62,9 +62,6 @@
         // Redirecionar para a página do lobby com o ID na URL
         window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
 
-        // Adicionar usuário ao lobby
-        await adicionarUsuarioAoLobbyCriado(lobbyId, nomeUsuario);
-        
     } catch (error) {
         console.error('Erro ao criar lobby:', error);
     }
@@ -82,56 +79,6 @@ function verificarLogin() {
   if (!loggedIn) {
     window.location.href = '/index.html'; // Redirecionar para a página de login
   }
-}
-
-async function adicionarUsuarioAoLobbyCriado(lobbyId, usuarioLogado) {
-  try {
-    // Buscar o lobby existente pelo ID
-    const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`);
-    if (!response.ok) {
-        throw new Error('Erro ao buscar lobby');
-    }
-
-    const lobby = await response.json();
-
-    // Verificar se o usuário já está no lobby
-    const jaexiste = lobby.playerSlots.findIndex(slot => slot === usuarioLogado);
-    if (jaexiste !== -1) {
-        alert('Já está no lobby!');
-        return;
-    }
-
-    // Encontrar o primeiro slot vazio
-    const slotIndex = lobby.playerSlots.findIndex(slot => slot === '');
-    if (slotIndex === -1) {
-        alert('Não há slots vazios disponíveis no lobby');
-        return;
-    }
-
-    // Adicionar o usuário ao primeiro slot vazio
-    lobby.playerSlots[slotIndex] = usuarioLogado;
-
-    // Enviar a atualização de volta ao servidor
-    const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(lobby)
-    });
-
-    if (!updateResponse.ok) {
-        throw new Error('Erro ao atualizar lobby');
-    }
-
-    alert('Usuário adicionado com sucesso ao lobby!');
-
-    // Redirecionar para a página do lobby com o ID na URL
-    window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
-
-} catch (error) {
-    console.error('Erro ao adicionar usuário ao lobby:', error);
-}
 }
 
 async function adicionarUsuarioAoLobby() {
