@@ -25,7 +25,7 @@
   });
 
   document.getElementById('Perfil').addEventListener('click', function() {
-    document.getElementById('criarLobbyForm').style.display = 'block';
+    document.getElementById('criarLobbyForm').style.display = 'none';
     document.getElementById('entrarLobbyForm').style.display = 'block';
     document.getElementById('Perfil2').style.display = 'none';
   });
