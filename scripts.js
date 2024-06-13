@@ -61,7 +61,10 @@
     }
 }
 
-  
+function redirect(html){
+  window.location.href = html;
+}  
+
 
   function logoff() {
     localStorage.removeItem('loggedIn'); // Remover estado de login
