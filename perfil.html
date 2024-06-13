@@ -40,10 +40,27 @@
       <input type="text" class="form-control fs-5" id="lobbyNumberCriar" placeholder="Digite o número do lobby">
       <button id="criarNovoLobby" class="btn btn-primary mt-3">Criar Lobby</button>
     </div>
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
+    // Função para recuperar o usuário logado do localStorage
+    function getUsuarioLogado() {
+      const usuarioLogado = localStorage.getItem('usuarioLogado');
+      if (usuarioLogado) {
+        return usuarioLogado;
+      } else {
+        return 'Usuário não logado';
+      }
+    }
+
+    // Atualizar o conteúdo da página com os dados do usuário logado
+    document.addEventListener('DOMContentLoaded', function() {
+      const usuarioLogado = getUsuarioLogado();
+      const usuarioElement = document.createElement('p');
+      usuarioElement.textContent = 'Usuário logado: ' + usuarioLogado;
+      document.body.appendChild(usuarioElement);
+    });
+
     document.getElementById('entrarLobby').addEventListener('click', function() {
       document.getElementById('entrarLobbyForm').style.display = 'block';
       document.getElementById('criarLobbyForm').style.display = 'none';
