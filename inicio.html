@@ -1,57 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
-</head>
-<body>
-  <div class="container d-flex flex-column align-items-center">
-    <ul class="nav flex-column flex-md-row mb-4">
-      <li class="nav-item">
-        <a id="entrarLobby" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="#" style="background-color: #d6660a;">Entrar em um Lobby</a>
-      </li>
-      <li class="nav-item mt-2 mt-md-0 ms-md-2">
-        <a id="criarLobby" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="#" style="background-color: #d6660a;">Criar Lobby</a>
-      </li>
-      <li class="nav-item mt-2 mt-md-0 ms-md-2">
-        <a id="perfil" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="perfil.html" style="background-color: #d6660a;">Perfil</a>
-      </li>
-      <li class="nav-item mt-2 mt-md-0 ms-md-2">
-        <a id="Perfil2" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="#" style="background-color: #d6660a;">Perfil2</a>
-      </li>
-      <li class="nav-item mt-2 mt-md-0 ms-md-2">
-        <button id="btnLogoff" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" style="background-color: #d6660a; border: none;" onclick="logoff()">Logoff</button>
-      </li>      
-    </ul>
-    <div class="mb-3" id="entrarLobbyForm" style="display: none;">
-      <label for="lobbyNumber" class="form-label fs-5">Número do Lobby</label>
-      <input type="text" class="form-control fs-5" id="lobbyNumber" placeholder="Digite o número do lobby">
-      <button id="goToLobby" class="btn btn-primary mt-3">Ir para o Lobby</button>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container d-flex flex-column align-items-center">
+      <ul class="nav flex-column flex-md-row mb-4">
+        <li class="nav-item">
+          <a id="entrarLobby" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="#" style="background-color: #d6660a;">Entrar em um Lobby</a>
+        </li>
+        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+          <a id="criarLobby" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="#" style="background-color: #d6660a;">Criar Lobby</a>
+        </li>
+        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+          <a id="perfil" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="perfil.html" style="background-color: #d6660a;">Perfil</a>
+        </li>
+        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+          <a id="Perfil2" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" href="#" style="background-color: #d6660a;">Perfil2</a>
+        </li>
+        <li class="nav-item mt-2 mt-md-0 ms-md-2">
+          <button id="btnLogoff" class="nav-link text-light rounded-4 px-3 fs-5 fs-md-4 fw-bold" style="background-color: #d6660a; border: none;" onclick="logoff()">Logoff</button>
+        </li>      
+      </ul>
+      <div class="mb-3" id="entrarLobbyForm" style="display: none;">
+        <label for="lobbyNumber" class="form-label fs-5">Número do Lobby</label>
+        <input type="text" class="form-control fs-5" id="lobbyNumber" placeholder="Digite o número do lobby">
+        <button id="goToLobby" class="btn btn-primary mt-3">Ir para o Lobby</button>
+      </div>
+      <div class="mb-3" id="criarLobbyForm" style="display: none;">
+      <button type="button" class="btn btn-primary" onclick="criarlobby()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Criar Lobby</button>
+      </div>
+      <div class="mb-3" id="Perfil2" style="display: none;">
+        <label for="lobbyNumber" class="form-label fs-5">Número do Lobby</label>
+        <input type="text" class="form-control fs-5" id="lobbyNumber" placeholder="Digite o número do lobby">
+        <button id="goToLobby" class="btn btn-primary mt-3">Ir para o Lobby</button>
+      </div>
+      
     </div>
-    <div class="mb-3" id="criarLobbyForm" style="display: none;">
-    <button type="button" class="btn btn-primary" onclick="criarlobby()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Criar Lobby</button>
-    </div>
-    <div class="mb-3" id="Perfil" style="display: none;">
-      <label for="lobbyNumber" class="form-label fs-5">Número do Lobby</label>
-      <input type="text" class="form-control fs-5" id="lobbyNumber" placeholder="Digite o número do lobby">
-      <button id="goToLobby" class="btn btn-primary mt-3">Ir para o Lobby</button>
-    
-    </div>
-    
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="scripts.js"></script>
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+  </body>
+  </html>
