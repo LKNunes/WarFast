@@ -80,9 +80,9 @@ async function adicionarUsuarioAoLobby(lobbyId, usuarioId) {
   try {
       // Primeiro, busque o lobby existente pelo ID
 
-      console.alert(lobbyId);
+      console.log(lobbyId);
       
-      console.alert(usuarioId);
+      console.log(usuarioId);
 
       const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`);
       if (!response.ok) {
