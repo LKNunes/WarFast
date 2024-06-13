@@ -57,7 +57,7 @@
         const lobbyId = data.id; // Pegando o ID do lobby criado
 
         alert('Lobby criado com sucesso! ID: ' + lobbyId);
-        $('#cadastroModal').modal('hide');
+       // $('#cadastroModal').modal('hide');
 
         // Redirecionar para a página do lobby com o ID na URL
         window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
