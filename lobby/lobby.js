@@ -49,3 +49,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('lobbyDescription').textContent = '';
   }
 });
+
