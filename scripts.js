@@ -79,7 +79,7 @@ function verificarLogin() {
 async function adicionarUsuarioAoLobby(lobbyId, usuarioId) {
   try {
       // Primeiro, busque o lobby existente pelo ID
-      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`);
+      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}.toString`);
       if (!response.ok) {
           throw new Error('Erro ao buscar lobby');
       }
@@ -97,7 +97,7 @@ async function adicionarUsuarioAoLobby(lobbyId, usuarioId) {
       lobby.playerSlots[slotIndex] = usuarioId;
 
       // Envie a atualização de volta ao servidor
-      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`, {
+      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}.toString`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json'
