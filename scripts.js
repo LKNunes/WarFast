@@ -83,7 +83,7 @@ async function adicionarUsuarioAoLobby() {
       const lobbyNumber = document.getElementById('lobbyNumber').value; // Obter valor do campo de entrada
       const usuarioLogado = localStorage.getItem('usuarioLogado'); // Obter ID do usuário logado do localStorage
       
-      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`);
+      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`);
       if (!response.ok) {
           throw new Error('Erro ao buscar lobby');
       }
@@ -101,7 +101,7 @@ async function adicionarUsuarioAoLobby() {
       lobby.playerSlots[slotIndex] = usuarioId;
 
       // Envie a atualização de volta ao servidor
-      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`, {
+      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json'
