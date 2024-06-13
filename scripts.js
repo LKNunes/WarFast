@@ -14,19 +14,10 @@
     document.getElementById('entrarLobbyForm').style.display = 'none';
     document.getElementById('Perfil2').style.display = 'none';
   });
-  
- /*  document.getElementById('goToLobby').addEventListener('click', function() {
-    const lobbyNumber = document.getElementById('lobbyNumber').value;
-    if (lobbyNumber) {
-      window.location.href = `/lobby/lobby.html?id=${lobbyNumber}`;
-    } else {
-      alert('Por favor, insira um número de lobby.');
-    }
-  }); */
 
   document.getElementById('Perfil').addEventListener('click', function() {
-    document.getElementById('criarLobbyForm').style.display = 'block';
-    document.getElementById('entrarLobbyForm').style.display = 'block';
+    document.getElementById('criarLobbyForm').style.display = 'none';
+    document.getElementById('entrarLobbyForm').style.display = 'none';
     document.getElementById('Perfil2').style.display = 'block';
   });
 
