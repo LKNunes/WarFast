@@ -1,16 +1,18 @@
 // scripts.js
-document.getElementById('entrarLobby').addEventListener('click', function() {
+    document.getElementById('entrarLobby').addEventListener('click', function() {
     document.getElementById('entrarLobbyForm').style.display = 'block';
     document.getElementById('criarLobbyForm').style.display = 'none';
+    document.getElementById('Perfil').style.display = 'none';
   });
   
   document.addEventListener('DOMContentLoaded', function() {
     verificarLogin();
   });
-
+ 
   document.getElementById('criarLobby').addEventListener('click', function() {
     document.getElementById('criarLobbyForm').style.display = 'block';
     document.getElementById('entrarLobbyForm').style.display = 'none';
+    document.getElementById('Perfil').style.display = 'none';
   });
   
   document.getElementById('goToLobby').addEventListener('click', function() {
@@ -20,6 +22,12 @@ document.getElementById('entrarLobby').addEventListener('click', function() {
     } else {
       alert('Por favor, insira um número de lobby.');
     }
+  });
+
+  document.getElementById('Perfil').addEventListener('click', function() {
+    document.getElementById('criarLobbyForm').style.display = 'block';
+    document.getElementById('entrarLobbyForm').style.display = 'block';
+    document.getElementById('Perfil2').style.display = 'none';
   });
 
   const fs = require('fs');
