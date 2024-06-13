@@ -124,6 +124,7 @@ async function adicionarUsuarioAoLobby() {
 
 function lobbyhtml()
 {
+const lobbyNumber = document.getElementById('lobbyNumber').value; // Obter valor do campo de entrada
 redirect(`/lobby/lobby.html?id=${lobbyNumber}`); // Redirecionar para a página do lobby
 }
 
