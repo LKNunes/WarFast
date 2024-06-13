@@ -60,3 +60,10 @@ document.getElementById('entrarLobby').addEventListener('click', function() {
     localStorage.removeItem('usuarioLogado'); // Remover nome de usuário logado
     window.location.href = '/index.html'; // Redirecionar para a página de login
   }
+
+function verificarLogin() {
+  const loggedIn = localStorage.getItem('loggedIn');
+  if (!loggedIn) {
+    window.location.href = '/index.html'; // Redirecionar para a página de login
+  }
+}
