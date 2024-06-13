@@ -4,6 +4,10 @@ document.getElementById('entrarLobby').addEventListener('click', function() {
     document.getElementById('criarLobbyForm').style.display = 'none';
   });
   
+  document.addEventListener('DOMContentLoaded', function() {
+    verificarLogin();
+  });
+
   document.getElementById('criarLobby').addEventListener('click', function() {
     document.getElementById('criarLobbyForm').style.display = 'block';
     document.getElementById('entrarLobbyForm').style.display = 'none';
