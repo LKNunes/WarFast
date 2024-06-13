@@ -80,9 +80,10 @@ function verificarLogin() {
 async function adicionarUsuarioAoLobby() {
   try {
       // Primeiro, busque o lobby existente pelo ID
-
-      const lobbyNumber = document.getElementById('lobbyId'); // Obter valor do campo de entrada
+      const params = new URLSearchParams(window.location.search);
       
+      const lobbyNumber = params.get('id'); 
+
       console.log(lobbyNumber)
       
       const usuarioLogado = localStorage.getItem('usuarioLogado'); // Obter ID do usuário logado do localStorage
