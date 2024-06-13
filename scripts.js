@@ -63,7 +63,7 @@
         window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
 
         // Adicionar usuário ao lobby
-         adicionarUsuarioAoLobbyCriado(lobbyId, nomeUsuario);
+        await adicionarUsuarioAoLobbyCriado(lobbyId, nomeUsuario);
         
     } catch (error) {
         console.error('Erro ao criar lobby:', error);
@@ -86,48 +86,48 @@ function verificarLogin() {
 
 async function adicionarUsuarioAoLobbyCriado(lobbyId, usuarioLogado) {
   try {
-      // Buscar o lobby existente pelo ID
-      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`);
-      if (!response.ok) {
-          throw new Error('Erro ao buscar lobby');
-      }
+    // Buscar o lobby existente pelo ID
+    const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`);
+    if (!response.ok) {
+        throw new Error('Erro ao buscar lobby');
+    }
 
-      const lobby = await response.json();
+    const lobby = await response.json();
 
-      // Verificar se o usuário já está no lobby
-      const jaexiste = lobby.playerSlots.findIndex(slot => slot === usuarioLogado);
-      if (jaexiste !== -1) {
-          alert('Já está no lobby!');
-          return;
-      }
+    // Verificar se o usuário já está no lobby
+    const jaexiste = lobby.playerSlots.findIndex(slot => slot === usuarioLogado);
+    if (jaexiste !== -1) {
+        alert('Já está no lobby!');
+        return;
+    }
 
-      // Encontrar o primeiro slot vazio
-      const slotIndex = lobby.playerSlots.findIndex(slot => slot === '');
-      if (slotIndex === -1) {
-          alert('Não há slots vazios disponíveis no lobby');
-          return;
-      }
+    // Encontrar o primeiro slot vazio
+    const slotIndex = lobby.playerSlots.findIndex(slot => slot === '');
+    if (slotIndex === -1) {
+        alert('Não há slots vazios disponíveis no lobby');
+        return;
+    }
 
-      // Adicionar o usuário ao primeiro slot vazio
-      lobby.playerSlots[slotIndex] = usuarioLogado;
+    // Adicionar o usuário ao primeiro slot vazio
+    lobby.playerSlots[slotIndex] = usuarioLogado;
 
-      // Enviar a atualização de volta ao servidor
-      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`, {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(lobby)
-      });
+    // Enviar a atualização de volta ao servidor
+    const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(lobby)
+    });
 
-      if (!updateResponse.ok) {
-          throw new Error('Erro ao atualizar lobby');
-      }
+    if (!updateResponse.ok) {
+        throw new Error('Erro ao atualizar lobby');
+    }
 
-      alert('Usuário adicionado com sucesso ao lobby!');
-  } catch (error) {
-      console.error('Erro ao adicionar usuário ao lobby:', error);
-  }
+    alert('Usuário adicionado com sucesso ao lobby!');
+} catch (error) {
+    console.error('Erro ao adicionar usuário ao lobby:', error);
+}
 }
 
 async function adicionarUsuarioAoLobby() {
