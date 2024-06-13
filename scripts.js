@@ -98,7 +98,7 @@ async function adicionarUsuarioAoLobby() {
       }
 
       // Adicione o usuário ao primeiro slot vazio
-      lobby.playerSlots[slotIndex] = usuarioId;
+      lobby.playerSlots[slotIndex] = usuarioLogado;
 
       // Envie a atualização de volta ao servidor
       const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`, {
