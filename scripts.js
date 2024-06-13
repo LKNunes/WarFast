@@ -17,41 +17,40 @@ document.getElementById('entrarLobby').addEventListener('click', function() {
       alert('Por favor, insira um número de lobby.');
     }
   });
-  
-  document.getElementById('criarNovoLobby').addEventListener('click', function() {
-    const numeroJogadores = document.getElementById('numeroJogadores').value;
-    // Aqui você pode realizar as ações necessárias com os dados do novo lobby
-    if (numeroJogadores) {
-      alert('Lobby criado com sucesso!');
-    } else {
-      alert('Por favor, preencha todos os campos.');
-    }
-  });
-  
+
+  const fs = require('fs');
 
   async function criarlobby() {
-    const nomeUsuario = document.getElementById('usuarioLogin').value;
-    const senhaUsuario = document.getElementById('senhaLogin').value;
-
-     console.log(nomeUsuario)
-     console.log(senhaUsuario)
-    try {
-        const response = await fetch('https://dbwar.onrender.com/lobbies', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: Date.now(), // Adicionando um ID fictício
-                usuario: nomeUsuario,
-                senha: senhaUsuario
-            })
-        });
-
-        if (!response.ok) throw new Error('Erro ao cadastrar usuário');
-
-        alert('Usuário cadastrado com sucesso!');
-        $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
-    } catch (error) {
-    }
-}
+      const nomeUsuario = document.getElementById('usuarioLogin').value;
+      const senhaUsuario = document.getElementById('senhaLogin').value;
+  
+      try {
+          const novoLobby = {
+              lobbyId: Date.now().toString(), // Convertendo o ID para string
+              leaderId: nomeUsuario,
+              lobbyName: `Lobby de ${nomeUsuario}`,
+              playerSlots: ['', '', '', '', '', '', '', ''] // Slots vazios
+          };
+  
+          // Lendo o arquivo existente, se houver
+          let lobbiesData;
+          try {
+              lobbiesData = JSON.parse(fs.readFileSync('lobbies.json', 'utf-8'));
+          } catch (error) {
+              // Se o arquivo não existir ou estiver vazio, inicialize como um objeto vazio
+              lobbiesData = { lobbies: [] };
+          }
+  
+          // Adicionando o novo lobby aos dados existentes
+          lobbiesData.lobbies.push(novoLobby);
+  
+          // Escrevendo os dados atualizados de volta no arquivo
+          fs.writeFileSync('lobbies.json', JSON.stringify(lobbiesData, null, 2));
+  
+          alert('Lobby criado com sucesso!');
+          $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
+      } catch (error) {
+          console.error('Erro ao criar lobby:', error);
+      }
+  }
+  
