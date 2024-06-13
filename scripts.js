@@ -55,7 +55,6 @@
 
         const data = await response.json();
         alert('Lobby criado com sucesso!'+ id);
-        adicionarUsuarioAoLobby()
         $('#cadastroModal').modal('hide');
     } catch (error) {
         console.error('Erro ao criar lobby:', error);
