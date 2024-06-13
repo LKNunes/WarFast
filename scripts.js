@@ -63,7 +63,7 @@
         window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
 
         // Adicionar usuário ao lobby
-        await adicionarUsuarioAoLobbyCriado(lobbyId, nomeUsuario);
+         adicionarUsuarioAoLobbyCriado(lobbyId, nomeUsuario);
         
     } catch (error) {
         console.error('Erro ao criar lobby:', error);
