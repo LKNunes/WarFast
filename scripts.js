@@ -20,9 +20,8 @@ document.getElementById('entrarLobby').addEventListener('click', function() {
   
   document.getElementById('criarNovoLobby').addEventListener('click', function() {
     const numeroJogadores = document.getElementById('numeroJogadores').value;
-    const lobbyNumberCriar = document.getElementById('lobbyNumberCriar').value;
     // Aqui você pode realizar as ações necessárias com os dados do novo lobby
-    if (numeroJogadores && lobbyNumberCriar) {
+    if (numeroJogadores) {
       alert('Lobby criado com sucesso!');
     } else {
       alert('Por favor, preencha todos os campos.');
