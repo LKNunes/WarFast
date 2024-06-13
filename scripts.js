@@ -125,6 +125,10 @@ async function adicionarUsuarioAoLobbyCriado(lobbyId, usuarioLogado) {
     }
 
     alert('Usuário adicionado com sucesso ao lobby!');
+
+    // Redirecionar para a página do lobby com o ID na URL
+    window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
+
 } catch (error) {
     console.error('Erro ao adicionar usuário ao lobby:', error);
 }
