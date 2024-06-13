@@ -188,3 +188,8 @@ async function removerUsuarioDoLobby() {
 function redirect(html){
   window.location.href = html;
 }  
+
+function getLobbyIdFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
