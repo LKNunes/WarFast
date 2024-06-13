@@ -32,38 +32,35 @@
 
   const fs = require('fs');
 
-  async function criarlobby() { // Não finalizada ainda em construção
-      const nomeUsuario = localStorage.getItem('usuarioLogado');
-      
-      try {
-          const novoLobby = {
-              lobbyId: Date.now().toString(), // Convertendo o ID para string
-              leaderId: nomeUsuario,
-              lobbyName: `Lobby de ${nomeUsuario}`,
-              playerSlots: ['', '', '', '', '', '', '', ''] // Slots vazios
-          };
-  
-          // Lendo o arquivo existente, se houver
-          let lobbiesData;
-          try {
-              lobbiesData = JSON.parse(fs.readFileSync('lobbies.json', 'utf-8'));
-          } catch (error) {
-              // Se o arquivo não existir ou estiver vazio, inicialize como um objeto vazio
-              lobbiesData = { lobbies: [] };
-          }
-  
-          // Adicionando o novo lobby aos dados existentes
-          lobbiesData.lobbies.push(novoLobby);
-  
-          // Escrevendo os dados atualizados de volta no arquivo
-          fs.writeFileSync('lobbies.json', JSON.stringify(lobbiesData, null, 2));
-  
-          alert('Lobby criado com sucesso!');
-          $('#cadastroModal').modal('hide'); // Fecha o modal de cadastro
-      } catch (error) {
-          console.error('Erro ao criar lobby:', error);
-      }
-  }
+  async function criarLobby() {
+    const nomeUsuario = localStorage.getItem('usuarioLogado');
+    
+    try {
+        const response = await fetch('https://dbwar.onrender.com/lobbies', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                lobbyId: Date.now().toString(),
+                leaderId: nomeUsuario,
+                lobbyName: `Lobby de ${nomeUsuario}`,
+                playerSlots: ['', '', '', '', '', '', '', '']
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao criar lobby');
+        }
+
+        const data = await response.json();
+        alert('Lobby criado com sucesso!');
+        $('#cadastroModal').modal('hide');
+    } catch (error) {
+        console.error('Erro ao criar lobby:', error);
+    }
+}
+
   
 
   function logoff() {
