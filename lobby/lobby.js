@@ -73,8 +73,7 @@ async function comecarPartida() {
       }
 
       const data = await response.json();
-      const lobbyId = data.id; // Pegando o ID do lobby criado
-
+      
       alert('Lobby criado com sucesso! ID: ' + lobbyId);
       // $('#cadastroModal').modal('hide');
 
