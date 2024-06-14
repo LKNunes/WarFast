@@ -36,32 +36,40 @@
 
         // Load the texture for the first square
         const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('https://example.com/your-image.png', function(texture) {
+        const texture = textureLoader.load('https://war-fast.vercel.app/GAME/PAISES/Brasil1.png', function(texture) {
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.set(1, 1);
         });
 
-        // Create material for the first square
-        const initialMaterial = new THREE.MeshBasicMaterial({ map: texture });
+        // Helper function to create a shape
+        function createShape(size, material) {
+            const geometry = new THREE.BoxGeometry(size, size, size);
+            return new THREE.Mesh(geometry, material);
+        }
 
-        // Create material for darkened image
-        const darkenedMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.5 });
+        // Add 24 identical shapes to the scene, arranged in a grid
+        const gridSize = 6;
+        const shapeSize = 4;
+        const spacing = 2;
+        const offset = (gridSize - 1) * (shapeSize + spacing) / 2;
 
-        // Create the first square
-        const firstSquare = createShape(4, initialMaterial);
-        firstSquare.position.set(-8, 0, -8); // Position the first square
-        scene.add(firstSquare);
-
-        // Create remaining squares with random colors
-        for (let i = 0; i < 23; i++) {
-            const shape = createShape(4, new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff }));
-            shape.position.set(
-                (Math.random() - 0.5) * 30,
-                0,
-                (Math.random() - 0.5) * 30
-            );
-            scene.add(shape);
+        for (let i = 0; i < gridSize; i++) {
+            for (let j = 0; j < gridSize / 2; j++) {
+                let material;
+                if (i === 0 && j === 0) {
+                    material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+                } else {
+                    material = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff });
+                }
+                const shape = createShape(shapeSize, material);
+                shape.position.set(
+                    i * (shapeSize + spacing) - offset,
+                    0,
+                    j * (shapeSize + spacing) - offset
+                );
+                scene.add(shape);
+            }
         }
 
         // Render loop
@@ -81,22 +89,6 @@
             camera.bottom = -30;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // Function to create a shape
-        function createShape(size, material) {
-            const geometry = new THREE.BoxGeometry(size, size, size);
-            return new THREE.Mesh(geometry, material);
-        }
-
-        // Event listener for mouseover event on the first square
-        firstSquare.addEventListener('mouseover', function() {
-            firstSquare.material = darkenedMaterial; // Change material to darkenedMaterial when mouse is over
-        });
-
-        // Event listener for mouseout event on the first square
-        firstSquare.addEventListener('mouseout', function() {
-            firstSquare.material = initialMaterial; // Change material back to initialMaterial when mouse moves out
         });
     </script>
 </body>
