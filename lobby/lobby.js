@@ -54,7 +54,7 @@ async function comecarPartida() {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   
   try {
-      const response = await fetch('https://dbwar.onrender.com/PARTIDAS', {
+      const response = await fetch('https://dbwar.onrender.com/partida', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
