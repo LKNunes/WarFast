@@ -19,8 +19,8 @@
         const camera = new THREE.OrthographicCamera(
             -aspect * 30, aspect * 30, 30, -30, 0.1, 1000
         );
-        camera.position.set(50, 50, 0); // Posição elevada para vista de cima
-        camera.lookAt(50, 50, 0);
+        camera.position.set(0, 50, 0); // Posição elevada para vista de cima
+        camera.lookAt(0, 0, 0);
         
         // Configuração do renderizador
         const renderer = new THREE.WebGLRenderer({ alpha: true }); // Habilitar alpha para transparência
@@ -36,7 +36,7 @@
 
         // Load the texture for the first square
         const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('https://war-fast.vercel.app/GAME/PAISES/Brasil1.png', function(texture) {
+        const texture = textureLoader.load('https://example.com/your-image.png', function(texture) {
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.set(1, 1);
@@ -48,15 +48,18 @@
         // Criar material escurecido para a imagem
         const darkenedMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.5 });
 
-        // Criar os quadrados
-        for (let i = 0; i < 24; i++) {
+        // Criar o primeiro quadrado
+        const firstSquare = createShape(4, initialMaterial);
+        firstSquare.position.set(-8, 0, -8); // Posicionar o primeiro quadrado
+        scene.add(firstSquare);
+
+        // Criar os demais quadrados
+        for (let i = 0; i < 23; i++) {
             const shape = createShape(4, initialMaterial); // Usar o mesmo material para todos os quadrados
-            const row = Math.floor(i / 6);
-            const col = i % 6;
             shape.position.set(
-                col * 6 - 15,
+                (i % 6) * 6 - 15,
                 0,
-                row * 6 - 15
+                Math.floor(i / 6) * 6 - 15
             );
             scene.add(shape);
         }
@@ -68,7 +71,6 @@
         }
 
         // Adicionar evento de mouseover para o primeiro quadrado
-        const firstSquare = scene.children[0]; // Obter o primeiro quadrado da cena
         firstSquare.addEventListener('mouseover', function() {
             firstSquare.material = darkenedMaterial; // Mudar o material para darkenedMaterial quando o cursor estiver sobre ele
         });
