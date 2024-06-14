@@ -10,7 +10,7 @@
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
     <script>
         // Setup basic scene
         const scene = new THREE.Scene();
@@ -42,7 +42,7 @@
 
         // Load texture and create the map
         const loader = new THREE.TextureLoader();
-        loader.load('https://github.com/LKNunes/WarFast/blob/main/Partida/4020317.jpg', function(texture) {
+        loader.load('https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/BlankMap-World-Microstates.svg/2000px-BlankMap-World-Microstates.svg.png', function(texture) {
             const geometry = new THREE.PlaneGeometry(200, 100);
             const material = new THREE.MeshBasicMaterial({ map: texture });
             const plane = new THREE.Mesh(geometry, material);
@@ -52,7 +52,28 @@
             const territories = [
                 { name: "Territory 1", points: [[-50, 25], [-40, 25], [-45, 35]] },
                 { name: "Territory 2", points: [[-40, 25], [-30, 25], [-35, 35]] },
-                // ... continue defining all 24 territories
+                { name: "Territory 3", points: [[-30, 25], [-20, 25], [-25, 35]] },
+                { name: "Territory 4", points: [[-20, 25], [-10, 25], [-15, 35]] },
+                { name: "Territory 5", points: [[-10, 25], [0, 25], [-5, 35]] },
+                { name: "Territory 6", points: [[0, 25], [10, 25], [5, 35]] },
+                { name: "Territory 7", points: [[10, 25], [20, 25], [15, 35]] },
+                { name: "Territory 8", points: [[20, 25], [30, 25], [25, 35]] },
+                { name: "Territory 9", points: [[30, 25], [40, 25], [35, 35]] },
+                { name: "Territory 10", points: [[40, 25], [50, 25], [45, 35]] },
+                { name: "Territory 11", points: [[-50, -5], [-40, -5], [-45, 5]] },
+                { name: "Territory 12", points: [[-40, -5], [-30, -5], [-35, 5]] },
+                { name: "Territory 13", points: [[-30, -5], [-20, -5], [-25, 5]] },
+                { name: "Territory 14", points: [[-20, -5], [-10, -5], [-15, 5]] },
+                { name: "Territory 15", points: [[-10, -5], [0, -5], [-5, 5]] },
+                { name: "Territory 16", points: [[0, -5], [10, -5], [5, 5]] },
+                { name: "Territory 17", points: [[10, -5], [20, -5], [15, 5]] },
+                { name: "Territory 18", points: [[20, -5], [30, -5], [25, 5]] },
+                { name: "Territory 19", points: [[30, -5], [40, -5], [35, 5]] },
+                { name: "Territory 20", points: [[40, -5], [50, -5], [45, 5]] },
+                { name: "Territory 21", points: [[-50, -35], [-40, -35], [-45, -25]] },
+                { name: "Territory 22", points: [[-40, -35], [-30, -35], [-35, -25]] },
+                { name: "Territory 23", points: [[-30, -35], [-20, -35], [-25, -25]] },
+                { name: "Territory 24", points: [[-20, -35], [-10, -35], [-15, -25]] }
             ];
 
             territories.forEach(territory => {
