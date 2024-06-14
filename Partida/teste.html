@@ -34,7 +34,7 @@
         directionalLight.position.set(0, 50, 50).normalize();
         scene.add(directionalLight);
 
-        // Carregar textura para o primeiro quadrado
+        // Load the texture for the first square
         const textureLoader = new THREE.TextureLoader();
         const texture = textureLoader.load('https://example.com/your-image.png', function(texture) {
             texture.wrapS = THREE.RepeatWrapping;
@@ -53,13 +53,13 @@
         firstSquare.position.set(-8, 0, -8); // Posicionar o primeiro quadrado
         scene.add(firstSquare);
 
-        // Criar os demais quadrados com cores aleatórias
+        // Criar os demais quadrados
         for (let i = 0; i < 23; i++) {
-            const shape = createShape(4, new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff }));
+            const shape = createShape(4, initialMaterial); // Usar o mesmo material para todos os quadrados
             shape.position.set(
-                (Math.random() - 0.5) * 30,
+                (i % 6) * 6 - 15,
                 0,
-                (Math.random() - 0.5) * 30
+                Math.floor(i / 6) * 6 - 15
             );
             scene.add(shape);
         }
