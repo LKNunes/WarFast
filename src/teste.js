@@ -25,7 +25,7 @@ directionalLight.position.set(0, 50, 50).normalize();
 scene.add(directionalLight);
 
 const loader = new THREE.TextureLoader();
-loader.load('https://github.com/LKNunes/WarFast/blob/main/Partida/4020317.jpg', function(texture) {
+loader.load('/4020317.jpg', function(texture) {
     const geometry = new THREE.PlaneGeometry(200, 100);
     const material = new THREE.MeshBasicMaterial({ map: texture });
     const plane = new THREE.Mesh(geometry, material);
