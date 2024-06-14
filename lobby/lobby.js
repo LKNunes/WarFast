@@ -84,3 +84,9 @@ async function comecarPartida() {
       console.error('Erro ao criar partida:', error);
   }
 }
+async function voltarLobby(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const lobbyId = urlParams.get('id');
+  window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
+
+}
