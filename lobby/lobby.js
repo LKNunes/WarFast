@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function comecarPartida() {
-  const lobbyId = localStorage.getItem('usuarioLogado');
+  const nomeUsuario = localStorage.getItem('usuarioLogado');
   
   try {
       const response = await fetch('https://dbwar.onrender.com/lobbies', {
