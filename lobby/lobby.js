@@ -54,13 +54,13 @@ async function comecarPartida() {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   
   try {
-      const response = await fetch('https://dbwar.onrender.com/lobbies', {
+      const response = await fetch('https://dbwar.onrender.com/PARTIDAS', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              id: Date.now().toString(),
+              id: document.getElementById('lobbyId').value, // Obter valor do campo de entrada
               leaderId: nomeUsuario,
               lobbyName: `Lobby de ${nomeUsuario}`,
               playerSlots: ['', '', '', '', '', '', '', '']
@@ -78,7 +78,7 @@ async function comecarPartida() {
       // $('#cadastroModal').modal('hide');
 
       // Redirecionar para a página do lobby com o ID na URL
-      window.location.href = `/partida.html?id=${lobbyId}`;
+      window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
 
   } catch (error) {
       console.error('Erro ao criar partida:', error);
