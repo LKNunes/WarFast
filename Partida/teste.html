@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Three.js Top View Example</title>
+    <title>Three.js Map Example</title>
     <style>
         body { margin: 0; }
         canvas { display: block; }
@@ -10,22 +10,28 @@
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
     <script>
         // Setup basic scene
         const scene = new THREE.Scene();
         const aspect = window.innerWidth / window.innerHeight;
-        
-        // Setup camera for top view
+
+        // Setup camera
         const camera = new THREE.OrthographicCamera(
-            -aspect * 20, aspect * 20, 20, -20, 0.1, 1000
+            -aspect * 100, aspect * 100, 100, -100, 0.1, 1000
         );
-        camera.position.set(0, 50, 0); // Elevated position for top view
+        camera.position.set(0, 200, 0);
         camera.lookAt(0, 0, 0);
-        
+
         // Setup renderer
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
+
+        // Controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableRotate = false;
+        controls.enableZoom = true;
 
         // Add lighting
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -34,34 +40,43 @@
         directionalLight.position.set(0, 50, 50).normalize();
         scene.add(directionalLight);
 
-        // Helper function to create random shapes
-        function createRandomShape() {
-            const geometryTypes = [
-                new THREE.BoxGeometry(1, 1, 1),
-                new THREE.SphereGeometry(0.5, 32, 32),
-                new THREE.CylinderGeometry(0.5, 0.5, 1, 32),
-                new THREE.ConeGeometry(0.5, 1, 32),
-                new THREE.TorusGeometry(0.5, 0.2, 16, 100)
-            ];
-            const randomGeometry = geometryTypes[Math.floor(Math.random() * geometryTypes.length)];
-            const material = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff });
-            return new THREE.Mesh(randomGeometry, material);
-        }
+        // Load texture and create the map
+        const loader = new THREE.TextureLoader();
+        loader.load('https://github.com/LKNunes/WarFast/blob/main/Partida/4020317.jpg', function(texture) {
+            const geometry = new THREE.PlaneGeometry(200, 100);
+            const material = new THREE.MeshBasicMaterial({ map: texture });
+            const plane = new THREE.Mesh(geometry, material);
+            scene.add(plane);
 
-        // Add 24 random shapes to the scene
-        for (let i = 0; i < 24; i++) {
-            const shape = createRandomShape();
-            shape.position.set(
-                (Math.random() - 0.5) * 40,
-                0,
-                (Math.random() - 0.5) * 40
-            );
-            scene.add(shape);
-        }
+            // Define territories as polygons (simplified)
+            const territories = [
+                { name: "Territory 1", points: [[-50, 25], [-40, 25], [-45, 35]] },
+                { name: "Territory 2", points: [[-40, 25], [-30, 25], [-35, 35]] },
+                // ... continue defining all 24 territories
+            ];
+
+            territories.forEach(territory => {
+                const shape = new THREE.Shape();
+                territory.points.forEach((point, index) => {
+                    if (index === 0) {
+                        shape.moveTo(point[0], point[1]);
+                    } else {
+                        shape.lineTo(point[0], point[1]);
+                    }
+                });
+                shape.lineTo(territory.points[0][0], territory.points[0][1]);
+
+                const geometry = new THREE.ShapeGeometry(shape);
+                const material = new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff, side: THREE.DoubleSide });
+                const mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+            });
+        });
 
         // Render loop
         function animate() {
             requestAnimationFrame(animate);
+            controls.update();
             renderer.render(scene, camera);
         }
 
@@ -70,10 +85,10 @@
         // Handle window resize
         window.addEventListener('resize', () => {
             const aspect = window.innerWidth / window.innerHeight;
-            camera.left = -aspect * 20;
-            camera.right = aspect * 20;
-            camera.top = 20;
-            camera.bottom = -20;
+            camera.left = -aspect * 100;
+            camera.right = aspect * 100;
+            camera.top = 100;
+            camera.bottom = -100;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
