@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function comecarPartida() {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
-  console.log (document.getElementById('lobbyId').value) // Obter valor do campo de entrada
+  const urlParams = new URLSearchParams(window.location.search);
+  const lobbyId = urlParams.get('id');
   try {
       const response = await fetch('https://dbwar.onrender.com/partida', {
           method: 'POST',
@@ -60,7 +61,7 @@ async function comecarPartida() {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              id: document.getElementById('lobbyId').value, // Obter valor do campo de entrada
+              id: lobbyId, // Obter valor do campo de entrada
               leaderId: nomeUsuario,
               lobbyName: `Lobby de ${nomeUsuario}`,
               playerSlots: ['', '', '', '', '', '', '', '']
