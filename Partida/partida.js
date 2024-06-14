@@ -1,8 +1,8 @@
 async function começarPartida() {
-    const nomeUsuario = localStorage.getItem('usuarioLogado');
+    const lobbyId = localStorage.getItem('usuarioLogado');
     
     try {
-        const response = await fetch('https://dbwar.onrender.com/PARTIDAS', {
+        const response = await fetch('https://dbwar.onrender.com/lobbies', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ async function começarPartida() {
         // $('#cadastroModal').modal('hide');
   
         // Redirecionar para a página do lobby com o ID na URL
-        window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
+        window.location.href = `/partida.html?id=${lobbyId}`;
   
     } catch (error) {
         console.error('Erro ao criar partida:', error);
