@@ -1,4 +1,4 @@
-async function começarPartida() {
+async function comecarPartida() {
     const lobbyId = localStorage.getItem('usuarioLogado');
     
     try {
