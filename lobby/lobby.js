@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function comecarPartida() {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
-  
+  console.log (document.getElementById('lobbyId').value) // Obter valor do campo de entrada
   try {
       const response = await fetch('https://dbwar.onrender.com/partida', {
           method: 'POST',
