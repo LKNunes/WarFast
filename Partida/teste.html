@@ -23,7 +23,7 @@
         camera.lookAt(0, 0, 0);
         
         // Setup renderer
-        const renderer = new THREE.WebGLRenderer();
+        const renderer = new THREE.WebGLRenderer({ alpha: true }); // Enable alpha for transparency
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
@@ -34,10 +34,17 @@
         directionalLight.position.set(0, 50, 50).normalize();
         scene.add(directionalLight);
 
+        // Load the texture for the first square
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load('https://github.com/LKNunes/WarFast/blob/main/GAME/PAISES/Brasil1.png', function(texture) {
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.set(1, 1);
+        });
+
         // Helper function to create a shape
-        function createShape(size) {
+        function createShape(size, material) {
             const geometry = new THREE.BoxGeometry(size, size, size);
-            const material = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff });
             return new THREE.Mesh(geometry, material);
         }
 
@@ -49,7 +56,13 @@
 
         for (let i = 0; i < gridSize; i++) {
             for (let j = 0; j < gridSize / 2; j++) {
-                const shape = createShape(shapeSize);
+                let material;
+                if (i === 0 && j === 0) {
+                    material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+                } else {
+                    material = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff });
+                }
+                const shape = createShape(shapeSize, material);
                 shape.position.set(
                     i * (shapeSize + spacing) - offset,
                     0,
