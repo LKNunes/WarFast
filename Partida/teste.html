@@ -48,18 +48,15 @@
         // Criar material escurecido para a imagem
         const darkenedMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.5 });
 
-        // Criar o primeiro quadrado
-        const firstSquare = createShape(4, initialMaterial);
-        firstSquare.position.set(-8, 0, -8); // Posicionar o primeiro quadrado
-        scene.add(firstSquare);
-
-        // Criar os demais quadrados
-        for (let i = 0; i < 23; i++) {
+        // Criar os quadrados
+        for (let i = 0; i < 24; i++) {
             const shape = createShape(4, initialMaterial); // Usar o mesmo material para todos os quadrados
+            const row = Math.floor(i / 6);
+            const col = i % 6;
             shape.position.set(
-                (i % 6) * 6 - 15,
+                col * 6 - 15,
                 0,
-                Math.floor(i / 6) * 6 - 15
+                row * 6 - 15
             );
             scene.add(shape);
         }
@@ -71,6 +68,7 @@
         }
 
         // Adicionar evento de mouseover para o primeiro quadrado
+        const firstSquare = scene.children[0]; // Obter o primeiro quadrado da cena
         firstSquare.addEventListener('mouseover', function() {
             firstSquare.material = darkenedMaterial; // Mudar o material para darkenedMaterial quando o cursor estiver sobre ele
         });
@@ -98,6 +96,6 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-    </script> 
+    </script>
 </body>
 </html>
