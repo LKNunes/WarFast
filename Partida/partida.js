@@ -29,7 +29,7 @@ async function começarPartida() {
         window.location.href = `/lobby/lobby.html?id=${lobbyId}`;
   
     } catch (error) {
-        console.error('Erro ao criar lobby:', error);
+        console.error('Erro ao criar partida:', error);
     }
   }
   
