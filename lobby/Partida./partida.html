@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo War</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        #game-board {
+            width: 600px;
+            height: 400px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .territory {
+            background-color: #b3cde0;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #controls {
+            margin-left: 20px;
+        }
+        .button {
+            display: block;
+            width: 100px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jogo War</h1>
+    </header>
+    <main>
+        <div id="game-board">
+            <div class="territory">Território 1</div>
+            <div class="territory">Território 2</div>
+            <div class="territory">Território 3</div>
+            <div class="territory">Território 4</div>
+            <div class="territory">Território 5</div>
+            <div class="territory">Território 6</div>
+            <div class="territory">Território 7</div>
+            <div class="territory">Território 8</div>
+            <div class="territory">Território 9</div>
+            <div class="territory">Território 10</div>
+            <div class="territory">Território 11</div>
+            <div class="territory">Território 12</div>
+            <div class="territory">Território 13</div>
+            <div class="territory">Território 14</div>
+            <div class="territory">Território 15</div>
+            <div class="territory">Território 16</div>
+            <div class="territory">Território 17</div>
+            <div class="territory">Território 18</div>
+            <div class="territory">Território 19</div>
+            <div class="territory">Território 20</div>
+        </div>
+        <div id="controls">
+            <button class="button">Atacar</button>
+            <button class="button">Mover</button>
+            <button class="button">Passar</button>
+        </div>
+    </main>
+</body>
+</html>
