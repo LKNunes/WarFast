@@ -17,7 +17,7 @@
         
         // Setup camera for top view
         const camera = new THREE.OrthographicCamera(
-            -aspect * 20, aspect * 20, 20, -20, 0.1, 1000
+            -aspect * 30, aspect * 30, 30, -30, 0.1, 1000
         );
         camera.position.set(0, 50, 0); // Elevated position for top view
         camera.lookAt(0, 0, 0);
@@ -35,21 +35,28 @@
         scene.add(directionalLight);
 
         // Helper function to create a shape
-        function createShape() {
-            const geometry = new THREE.BoxGeometry(1, 1, 1);
+        function createShape(size) {
+            const geometry = new THREE.BoxGeometry(size, size, size);
             const material = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff });
             return new THREE.Mesh(geometry, material);
         }
 
-        // Add 24 identical shapes to the scene
-        for (let i = 0; i < 24; i++) {
-            const shape = createShape();
-            shape.position.set(
-                (Math.random() - 0.5) * 40,
-                0,
-                (Math.random() - 0.5) * 40
-            );
-            scene.add(shape);
+        // Add 24 identical shapes to the scene, arranged in a grid
+        const gridSize = 6;
+        const shapeSize = 4;
+        const spacing = 2;
+        const offset = (gridSize - 1) * (shapeSize + spacing) / 2;
+
+        for (let i = 0; i < gridSize; i++) {
+            for (let j = 0; j < gridSize / 2; j++) {
+                const shape = createShape(shapeSize);
+                shape.position.set(
+                    i * (shapeSize + spacing) - offset,
+                    0,
+                    j * (shapeSize + spacing) - offset
+                );
+                scene.add(shape);
+            }
         }
 
         // Render loop
@@ -63,10 +70,10 @@
         // Handle window resize
         window.addEventListener('resize', () => {
             const aspect = window.innerWidth / window.innerHeight;
-            camera.left = -aspect * 20;
-            camera.right = aspect * 20;
-            camera.top = 20;
-            camera.bottom = -20;
+            camera.left = -aspect * 30;
+            camera.right = aspect * 30;
+            camera.top = 30;
+            camera.bottom = -30;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
