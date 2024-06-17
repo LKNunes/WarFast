@@ -14,6 +14,27 @@
       align-items: center;
       flex-direction: column;
     }
+
+    #mapContainer {
+      position: relative; /* Enable absolute positioning for territories */
+      width: 600px; /* Adjust map width as needed */
+      height: 400px; /* Adjust map height as needed */
+      background-image: url('path/to/map-background.jpg'); /* Optional background image */
+      background-size: cover;
+    }
+
+    .territory {
+      position: absolute; /* Absolute positioning for territories */
+      width: 30px; /* Adjust territory size as needed */
+      height: 30px; /* Adjust territory size as needed */
+      border: 1px solid #ccc;
+      cursor: pointer; /* Enable cursor for click interaction */
+    }
+
+    .territory svg {
+      width: 100%; /* Make SVG image fit the territory container */
+      height: 100%;
+    }
   </style>
 </head>
 <body>
@@ -27,7 +48,7 @@
             <h3>Seu Objetivo</h3>
           </div>
           <div class="card-body" id="userObjective">
-            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
@@ -36,7 +57,7 @@
             <h3>Suas Cartas</h3>
           </div>
           <div class="card-body d-flex flex-wrap justify-content-between" id="userCards">
-            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -71,10 +92,4 @@
 
     <div class="d-flex justify-content-center">
       <button type="button" class="btn btn-primary me-2" id="actionButton">Confirmar/Enviar</button>
-      <button type="button" class="btn btn-secondary" id="cancelButton">Cancelar</button>
-    </div>
-
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="partida.js"></script> </body>
-</html>
+      <button type="button" class="btn btn-secondary" id="cancelButton">Cancelar</
