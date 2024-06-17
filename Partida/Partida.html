@@ -2,50 +2,80 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Carregar e Alterar SVG</title>
+  <title>Lista de SVGs</title>
 </head>
 <body>
-  <svg id="icone" width="100" height="100" viewBox="0 0 100 100">
-    <!-- Seu conteúdo SVG aqui -->
-  </svg>
-  
+  <div id="container" style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <!-- Espaço onde os SVGs serão inseridos -->
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // URL do SVG a ser carregado
-      var svgUrl = "/IMAGE/Alaska.svg";
-      
-      // Função para carregar o SVG e inseri-lo no DOM
-      function loadSvg(url, svgElement) {
-        fetch(url)
-          .then(response => response.text())
-          .then(svgContent => {
-            // Insere o conteúdo do SVG no elemento SVG
-            svgElement.innerHTML = svgContent;
-          })
-          .catch(error => console.error('Erro ao carregar o SVG:', error));
-      }
-      
-      // Chama a função para carregar o SVG
-      loadSvg(svgUrl, document.getElementById("icone"));
-      
-      // Função para alterar a cor de preenchimento do SVG
-      function changeFillColor(svgElement, fillColor) {
-        // Seleciona todos os elementos 'path' dentro do SVG
-        var paths = svgElement.querySelectorAll("path");
-        
-        // Altera a cor de preenchimento de cada elemento 'path'
-        paths.forEach(function(path) {
-          path.style.fill = fillColor;
+      // Lista de URLs dos SVGs
+      var svgUrls = [
+        "/IMAGE/Alaska.svg",
+        "/IMAGE/Alemanha.svg",
+        "/IMAGE/AmericaCentral.svg",
+        "/IMAGE/Aral.svg",
+        "/IMAGE/Argelia.svg",
+        "/IMAGE/Argentina.svg",
+        "/IMAGE/AustraliaNorte.svg",
+        "/IMAGE/AustraliaSul.svg",
+        "/IMAGE/Borneo.svg",
+        "/IMAGE/Brasil.svg",
+        "/IMAGE/California.svg",
+        "/IMAGE/Congo.svg",
+        "/IMAGE/Dudinka.svg",
+        "/IMAGE/Egito.svg",
+        "/IMAGE/Franca.svg",
+        "/IMAGE/Groelandia.svg",
+        "/IMAGE/India.svg",
+        "/IMAGE/Inglaterra.svg",
+        "/IMAGE/Islandia.svg",
+        "/IMAGE/Japao.svg",
+        "/IMAGE/Labrador.svg",
+        "/IMAGE/Mackenzie.svg",
+        "/IMAGE/Mexico.svg",
+        "/IMAGE/Moscou.svg",
+        "/IMAGE/NovaGuine.svg",
+        "/IMAGE/NovaYork.svg",
+        "/IMAGE/OrienteMedio.svg",
+        "/IMAGE/Ottawa.svg",
+        "/IMAGE/Peru.svg",
+        "/IMAGE/Polonia.svg",
+        "/IMAGE/Siberia.svg",
+        "/IMAGE/Sudao.svg",
+        "/IMAGE/Suecia.svg",
+        "/IMAGE/Sumatra.svg",
+        "/IMAGE/Vanculver.svg",
+        "/IMAGE/Venezuela.svg",
+        "/IMAGE/Vladvostok.svg",
+        // Adicione mais URLs conforme necessário
+      ];
+
+      // Função para carregar e adicionar SVGs ao DOM
+      function loadAndAddSVGs(urls, container) {
+        urls.forEach(function(url) {
+          fetch(url)
+            .then(response => response.text())
+            .then(svgContent => {
+              // Cria um novo elemento SVG
+              var svgElement = document.createElement("svg");
+              svgElement.setAttribute("width", "100");
+              svgElement.setAttribute("height", "100");
+              svgElement.setAttribute("viewBox", "0 0 100 100");
+              svgElement.innerHTML = svgContent;
+
+              // Adiciona o elemento SVG ao contêiner
+              container.appendChild(svgElement);
+            })
+            .catch(error => console.error('Erro ao carregar o SVG:', error));
         });
       }
-      
-      // Evento de clique para alterar a cor de preenchimento do SVG
-      document.getElementById("icone").addEventListener("click", function() {
-        // Altera a cor de preenchimento para vermelho
-        changeFillColor(this, "red");
-      });
+
+      // Chama a função para carregar e adicionar SVGs ao contêiner
+      loadAndAddSVGs(svgUrls, document.getElementById("container"));
     });
   </script>
 </body>
 </html>
-  
