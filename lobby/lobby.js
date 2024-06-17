@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-async function comecarPartida() {
+async function comecarPartida(joinExistingGame = false) {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
