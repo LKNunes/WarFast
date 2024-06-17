@@ -18,16 +18,16 @@
       // Faça algo com o ID clicado, como redirecionar para uma página específica
       console.log("Você clicou no ícone com o ID:", id);
       
-      // Crie um novo SVG com a cor desejada
-      var svgString = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"> <!-- Substitua "red" pela cor desejada --> <path d="M0 0h24v24H0z" fill="none"/> <path d="M11 18h2v-6h-2V8h4V6h-6v12zM3 16c0 1.1.9 2 2 2h2V10H5c-1.1 0-2 .9-2 2v4zm18-7h-2v6h2v2h-4v-8h2V9h-2V6h4v3z"/> </svg>';
+      // Obtenha o SVG dentro da imagem
+      var svg = img.contentDocument.documentElement;
       
-      // Crie um novo elemento SVG a partir da string SVG
-      var parser = new DOMParser();
-      var newSvg = parser.parseFromString(svgString, "image/svg+xml").documentElement;
-      
-      // Substitua o SVG dentro da imagem pelo novo SVG
-      var oldSvg = img.contentDocument.querySelector("svg");
-      img.contentDocument.replaceChild(newSvg, oldSvg);
+      // Verifique se o SVG foi encontrado
+      if (svg) {
+        // Altere a cor do preenchimento do SVG
+        svg.style.fill = "red"; // Substitua "red" pela cor desejada
+      } else {
+        console.error("SVG não encontrado dentro da imagem.");
+      }
     }
   </script>
 </body>
