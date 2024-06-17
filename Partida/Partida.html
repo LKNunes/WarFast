@@ -8,25 +8,23 @@
 <body>
   <div class="container d-flex flex-wrap justify-content-center align-items-center">
     <div class="container d-flex flex-wrap justify-content-center align-items-center">
-        <img src="/IMAGE/Alaska.svg" alt="Ícone 1" data-id="1" class="svg-icon" onclick="changeColor(this)">
+        <object type="image/svg+xml" data="/IMAGE/Alaska.svg" alt="Ícone 1" data-id="1" class="svg-icon" onclick="changeColor(this)"></object>
         <!-- Outros ícones aqui -->
     </div>
   </div>
   <script>
-    function changeColor(img) {
-      var id = img.getAttribute("data-id");
+    function changeColor(obj) {
+      var id = obj.getAttribute("data-id");
       // Faça algo com o ID clicado, como redirecionar para uma página específica
       console.log("Você clicou no ícone com o ID:", id);
       
-      // Obtenha o SVG dentro da imagem
-      var svg = img.contentDocument.documentElement;
+      var svgDoc = obj.getSVGDocument();
       
-      // Verifique se o SVG foi encontrado
-      if (svg) {
-        // Altere a cor do preenchimento do SVG
+      if (svgDoc) {
+        var svg = svgDoc.querySelector("svg");
         svg.style.fill = "red"; // Substitua "red" pela cor desejada
       } else {
-        console.error("SVG não encontrado dentro da imagem.");
+        console.error("Documento SVG não encontrado.");
       }
     }
   </script>
