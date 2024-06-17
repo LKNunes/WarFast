@@ -14,18 +14,29 @@
   </div>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Adicione um event listener para cada imagem
-      document.querySelectorAll("img").forEach(function(img) {
-        img.addEventListener("click", function() {
+      // Função para manipular o clique na imagem
+      function changeColor(color) {
+        return function() {
+          // Obtém o SVG dentro da imagem
+          var svg = this.querySelector("svg");
+          if (svg) {
+            // Seleciona o elemento path dentro do SVG e define a cor de preenchimento
+            var paths = svg.querySelectorAll("path");
+            paths.forEach(function(path) {
+              path.style.fill = color;
+            });
+          }
+          
           // Obtém o ID clicado
           var id = this.getAttribute("data-id");
-          
-          // Define a cor do SVG para vermelho
-          this.style.fill = "red";
-          
           // Faça algo com o ID clicado, como redirecionar para uma página específica
           console.log("Você clicou no ícone com o ID:", id);
-        });
+        };
+      }
+
+      // Adicione um event listener para cada imagem
+      document.querySelectorAll("img").forEach(function(img) {
+        img.addEventListener("click", changeColor("red")); // Defina a cor desejada aqui
       });
     });
   </script>
