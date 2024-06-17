@@ -8,25 +8,23 @@
 <body>
   <div class="container d-flex flex-wrap justify-content-center align-items-center">
     <div class="container d-flex flex-wrap justify-content-center align-items-center">
-        <object type="image/svg+xml" data="/IMAGE/Alaska.svg" alt="Ícone 1" data-id="1" class="svg-icon" onclick="changeColor(this)"></object>
+        <svg id="icone1" width="100" height="100" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+        </svg>
         <!-- Outros ícones aqui -->
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script>
   <script>
-    function changeColor(obj) {
-      var id = obj.getAttribute("data-id");
-      // Faça algo com o ID clicado, como redirecionar para uma página específica
-      console.log("Você clicou no ícone com o ID:", id);
+    document.addEventListener("DOMContentLoaded", function() {
+      // Use Snap.svg para manipular o SVG
+      var icone1 = Snap("#icone1");
       
-      var svgDoc = obj.getSVGDocument();
-      
-      if (svgDoc) {
-        var svg = svgDoc.querySelector("svg");
-        svg.style.fill = "red"; // Substitua "red" pela cor desejada
-      } else {
-        console.error("Documento SVG não encontrado.");
-      }
-    }
+      // Adicione um evento de clique para trocar a cor do círculo
+      icone1.click(function() {
+        this.attr({ fill: "blue" }); // Troque "blue" pela cor desejada
+      });
+    });
   </script>
 </body>
 </html>
