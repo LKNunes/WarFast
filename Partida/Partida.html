@@ -1,98 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Partida</title>
+  <meta charset="UTF-8">
+  <title>Meus 42 SVGs Clicáveis</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    #mapContainer {
-      position: relative; /* Enable absolute positioning for territories */
-      width: 150px; /* Adjust map width as needed */
-      height: 100px; /* Adjust map height as needed */
-      background-image: url('/IMAGE/Brasil.svg'); /* Optional background image */
-      background-size: cover;
-    }
-
-    .territory {
-      position: absolute; /* Absolute positioning for territories */
-      width: 10px; /* Adjust territory size as needed */
-      height: 10px; /* Adjust territory size as needed */
-      border: 1px solid #ccc;
-      cursor: pointer; /* Enable cursor for click interaction */
-    }
-
-    .territory svg {
-      width: 100%; /* Make SVG image fit the territory container */
-      height: 100%;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Partida</h1>
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h3>Seu Objetivo</h3>
-          </div>
-          <div class="card-body" id="userObjective">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h3>Suas Cartas</h3>
-          </div>
-          <div class="card-body d-flex flex-wrap justify-content-between" id="userCards">
-          </div>
-        </div>
-      </div>
+  <div class="container d-flex flex-wrap justify-content-center align-items-center">
+    <img src="imagens/icone1.svg" alt="Ícone 1" data-id="1">
+    <img src="imagens/icone2.svg" alt="Ícone 2" data-id="2">
+    <img src="imagens/icone3.svg" alt="Ícone 3" data-id="3">
     </div>
-
-    <div class="card mb-3">
-      <div class="card-header">
-        <h3>Mapa (42 Territórios)</h3>
-      </div>
-      <div class="card-body" id="mapContainer">
-        </div>
-    </div>
-
-    <div class="card mb-3">
-      <div class="card-header">
-        <h3>Jogador Atual</h3>
-      </div>
-      <div class="card-body d-flex align-items-center" id="currentPlayer">
-        <span id="currentPlayerName"></span>
-        <span class="ms-2" id="currentPlayerColor" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></span>
-      </div>
-    </div>
-
-    <div class="card mb-3">
-      <div class="card-header">
-        <h3>Perfil</h3>
-      </div>
-      <div class="card-body d-flex align-items-center" id="playerProfile">
-        <span id="profileName"></span>
-        <span class="ms-2" id="profileColor" style="width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></span>
-      </div>
-    </div>
-
-    <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-primary me-2" id="actionButton">Confirmar/Enviar</button>
-      <button type="button" class="btn btn-secondary" id="cancelButton">Cancelar</button>
-    </div>
-  </div>
-</
+  <script src="script.js"></script>
+</body>
+</html>
