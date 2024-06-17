@@ -54,6 +54,24 @@ async function comecarPartida() {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
+
+  if (joinExistingGame) {
+    const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (gameExistsResponse.ok) {
+      // Game exists, join the game
+      // Implement logic for joining the existing game
+      console.log('Game exists, joining game:', lobbyId);
+      Entrarpartida(lobbyId);
+      return; // Prevent creating a new game
+    }
+  }
+
   try {
       const response = await fetch('https://dbwar.onrender.com/partida', {
           method: 'POST',
@@ -67,6 +85,8 @@ async function comecarPartida() {
               playerSlots: ['', '', '', '', '', '', '', '']
           })
       });
+
+
 
       if (!response.ok) {
           throw new Error('Erro ao criar lobby');
@@ -84,9 +104,16 @@ async function comecarPartida() {
       console.error('Erro ao criar partida:', error);
   }
 }
+
 async function voltarLobby(){
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
+
+}
+
+async function Entrarpartida(lobbyId)
+{
+window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
 
 }
