@@ -19,10 +19,15 @@
         // Obtém o SVG dentro da imagem
         var svg = document.querySelector("#icone svg");
         if (svg) {
-          // Obtém o fill do SVG
-          var fill = svg.style.fill;
-          // Retorna o valor do fill
-          return fill;
+          // Obtém os elementos 'path' dentro do SVG
+          var paths = svg.querySelectorAll("path");
+          var fills = [];
+          // Percorre os elementos 'path' para obter o fill de cada um
+          paths.forEach(function(path) {
+            fills.push(path.style.fill);
+          });
+          // Retorna o array com os fills dos elementos 'path'
+          return fills;
         }
         // Retorna null se não encontrar o SVG
         return null;
@@ -31,9 +36,9 @@
       // Adiciona um event listener para a imagem
       document.getElementById("icone").addEventListener("click", function() {
         // Captura o fill da imagem clicada
-        var fill = getFillColor();
-        // Exibe o valor do fill no console
-        console.log("O fill da imagem é:", fill);
+        var fills = getFillColor();
+        // Exibe os valores do fill no console
+        console.log("Os fills da imagem são:", fills);
       });
     });
   </script>
