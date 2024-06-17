@@ -1,5 +1,4 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -8,14 +7,14 @@
   <style>
     /* Defina o estilo para o SVG clicado */
     .svg-clicado {
-      fill: red; /* Altere para a cor desejada */
+      fill: red !important; /* Importante para garantir que a cor seja aplicada */
     }
   </style>
 </head>
 <body>
   <div class="container d-flex flex-wrap justify-content-center align-items-center">
     <div class="container d-flex flex-wrap justify-content-center align-items-center">
-        <img src="/IMAGE/Alaska.svg" alt="Ícone 1" data-id="1">
+          <img src="/IMAGE/Alaska.svg" alt="Ícone 1" data-id="1">
         <img src="/IMAGE/Alemanha.svg" alt="Ícone 2" data-id="2">
         <img src="/IMAGE/AmericaCentral.svg" alt="Ícone 3" data-id="3">
         <img src="/IMAGE/Aral.svg" alt="Ícone 4" data-id="4">
@@ -53,23 +52,24 @@
         <img src="/IMAGE/Venezuela.svg" alt="Ícone 36" data-id="36">
         <img src="/IMAGE/Vladvostok.svg" alt="Ícone 37" data-id="37">
     
+     <!-- Outros ícones aqui -->
     </div>
-  </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Adicione um event listener para cada imagem
-      document.querySelectorAll("img").forEach(function(img) {
-        img.addEventListener("click", function() {
-          var id = this.getAttribute("data-id");
-          // Faça algo com o ID clicado, como redirecionar para uma página específica
-          
-          console.log("Você clicou no ícone com o ID:", id);
-          
-          // Adicione a classe ao SVG clicado
-          this.classList.toggle("svg-clicado");
-        });
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Adicione um event listener para cada imagem
+    document.querySelectorAll("img").forEach(function(img) {
+      img.addEventListener("click", function() {
+        var id = this.getAttribute("data-id");
+        // Faça algo com o ID clicado, como redirecionar para uma página específica
+        
+        console.log("Você clicou no ícone com o ID:", id);
+        
+        // Adicione a classe ao SVG clicado
+        this.classList.toggle("svg-clicado");
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>
