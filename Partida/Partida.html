@@ -95,8 +95,8 @@
       function addClickEvent(container, coordinatesElement) {
         container.addEventListener("click", function(event) {
           var rect = container.getBoundingClientRect();
-          var x = ((event.clientX - rect.left) / rect.width) * 100;
-          var y = ((event.clientY - rect.top) / rect.height) * 100;
+          var x = ((event.clientX - rect.left) / rect.width) ;
+          var y = ((event.clientY - rect.top) / rect.height) ;
           coordinatesElement.textContent = "Posição clicada: (" + x.toFixed(2) + "%, " + y.toFixed(2) + "%)";
         });
       }
