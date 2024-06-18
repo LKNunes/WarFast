@@ -80,8 +80,8 @@
       if (selectedElement) {
         // Se houver um elemento selecionado, mova-o para a posição do clique
         var parentRect = selectedElement.parentElement.getBoundingClientRect();
-        var clientX = event.clientX - parentRect.left;
-        var clientY = event.clientY - parentRect.top;
+        var clientX = event.clientX;
+        var clientY = event.clientY;
 
         // Limitar o movimento dentro da janela do navegador
         offsetX = Math.max(0, Math.min(parentRect.width - selectedElement.offsetWidth, offsetX));
