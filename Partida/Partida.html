@@ -68,22 +68,24 @@
           x: parseFloat(selectedElement.style.left),
           y: parseFloat(selectedElement.style.top)
         };
+
+        // Define o deslocamento do mouse em relação à posição inicial do elemento
+        var rect = selectedElement.getBoundingClientRect();
+        offsetX = event.clientX - rect.left;
+        offsetY = event.clientY - rect.top;
       }
     }
 
     document.addEventListener("click", function(event) {
       if (selectedElement) {
         // Se houver um elemento selecionado, mova-o para a posição do clique
-        var rect = selectedElement.getBoundingClientRect();
         var parentRect = selectedElement.parentElement.getBoundingClientRect();
         var clientX = event.clientX - parentRect.left;
         var clientY = event.clientY - parentRect.top;
-        offsetX = clientX - rect.left;
-        offsetY = clientY - rect.top;
 
         // Limitar o movimento dentro da janela do navegador
-        offsetX = Math.max(0, Math.min(parentRect.width - rect.width, offsetX));
-        offsetY = Math.max(0, Math.min(parentRect.height - rect.height, offsetY));
+        offsetX = Math.max(0, Math.min(parentRect.width - selectedElement.offsetWidth, offsetX));
+        offsetY = Math.max(0, Math.min(parentRect.height - selectedElement.offsetHeight, offsetY));
 
         selectedElement.style.left = (clientX - offsetX) + "px";
         selectedElement.style.top = (clientY - offsetY) + "px";
