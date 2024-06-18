@@ -43,6 +43,7 @@
 
   <script>
     var selectedElement = null;
+    var initialPosition = { x: 0, y: 0 };
     var offsetX = 0;
     var offsetY = 0;
 
@@ -58,9 +59,13 @@
         if (selectedElement) {
           selectedElement.style.border = "none";
         }
-        // Marque o novo elemento selecionado
+        // Marque o novo elemento selecionado e armazene sua posição atual
         selectedElement = element;
-        element.style.border = "2px solid red"; // Adiciona uma borda vermelha ao elemento selecionado
+        selectedElement.style.border = "2px solid red"; // Adiciona uma borda vermelha ao elemento selecionado
+        var rect = selectedElement.getBoundingClientRect();
+        var parentRect = selectedElement.parentElement.getBoundingClientRect();
+        initialPosition.x = rect.left - parentRect.left;
+        initialPosition.y = rect.top - parentRect.top;
       }
     }
 
@@ -71,8 +76,8 @@
         var parentRect = selectedElement.parentElement.getBoundingClientRect();
         var clientX = event.clientX - parentRect.left;
         var clientY = event.clientY - parentRect.top;
-        offsetX = clientX - rect.width / 2;
-        offsetY = clientY - rect.height / 2;
+        offsetX = clientX - initialPosition.x;
+        offsetY = clientY - initialPosition.y;
 
         // Limitar o movimento dentro da janela do navegador
         offsetX = Math.max(0, Math.min(parentRect.width - rect.width, offsetX));
