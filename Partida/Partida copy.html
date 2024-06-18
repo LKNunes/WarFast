@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Carregar e Alterar SVG</title>
+</head>
+<body>
+  <svg id="icone" width="100" height="100" viewBox="0 0 100 100">
+    <!-- Seu conteúdo SVG aqui -->
+  </svg>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // URL do SVG a ser carregado
+      var svgUrl = "/IMAGE/Alaska.svg";
+      
+      // Função para carregar o SVG e inseri-lo no DOM
+      function loadSvg(url, svgElement) {
+        fetch(url)
+          .then(response => response.text())
+          .then(svgContent => {
+            // Insere o conteúdo do SVG no elemento SVG
+            svgElement.innerHTML = svgContent;
+          })
+          .catch(error => console.error('Erro ao carregar o SVG:', error));
+      }
+      
+      // Chama a função para carregar o SVG
+      loadSvg(svgUrl, document.getElementById("icone"));
+      
+      // Função para alterar a cor de preenchimento do SVG
+      function changeFillColor(svgElement, fillColor) {
+        // Seleciona todos os elementos 'path' dentro do SVG
+        var paths = svgElement.querySelectorAll("path");
+        
+        // Altera a cor de preenchimento de cada elemento 'path'
+        paths.forEach(function(path) {
+          path.style.fill = fillColor;
+        });
+      }
+      
+      // Evento de clique para alterar a cor de preenchimento do SVG
+      document.getElementById("icone").addEventListener("click", function() {
+        // Altera a cor de preenchimento para vermelho
+        changeFillColor(this, "red");
+      });
+    });
+  </script>
+</body>
+</html>
