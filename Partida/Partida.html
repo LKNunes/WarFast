@@ -43,6 +43,8 @@
 
   <script>
     var selectedElement = null;
+    var offsetX = 0;
+    var offsetY = 0;
 
     function selectElement(elementId) {
       var element = document.getElementById(elementId);
@@ -65,12 +67,16 @@
     document.addEventListener("click", function(event) {
       if (selectedElement) {
         // Se houver um elemento selecionado, mova-o para a posição do clique
-        var offsetX = event.clientX - selectedElement.offsetWidth / 2;
-        var offsetY = event.clientY - selectedElement.offsetHeight / 2;
+        var rect = selectedElement.getBoundingClientRect();
+        var parentRect = selectedElement.parentElement.getBoundingClientRect();
+        var clientX = event.clientX - parentRect.left;
+        var clientY = event.clientY - parentRect.top;
+        offsetX = clientX - rect.width / 2;
+        offsetY = clientY - rect.height / 2;
 
         // Limitar o movimento dentro da janela do navegador
-        offsetX = Math.max(0, Math.min(window.innerWidth - selectedElement.offsetWidth, offsetX));
-        offsetY = Math.max(0, Math.min(window.innerHeight - selectedElement.offsetHeight, offsetY));
+        offsetX = Math.max(0, Math.min(parentRect.width - rect.width, offsetX));
+        offsetY = Math.max(0, Math.min(parentRect.height - rect.height, offsetY));
 
         selectedElement.style.left = offsetX + "px";
         selectedElement.style.top = offsetY + "px";
