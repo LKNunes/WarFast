@@ -13,7 +13,7 @@
     .image-container {
       position: absolute;
       height: auto; /* Altura automática para manter a proporção */
-      cursor: move; /* Cursor de movimento */
+      cursor: pointer; /* Cursor de ponteiro */
     }
     #alaska-container {
       top: 2vh; /* 2% da altura do viewport */
@@ -32,44 +32,33 @@
   </style>
 </head>
 <body>
-  <div id="alaska-container" class="image-container" draggable="true" ondragstart="drag(event)">
+  <div id="alaska-container" class="image-container" onclick="moveElement(event, 'alaska-container')">
     <img src="/IMAGE/Alaska.svg" alt="Alasca">
   </div>
-  <div id="mackenzie-container" class="image-container" draggable="true" ondragstart="drag(event)">
+  <div id="mackenzie-container" class="image-container" onclick="moveElement(event, 'mackenzie-container')">
     <img src="/IMAGE/Mackenzie.svg" alt="Mackenzie">
   </div>
 
   <div id="coordinates">Posição: (0, 0)</div>
 
   <script>
-    function drag(event) {
-      console.log("Iniciando arraste");
-      event.dataTransfer.setData("text/plain", event.target.id);
-    }
+    function moveElement(event, elementId) {
+      var element = document.getElementById(elementId);
 
-    document.addEventListener("dragover", function(event) {
-      event.preventDefault();
-    });
-
-    document.addEventListener("drop", function(event) {
-      event.preventDefault();
-      var data = event.dataTransfer.getData("text/plain");
-      var draggableElement = document.getElementById(data);
-
-      // Obter as coordenadas do mouse em relação à janela do navegador
-      var offsetX = event.clientX - draggableElement.offsetWidth / 2;
-      var offsetY = event.clientY - draggableElement.offsetHeight / 2;
+      // Calcular a nova posição do elemento com base no clique do mouse
+      var offsetX = event.clientX - element.offsetWidth / 2;
+      var offsetY = event.clientY - element.offsetHeight / 2;
 
       // Limitar o movimento dentro da janela do navegador
-      offsetX = Math.max(0, Math.min(window.innerWidth - draggableElement.offsetWidth, offsetX));
-      offsetY = Math.max(0, Math.min(window.innerHeight - draggableElement.offsetHeight, offsetY));
+      offsetX = Math.max(0, Math.min(window.innerWidth - element.offsetWidth, offsetX));
+      offsetY = Math.max(0, Math.min(window.innerHeight - element.offsetHeight, offsetY));
 
-      draggableElement.style.left = offsetX + "px";
-      draggableElement.style.top = offsetY + "px";
+      element.style.left = offsetX + "px";
+      element.style.top = offsetY + "px";
 
       var coordinatesElement = document.getElementById("coordinates");
       coordinatesElement.textContent = "Posição: (" + offsetX + ", " + offsetY + ")";
-    });
+    }
   </script>
 </body>
 </html>
