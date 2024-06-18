@@ -4,32 +4,36 @@
   <meta charset="UTF-8">
   <title>Mapa Mundi com SVGs</title>
   <style>
-   #map-container {
+    #map-container {
       position: relative;
       width: 100%;
       max-width: 1200px; /* Ajuste conforme necessário */
       margin: 0 auto;
-    /* background-image: url('/IMAGE/Mundi.svg');  Substitua pelo caminho da sua imagem de mapa */
+      /*background-image: url('/mnt/data/mmmy3zyj9m691.png'); /* Substitua pelo caminho da sua imagem de mapa */
       background-size: cover;
       height: 0;
       padding-bottom: 50%; /* Mantém a proporção da imagem do mapa */
+      cursor: crosshair;
     }
     .svg-icon {
-        position: absolute;
+      position: absolute;
       width: 3%; /* Ajuste conforme necessário */
       height: auto;
       cursor: pointer;
     }
+    #coordinates {
+      margin-top: 20px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+    }
   </style>
-</head> 
+</head>
 <body>
-  <div id="map-container">
-    <!-- Os SVGs serão adicionados aqui -->
-  </div>
+  <div id="map-container"></div>
+  <div id="coordinates">Clique no mapa para ver a posição (x, y).</div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Lista de URLs dos SVGs e suas coordenadas no mapa (em porcentagem)
       var svgData = [
         { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
         { url: "/IMAGE/Alemanha.svg", x: 45, y: 34 },
@@ -76,36 +80,36 @@
           fetch(item.url)
             .then(response => response.text())
             .then(svgContent => {
-              // Cria um novo elemento div para posicionar o SVG
               var svgWrapper = document.createElement("div");
               svgWrapper.classList.add("svg-icon");
               svgWrapper.style.left = item.x + "%";
               svgWrapper.style.top = item.y + "%";
               svgWrapper.innerHTML = svgContent;
-
-              // Adiciona o elemento SVG ao contêiner
               container.appendChild(svgWrapper);
             })
             .catch(error => console.error('Erro ao carregar o SVG:', error));
         });
       }
 
-      // Chama a função para carregar e adicionar SVGs ao contêiner
-      loadAndAddSVGs(svgData, document.getElementById("map-container"));
-
       // Adiciona o evento de clique para mostrar as coordenadas
-      var coordinatesElement = document.getElementById("coordinates");
-      if (coordinatesElement) {
-        document.getElementById("map-container").addEventListener("click", function(event) {
-          var container = event.currentTarget;
+      function addClickEvent(container, coordinatesElement) {
+        container.addEventListener("click", function(event) {
           var rect = container.getBoundingClientRect();
           var x = ((event.clientX - rect.left) / rect.width) * 100;
           var y = ((event.clientY - rect.top) / rect.height) * 100;
-
           coordinatesElement.textContent = "Posição clicada: (" + x.toFixed(2) + "%, " + y.toFixed(2) + "%)";
         });
+      }
+
+      // Chama a função para carregar e adicionar SVGs ao contêiner
+      var mapContainer = document.getElementById("map-container");
+      var coordinatesElement = document.getElementById("coordinates");
+      
+      if (mapContainer && coordinatesElement) {
+        loadAndAddSVGs(svgData, mapContainer);
+        addClickEvent(mapContainer, coordinatesElement);
       } else {
-        console.error("Elemento 'coordinates' não encontrado no DOM.");
+        console.error("Elemento 'map-container' ou 'coordinates' não encontrado no DOM.");
       }
     });
   </script>
