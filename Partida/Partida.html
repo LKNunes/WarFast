@@ -43,6 +43,7 @@
 
   <script>
     function drag(event) {
+      console.log("Iniciando arraste");
       event.dataTransfer.setData("text/plain", event.target.id);
     }
 
