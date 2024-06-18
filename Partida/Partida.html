@@ -28,16 +28,31 @@
       font-size: 16px;
       font-family: Arial, sans-serif;
     }
+    #info {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
   <div id="map-container"></div>
   <div id="coordinates">Clique no mapa para ver a posição (x, y).</div>
+  <div id="info">
+    <h2>Informações</h2>
+    <p>Tamanho da página: <span id="page-size"></span></p>
+    <p>Tamanho do contêiner do mapa: <span id="container-size"></span></p>
+    <p>Tamanho do Alaska (imagem): <span id="alaska-size"></span></p>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var svgData = [
         { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
+        
         { url: "/IMAGE/Mackenzie.svg", x: 18, y: 14 }
       ];
 
@@ -59,6 +74,9 @@
               
               svgWrapper.innerHTML = svgContent;
               container.appendChild(svgWrapper);
+
+              // Atualizar informações sobre o tamanho do Alaska
+              document.getElementById("alaska-size").textContent = svgWidth.toFixed(2) + "px";
             })
             .catch(error => console.error('Erro ao carregar o SVG:', error));
         });
@@ -74,6 +92,9 @@
         });
       }
 
+      // Atualizar informações sobre o tamanho da página
+      document.getElementById("page-size").textContent = window.innerWidth + "x" + window.innerHeight;
+
       // Chama a função para carregar e adicionar SVGs ao contêiner
       var mapContainer = document.getElementById("map-container");
       var coordinatesElement = document.getElementById("coordinates");
@@ -84,6 +105,11 @@
       } else {
         console.error("Elemento 'map-container' ou 'coordinates' não encontrado no DOM.");
       }
+
+      // Atualizar informações sobre o tamanho do contêiner do mapa após o carregamento completo da página
+      window.addEventListener("load", function() {
+        document.getElementById("container-size").textContent = mapContainer.offsetWidth + "x" + mapContainer.offsetHeight;
+      });
     });
   </script>
 </body>
