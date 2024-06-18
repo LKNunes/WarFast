@@ -55,14 +55,13 @@
       var data = event.dataTransfer.getData("text");
       var draggableElement = document.getElementById(data);
       
-      // Obter as coordenadas do mouse em relação ao contêiner pai
-      var rect = draggableElement.parentElement.getBoundingClientRect();
-      var offsetX = event.clientX - rect.left - draggableElement.offsetWidth / 2;
-      var offsetY = event.clientY - rect.top - draggableElement.offsetHeight / 2;
+      // Obter as coordenadas do mouse em relação à janela do navegador
+      var offsetX = event.clientX - draggableElement.offsetWidth / 2;
+      var offsetY = event.clientY - draggableElement.offsetHeight / 2;
       
-      // Limitar o movimento para dentro do contêiner pai
-      offsetX = Math.max(0, Math.min(rect.width - draggableElement.offsetWidth, offsetX));
-      offsetY = Math.max(0, Math.min(rect.height - draggableElement.offsetHeight, offsetY));
+      // Limitar o movimento dentro da janela do navegador
+      offsetX = Math.max(0, Math.min(window.innerWidth - draggableElement.offsetWidth, offsetX));
+      offsetY = Math.max(0, Math.min(window.innerHeight - draggableElement.offsetHeight, offsetY));
       
       draggableElement.style.left = offsetX + "px";
       draggableElement.style.top = offsetY + "px";
