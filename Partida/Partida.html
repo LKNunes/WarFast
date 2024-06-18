@@ -56,9 +56,9 @@
               svgWrapper.style.left = item.x + "%";
               svgWrapper.style.top = item.y + "%";
               
-              // Calcular o tamanho do SVG com base na largura da tela
-              var screenWidth = window.innerWidth;
-              var svgWidth = screenWidth * 0.1; // Defina o fator de escala conforme necessário
+              // Calcular o tamanho do SVG com base na largura do contêiner do mapa
+              var containerWidth = container.offsetWidth;
+              var svgWidth = containerWidth * 0.1; // Defina o fator de escala conforme necessário
               svgWrapper.style.width = svgWidth + "px";
               
               svgWrapper.innerHTML = svgContent;
