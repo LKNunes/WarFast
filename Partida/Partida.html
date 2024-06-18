@@ -13,16 +13,17 @@
     .image-container {
       position: absolute;
       height: auto; /* Altura automática para manter a proporção */
+      cursor: move; /* Cursor de movimento */
     }
     #alaska-container {
       top: 2vh; /* 2% da altura do viewport */
-      right: 88vw; /* 2% da largura do viewport */
-      width: 5vw; /* 3% da largura do viewport */
+      right: 2vw; /* 2% da largura do viewport */
+      width: 30vw; /* 30% da largura do viewport */
     }
     #mackenzie-container {
       top: 2vh; /* 2% da altura do viewport */
-      right: 85vw; /* 3% da largura do viewport */
-      width: 5vw; /* 3% da largura do viewport */
+      right: 34vw; /* 34% da largura do viewport */
+      width: 30vw; /* 30% da largura do viewport */
     }
     img {
       width: 100%; /* A imagem ocupa 100% da largura do contêiner */
@@ -31,11 +32,36 @@
   </style>
 </head>
 <body>
-  <div id="alaska-container" class="image-container">
+  <div id="alaska-container" class="image-container" draggable="true" ondrag="drag(event)">
     <img src="/IMAGE/Alaska.svg" alt="Alasca">
   </div>
-  <div id="mackenzie-container" class="image-container">
+  <div id="mackenzie-container" class="image-container" draggable="true" ondrag="drag(event)">
     <img src="/IMAGE/Mackenzie.svg" alt="Mackenzie">
   </div>
+
+  <div id="coordinates">Posição: (0, 0)</div>
+
+  <script>
+    function drag(event) {
+      event.dataTransfer.setData("text", event.target.id);
+    }
+
+    document.addEventListener("dragover", function(event) {
+      event.preventDefault();
+    });
+
+    document.addEventListener("drop", function(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("text");
+      var draggableElement = document.getElementById(data);
+      var offsetX = event.clientX - draggableElement.offsetWidth / 2;
+      var offsetY = event.clientY - draggableElement.offsetHeight / 2;
+      draggableElement.style.left = offsetX + "px";
+      draggableElement.style.top = offsetY + "px";
+
+      var coordinatesElement = document.getElementById("coordinates");
+      coordinatesElement.textContent = "Posição: (" + offsetX + ", " + offsetY + ")";
+    });
+  </script>
 </body>
 </html>
