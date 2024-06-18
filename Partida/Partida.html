@@ -37,8 +37,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var svgData = [
-        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
-        { url: "/IMAGE/AmericaCentral.svg", x: 22, y: 62 }
+        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 }
       ];
 
       // Função para carregar e adicionar SVGs ao DOM
@@ -53,9 +52,7 @@
               svgWrapper.style.top = item.y + "%";
               
               // Calcular o tamanho do SVG com base na largura do contêiner do mapa
-              var containerWidth = container.offsetWidth;
-              var svgWidth = containerWidth * 0.2; // Defina o fator de escala conforme necessário
-              svgWrapper.style.width = svgWidth + "px";
+              svgWrapper.style.width = "20%"; // Defina o tamanho inicial em relação ao contêiner do mapa
               
               svgWrapper.innerHTML = svgContent;
               container.appendChild(svgWrapper);
