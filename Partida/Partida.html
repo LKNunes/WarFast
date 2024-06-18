@@ -9,7 +9,7 @@
       width: 100%;
       max-width: 1200px; /* Ajuste conforme necessário */
       margin: 0 auto;
-      /* background-image: url(''); /* Substitua pelo caminho da sua imagem de mapa */
+      background-image: url('/mnt/data/mmmy3zyj9m691.png'); /* Substitua pelo caminho da sua imagem de mapa */
       background-size: cover;
       height: 0;
       padding-bottom: 50%; /* Mantém a proporção da imagem do mapa */
@@ -17,8 +17,6 @@
     }
     .svg-icon {
       position: absolute;
-      width: 3%; /* Ajuste conforme necessário */
-      height: auto;
       cursor: pointer;
     }
     #coordinates {
@@ -35,43 +33,9 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var svgData = [
-      { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
-        { url: "/IMAGE/Alemanha.svg", x: 45, y: 34 },
-        { url: "/IMAGE/AmericaCentral.svg", x: 22, y: 62 },
-        { url: "/IMAGE/Aral.svg", x: 64, y: 30 },
-        { url: "/IMAGE/Argelia.svg", x: 46, y: 60 },
-        { url: "/IMAGE/Argentina.svg", x: 30, y: 88 },
-        { url: "/IMAGE/AustraliaNorte.svg", x: 82, y: 92 },
-        { url: "/IMAGE/AustraliaSul.svg", x: 82, y: 98 },
-        { url: "/IMAGE/Borneo.svg", x: 74, y: 75 },
-        { url: "/IMAGE/Brasil.svg", x: 33, y: 77 },
-        { url: "/IMAGE/California.svg", x: 14, y: 45 },
-        { url: "/IMAGE/Congo.svg", x: 51, y: 73 },
-        { url: "/IMAGE/Dudinka.svg", x: 63, y: 18 },
-        { url: "/IMAGE/Egito.svg", x: 46, y: 65 },
-        { url: "/IMAGE/Franca.svg", x: 45, y: 40 },
-        { url: "/IMAGE/Groelandia.svg", x: 41, y: 12 },
-        { url: "/IMAGE/India.svg", x: 64, y: 63 },
-        { url: "/IMAGE/Inglaterra.svg", x: 43, y: 32 },
-        { url: "/IMAGE/Islandia.svg", x: 41, y: 25 },
-        { url: "/IMAGE/Japao.svg", x: 82, y: 36 },
-        { url: "/IMAGE/Labrador.svg", x: 31, y: 16 },
-        { url: "/IMAGE/Mackenzie.svg", x: 18, y: 14 },
-        { url: "/IMAGE/Mexico.svg", x: 14, y: 53 },
-        { url: "/IMAGE/Moscou.svg", x: 54, y: 29 },
-        { url: "/IMAGE/NovaGuine.svg", x: 78, y: 80 },
-        { url: "/IMAGE/NovaYork.svg", x: 24, y: 25 },
-        { url: "/IMAGE/OrienteMedio.svg", x: 58, y: 53 },
-        { url: "/IMAGE/Ottawa.svg", x: 25, y: 20 },
-        { url: "/IMAGE/Peru.svg", x: 25, y: 67 },
-        { url: "/IMAGE/Polonia.svg", x: 54, y: 35 },
-        { url: "/IMAGE/Siberia.svg", x: 70, y: 22 },
-        { url: "/IMAGE/Sudao.svg", x: 52, y: 70 },
-        { url: "/IMAGE/Suecia.svg", x: 45, y: 28 },
-        { url: "/IMAGE/Sumatra.svg", x: 69, y: 78 },
-        { url: "/IMAGE/Vanculver.svg", x: 8, y: 13 },
-        { url: "/IMAGE/Venezuela.svg", x: 24, y: 53 },
-        { url: "/IMAGE/Vladvostok.svg", x: 78, y: 23 }
+        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11, width: 8 },
+        { url: "/IMAGE/Alemanha.svg", x: 45, y: 34, width: 6 },
+        // Adicione as coordenadas ajustadas para os outros SVGs
       ];
 
       // Função para carregar e adicionar SVGs ao DOM
@@ -84,7 +48,12 @@
               svgWrapper.classList.add("svg-icon");
               svgWrapper.style.left = item.x + "%";
               svgWrapper.style.top = item.y + "%";
-              svgWrapper.style.width = item.width + "%";
+              
+              // Calcular o tamanho do SVG em relação à largura do contêiner do mapa
+              var mapWidth = container.offsetWidth;
+              var svgWidth = mapWidth * (item.width / 100);
+              svgWrapper.style.width = svgWidth + "px";
+              
               svgWrapper.innerHTML = svgContent;
               container.appendChild(svgWrapper);
             })
