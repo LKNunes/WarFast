@@ -2,79 +2,62 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de SVGs</title>
+  <title>Mapa Mundi com SVGs</title>
+  <style>
+    #map-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px; /* Ajuste conforme necessário */
+      margin: 0 auto;
+      background-image: url('/IMAGE/mundi.png'); /* Substitua pelo caminho da sua imagem de mapa */
+      background-size: cover;
+      height: 600px; /* Ajuste conforme necessário */
+    }
+    .svg-icon {
+      position: absolute;
+      width: 40px; /* Ajuste conforme necessário */
+      height: 40px; /* Ajuste conforme necessário */
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div id="container" style="display: flex; flex-wrap: wrap; justify-content: center;">
-    <!-- Espaço onde os SVGs serão inseridos -->
+  <div id="map-container">
+    <!-- Os SVGs serão adicionados aqui -->
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Lista de URLs dos SVGs
-      var svgUrls = [
-        "/IMAGE/Alaska.svg",
-        "/IMAGE/Alemanha.svg",
-        "/IMAGE/AmericaCentral.svg",
-        "/IMAGE/Aral.svg",
-        "/IMAGE/Argelia.svg",
-        "/IMAGE/Argentina.svg",
-        "/IMAGE/AustraliaNorte.svg",
-        "/IMAGE/AustraliaSul.svg",
-        "/IMAGE/Borneo.svg",
-        "/IMAGE/Brasil.svg",
-        "/IMAGE/California.svg",
-        "/IMAGE/Congo.svg",
-        "/IMAGE/Dudinka.svg",
-        "/IMAGE/Egito.svg",
-        "/IMAGE/Franca.svg",
-        "/IMAGE/Groelandia.svg",
-        "/IMAGE/India.svg",
-        "/IMAGE/Inglaterra.svg",
-        "/IMAGE/Islandia.svg",
-        "/IMAGE/Japao.svg",
-        "/IMAGE/Labrador.svg",
-        "/IMAGE/Mackenzie.svg",
-        "/IMAGE/Mexico.svg",
-        "/IMAGE/Moscou.svg",
-        "/IMAGE/NovaGuine.svg",
-        "/IMAGE/NovaYork.svg",
-        "/IMAGE/OrienteMedio.svg",
-        "/IMAGE/Ottawa.svg",
-        "/IMAGE/Peru.svg",
-        "/IMAGE/Polonia.svg",
-        "/IMAGE/Siberia.svg",
-        "/IMAGE/Sudao.svg",
-        "/IMAGE/Suecia.svg",
-        "/IMAGE/Sumatra.svg",
-        "/IMAGE/Vanculver.svg",
-        "/IMAGE/Venezuela.svg",
-        "/IMAGE/Vladvostok.svg",
-        // Adicione mais URLs conforme necessário
+      // Lista de URLs dos SVGs e suas coordenadas no mapa (exemplo)
+      var svgData = [
+        { url: "/IMAGE/Alaska.svg", x: 50, y: 50 },
+        { url: "/IMAGE/Alemanha.svg", x: 400, y: 200 },
+        { url: "/IMAGE/AmericaCentral.svg", x: 200, y: 300 },
+        // Adicione mais URLs e coordenadas conforme necessário
       ];
 
       // Função para carregar e adicionar SVGs ao DOM
-      function loadAndAddSVGs(urls, container) {
-        urls.forEach(function(url) {
-          fetch(url)
+      function loadAndAddSVGs(data, container) {
+        data.forEach(function(item) {
+          fetch(item.url)
             .then(response => response.text())
             .then(svgContent => {
-              // Cria um novo elemento SVG
-              var svgElement = document.createElement("svg");
-              svgElement.setAttribute("width", "100");
-              svgElement.setAttribute("height", "100");
-              svgElement.setAttribute("viewBox", "0 0 100 100");
-              svgElement.innerHTML = svgContent;
+              // Cria um novo elemento div para posicionar o SVG
+              var svgWrapper = document.createElement("div");
+              svgWrapper.classList.add("svg-icon");
+              svgWrapper.style.left = item.x + "px";
+              svgWrapper.style.top = item.y + "px";
+              svgWrapper.innerHTML = svgContent;
 
               // Adiciona o elemento SVG ao contêiner
-              container.appendChild(svgElement);
+              container.appendChild(svgWrapper);
             })
             .catch(error => console.error('Erro ao carregar o SVG:', error));
         });
       }
 
       // Chama a função para carregar e adicionar SVGs ao contêiner
-      loadAndAddSVGs(svgUrls, document.getElementById("container"));
+      loadAndAddSVGs(svgData, document.getElementById("map-container"));
     });
   </script>
 </body>
