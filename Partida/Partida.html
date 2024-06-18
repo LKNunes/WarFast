@@ -72,18 +72,18 @@
         var parentRect = selectedElement.parentElement.getBoundingClientRect();
         var clientX = event.clientX - parentRect.left;
         var clientY = event.clientY - parentRect.top;
-        offsetX = clientX - rect.width / 2;
-        offsetY = clientY - rect.height / 2;
+        offsetX = clientX - rect.left;
+        offsetY = clientY - rect.top;
 
         // Limitar o movimento dentro da janela do navegador
         offsetX = Math.max(0, Math.min(parentRect.width - rect.width, offsetX));
         offsetY = Math.max(0, Math.min(parentRect.height - rect.height, offsetY));
 
-        selectedElement.style.left = offsetX + "px";
-        selectedElement.style.top = offsetY + "px";
+        selectedElement.style.left = (clientX - offsetX) + "px";
+        selectedElement.style.top = (clientY - offsetY) + "px";
 
         var coordinatesElement = document.getElementById("coordinates");
-        coordinatesElement.textContent = "Posição: (" + offsetX + ", " + offsetY + ")";
+        coordinatesElement.textContent = "Posição: (" + (clientX - offsetX) + ", " + (clientY - offsetY) + ")";
       }
     });
   </script>
