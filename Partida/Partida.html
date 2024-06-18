@@ -93,14 +93,13 @@
 
       // Adiciona o evento de clique para mostrar as coordenadas
       function addClickEvent(container, coordinatesElement) {
-        container.addEventListener("click", function(event) {
-          var rect = container.getBoundingClientRect();
-          var x = event.clientX - rect.left;
-          var y = event.clientY - rect.top;
-          coordinatesElement.textContent = "Posição clicada: (" + x + "px, " + y + "px)";
-        });
-      }
-
+  container.addEventListener("click", function(event) {
+    var rect = container.getBoundingClientRect();
+    var x = (event.clientX - rect.left) / rect.width * 100;
+    var y = (event.clientY - rect.top) / rect.height * 100;
+    coordinatesElement.textContent = "Posição clicada: (" + x.toFixed(2) + "%, " + y.toFixed(2) + "%)";
+  });
+}
       // Chama a função para carregar e adicionar SVGs ao contêiner
       var mapContainer = document.getElementById("map-container");
       var coordinatesElement = document.getElementById("coordinates");
