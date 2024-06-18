@@ -11,8 +11,10 @@
     }
     #alaska-container {
       position: absolute;
-      top: 2%;
-      right: 2%;
+      top: 2vh; /* 2% da altura do viewport */
+      right: 2vw; /* 2% da largura do viewport */
+      width: 30vw; /* 30% da largura do viewport */
+      height: auto; /* Altura automática para manter a proporção */
       transition: transform 0.3s ease; /* Adicionando uma transição suave */
     }
     #alaska-container:hover img {
