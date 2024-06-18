@@ -24,7 +24,19 @@
 </head>
 <body>
   <div id="alaska-container">
-    <img src="/IMAGE/Alaska.svg" alt="Alasca">
+    <img id="alaska-img" src="/IMAGE/Alaska.svg" alt="Alasca">
   </div>
+
+  <script>
+    window.addEventListener('resize', function() {
+      var alaskaContainer = document.getElementById('alaska-container');
+      var alaskaImg = document.getElementById('alaska-img');
+      
+      // Atualizar o tamanho do contêiner e da imagem com base nas dimensões da janela do navegador
+      alaskaContainer.style.top = (2 * window.innerHeight / 100) + 'px';
+      alaskaContainer.style.right = (2 * window.innerWidth / 100) + 'px';
+      alaskaContainer.style.width = (30 * window.innerWidth / 100) + 'px';
+    });
+  </script>
 </body>
 </html>
