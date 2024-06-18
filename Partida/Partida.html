@@ -51,9 +51,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var svgData = [
-        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
-        
-        { url: "/IMAGE/Mackenzie.svg", x: 18, y: 14 }
+        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 }
       ];
 
       // Função para carregar e adicionar SVGs ao DOM
@@ -67,16 +65,21 @@
               svgWrapper.style.left = item.x + "%";
               svgWrapper.style.top = item.y + "%";
               
-              // Calcular o tamanho do SVG com base na largura do contêiner do mapa
-              var containerWidth = container.offsetWidth;
-              var svgWidth = containerWidth * 0.2; // Defina o fator de escala conforme necessário
-              svgWrapper.style.width = svgWidth + "px";
+              // Criar imagem para calcular o tamanho real
+              var img = new Image();
+              img.src = item.url;
+              img.onload = function() {
+                var containerWidth = container.offsetWidth;
+                var scaleFactor = containerWidth / img.width;
+                var svgWidth = img.width * scaleFactor;
+                svgWrapper.style.width = svgWidth + "px";
+                
+                // Atualizar informações sobre o tamanho do Alaska
+                document.getElementById("alaska-size").textContent = svgWidth.toFixed(2) + "px";
+              };
               
               svgWrapper.innerHTML = svgContent;
               container.appendChild(svgWrapper);
-
-              // Atualizar informações sobre o tamanho do Alaska
-              document.getElementById("alaska-size").textContent = svgWidth.toFixed(2) + "px";
             })
             .catch(error => console.error('Erro ao carregar o SVG:', error));
         });
