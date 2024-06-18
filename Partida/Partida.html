@@ -32,33 +32,52 @@
   </style>
 </head>
 <body>
-  <div id="alaska-container" class="image-container" onclick="moveElement(event, 'alaska-container')">
+  <div id="alaska-container" class="image-container" onclick="toggleSelection('alaska-container')">
     <img src="/IMAGE/Alaska.svg" alt="Alasca">
   </div>
-  <div id="mackenzie-container" class="image-container" onclick="moveElement(event, 'mackenzie-container')">
+  <div id="mackenzie-container" class="image-container" onclick="toggleSelection('mackenzie-container')">
     <img src="/IMAGE/Mackenzie.svg" alt="Mackenzie">
   </div>
 
   <div id="coordinates">Posição: (0, 0)</div>
 
   <script>
-    function moveElement(event, elementId) {
+    var selectedElement = null;
+
+    function toggleSelection(elementId) {
       var element = document.getElementById(elementId);
 
-      // Calcular a nova posição do elemento com base no clique do mouse
-      var offsetX = event.clientX - element.offsetWidth / 2;
-      var offsetY = event.clientY - element.offsetHeight / 2;
-
-      // Limitar o movimento dentro da janela do navegador
-      offsetX = Math.max(0, Math.min(window.innerWidth - element.offsetWidth, offsetX));
-      offsetY = Math.max(0, Math.min(window.innerHeight - element.offsetHeight, offsetY));
-
-      element.style.left = offsetX + "px";
-      element.style.top = offsetY + "px";
-
-      var coordinatesElement = document.getElementById("coordinates");
-      coordinatesElement.textContent = "Posição: (" + offsetX + ", " + offsetY + ")";
+      if (selectedElement === element) {
+        // Desselecionar o elemento se já estiver selecionado
+        selectedElement = null;
+        element.style.border = "none";
+      } else {
+        // Selecionar o elemento clicado
+        if (selectedElement) {
+          selectedElement.style.border = "none"; // Remover a borda de seleção do elemento anteriormente selecionado
+        }
+        selectedElement = element;
+        element.style.border = "2px solid red"; // Adicionar uma borda vermelha para indicar seleção
+      }
     }
+
+    document.addEventListener("click", function(event) {
+      if (selectedElement) {
+        // Mover o elemento selecionado para a posição do clique
+        var offsetX = event.clientX - selectedElement.offsetWidth / 2;
+        var offsetY = event.clientY - selectedElement.offsetHeight / 2;
+
+        // Limitar o movimento dentro da janela do navegador
+        offsetX = Math.max(0, Math.min(window.innerWidth - selectedElement.offsetWidth, offsetX));
+        offsetY = Math.max(0, Math.min(window.innerHeight - selectedElement.offsetHeight, offsetY));
+
+        selectedElement.style.left = offsetX + "px";
+        selectedElement.style.top = offsetY + "px";
+
+        var coordinatesElement = document.getElementById("coordinates");
+        coordinatesElement.textContent = "Posição: (" + offsetX + ", " + offsetY + ")";
+      }
+    });
   </script>
 </body>
 </html>
