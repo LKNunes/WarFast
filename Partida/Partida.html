@@ -62,10 +62,6 @@
         // Marque o novo elemento selecionado e armazene sua posição atual
         selectedElement = element;
         selectedElement.style.border = "2px solid red"; // Adiciona uma borda vermelha ao elemento selecionado
-        var rect = selectedElement.getBoundingClientRect();
-        var parentRect = selectedElement.parentElement.getBoundingClientRect();
-        initialPosition.x = rect.left - parentRect.left;
-        initialPosition.y = rect.top - parentRect.top;
       }
     }
 
@@ -76,8 +72,8 @@
         var parentRect = selectedElement.parentElement.getBoundingClientRect();
         var clientX = event.clientX - parentRect.left;
         var clientY = event.clientY - parentRect.top;
-        offsetX = clientX - initialPosition.x;
-        offsetY = clientY - initialPosition.y;
+        offsetX = clientX - rect.width / 2;
+        offsetY = clientY - rect.height / 2;
 
         // Limitar o movimento dentro da janela do navegador
         offsetX = Math.max(0, Math.min(parentRect.width - rect.width, offsetX));
