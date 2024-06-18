@@ -12,11 +12,11 @@
     #map-container {
       position: relative;
       width: 100%;
-      max-width: 1200px; /* Ajuste conforme necessário */
+      max-width: 1200px; /* Largura máxima do contêiner do mapa */
       margin: 0 auto;
       background-image: url('/mnt/data/mmmy3zyj9m691.png'); /* Substitua pelo caminho da sua imagem de mapa */
       background-size: cover;
-      height: 500px; /* Altura fixa para o contêiner do mapa */
+      height: 500px; /* Altura fixa do contêiner do mapa */
       cursor: crosshair;
     }
     .svg-icon {
@@ -24,17 +24,20 @@
       cursor: pointer;
     }
     #coordinates {
-      margin-top: 20px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
       font-size: 16px;
       font-family: Arial, sans-serif;
     }
     #info {
-      position: fixed;
+      position: absolute;
       top: 10px;
-      left: 10px;
+      right: 10px;
       background-color: rgba(255, 255, 255, 0.8);
       padding: 10px;
       border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
     }
   </style>
 </head>
@@ -53,7 +56,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var svgData = [
-        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 }
+        { url: "/IMAGE/Alaska.svg", x: 50, y: 50 } // Posição fixa no centro do contêiner do mapa
       ];
 
       // Função para carregar e adicionar SVGs ao DOM
@@ -66,13 +69,15 @@
               svgWrapper.classList.add("svg-icon");
               svgWrapper.style.left = item.x + "%";
               svgWrapper.style.top = item.y + "%";
+              svgWrapper.style.transform = "translate(-50%, -50%)"; // Centralizar o elemento
               
               // Criar imagem para calcular o tamanho real
               var img = new Image();
               img.src = item.url;
               img.onload = function() {
                 var containerWidth = container.offsetWidth;
-                var scaleFactor = containerWidth / img.width;
+                var containerHeight = container.offsetHeight;
+                var scaleFactor = Math.min(containerWidth / img.width, containerHeight / img.height);
                 var svgWidth = img.width * scaleFactor;
                 var svgHeight = img.height * scaleFactor;
                 svgWrapper.style.width = svgWidth + "px";
@@ -104,8 +109,9 @@
       // Atualizar informações sobre o tamanho da página
       document.getElementById("page-size").textContent = window.innerWidth + "x" + window.innerHeight;
 
-      // Chama a função para carregar e adicionar SVGs ao contêiner
-      var mapContainer = document.getElementById("map-container");
+      // Chama a função para carregar
+ // Chama a função para carregar e adicionar SVGs ao contêiner
+ var mapContainer = document.getElementById("map-container");
       var coordinatesElement = document.getElementById("coordinates");
       
       if (mapContainer && coordinatesElement) {
