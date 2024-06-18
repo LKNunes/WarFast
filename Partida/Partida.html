@@ -46,6 +46,8 @@
     <p>Tamanho da página: <span id="page-size"></span></p>
     <p>Tamanho do contêiner do mapa: <span id="container-size"></span></p>
     <p>Tamanho do Alaska (imagem): <span id="alaska-size"></span></p>
+    <p>Altura do Alaska: <span id="alaska-height"></span></p>
+    <p>Largura do Alaska: <span id="alaska-width"></span></p>
   </div>
 
   <script>
@@ -72,10 +74,14 @@
                 var containerWidth = container.offsetWidth;
                 var scaleFactor = containerWidth / img.width;
                 var svgWidth = img.width * scaleFactor;
+                var svgHeight = img.height * scaleFactor;
                 svgWrapper.style.width = svgWidth + "px";
+                svgWrapper.style.height = svgHeight + "px";
                 
                 // Atualizar informações sobre o tamanho do Alaska
-                document.getElementById("alaska-size").textContent = svgWidth.toFixed(2) + "px";
+                document.getElementById("alaska-size").textContent = svgWidth.toFixed(2) + "px x " + svgHeight.toFixed(2) + "px";
+                document.getElementById("alaska-height").textContent = svgHeight.toFixed(2) + "px";
+                document.getElementById("alaska-width").textContent = svgWidth.toFixed(2) + "px";
               };
               
               svgWrapper.innerHTML = svgContent;
