@@ -90,6 +90,20 @@
         });
       }
 
+
+      // Chama a função para carregar e adicionar SVGs ao contêiner
+      loadAndAddSVGs(svgData, document.getElementById("map-container"));
+
+      // Adiciona o evento de clique para mostrar as coordenadas
+      document.getElementById("map-container").addEventListener("click", function(event) {
+        var container = event.currentTarget;
+        var rect = container.getBoundingClientRect();
+        var x = ((event.clientX - rect.left) / rect.width) * 100;
+        var y = ((event.clientY - rect.top) / rect.height) * 100;
+
+        document.getElementById("coordinates").textContent = "Posição clicada: (" + x.toFixed(2) + "%, " + y.toFixed(2) + "%)";
+      });
+
       // Chama a função para carregar e adicionar SVGs ao contêiner
       loadAndAddSVGs(svgData, document.getElementById("map-container"));
     });
