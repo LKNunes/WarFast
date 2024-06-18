@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Mapa Mundi com SVGs</title>
-        <style>
-          #map-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px; /* Ajuste conforme necessário */
-            margin: 0 auto;
-            background-image: url('/mnt/data/mmmy3zyj9m691.png'); /* Substitua pelo caminho da sua imagem de mapa */
-            background-size: cover;
-            height: 0;
-            padding-bottom: 50%; /* Mantém a proporção da imagem do mapa */
-            cursor: crosshair;
-          }
-          .svg-icon {
-            position: absolute;
-            cursor: pointer;
-          }
-          #coordinates {
-            margin-top: 20px;
-            font-size: 16px;
-            font-family: Arial, sans-serif;
-          }
-        </style>
-      </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa Mundi com SVGs</title>
+  <style>
+    #map-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px; /* Ajuste conforme necessário */
+      margin: 0 auto;
+      background-image: url('/mnt/data/mmmy3zyj9m691.png'); /* Substitua pelo caminho da sua imagem de mapa */
+      background-size: cover;
+      height: 0;
+      padding-bottom: 50%; /* Mantém a proporção da imagem do mapa */
+      cursor: crosshair;
+    }
+    .svg-icon {
+      position: absolute;
+      width: 3%; /* Ajuste conforme necessário */
+      height: auto;
+      cursor: pointer;
+    }
+    #coordinates {
+      margin-top: 20px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
 <body>
   <div id="map-container"></div>
   <div id="coordinates">Clique no mapa para ver a posição (x, y).</div>
@@ -33,7 +35,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var svgData = [
-        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
+      { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
         { url: "/IMAGE/Alemanha.svg", x: 45, y: 34 },
         { url: "/IMAGE/AmericaCentral.svg", x: 22, y: 62 },
         { url: "/IMAGE/Aral.svg", x: 64, y: 30 },
@@ -90,15 +92,14 @@
       }
 
       // Adiciona o evento de clique para mostrar as coordenadas
-    // Adiciona o evento de clique para mostrar as coordenadas em números absolutos
-function addClickEvent(container, coordinatesElement) {
-  container.addEventListener("click", function(event) {
-    var rect = container.getBoundingClientRect();
-    var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
-    coordinatesElement.textContent = "Posição clicada: (" + x + "px, " + y + "px)";
-  });
-}
+      function addClickEvent(container, coordinatesElement) {
+        container.addEventListener("click", function(event) {
+          var rect = container.getBoundingClientRect();
+          var x = event.clientX - rect.left;
+          var y = event.clientY - rect.top;
+          coordinatesElement.textContent = "Posição clicada: (" + x + "px, " + y + "px)";
+        });
+      }
 
       // Chama a função para carregar e adicionar SVGs ao contêiner
       var mapContainer = document.getElementById("map-container");
