@@ -43,7 +43,7 @@
 
   <script>
     function drag(event) {
-      event.dataTransfer.setData("text", event.target.id);
+      event.dataTransfer.setData("text/plain", event.target.id);
     }
 
     document.addEventListener("dragover", function(event) {
@@ -52,17 +52,17 @@
 
     document.addEventListener("drop", function(event) {
       event.preventDefault();
-      var data = event.dataTransfer.getData("text");
+      var data = event.dataTransfer.getData("text/plain");
       var draggableElement = document.getElementById(data);
-      
+
       // Obter as coordenadas do mouse em relação à janela do navegador
       var offsetX = event.clientX - draggableElement.offsetWidth / 2;
       var offsetY = event.clientY - draggableElement.offsetHeight / 2;
-      
+
       // Limitar o movimento dentro da janela do navegador
       offsetX = Math.max(0, Math.min(window.innerWidth - draggableElement.offsetWidth, offsetX));
       offsetY = Math.max(0, Math.min(window.innerHeight - draggableElement.offsetHeight, offsetY));
-      
+
       draggableElement.style.left = offsetX + "px";
       draggableElement.style.top = offsetY + "px";
 
