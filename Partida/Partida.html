@@ -7,7 +7,8 @@
     body, html {
       margin: 0;
       padding: 0;
-      height: 100%;
+      width: 100vw; /* Definindo a largura total da página em relação à largura do viewport */
+      height: 100vh; /* Definindo a altura total da página em relação à altura do viewport */
     }
     #alaska-container {
       position: absolute;
@@ -20,22 +21,15 @@
     #alaska-container:hover {
       transform: scale(1.5); /* Aumenta o tamanho em 50% ao passar o mouse */
     }
+    img {
+      width: 100%; /* A imagem ocupa 100% da largura do contêiner */
+      height: auto; /* Altura automática para manter a proporção */
+    }
   </style>
 </head>
 <body>
   <div id="alaska-container">
     <img src="/IMAGE/Alaska.svg" alt="Alasca">
   </div>
-
-  <script>
-    window.addEventListener('resize', function() {
-      var alaskaContainer = document.getElementById('alaska-container');
-      
-      // Atualizar o tamanho do contêiner com base nas dimensões da janela do navegador
-      alaskaContainer.style.top = (2 * window.innerHeight / 100) + 'px';
-      alaskaContainer.style.right = (2 * window.innerWidth / 100) + 'px';
-      alaskaContainer.style.width = (30 * window.innerWidth / 100) + 'px';
-    });
-  </script>
 </body>
 </html>
