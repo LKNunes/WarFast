@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Alasca</title>
+  <title>Alasca e Mackenzie</title>
   <style>
     body, html {
       margin: 0;
@@ -10,16 +10,19 @@
       width: 100vw; /* Definindo a largura total da página em relação à largura do viewport */
       height: 100vh; /* Definindo a altura total da página em relação à altura do viewport */
     }
-    #alaska-container {
+    .image-container {
       position: absolute;
+      height: auto; /* Altura automática para manter a proporção */
+    }
+    #alaska-container {
       top: 2vh; /* 2% da altura do viewport */
       right: 2vw; /* 2% da largura do viewport */
       width: 30vw; /* 30% da largura do viewport */
-      height: auto; /* Altura automática para manter a proporção */
-      transition: transform 0.3s ease; /* Adicionando uma transição suave */
     }
-    #alaska-container:hover {
-      transform: scale(1.5); /* Aumenta o tamanho em 50% ao passar o mouse */
+    #mackenzie-container {
+      top: 2vh; /* 2% da altura do viewport */
+      right: 34vw; /* 34% da largura do viewport */
+      width: 30vw; /* 30% da largura do viewport */
     }
     img {
       width: 100%; /* A imagem ocupa 100% da largura do contêiner */
@@ -28,8 +31,11 @@
   </style>
 </head>
 <body>
-  <div id="alaska-container">
+  <div id="alaska-container" class="image-container">
     <img src="/IMAGE/Alaska.svg" alt="Alasca">
+  </div>
+  <div id="mackenzie-container" class="image-container">
+    <img src="/IMAGE/Mackenzie.svg" alt="Mackenzie">
   </div>
 </body>
 </html>
