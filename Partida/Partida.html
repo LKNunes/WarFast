@@ -14,7 +14,7 @@
       width: 100%;
       max-width: 1200px; /* Ajuste conforme necessário */
       margin: 0 auto;
-     /* background-image: url('/IMAGE/Mundi.svg'); /* Substitua pelo caminho da sua imagem de mapa */
+      background-image: url('/mnt/data/mmmy3zyj9m691.png'); /* Substitua pelo caminho da sua imagem de mapa */
       background-size: cover;
       height: 100%;
       cursor: crosshair;
@@ -55,12 +55,7 @@
               svgWrapper.classList.add("svg-icon");
               svgWrapper.style.left = item.x + "%";
               svgWrapper.style.top = item.y + "%";
-              
-              // Calcular o tamanho do SVG com base na largura do contêiner do mapa
-              var containerWidth = container.offsetWidth;
-              var svgWidth = containerWidth * 0.2; // Defina o fator de escala conforme necessário
-              svgWrapper.style.width = svgWidth + "px";
-              
+              svgWrapper.style.width = "5%"; // Defina o tamanho inicial do SVG em relação ao contêiner do mapa
               svgWrapper.innerHTML = svgContent;
               container.appendChild(svgWrapper);
             })
