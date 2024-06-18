@@ -40,7 +40,7 @@
         { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
         { url: "/IMAGE/Alemanha.svg", x: 45, y: 34 },
         // Adicione os países com as coordenadas correspondentes
-        { url: "/IMAGE/Brasil.svg", x: 30, y: 88, min_width: 40, max_width: 100 },
+        { url: "/IMAGE/Brasil.svg", x: 30, y: 88 },
         { url: "/IMAGE/Argentina.svg", x: 30, y: 88 },
         // Adicione os outros países conforme necessário
       ];
@@ -58,7 +58,7 @@
               
               // Calcular o tamanho do SVG com base na largura da tela
               var screenWidth = window.innerWidth;
-              var svgWidth = screenWidth * (screenWidth <= 768 ? item.min_width / 100 : item.max_width / 100);
+              var svgWidth = screenWidth * 0.1; // Defina o fator de escala conforme necessário
               svgWrapper.style.width = svgWidth + "px";
               
               svgWrapper.innerHTML = svgContent;
