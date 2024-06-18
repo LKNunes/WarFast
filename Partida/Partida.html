@@ -32,10 +32,10 @@
   </style>
 </head>
 <body>
-  <div id="alaska-container" class="image-container" onclick="toggleSelection('alaska-container')">
+  <div id="alaska-container" class="image-container" onclick="selectElement('alaska-container')">
     <img src="/IMAGE/Alaska.svg" alt="Alasca">
   </div>
-  <div id="mackenzie-container" class="image-container" onclick="toggleSelection('mackenzie-container')">
+  <div id="mackenzie-container" class="image-container" onclick="selectElement('mackenzie-container')">
     <img src="/IMAGE/Mackenzie.svg" alt="Mackenzie">
   </div>
 
@@ -44,26 +44,27 @@
   <script>
     var selectedElement = null;
 
-    function toggleSelection(elementId) {
+    function selectElement(elementId) {
       var element = document.getElementById(elementId);
 
       if (selectedElement === element) {
-        // Desselecionar o elemento se já estiver selecionado
+        // Se o mesmo elemento já estiver selecionado, desmarque-o
+        selectedElement.style.border = "none";
         selectedElement = null;
-        element.style.border = "none";
       } else {
-        // Selecionar o elemento clicado
+        // Se um novo elemento for selecionado, desmarque o elemento anterior (se houver)
         if (selectedElement) {
-          selectedElement.style.border = "none"; // Remover a borda de seleção do elemento anteriormente selecionado
+          selectedElement.style.border = "none";
         }
+        // Marque o novo elemento selecionado
         selectedElement = element;
-        element.style.border = "2px solid red"; // Adicionar uma borda vermelha para indicar seleção
+        element.style.border = "2px solid red"; // Adiciona uma borda vermelha ao elemento selecionado
       }
     }
 
     document.addEventListener("click", function(event) {
       if (selectedElement) {
-        // Mover o elemento selecionado para a posição do clique
+        // Se houver um elemento selecionado, mova-o para a posição do clique
         var offsetX = event.clientX - selectedElement.offsetWidth / 2;
         var offsetY = event.clientY - selectedElement.offsetHeight / 2;
 
