@@ -29,45 +29,45 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Lista de URLs dos SVGs e suas coordenadas no mapa (exemplo)
+      // Lista de URLs dos SVGs e suas coordenadas no mapa (em porcentagem)
       var svgData = [
-        { url: "/IMAGE/Alaska.svg", x: 80, y: 60 },
-       { url: "/IMAGE/Alemanha.svg", x: 520, y: 220 },
-        { url: "/IMAGE/Aral.svg", x: 700, y: 200 },
-        { url: "/IMAGE/Argelia.svg", x: 500, y: 420 },
-        { url: "/IMAGE/Argentina.svg", x: 330, y: 560 },
-        { url: "/IMAGE/AustraliaNorte.svg", x: 950, y: 580 },
-        { url: "/IMAGE/AustraliaSul.svg", x: 950, y: 620 },
-        { url: "/IMAGE/Borneo.svg", x: 860, y: 470 },
-        { url: "/IMAGE/Brasil.svg", x: 380, y: 480 },
-        { url: "/IMAGE/California.svg", x: 120, y: 280 },
-        { url: "/IMAGE/Congo.svg", x: 600, y: 460 },
-        { url: "/IMAGE/Dudinka.svg", x: 750, y: 100 },
-        { url: "/IMAGE/Egito.svg", x: 550, y: 400 },
-        { url: "/IMAGE/Franca.svg", x: 520, y: 260 },
-        { url: "/IMAGE/Groelandia.svg", x: 480, y: 60 },
-        { url: "/IMAGE/India.svg", x: 750, y: 400 },
-        { url: "/IMAGE/Inglaterra.svg", x: 500, y: 180 },
-        { url: "/IMAGE/Islandia.svg", x: 480, y: 140 },
-        { url: "/IMAGE/Japao.svg", x: 950, y: 260 },
-        { url: "/IMAGE/Labrador.svg", x: 360, y: 120 },
-        { url: "/IMAGE/Mackenzie.svg", x: 200, y: 100 },
-        { url: "/IMAGE/Mexico.svg", x: 160, y: 320 },
-        { url: "/IMAGE/Moscou.svg", x: 620, y: 180 },
-        { url: "/IMAGE/NovaGuine.svg", x: 930, y: 500 },
-        { url: "/IMAGE/NovaYork.svg", x: 280, y: 160 },
-        { url: "/IMAGE/OrienteMedio.svg", x: 680, y: 340 },
-        { url: "/IMAGE/Ottawa.svg", x: 300, y: 120 },
-        { url: "/IMAGE/Peru.svg", x: 300, y: 400 },
-        { url: "/IMAGE/Polonia.svg", x: 620, y: 220 },
-        { url: "/IMAGE/Siberia.svg", x: 800, y: 140 },
-        { url: "/IMAGE/Sudao.svg", x: 600, y: 440 },
-        { url: "/IMAGE/Suecia.svg", x: 540, y: 140 },
-        { url: "/IMAGE/Sumatra.svg", x: 830, y: 500 },
-        { url: "/IMAGE/Vanculver.svg", x: 100, y: 80 },
-        { url: "/IMAGE/Venezuela.svg", x: 280, y: 340 },
-        { url: "/IMAGE/Vladvostok.svg", x: 900, y: 160 } 
-        // Adicione mais URLs e coordenadas conforme necessário
+        { url: "/IMAGE/Alaska.svg", x: 6.5, y: 11 },
+        { url: "/IMAGE/Alemanha.svg", x: 45, y: 34 },
+        { url: "/IMAGE/AmericaCentral.svg", x: 22, y: 62 },
+        { url: "/IMAGE/Aral.svg", x: 64, y: 30 },
+        { url: "/IMAGE/Argelia.svg", x: 46, y: 60 },
+        { url: "/IMAGE/Argentina.svg", x: 30, y: 88 },
+        { url: "/IMAGE/AustraliaNorte.svg", x: 82, y: 92 },
+        { url: "/IMAGE/AustraliaSul.svg", x: 82, y: 98 },
+        { url: "/IMAGE/Borneo.svg", x: 74, y: 75 },
+        { url: "/IMAGE/Brasil.svg", x: 33, y: 77 },
+        { url: "/IMAGE/California.svg", x: 14, y: 45 },
+        { url: "/IMAGE/Congo.svg", x: 51, y: 73 },
+        { url: "/IMAGE/Dudinka.svg", x: 63, y: 18 },
+        { url: "/IMAGE/Egito.svg", x: 46, y: 65 },
+        { url: "/IMAGE/Franca.svg", x: 45, y: 40 },
+        { url: "/IMAGE/Groelandia.svg", x: 41, y: 12 },
+        { url: "/IMAGE/India.svg", x: 64, y: 63 },
+        { url: "/IMAGE/Inglaterra.svg", x: 43, y: 32 },
+        { url: "/IMAGE/Islandia.svg", x: 41, y: 25 },
+        { url: "/IMAGE/Japao.svg", x: 82, y: 36 },
+        { url: "/IMAGE/Labrador.svg", x: 31, y: 16 },
+        { url: "/IMAGE/Mackenzie.svg", x: 18, y: 14 },
+        { url: "/IMAGE/Mexico.svg", x: 14, y: 53 },
+        { url: "/IMAGE/Moscou.svg", x: 54, y: 29 },
+        { url: "/IMAGE/NovaGuine.svg", x: 78, y: 80 },
+        { url: "/IMAGE/NovaYork.svg", x: 24, y: 25 },
+        { url: "/IMAGE/OrienteMedio.svg", x: 58, y: 53 },
+        { url: "/IMAGE/Ottawa.svg", x: 25, y: 20 },
+        { url: "/IMAGE/Peru.svg", x: 25, y: 67 },
+        { url: "/IMAGE/Polonia.svg", x: 54, y: 35 },
+        { url: "/IMAGE/Siberia.svg", x: 70, y: 22 },
+        { url: "/IMAGE/Sudao.svg", x: 52, y: 70 },
+        { url: "/IMAGE/Suecia.svg", x: 45, y: 28 },
+        { url: "/IMAGE/Sumatra.svg", x: 69, y: 78 },
+        { url: "/IMAGE/Vanculver.svg", x: 8, y: 13 },
+        { url: "/IMAGE/Venezuela.svg", x: 24, y: 53 },
+        { url: "/IMAGE/Vladvostok.svg", x: 78, y: 23 }
       ];
 
       // Função para carregar e adicionar SVGs ao DOM
@@ -79,8 +79,8 @@
               // Cria um novo elemento div para posicionar o SVG
               var svgWrapper = document.createElement("div");
               svgWrapper.classList.add("svg-icon");
-              svgWrapper.style.left = item.x + "px";
-              svgWrapper.style.top = item.y + "px";
+              svgWrapper.style.left = item.x + "%";
+              svgWrapper.style.top = item.y + "%";
               svgWrapper.innerHTML = svgContent;
 
               // Adiciona o elemento SVG ao contêiner
@@ -90,22 +90,23 @@
         });
       }
 
-
       // Chama a função para carregar e adicionar SVGs ao contêiner
       loadAndAddSVGs(svgData, document.getElementById("map-container"));
 
       // Adiciona o evento de clique para mostrar as coordenadas
-      document.getElementById("map-container").addEventListener("click", function(event) {
-        var container = event.currentTarget;
-        var rect = container.getBoundingClientRect();
-        var x = ((event.clientX - rect.left) / rect.width) * 100;
-        var y = ((event.clientY - rect.top) / rect.height) * 100;
+      var coordinatesElement = document.getElementById("coordinates");
+      if (coordinatesElement) {
+        document.getElementById("map-container").addEventListener("click", function(event) {
+          var container = event.currentTarget;
+          var rect = container.getBoundingClientRect();
+          var x = ((event.clientX - rect.left) / rect.width) * 100;
+          var y = ((event.clientY - rect.top) / rect.height) * 100;
 
-        document.getElementById("coordinates").textContent = "Posição clicada: (" + x.toFixed(2) + "%, " + y.toFixed(2) + "%)";
-      });
-
-      // Chama a função para carregar e adicionar SVGs ao contêiner
-      loadAndAddSVGs(svgData, document.getElementById("map-container"));
+          coordinatesElement.textContent = "Posição clicada: (" + x.toFixed(2) + "%, " + y.toFixed(2) + "%)";
+        });
+      } else {
+        console.error("Elemento 'coordinates' não encontrado no DOM.");
+      }
     });
   </script>
 </body>
