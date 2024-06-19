@@ -64,24 +64,26 @@ territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + 
     this.setAttribute('transform', ''); // Restaurar o tamanho original
   });
 }  
-function imprimirIDdoPath() {
+function atribuirIDsNumericos() {
   const svgObject = document.getElementById('svgObject');
-  
+
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
   svgObject.addEventListener('load', function() {
     const svgDoc = svgObject.contentDocument;
     const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
 
-    // Iterar sobre os elementos <path> e imprimir o ID de cada um
+    // Iterar sobre os elementos <path> e atribuir IDs numéricos
     for (let i = 0; i < paths.length; i++) {
-      const id = paths[i].getAttribute('id');
-      console.log('ID do path:', id);
+      paths[i].setAttribute('id', 'territorio' + (i + 1));
     }
+
+    console.log('IDs numéricos atribuídos aos elementos <path>.');
   });
 }
 
-// Chamar a função para imprimir os IDs dos paths
-imprimirIDdoPath();
+// Chamar a função para atribuir IDs numéricos aos paths
+atribuirIDsNumericos();
+
   </script>
 </body>
 </html>
