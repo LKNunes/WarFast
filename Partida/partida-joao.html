@@ -38,10 +38,10 @@ identificarTerritorios();
 function alterarTamanhoTerritorio(territorio) {
   territorio.addEventListener('mouseenter', function() {
 
-    const centroX = territorio.getBBox().x + territorio.getBBox().width / 2;
-const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
-const deslocamentoX = centroX - centroX * 1.2;
-const deslocamentoY = centroY - centroY * 1.2;
+    const centroX = territorio.getBBox().x + territorio.getBBox().width ;
+    const centroY = territorio.getBBox().y + territorio.getBBox().height ;
+    const deslocamentoX = centroX - centroX * 1.2;
+    const deslocamentoY = centroY - centroY * 1.2;
 
 territorio.setAttribute('transform', 'scale(1.2) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
