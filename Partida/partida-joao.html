@@ -19,13 +19,10 @@
         const svgDoc = svgObject.contentDocument;
         const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
 
-        console.log("teste1");
-
         // Iterar sobre os elementos <path> e atribuir IDs
         for (let i = 0; i < paths.length; i++) {
           // Gerar um ID único para o território
           const territorioID = `territorio${i + 1}`;
-          console.log("teste2");
 
           // Atribuir o ID ao elemento <path>
           paths[i].setAttribute('id', territorioID);
