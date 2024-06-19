@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Identificar e Destacar Territórios</title>
+  <title>Centralizar SVG</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #svgObject {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
 </head>
 <body>
-  <h1>Identificar e Destacar Territórios</h1>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
 
   <script>
