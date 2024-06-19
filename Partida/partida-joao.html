@@ -13,20 +13,22 @@
     // Função para identificar e gerar IDs para os territórios
     function identificarTerritorios() {
       const svgDoc = document.getElementById('svgObject').contentDocument;
-      const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
-        console.log("teste1")
+      const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
+
+      console.log("teste1");
+
       // Iterar sobre os elementos <path> e atribuir IDs
-      paths.forEach((path, index) => {
+      for (let i = 0; i < paths.length; i++) {
         // Gerar um ID único para o território
-        const territorioID = `territorio${index + 1}`;
-        console.log("teste2")
+        const territorioID = `territorio${i + 1}`;
+        console.log("teste2");
 
         // Atribuir o ID ao elemento <path>
-        path.setAttribute('id', territorioID);
+        paths[i].setAttribute('id', territorioID);
 
         // Exibir o ID atribuído para teste
-        console.log(`Território ${index + 1} identificado com ID: ${territorioID}`);
-      });
+        console.log(`Território ${i + 1} identificado com ID: ${territorioID}`);
+      }
     }
 
     // Chamar a função para identificar e gerar IDs para os territórios
@@ -34,5 +36,3 @@
   </script>
 </body>
 </html>
-
- 
