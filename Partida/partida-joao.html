@@ -72,26 +72,7 @@
         offsetX = event.clientX - rect.left;
         offsetY = event.clientY - rect.top;
       }
-    }
-
-    document.addEventListener("click", function(event) {
-      if (selectedElement) {
-        // Se houver um elemento selecionado, mova-o para a posição do clique
-        var parentRect = selectedElement.parentElement.getBoundingClientRect();
-        var clientX = event.clientX;
-        var clientY = event.clientY;
-
-        // Limitar o movimento dentro da janela do navegador
-        offsetX = Math.max(0, Math.min(parentRect.width - selectedElement.offsetWidth, offsetX));
-        offsetY = Math.max(0, Math.min(parentRect.height - selectedElement.offsetHeight, offsetY));
-
-        selectedElement.style.left = (clientX - offsetX) + "px";
-        selectedElement.style.top = (clientY - offsetY) + "px";
-
-        var coordinatesElement = document.getElementById("coordinates");
-        coordinatesElement.textContent = "Posição: (" + (clientX - offsetX) + ", " + (clientY - offsetY) + ")";
-      }
-    });
+    };
   </script>
 </body>
 </html>
