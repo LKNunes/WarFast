@@ -33,7 +33,7 @@
 </head>
 <body>
   <div id="mapa" class="image-container" onclick="selectElement('mapa-container')">
-    <img src="/IMAGE/Mundi.svg" alt="mapa" id="map-image">
+    <img src="/mnt/data/image.png" alt="mapa" id="map-image">
   </div>
   
   <div id="map">
@@ -53,7 +53,7 @@
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     const img = new Image();
-    img.src = '';  // Substitua pelo caminho correto da imagem
+    img.src = '/IMAGE/Mundi.svg';  // Substitua pelo caminho correto da imagem
 
     img.onload = function() {
       canvas.width = img.width;
