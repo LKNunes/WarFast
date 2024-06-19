@@ -9,35 +9,12 @@
     .territorio:hover {
       stroke: red !important; /* Alterar a cor da borda para vermelho */
       stroke-width: 2px !important; /* Aumentar a largura da borda */
+      transform: scale(1.2); /* Aumentar o tamanho para 1.2 vezes */
     }
   </style>
 </head>
 <body>
   <h1>Identificar e Destacar Territórios</h1>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
-
-  <script>
-    // Função para adicionar manipuladores de eventos ao território específico
-    function adicionarEventosTerritorioEspecifico() {
-      const svgObject = document.getElementById('svgObject');
-
-      // Adicionar um ouvinte de evento para o carregamento do documento SVG
-      svgObject.addEventListener('load', function() {
-        const svgDoc = svgObject.contentDocument;
-        const territorioEspecifico = svgDoc.getElementById('ID_DO_TERRITÓRIO_ESPECÍFICO');
-
-        // Adicionar manipuladores de eventos para o território específico
-        territorioEspecifico.addEventListener('mouseover', function() {
-          this.style.transform = 'scale(1.2)'; // Aumentar o tamanho para 1.2 vezes
-        });
-        territorioEspecifico.addEventListener('mouseout', function() {
-          this.style.transform = 'scale(1)'; // Restaurar o tamanho original
-        });
-      });
-    }
-
-    // Chamar a função para adicionar manipuladores de eventos ao território específico
-    adicionarEventosTerritorioEspecifico();
-  </script>
 </body>
 </html>
