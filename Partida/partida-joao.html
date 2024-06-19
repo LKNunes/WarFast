@@ -38,7 +38,7 @@ identificarTerritorios();
 function alterarTamanhoTerritorio(territorio) {
   territorio.addEventListener('mouseenter', function() {
 
-territorio.setAttribute('transform', 'scale(1.2) translate(-50%, -50%)');
+    territorio.setAttribute('transform', 'scale(1.2) translate(' + (-territorio.getBBox().x + territorio.getBBox().width / 2) + ', ' + (-territorio.getBBox().y + territorio.getBBox().height / 2) + ')');
   });
   territorio.addEventListener('mouseleave', function() {
     this.setAttribute('transform', ''); // Restaurar o tamanho original
