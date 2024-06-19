@@ -3,55 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Identificar Bordas</title>
+  <title>Identificar e Gerar IDs para Territórios</title>
 </head>
 <body>
-  <h1>Identificar Bordas</h1>
+  <h1>Identificar e Gerar IDs para Territórios</h1>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
 
   <script>
-    // Função para identificar bordas usando detecção de bordas Canny
-    function identificarBordas() {
+    // Função para identificar e gerar IDs para os territórios
+    function identificarTerritorios() {
       const svgDoc = document.getElementById('svgObject').contentDocument;
-      const svgWidth = svgDoc.documentElement.clientWidth;
-      const svgHeight = svgDoc.documentElement.clientHeight;
+      const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
 
-      // Criar um canvas temporário para desenhar o SVG
-      const canvas = document.createElement('canvas');
-      canvas.width = svgWidth;
-      canvas.height = svgHeight;
-      const ctx = canvas.getContext('2d');
+      // Iterar sobre os elementos <path> e atribuir IDs
+      paths.forEach((path, index) => {
+        // Gerar um ID único para o território
+        const territorioID = `territorio${index + 1}`;
 
-      // Desenhar o SVG no canvas
-      const svgData = new XMLSerializer().serializeToString(svgDoc);
-      const img = new Image();
-      img.onload = function() {
-        ctx.drawImage(img, 0, 0);
+        // Atribuir o ID ao elemento <path>
+        path.setAttribute('id', territorioID);
 
-        // Converter para escala de cinza
-        const imageData = ctx.getImageData(0, 0, svgWidth, svgHeight);
-        const grayData = new Uint8ClampedArray(imageData.data.length / 4);
-        for (let i = 0; i < imageData.data.length; i += 4) {
-          const r = imageData.data[i];
-          const g = imageData.data[i + 1];
-          const b = imageData.data[i + 2];
-          const gray = 0.2126 * r + 0.7152 * g + 0.0722 * b; // Conversão para escala de cinza
-          grayData[i / 4] = gray;
-        }
-        const grayImageData = new ImageData(grayData, svgWidth, svgHeight);
-
-        // Aplicar detecção de bordas Canny
-        const cannyData = cv.imread(grayImageData);
-        cv.cvtColor(cannyData, cannyData, cv.COLOR_RGBA2GRAY, 0);
-        cv.Canny(cannyData, cannyData, 50, 150, 3, false);
-        cv.imshow('canvas', cannyData);
-        cannyData.delete();
-      };
-      img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+        // Exibir o ID atribuído para teste
+        console.log(`Território ${index + 1} identificado com ID: ${territorioID}`);
+      });
     }
 
-    // Chamar a função para identificar bordas
-    identificarBordas();
+    // Chamar a função para identificar e gerar IDs para os territórios
+    identificarTerritorios();
   </script>
 </body>
 </html>
+
+ 
