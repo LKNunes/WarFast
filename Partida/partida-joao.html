@@ -8,10 +8,15 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       background-color: #f0f0f0;
+    }
+    .image-container {
+      position: relative;
+      cursor: pointer;
     }
     #map {
       position: relative;
@@ -21,19 +26,33 @@
       font-size: 20px;
       font-family: Arial, sans-serif;
     }
+    #canvas {
+      border: 1px solid #000;
+    }
   </style>
 </head>
 <body>
+  <div id="mapa" class="image-container" onclick="selectElement('mapa-container')">
+    <img src="/mnt/data/image.png" alt="mapa" id="map-image">
+  </div>
+  
   <div id="map">
     <canvas id="canvas"></canvas>
   </div>
+  
   <div id="territory-name">Clique em um território para identificar</div>
 
   <script>
     const territories = [
-      { name: "Alasca", x: 50, y: 50, width: 100, height: 100 },
-      { name: "Canadá", x: 150, y: 50, width: 100, height: 100 },
-      { name: "Brasil", x: 200, y: 200, width: 100, height: 100 },
+      { name: "Alasca", x: 70, y: 80, width: 100, height: 50 },
+      { name: "Canadá", x: 170, y: 80, width: 180, height: 80 },
+      { name: "Brasil", x: 280, y: 220, width: 100, height: 120 },
+      { name: "Estados Unidos", x: 100, y: 150, width: 150, height: 80 },
+      { name: "México", x: 130, y: 230, width: 80, height: 80 },
+      { name: "Argentina", x: 300, y: 350, width: 70, height: 100 },
+      { name: "Rússia", x: 500, y: 80, width: 250, height: 150 },
+      { name: "China", x: 600, y: 200, width: 150, height: 120 },
+      { name: "Austrália", x: 800, y: 400, width: 120, height: 80 },
       // Adicione mais territórios conforme necessário
     ];
 
@@ -61,6 +80,11 @@
         document.getElementById("territory-name").textContent = "Território não identificado";
       }
     });
+
+    function selectElement(id) {
+      const element = document.getElementById(id);
+      element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
   </script>
 </body>
 </html>
