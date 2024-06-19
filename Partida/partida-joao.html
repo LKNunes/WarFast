@@ -2,42 +2,49 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Mapa Mundi com Territórios</title>
+  <title>Identificação de Territórios</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
-      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
+      background-color: #f0f0f0;
     }
     .image-container {
-      position: absolute;
-      height: auto;
+      position: relative;
       cursor: pointer;
     }
-    #mapa {
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    #map {
+      position: relative;
     }
-    img {
-      width: 100%;
-      height: auto;
+    #territory-name {
+      margin-top: 20px;
+      font-size: 20px;
+      font-family: Arial, sans-serif;
     }
-    .territory {
-      position: absolute;
-      border: 1px solid red; /* Apenas para visualização, pode ser removido */
+    #canvas {
+      border: 1px solid #000;
     }
   </style>
 </head>
 <body>
-  <div id="mapa" class="image-container">
-    <img src="/IMAGE/Mundi.svg" alt="mapa">
+  <div id="mapa" class="image-container" onclick="selectElement('mapa-container')">
+    <img src="/IMAGE/Mundi.svg" alt="mapa" id="map-image">
   </div>
+  
+  <div id="map">
+    <canvas id="canvas"></canvas>
+  </div>
+  
+  <div id="territory-name">Clique em um território para identificar</div>
+
   <script>
-    const territories = [
-      { id: "alaska", name: "Alasca", x: 10, y: 10, width: 100, height: 100 },
+      const territories = [
+   { id: "alaska", name: "Alasca", x: 10, y: 10, width: 100, height: 100 },
       { id: "canada", name: "Canadá", x: 150, y: 20, width: 100, height: 100 },
       { id: "usa", name: "Estados Unidos", x: 300, y: 30, width: 100, height: 100 },
       { id: "mexico", name: "México", x: 450, y: 40, width: 100, height: 100 },
@@ -49,23 +56,38 @@
       { id: "china", name: "China", x: 1350, y: 100, width: 100, height: 100 },
       { id: "japan", name: "Japão", x: 1500, y: 110, width: 100, height: 100 },
       { id: "australia", name: "Austrália", x: 1650, y: 120, width: 100, height: 100 },
-      // Adicione mais países conforme necessário
+      // Adicione mais territórios conforme necessário
     ];
 
-    territories.forEach(territory => {
-      const div = document.createElement("div");
-      div.id = territory.id;
-      div.className = "territory";
-      div.style.left = territory.x + "px";
-      div.style.top = territory.y + "px";
-      div.style.width = territory.width + "px";
-      div.style.height = territory.height + "px";
-      div.setAttribute("title", territory.name);
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.src = '';  // Substitua pelo caminho correto da imagem
 
-      div.onclick = () => alert(`Território: ${territory.name}`);
+    img.onload = function() {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+    }
 
-      document.body.appendChild(div);
+    canvas.addEventListener("click", function(event) {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const territory = territories.find(t => x >= t.x && x <= t.x + t.width && y >= t.y && y <= t.y + t.height);
+      
+      if (territory) {
+        document.getElementById("territory-name").textContent = "Território: " + territory.name;
+      } else {
+        document.getElementById("territory-name").textContent = "Território não identificado";
+      }
     });
+
+    function selectElement(id) {
+      const element = document.getElementById(id);
+      element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
   </script>
 </body>
 </html>
