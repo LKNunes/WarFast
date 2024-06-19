@@ -17,6 +17,12 @@
       console.log("Número de territórios identificados:", territorios.length);
     }
 
+  const svgDoc = document.getElementById('svgObject').contentDocument;
+  const territoriosPretos = svgDoc.querySelectorAll('path[fill="black"]'); // Assumindo que os territórios têm cor preta
+
+  // Exibir o número de territórios identificados
+  console.log("Número de territórios identificados:", territoriosPretos.length);
+
     // Associar a função ao evento de carregamento do SVG
     document.getElementById('svgObject').addEventListener('load', onSVGLoaded);
   </script>
