@@ -4,32 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identificar e Destacar Territórios</title>
+  <style>
+    /* Estilo para realçar os territórios quando o mouse passar sobre eles */
+    .territorio:hover {
+      stroke: red !important; /* Alterar a cor da borda para vermelho */
+      stroke-width: 2px !important; /* Aumentar a largura da borda */
+    }
+  </style>
 </head>
 <body>
   <h1>Identificar e Destacar Territórios</h1>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
 
   <script>
-    // Função para identificar e destacar territórios
-    function identificarTerritorios() {
+    // Função para adicionar manipuladores de eventos ao território específico
+    function adicionarEventosTerritorioEspecifico() {
       const svgObject = document.getElementById('svgObject');
 
       // Adicionar um ouvinte de evento para o carregamento do documento SVG
       svgObject.addEventListener('load', function() {
         const svgDoc = svgObject.contentDocument;
-        const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
+        const territorioEspecifico = svgDoc.getElementById('ID_DO_TERRITÓRIO_ESPECÍFICO');
 
-        // Iterar sobre os elementos <path> e atribuir uma borda vermelha
-        for (let i = 0; i < paths.length; i++) {
-          // Adicionar uma borda vermelha
-          paths[i].style.stroke = 'red';
-          paths[i].style.strokeWidth = '0.5';
-        }
+        // Adicionar manipuladores de eventos para o território específico
+        territorioEspecifico.addEventListener('mouseover', function() {
+          this.style.transform = 'scale(1.2)'; // Aumentar o tamanho para 1.2 vezes
+        });
+        territorioEspecifico.addEventListener('mouseout', function() {
+          this.style.transform = 'scale(1)'; // Restaurar o tamanho original
+        });
       });
     }
 
-    // Chamar a função para identificar e destacar territórios
-    identificarTerritorios();
+    // Chamar a função para adicionar manipuladores de eventos ao território específico
+    adicionarEventosTerritorioEspecifico();
   </script>
 </body>
 </html>
