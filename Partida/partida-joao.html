@@ -56,7 +56,7 @@ function alterarTamanhoTerritorio(territorio) {
     const centroY = territorio.getBBox().y + territorio.getBBox().height ;
     const deslocamentoX = centroX - centroX * 1.05;
     const deslocamentoY = centroY - centroY * 1.05;
-    imprimirIDdoPath();
+    
 
 territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
@@ -81,7 +81,7 @@ territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + 
 }
 
 // Chamar a função para imprimir os IDs dos paths
-
+imprimirIDdoPath();
 }  
   </script>
 </body>
