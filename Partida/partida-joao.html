@@ -4,17 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identificar e Destacar Territórios</title>
-  <style>
-    /* Estilo para realçar os territórios quando o mouse passar sobre eles */
-    .territorio:hover {
-      stroke: red !important; /* Alterar a cor da borda para vermelho */
-      stroke-width: 2px !important; /* Aumentar a largura da borda */
-      transform: scale(1.2); /* Aumentar o tamanho para 1.2 vezes */
-    }
-  </style>
 </head>
 <body>
   <h1>Identificar e Destacar Territórios</h1>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
+
+  <script>
+    // Função para identificar e destacar territórios
+    function identificarTerritorios() {
+      const svgObject = document.getElementById('svgObject');
+
+      // Adicionar um ouvinte de evento para o carregamento do documento SVG
+      svgObject.addEventListener('load', function() {
+        const svgDoc = svgObject.contentDocument;
+        const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
+
+        // Iterar sobre os elementos <path> e atribuir uma borda vermelha
+        for (let i = 0; i < paths.length; i++) {
+          // Adicionar uma borda vermelha
+          paths[i].style.stroke = 'red';
+          paths[i].style.strokeWidth = '0.5';
+        }
+      });
+    }
+    // Chamar a função para identificar e destacar territórios
+    identificarTerritorios();
+  
+    // Função para alterar o tamanho de um território ao passar o mouse sobre ele
+function alterarTamanhoTerritorio(territorio) {
+  territorio.addEventListener('mouseover', function() {
+    this.style.transform = 'scale(1.2)'; // Aumentar o tamanho para 1.2 vezes
+  });
+  territorio.addEventListener('mouseout', function() {
+    this.style.transform = ''; // Restaurar o tamanho original
+  });
+}
+alterarTamanhoTerritorio(1);
+  </script>
 </body>
 </html>
