@@ -2,77 +2,83 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Alasca e Mackenzie</title>
+  <title>Identificação de Territórios</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
-      width: 100vw; /* Definindo a largura total da página em relação à largura do viewport */
-      height: 100vh; /* Definindo a altura total da página em relação à altura do viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
     }
     .image-container {
-      position: absolute;
-      height: auto; /* Altura automática para manter a proporção */
-      cursor: pointer; /* Cursor de ponteiro */
+      position: relative;
+      cursor: pointer;
     }
-    #alaska-container {
-      top: 2vh; /* 2% da altura do viewport */
-      right: 2vw; /* 2% da largura do viewport */
-      width: 30vw; /* 30% da largura do viewport */
+    #map {
+      position: relative;
     }
-    #mackenzie-container {
-      top: 2vh; /* 2% da altura do viewport */
-      right: 34vw; /* 34% da largura do viewport */
-      width: 30vw; /* 30% da largura do viewport */
+    #territory-name {
+      margin-top: 20px;
+      font-size: 20px;
+      font-family: Arial, sans-serif;
     }
-    img {
-      width: 100%; /* A imagem ocupa 100% da largura do contêiner */
-      height: auto; /* Altura automática para manter a proporção */
+    #canvas {
+      border: 1px solid #000;
     }
   </style>
 </head>
 <body>
-  <div id="alaska-container" class="image-container" onclick="selectElement('alaska-container')">
-    <img src="/IMAGE/Mundi.svg" alt="Alasca">
+  <div id="mapa" class="image-container" onclick="selectElement('mapa-container')">
+    <img src="/mnt/data/image.png" alt="mapa" id="map-image">
   </div>
   
-
-  <div id="coordinates">Posição: (0, 0)</div>
+  <div id="map">
+    <canvas id="canvas"></canvas>
+  </div>
+  
+  <div id="territory-name">Clique em um território para identificar</div>
 
   <script>
-    var selectedElement = null;
-    var initialPosition = { x: 0, y: 0 };
-    var offsetX = 0;
-    var offsetY = 0;
+    const territories = [
+      { name: "Alasca", x: 50, y: 50, width: 100, height: 100 },
+      { name: "Canadá", x: 150, y: 50, width: 100, height: 100 },
+      { name: "Brasil", x: 200, y: 200, width: 100, height: 100 },
+      // Adicione mais territórios conforme necessário
+    ];
 
-    function selectElement(elementId) {
-      var element = document.getElementById(elementId);
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.src = '/IMAGE/Mundi.svg';  // Substitua pelo caminho correto da imagem
 
-      if (selectedElement === element) {
-        // Se o mesmo elemento já estiver selecionado, desmarque-o
-        selectedElement.style.border = "none";
-        selectedElement = null;
+    img.onload = function() {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+    }
+
+    canvas.addEventListener("click", function(event) {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const territory = territories.find(t => x >= t.x && x <= t.x + t.width && y >= t.y && y <= t.y + t.height);
+      
+      if (territory) {
+        document.getElementById("territory-name").textContent = "Território: " + territory.name;
       } else {
-        // Se um novo elemento for selecionado, desmarque o elemento anterior (se houver)
-        if (selectedElement) {
-          selectedElement.style.border = "none";
-        }
-        // Marque o novo elemento selecionado e armazene sua posição atual
-        selectedElement = element;
-        selectedElement.style.border = "2px solid red"; // Adiciona uma borda vermelha ao elemento selecionado
-
-        // Armazene a posição inicial do elemento
-        initialPosition = {
-          x: parseFloat(selectedElement.style.left),
-          y: parseFloat(selectedElement.style.top)
-        };
-
-        // Define o deslocamento do mouse em relação à posição inicial do elemento
-        var rect = selectedElement.getBoundingClientRect();
-        offsetX = event.clientX - rect.left;
-        offsetY = event.clientY - rect.top;
+        document.getElementById("territory-name").textContent = "Território não identificado";
       }
-    };
+    });
+
+    function selectElement(id) {
+      const element = document.getElementById(id);
+      element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
   </script>
 </body>
 </html>
