@@ -43,7 +43,7 @@ function alterarTamanhoTerritorio(territorio) {
     const deslocamentoX = centroX - centroX * 1.2;
     const deslocamentoY = centroY - centroY * 1.2;
 
-territorio.setAttribute('transform', 'scale(1.2) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
+territorio.setAttribute('transform', 'scale(0.5) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
   territorio.addEventListener('mouseleave', function() {
     this.setAttribute('transform', ''); // Restaurar o tamanho original
