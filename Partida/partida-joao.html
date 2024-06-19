@@ -4,79 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identificar Territórios</title>
-  <script src="https://cdn.jsdelivr.net/npm/canvg@3/dist/browser/canvg.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-  <script src="https://docs.opencv.org/master/opencv.js" async></script>
 </head>
 <body>
   <h1>Identificar Territórios</h1>
-  <canvas id="canvas"></canvas>
+  <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
 
   <script>
-    // Função para carregar e processar a imagem SVG
-    function processarSVG(svgUrl) {
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d');
+    // Função para lidar com o carregamento do SVG
+    function onSVGLoaded(evt) {
+      const svgDoc = evt.target.contentDocument;
+      const svg = svgDoc.getElementsByTagName('svg')[0];
 
-      // Carregar o SVG usando canvg e converter para canvas
-      canvg(canvas, svgUrl, {
-        renderCallback: function () {
-          // Converter canvas para imagem PNG
-          html2canvas(canvas).then(function (canvas) {
-            // Processar a imagem PNG
-            processarImagem(canvas.toDataURL('image/png'));
-          });
-        }
-      });
+      // Suponha que você tenha elementos SVG representando territórios com classes específicas, como 'territorio'
+      const territorios = svgDoc.querySelectorAll('.territorio');
+      console.log("Número de territórios identificados:", territorios.length);
+      
+      // Aqui você pode prosseguir com qualquer manipulação ou análise dos elementos SVG identificados
     }
 
-    // Função para processar a imagem rasterizada
-    function processarImagem(imgUrl) {
-      // Carregar a imagem
-      const img = new Image();
-      img.onload = function() {
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-
-        // Converter a imagem para escala de cinza
-        const gray = cv.imread(canvas);
-        cv.cvtColor(gray, gray, cv.COLOR_RGBA2GRAY, 0);
-
-        // Binarizar a imagem
-        const binary = new cv.Mat();
-        cv.threshold(gray, binary, 127, 255, cv.THRESH_BINARY);
-
-        // Encontrar contornos na imagem binarizada
-        const contours = new cv.MatVector();
-        const hierarchy = new cv.Mat();
-        cv.findContours(binary, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE);
-
-        // Desenhar os contornos na imagem original
-        const color = new cv.Scalar(0, 255, 0);
-        for (let i = 0; i < contours.size(); ++i) {
-          cv.drawContours(gray, contours, i, color, 1, cv.LINE_8, hierarchy, 100);
-        }
-
-        // Mostrar a imagem com os contornos
-        cv.imshow('canvas', gray);
-
-        // Número de territórios identificados
-        console.log("Número de territórios identificados:", contours.size());
-
-        // Liberar memória
-        gray.delete();
-        binary.delete();
-        contours.delete();
-        hierarchy.delete();
-      }
-      img.src = imgUrl;
-    }
-
-    // Chamada da função para processar a imagem SVG
-    processarSVG('/IMAGE/Mundi.svg'); // Substitua pelo caminho correto para sua imagem
+    // Associar a função ao evento de carregamento do SVG
+    document.getElementById('svgObject').addEventListener('load', onSVGLoaded);
   </script>
 </body>
 </html>
