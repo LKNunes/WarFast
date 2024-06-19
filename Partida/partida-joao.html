@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Alasca e Mackenzie</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100vw; /* Definindo a largura total da página em relação à largura do viewport */
+      height: 100vh; /* Definindo a altura total da página em relação à altura do viewport */
+    }
+    .image-container {
+      position: absolute;
+      height: auto; /* Altura automática para manter a proporção */
+      cursor: pointer; /* Cursor de ponteiro */
+    }
+    #alaska-container {
+      top: 2vh; /* 2% da altura do viewport */
+      right: 2vw; /* 2% da largura do viewport */
+      width: 30vw; /* 30% da largura do viewport */
+    }
+    #mackenzie-container {
+      top: 2vh; /* 2% da altura do viewport */
+      right: 34vw; /* 34% da largura do viewport */
+      width: 30vw; /* 30% da largura do viewport */
+    }
+    img {
+      width: 100%; /* A imagem ocupa 100% da largura do contêiner */
+      height: auto; /* Altura automática para manter a proporção */
+    }
+  </style>
+</head>
+<body>
+  <div id="alaska-container" class="image-container" onclick="selectElement('alaska-container')">
+    <img src="/IMAGE/Alaska.svg" alt="Alasca">
+  </div>
+  <div id="mackenzie-container" class="image-container" onclick="selectElement('mackenzie-container')">
+    <img src="/IMAGE/Mackenzie.svg" alt="Mackenzie">
+  </div>
+
+  <div id="coordinates">Posição: (0, 0)</div>
+
+  <script>
+    var selectedElement = null;
+    var initialPosition = { x: 0, y: 0 };
+    var offsetX = 0;
+    var offsetY = 0;
+
+    function selectElement(elementId) {
+      var element = document.getElementById(elementId);
+
+      if (selectedElement === element) {
+        // Se o mesmo elemento já estiver selecionado, desmarque-o
+        selectedElement.style.border = "none";
+        selectedElement = null;
+      } else {
+        // Se um novo elemento for selecionado, desmarque o elemento anterior (se houver)
+        if (selectedElement) {
+          selectedElement.style.border = "none";
+        }
+        // Marque o novo elemento selecionado e armazene sua posição atual
+        selectedElement = element;
+        selectedElement.style.border = "2px solid red"; // Adiciona uma borda vermelha ao elemento selecionado
+
+        // Armazene a posição inicial do elemento
+        initialPosition = {
+          x: parseFloat(selectedElement.style.left),
+          y: parseFloat(selectedElement.style.top)
+        };
+
+        // Define o deslocamento do mouse em relação à posição inicial do elemento
+        var rect = selectedElement.getBoundingClientRect();
+        offsetX = event.clientX - rect.left;
+        offsetY = event.clientY - rect.top;
+      }
+    }
+
+    document.addEventListener("click", function(event) {
+      if (selectedElement) {
+        // Se houver um elemento selecionado, mova-o para a posição do clique
+        var parentRect = selectedElement.parentElement.getBoundingClientRect();
+        var clientX = event.clientX;
+        var clientY = event.clientY;
+
+        // Limitar o movimento dentro da janela do navegador
+        offsetX = Math.max(0, Math.min(parentRect.width - selectedElement.offsetWidth, offsetX));
+        offsetY = Math.max(0, Math.min(parentRect.height - selectedElement.offsetHeight, offsetY));
+
+        selectedElement.style.left = (clientX - offsetX) + "px";
+        selectedElement.style.top = (clientY - offsetY) + "px";
+
+        var coordinatesElement = document.getElementById("coordinates");
+        coordinatesElement.textContent = "Posição: (" + (clientX - offsetX) + ", " + (clientY - offsetY) + ")";
+      }
+    });
+  </script>
+</body>
+</html>
