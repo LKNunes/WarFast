@@ -17,11 +17,66 @@
       console.log("Número de territórios identificados:", territorios.length);
     }
 
+    function identificarTerritoriosPretos() {
   const svgDoc = document.getElementById('svgObject').contentDocument;
-  const territoriosPretos = svgDoc.querySelectorAll('path[fill="black"]'); // Assumindo que os territórios têm cor preta
+  const svgWidth = svgDoc.documentElement.clientWidth;
+  const svgHeight = svgDoc.documentElement.clientHeight;
 
-  // Exibir o número de territórios identificados
-  console.log("Número de territórios identificados:", territoriosPretos.length);
+  // Criar um canvas temporário para desenhar o SVG
+  const canvas = document.createElement('canvas');
+  canvas.width = svgWidth;
+  canvas.height = svgHeight;
+  const ctx = canvas.getContext('2d');
+
+  // Desenhar o SVG no canvas
+  const svgData = new XMLSerializer().serializeToString(svgDoc);
+  const img = new Image();
+  img.onload = function() {
+    ctx.drawImage(img, 0, 0);
+
+    // Obter os pixels do canvas
+    const imageData = ctx.getImageData(0, 0, svgWidth, svgHeight);
+    const data = imageData.data;
+
+    // Contar os aglomerados de cor preta
+    let territoriosCount = 0;
+    let visited = new Set();
+    for (let i = 0; i < data.length; i += 4) {
+      const x = (i / 4) % svgWidth;
+      const y = Math.floor((i / 4) / svgWidth);
+
+      // Verificar se o pixel é preto e não foi visitado
+      if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0 && !visited.has(`${x},${y}`)) {
+        territoriosCount++;
+        floodFill(x, y, svgWidth, svgHeight, data, visited);
+      }
+    }
+
+    // Exibir o número de territórios identificados
+    console.log("Número de territórios identificados:", territoriosCount);
+  };
+  img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+}
+
+// Função para preencher recursivamente os pixels vizinhos
+function floodFill(x, y, width, height, data, visited) {
+  if (x < 0 || y < 0 || x >= width || y >= height) {
+    return;
+  }
+  const index = (y * width + x) * 4;
+  if (data[index] !== 0 || data[index + 1] !== 0 || data[index + 2] !== 0) {
+    return;
+  }
+  if (visited.has(`${x},${y}`)) {
+    return;
+  }
+  visited.add(`${x},${y}`);
+  floodFill(x + 1, y, width, height, data, visited);
+  floodFill(x - 1, y, width, height, data, visited);
+  floodFill(x, y + 1, width, height, data, visited);
+  floodFill(x, y - 1, width, height, data, visited);
+}
+
 
     // Associar a função ao evento de carregamento do SVG
     document.getElementById('svgObject').addEventListener('load', onSVGLoaded);
