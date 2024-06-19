@@ -8,15 +8,10 @@
       margin: 0;
       padding: 0;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       background-color: #f0f0f0;
-    }
-    .image-container {
-      position: relative;
-      cursor: pointer;
     }
     #map {
       position: relative;
@@ -26,20 +21,12 @@
       font-size: 20px;
       font-family: Arial, sans-serif;
     }
-    #canvas {
-      border: 1px solid #000;
-    }
   </style>
 </head>
 <body>
-  <div id="mapa" class="image-container" onclick="selectElement('mapa-container')">
-    <img src="/mnt/data/image.png" alt="mapa" id="map-image">
-  </div>
-  
   <div id="map">
     <canvas id="canvas"></canvas>
   </div>
-  
   <div id="territory-name">Clique em um território para identificar</div>
 
   <script>
@@ -53,7 +40,7 @@
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     const img = new Image();
-    img.src = '/IMAGE/Mundi.svg';  // Substitua pelo caminho correto da imagem
+    img.src = '/IMAGE/mundi.svg';  // Substitua pelo caminho correto da imagem
 
     img.onload = function() {
       canvas.width = img.width;
@@ -74,11 +61,6 @@
         document.getElementById("territory-name").textContent = "Território não identificado";
       }
     });
-
-    function selectElement(id) {
-      const element = document.getElementById(id);
-      element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-    }
   </script>
 </body>
 </html>
