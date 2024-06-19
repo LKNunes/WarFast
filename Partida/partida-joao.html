@@ -63,8 +63,8 @@ territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + 
   territorio.addEventListener('mouseleave', function() {
     this.setAttribute('transform', ''); // Restaurar o tamanho original
   });
-
-  function imprimirIDdoPath() {
+}  
+function imprimirIDdoPath() {
   const svgObject = document.getElementById('svgObject');
   
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
@@ -82,7 +82,6 @@ territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + 
 
 // Chamar a função para imprimir os IDs dos paths
 imprimirIDdoPath();
-}  
   </script>
 </body>
 </html>
