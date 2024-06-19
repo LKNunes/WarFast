@@ -56,13 +56,32 @@ function alterarTamanhoTerritorio(territorio) {
     const centroY = territorio.getBBox().y + territorio.getBBox().height ;
     const deslocamentoX = centroX - centroX * 1.05;
     const deslocamentoY = centroY - centroY * 1.05;
-    console.log (territorio);
+    imprimirIDdoPath();
 
 territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
   territorio.addEventListener('mouseleave', function() {
     this.setAttribute('transform', ''); // Restaurar o tamanho original
   });
+
+  function imprimirIDdoPath() {
+  const svgObject = document.getElementById('svgObject');
+  
+  // Adicionar um ouvinte de evento para o carregamento do documento SVG
+  svgObject.addEventListener('load', function() {
+    const svgDoc = svgObject.contentDocument;
+    const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
+
+    // Iterar sobre os elementos <path> e imprimir o ID de cada um
+    for (let i = 0; i < paths.length; i++) {
+      const id = paths[i].getAttribute('id');
+      console.log('ID do path:', id);
+    }
+  });
+}
+
+// Chamar a função para imprimir os IDs dos paths
+
 }  
   </script>
 </body>
