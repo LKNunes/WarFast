@@ -14,8 +14,8 @@
     function identificarTerritorios() {
       const svgObject = document.getElementById('svgObject');
 
-      // Verificar se o documento SVG foi carregado corretamente
-      if (svgObject.contentDocument && svgObject.contentDocument.documentElement) {
+      // Adicionar um ouvinte de evento para o carregamento do documento SVG
+      svgObject.addEventListener('load', function() {
         const svgDoc = svgObject.contentDocument;
         const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
 
@@ -33,9 +33,7 @@
           // Exibir o ID atribuído para teste
           console.log(`Território ${i + 1} identificado com ID: ${territorioID}`);
         }
-      } else {
-        console.log("O documento SVG não foi carregado corretamente.");
-      }
+      });
     }
 
     // Chamar a função para identificar e gerar IDs para os territórios
