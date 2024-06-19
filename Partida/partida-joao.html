@@ -70,12 +70,13 @@ function atribuirIDsNumericos() {
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
   svgObject.addEventListener('load', function() {
     const svgDoc = svgObject.contentDocument;
-    const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
+    const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
 
     // Iterar sobre os elementos <path> e atribuir IDs numéricos
-    for (let i = 0; i < paths.length; i++) {
-      paths[i].setAttribute('id', 'territorio' + (i + 1));
-    }
+    paths.forEach((path, index) => {
+      path.setAttribute('id', 'territorio' + (index + 1));
+      console.log('ID do path:', path.getAttribute('id'));
+    });
 
     console.log('IDs numéricos atribuídos aos elementos <path>.');
   });
