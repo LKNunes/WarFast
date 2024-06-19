@@ -1,77 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mapa Mundi com Territórios</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-    }
-    #mapa {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .territory {
-      position: absolute;
-      border: 1px solid red; /* Apenas para visualização, pode ser removido */
-      pointer-events: none; /* Para que os cliques atravessem a borda */
-    }
-  </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identificar Territórios</title>
 </head>
 <body>
-  <div id="mapa">
-    <img id="mapImage" src="/IMAGE/Mundi.svg" alt="mapa">
-  </div>
+  <h1>Identificar Territórios</h1>
+  <object id="svgObject" type="image/svg+xml" data="Mundi.svg"></object>
+
   <script>
-    let img;
+    // Função para lidar com o carregamento do SVG
+    function onSVGLoaded(evt) {
+      const svgDoc = evt.target.contentDocument;
+      const svg = svgDoc.getElementsByTagName('svg')[0];
 
-    function preload() {
-      img = loadImage('/IMAGE/Mundi.svg');
+      // Suponha que você tenha elementos SVG representando territórios com classes específicas, como 'territorio'
+      const territorios = svgDoc.querySelectorAll('.territorio');
+      console.log("Número de territórios identificados:", territorios.length);
+      
+      // Aqui você pode prosseguir com qualquer manipulação ou análise dos elementos SVG identificados
     }
 
-    function setup() {
-      noCanvas();
-      img.loadPixels();
-
-      let territories = [];
-
-      // Detectar formas pretas
-      for (let y = 0; y < img.height; y++) {
-        for (let x = 0; x < img.width; x++) {
-          let index = (x + y * img.width) * 4;
-          let r = img.pixels[index];
-          let g = img.pixels[index + 1];
-          let b = img.ppixels[index + 2];
-
-          if (r == 0 && g == 0 && b == 0) {
-            territories.push({ x, y });
-          }
-        }
-      }
-
-      // Criar divs para territórios
-      territories.forEach((territory, index) => {
-        const div = document.createElement("div");
-        div.id = "territory-" + (index + 1);
-        div.className = "territory";
-        div.style.left = territory.x + "px";
-        div.style.top = territory.y + "px";
-        div.style.width = "5px";
-        div.style.height = "5px";
-        div.setAttribute("title", "Território " + (index + 1));
-
-        div.onclick = () => alert(`Território: ${index + 1}`);
-
-        document.body.appendChild(div);
-      });
-    }
+    // Associar a função ao evento de carregamento do SVG
+    document.getElementById('svgObject').addEventListener('load', onSVGLoaded);
   </script>
 </body>
 </html>
