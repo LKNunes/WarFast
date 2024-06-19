@@ -40,10 +40,10 @@ function alterarTamanhoTerritorio(territorio) {
 
     const centroX = territorio.getBBox().x + territorio.getBBox().width ;
     const centroY = territorio.getBBox().y + territorio.getBBox().height ;
-    const deslocamentoX = centroX - centroX * 0.5;
-    const deslocamentoY = centroY - centroY * 0.5;
+    const deslocamentoX = centroX - centroX * 1.05;
+    const deslocamentoY = centroY - centroY * 1.05;
 
-territorio.setAttribute('transform', 'scale(0.5) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
+territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
   territorio.addEventListener('mouseleave', function() {
     this.setAttribute('transform', ''); // Restaurar o tamanho original
