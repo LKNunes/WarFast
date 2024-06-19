@@ -28,6 +28,7 @@
     .territory {
       position: absolute;
       border: 1px solid red; /* Apenas para visualização, pode ser removido */
+      pointer-events: none; /* Para que os cliques atravessem a borda */
     }
   </style>
 </head>
@@ -37,18 +38,18 @@
   </div>
   <script>
     const territories = [
-      { id: "alaska", name: "Alasca", x: 10, y: 10, width: 50, height: 50 },
-      { id: "canada", name: "Canadá", x: 60, y: 10, width: 50, height: 50 },
-      { id: "usa", name: "Estados Unidos", x: 110, y: 10, width: 50, height: 50 },
-      { id: "mexico", name: "México", x: 160, y: 10, width: 50, height: 50 },
-      { id: "brazil", name: "Brasil", x: 210, y: 10, width: 50, height: 50 },
-      { id: "argentina", name: "Argentina", x: 260, y: 10, width: 50, height: 50 },
-      { id: "uk", name: "Reino Unido", x: 310, y: 10, width: 50, height: 50 },
-      { id: "france", name: "França", x: 360, y: 10, width: 50, height: 50 },
-      { id: "germany", name: "Alemanha", x: 410, y: 10, width: 50, height: 50 },
-      { id: "china", name: "China", x: 460, y: 10, width: 50, height: 50 },
-      { id: "japan", name: "Japão", x: 510, y: 10, width: 50, height: 50 },
-      { id: "australia", name: "Austrália", x: 560, y: 10, width: 50, height: 50 }
+      { id: "alaska", name: "Alasca", x: 50, y: 60, width: 30, height: 20 },
+      { id: "canada", name: "Canadá", x: 90, y: 60, width: 70, height: 50 },
+      { id: "usa", name: "Estados Unidos", x: 180, y: 100, width: 70, height: 50 },
+      { id: "mexico", name: "México", x: 240, y: 160, width: 40, height: 30 },
+      { id: "brazil", name: "Brasil", x: 320, y: 300, width: 70, height: 100 },
+      { id: "argentina", name: "Argentina", x: 360, y: 450, width: 50, height: 80 },
+      { id: "uk", name: "Reino Unido", x: 520, y: 80, width: 30, height: 20 },
+      { id: "france", name: "França", x: 540, y: 100, width: 40, height: 30 },
+      { id: "germany", name: "Alemanha", x: 580, y: 100, width: 40, height: 30 },
+      { id: "china", name: "China", x: 700, y: 200, width: 70, height: 50 },
+      { id: "japan", name: "Japão", x: 780, y: 210, width: 30, height: 30 },
+      { id: "australia", name: "Austrália", x: 820, y: 500, width: 70, height: 50 }
     ];
 
     territories.forEach(territory => {
