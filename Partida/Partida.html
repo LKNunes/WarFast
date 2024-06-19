@@ -1,99 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Alasca e Mackenzie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centralizar SVG</title>
   <style>
     body, html {
+      height: 100%;
       margin: 0;
-      padding: 0;
-      width: 100vw; /* Definindo a largura total da página em relação à largura do viewport */
-      height: 100vh; /* Definindo a altura total da página em relação à altura do viewport */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(60, 60, 255);
     }
-    .image-container {
-      position: absolute;
-      height: auto; /* Altura automática para manter a proporção */
-      cursor: pointer; /* Cursor de ponteiro */
-    }
-    #alaska-container {
-      top: 2vh; /* 2% da altura do viewport */
-      right: 2vw; /* 2% da largura do viewport */
-      width: 30vw; /* 30% da largura do viewport */
-    }
-    #mackenzie-container {
-      top: 2vh; /* 2% da altura do viewport */
-      right: 34vw; /* 34% da largura do viewport */
-      width: 30vw; /* 30% da largura do viewport */
-    }
-    img {
-      width: 100%; /* A imagem ocupa 100% da largura do contêiner */
-      height: auto; /* Altura automática para manter a proporção */
+
+    #svgObject {
+      max-width: 100%;
+      max-height: 100%;
     }
   </style>
 </head>
 <body>
-  <div id="alaska-container" class="image-container" onclick="selectElement('alaska-container')">
-    <img src="/IMAGE/Alaska.svg" alt="Alasca">
-  </div>
-  <div id="mackenzie-container" class="image-container" onclick="selectElement('mackenzie-container')">
-    <img src="/IMAGE/Mackenzie.svg" alt="Mackenzie">
-  </div>
-
-  <div id="coordinates">Posição: (0, 0)</div>
+  <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
 
   <script>
-    var selectedElement = null;
-    var initialPosition = { x: 0, y: 0 };
-    var offsetX = 0;
-    var offsetY = 0;
+// Função para identificar e destacar territórios
+function identificarTerritorios() {
+  const svgObject = document.getElementById('svgObject');
 
-    function selectElement(elementId) {
-      var element = document.getElementById(elementId);
+  // Adicionar um ouvinte de evento para o carregamento do documento SVG
+  svgObject.addEventListener('load', function() {
+    const svgDoc = svgObject.contentDocument;
+    const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
 
-      if (selectedElement === element) {
-        // Se o mesmo elemento já estiver selecionado, desmarque-o
-        selectedElement.style.border = "none";
-        selectedElement = null;
-      } else {
-        // Se um novo elemento for selecionado, desmarque o elemento anterior (se houver)
-        if (selectedElement) {
-          selectedElement.style.border = "none";
-        }
-        // Marque o novo elemento selecionado e armazene sua posição atual
-        selectedElement = element;
-        selectedElement.style.border = "2px solid red"; // Adiciona uma borda vermelha ao elemento selecionado
-
-        // Armazene a posição inicial do elemento
-        initialPosition = {
-          x: parseFloat(selectedElement.style.left),
-          y: parseFloat(selectedElement.style.top)
-        };
-
-        // Define o deslocamento do mouse em relação à posição inicial do elemento
-        var rect = selectedElement.getBoundingClientRect();
-        offsetX = event.clientX - rect.left;
-        offsetY = event.clientY - rect.top;
-      }
+    // Iterar sobre os elementos <path> e atribuir uma borda vermelha
+    for (let i = 0; i < paths.length; i++) {
+      // Adicionar uma borda vermelha
+      paths[i].style.stroke = 'white';
+      paths[i].style.strokeWidth = '0.5';
+      
+      // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
+      alterarTamanhoTerritorio(paths[i]);
     }
+  });
+}
 
-    document.addEventListener("click", function(event) {
-      if (selectedElement) {
-        // Se houver um elemento selecionado, mova-o para a posição do clique
-        var parentRect = selectedElement.parentElement.getBoundingClientRect();
-        var clientX = event.clientX;
-        var clientY = event.clientY;
+// Chamar a função para identificar e destacar territórios
+identificarTerritorios();
 
-        // Limitar o movimento dentro da janela do navegador
-        offsetX = Math.max(0, Math.min(parentRect.width - selectedElement.offsetWidth, offsetX));
-        offsetY = Math.max(0, Math.min(parentRect.height - selectedElement.offsetHeight, offsetY));
+// Função para alterar o tamanho de um território ao passar o mouse sobre ele
+function alterarTamanhoTerritorio(territorio) {
+  territorio.addEventListener('mouseenter', function() {
 
-        selectedElement.style.left = (clientX - offsetX) + "px";
-        selectedElement.style.top = (clientY - offsetY) + "px";
+    const centroX = territorio.getBBox().x + territorio.getBBox().width ;
+    const centroY = territorio.getBBox().y + territorio.getBBox().height ;
+    const deslocamentoX = centroX - centroX * 1.05;
+    const deslocamentoY = centroY - centroY * 1.05;
+    
 
-        var coordinatesElement = document.getElementById("coordinates");
-        coordinatesElement.textContent = "Posição: (" + (clientX - offsetX) + ", " + (clientY - offsetY) + ")";
-      }
+territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
+  });
+  territorio.addEventListener('mouseleave', function() {
+    this.setAttribute('transform', ''); // Restaurar o tamanho original
+  });
+}  
+function atribuirIDsNumericos() {
+  const svgObject = document.getElementById('svgObject');
+
+  // Adicionar um ouvinte de evento para o carregamento do documento SVG
+  svgObject.addEventListener('load', function() {
+    const svgDoc = svgObject.contentDocument;
+    const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
+
+    // Iterar sobre os elementos <path> e atribuir IDs numéricos
+    paths.forEach((path, index) => {
+      path.setAttribute('id', 'territorio' + (index + 1));
+      console.log('ID do path:', path.getAttribute('id'));
     });
+
+    console.log('IDs numéricos atribuídos aos elementos <path>.');
+  });
+}
+
+// Chamar a função para atribuir IDs numéricos aos paths
+atribuirIDsNumericos();
+
   </script>
 </body>
 </html>
