@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Identificar Territórios Pretos</title>
+  <title>Identificar Bordas</title>
 </head>
 <body>
-  <h1>Identificar Territórios Pretos</h1>
+  <h1>Identificar Bordas</h1>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
 
   <script>
-    // Função para identificar territórios pretos no SVG
-    function identificarTerritoriosPretos() {
+    // Função para identificar bordas usando detecção de bordas Canny
+    function identificarBordas() {
       const svgDoc = document.getElementById('svgObject').contentDocument;
       const svgWidth = svgDoc.documentElement.clientWidth;
       const svgHeight = svgDoc.documentElement.clientHeight;
@@ -28,52 +28,30 @@
       img.onload = function() {
         ctx.drawImage(img, 0, 0);
 
-        // Obter os pixels do canvas
+        // Converter para escala de cinza
         const imageData = ctx.getImageData(0, 0, svgWidth, svgHeight);
-        const data = imageData.data;
-
-        // Contar os aglomerados de cor preta
-        let territoriosCount = 0;
-        let visited = new Set();
-        for (let i = 0; i < data.length; i += 4) {
-          const x = (i / 4) % svgWidth;
-          const y = Math.floor((i / 4) / svgWidth);
-
-          // Verificar se o pixel é preto e não foi visitado
-          if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0 && !visited.has(`${x},${y}`)) {
-            territoriosCount++;
-            floodFill(x, y, svgWidth, svgHeight, data, visited);
-            console.log("Pixel preto encontrado em x:", x, "y:", y);
-          }
+        const grayData = new Uint8ClampedArray(imageData.data.length / 4);
+        for (let i = 0; i < imageData.data.length; i += 4) {
+          const r = imageData.data[i];
+          const g = imageData.data[i + 1];
+          const b = imageData.data[i + 2];
+          const gray = 0.2126 * r + 0.7152 * g + 0.0722 * b; // Conversão para escala de cinza
+          grayData[i / 4] = gray;
         }
+        const grayImageData = new ImageData(grayData, svgWidth, svgHeight);
 
-        // Exibir o número de territórios identificados
-        console.log("Número de territórios identificados:", territoriosCount);
+        // Aplicar detecção de bordas Canny
+        const cannyData = cv.imread(grayImageData);
+        cv.cvtColor(cannyData, cannyData, cv.COLOR_RGBA2GRAY, 0);
+        cv.Canny(cannyData, cannyData, 50, 150, 3, false);
+        cv.imshow('canvas', cannyData);
+        cannyData.delete();
       };
       img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
     }
 
-    // Função para preencher recursivamente os pixels vizinhos
-    function floodFill(x, y, width, height, data, visited) {
-      if (x < 0 || y < 0 || x >= width || y >= height) {
-        return;
-      }
-      const index = (y * width + x) * 4;
-      if (data[index] !== 0 || data[index + 1] !== 0 || data[index + 2] !== 0) {
-        return;
-      }
-      if (visited.has(`${x},${y}`)) {
-        return;
-      }
-      visited.add(`${x},${y}`);
-      floodFill(x + 1, y, width, height, data, visited);
-      floodFill(x - 1, y, width, height, data, visited);
-      floodFill(x, y + 1, width, height, data, visited);
-      floodFill(x, y - 1, width, height, data, visited);
-    }
-
-    // Chamar a função para identificar territórios pretos
-    identificarTerritoriosPretos();
+    // Chamar a função para identificar bordas
+    identificarBordas();
   </script>
 </body>
 </html>
