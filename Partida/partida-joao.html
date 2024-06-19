@@ -10,20 +10,12 @@
       width: 100vw;
       height: 100vh;
     }
-    .image-container {
-      position: absolute;
-      height: auto;
-      cursor: pointer;
-    }
     #mapa {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-    }
-    img {
-      width: 100%;
-      height: auto;
     }
     .territory {
       position: absolute;
@@ -31,41 +23,55 @@
       pointer-events: none; /* Para que os cliques atravessem a borda */
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
-  <div id="mapa" class="image">
-    <img src="/IMAGE/Mundi.svg" alt="mapa">
+  <div id="mapa">
+    <img id="mapImage" src="/IMAGE/Mundi.svg" alt="mapa">
   </div>
   <script>
-    const territories = [
-      { id: "alaska", name: "Alasca", x: 50, y: 60, width: 30, height: 20 },
-      { id: "canada", name: "Canadá", x: 90, y: 60, width: 70, height: 50 },
-      { id: "usa", name: "Estados Unidos", x: 180, y: 100, width: 70, height: 50 },
-      { id: "mexico", name: "México", x: 240, y: 160, width: 40, height: 30 },
-      { id: "brazil", name: "Brasil", x: 320, y: 300, width: 70, height: 100 },
-      { id: "argentina", name: "Argentina", x: 360, y: 450, width: 50, height: 80 },
-      { id: "uk", name: "Reino Unido", x: 520, y: 80, width: 30, height: 20 },
-      { id: "france", name: "França", x: 540, y: 100, width: 40, height: 30 },
-      { id: "germany", name: "Alemanha", x: 580, y: 100, width: 40, height: 30 },
-      { id: "china", name: "China", x: 700, y: 200, width: 70, height: 50 },
-      { id: "japan", name: "Japão", x: 780, y: 210, width: 30, height: 30 },
-      { id: "australia", name: "Austrália", x: 820, y: 500, width: 70, height: 50 }
-    ];
+    let img;
 
-    territories.forEach(territory => {
-      const div = document.createElement("div");
-      div.id = territory.id;
-      div.className = "territory";
-      div.style.left = territory.x + "px";
-      div.style.top = territory.y + "px";
-      div.style.width = territory.width + "px";
-      div.style.height = territory.height + "px";
-      div.setAttribute("title", territory.name);
+    function preload() {
+      img = loadImage('/IMAGE/Mundi.svg');
+    }
 
-      div.onclick = () => alert(`Território: ${territory.name}`);
+    function setup() {
+      noCanvas();
+      img.loadPixels();
 
-      document.body.appendChild(div);
-    });
+      let territories = [];
+
+      // Detectar formas pretas
+      for (let y = 0; y < img.height; y++) {
+        for (let x = 0; x < img.width; x++) {
+          let index = (x + y * img.width) * 4;
+          let r = img.pixels[index];
+          let g = img.pixels[index + 1];
+          let b = img.ppixels[index + 2];
+
+          if (r == 0 && g == 0 && b == 0) {
+            territories.push({ x, y });
+          }
+        }
+      }
+
+      // Criar divs para territórios
+      territories.forEach((territory, index) => {
+        const div = document.createElement("div");
+        div.id = "territory-" + (index + 1);
+        div.className = "territory";
+        div.style.left = territory.x + "px";
+        div.style.top = territory.y + "px";
+        div.style.width = "5px";
+        div.style.height = "5px";
+        div.setAttribute("title", "Território " + (index + 1));
+
+        div.onclick = () => alert(`Território: ${index + 1}`);
+
+        document.body.appendChild(div);
+      });
+    }
   </script>
 </body>
 </html>
