@@ -120,7 +120,6 @@ async function comecarPartida(joinExistingGame = false) {
               
           })
           
-          
       });
 
       
