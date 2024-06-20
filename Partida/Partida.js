@@ -25,7 +25,7 @@ for (const territoryObject of territoryData) {
 
 
   
- function playersCores(){
+ async function playersCores(){
   try {
     const response = await fetch('https://dbwar.onrender.com/partida', {
       method: 'GET',
