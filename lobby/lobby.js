@@ -142,6 +142,7 @@ async function dadoslobby(){
         const lobbyName = LobbyExistente.lobbyName;
         const playerSlots = LobbyExistente.playerSlots;
 
+        return;
           // Exibir as informações no console (ou usar conforme necessário)
 
     } catch (error) {
