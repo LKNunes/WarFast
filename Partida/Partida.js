@@ -48,7 +48,7 @@ for (const territoryObject of territoryData) {
     // Embaralhar as cores
     embaralharArray(cores);
   }
-async function playersCores(){
+ function playersCores(){
   try {
     const response = await fetch('https://dbwar.onrender.com/partida', {
       method: 'GET',
