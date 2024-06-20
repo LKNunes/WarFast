@@ -20,84 +20,114 @@
     }
   </style>
 </head>
-
- <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
-
-
+<body>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
   
+  <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
+
   <script>
-// Função para identificar e destacar territórios
-function identificarTerritorios() {
-  const svgObject = document.getElementById('svgObject');
+    // Função para identificar e destacar territórios
+    function identificarTerritorios() {
+      const svgObject = document.getElementById('svgObject');
 
-  // Adicionar um ouvinte de evento para o carregamento do documento SVG
-  svgObject.addEventListener('load', function() {
-    const svgDoc = svgObject.contentDocument;
-    const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
+      // Adicionar um ouvinte de evento para o carregamento do documento SVG
+      svgObject.addEventListener('load', function() {
+        const svgDoc = svgObject.contentDocument;
+        const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
 
-    // Iterar sobre os elementos <path> e atribuir uma borda vermelha
-    for (let i = 0; i < paths.length; i++) {
-      // Adicionar uma borda vermelha
-      paths[i].style.stroke = 'white';
-      paths[i].style.strokeWidth = '0.5';
-      
-      // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
-      alterarTamanhoTerritorio(paths[i]);
+        // Iterar sobre os elementos <path> e atribuir uma borda vermelha
+        for (let i = 0; i < paths.length; i++) {
+          // Adicionar uma borda vermelha
+          paths[i].style.stroke = 'white';
+          paths[i].style.strokeWidth = '0.5';
+          
+          // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
+          alterarTamanhoTerritorio(paths[i]);
+        }
+      });
     }
-  });
-}
 
-// Chamar a função para identificar e destacar territórios
-identificarTerritorios();
+    // Chamar a função para identificar e destacar territórios
+    identificarTerritorios();
 
-// Função para alterar o tamanho de um território ao passar o mouse sobre ele
-function alterarTamanhoTerritorio(territorio) {
-  territorio.addEventListener('mouseenter', function() {
+    // Função para alterar o tamanho de um território ao passar o mouse sobre ele
+    function alterarTamanhoTerritorio(territorio) {
+      territorio.addEventListener('mouseenter', function() {
+        const centroX = territorio.getBBox().x + territorio.getBBox().width / 2;
+        const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
+        const deslocamentoX = centroX - centroX * 1.05;
+        const deslocamentoY = centroY - centroY * 1.05;
+        
+        territorio.setAttribute('transform', 'translate(' + (-deslocamentoX) + ',' + (-deslocamentoY) + ') scale(1.05)');
+      });
+      territorio.addEventListener('mouseleave', function() {
+        this.setAttribute('transform', ''); // Restaurar o tamanho original
+      });
+    }  
 
-    const centroX = territorio.getBBox().x + territorio.getBBox().width ;
-    const centroY = territorio.getBBox().y + territorio.getBBox().height ;
-    const deslocamentoX = centroX - centroX * 1.05;
-    const deslocamentoY = centroY - centroY * 1.05;
-    
+    async function atribuirIDsNumericos() {
+      const svgObject = document.getElementById('svgObject');
 
-territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
-  });
-  territorio.addEventListener('mouseleave', function() {
-    this.setAttribute('transform', ''); // Restaurar o tamanho original
-  });
-}  
+      // Adicionar um ouvinte de evento para o carregamento do documento SVG
+      svgObject.addEventListener('load', function() {
+        const svgDoc = svgObject.contentDocument;
+        const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
 
-async function atribuirIDsNumericos() {
-  const svgObject = document.getElementById('svgObject');
+        // Iterar sobre os elementos <path> e atribuir IDs numéricos
+        paths.forEach((path, index) => {
+          path.setAttribute('id', 'territorio' + (index + 1));
+          console.log('ID do path:', path.getAttribute('id'));
+        });
 
-  // Adicionar um ouvinte de evento para o carregamento do documento SVG
-  svgObject.addEventListener('load', function() {
-    const svgDoc = svgObject.contentDocument;
-    const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
+        console.log('IDs numéricos atribuídos aos elementos <path>.');
+      });
+    }
 
-    // Iterar sobre os elementos <path> e atribuir IDs numéricos
-    paths.forEach((path, index) => {
-      path.setAttribute('id', 'territorio' + (index + 1));
-      console.log('ID do path:', path.getAttribute('id'));
-    });
+    // Chamar a função para atribuir IDs numéricos aos paths
+    atribuirIDsNumericos();
 
-    console.log('IDs numéricos atribuídos aos elementos <path>.');
-  });
-}
+    // Função para embaralhar um array
+    function embaralharArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
 
-// Chamar a função para atribuir IDs numéricos aos paths
-atribuirIDsNumericos();
-let Cores = [];
+    // Função para atribuir cores aos jogadores
+    function atribuirCores() {
+      const cores = [
+        'rgb(0, 0, 255)', // Azul
+        'rgb(0, 255, 0)', // Verde
+        'rgb(255, 255, 0)', // Amarelo
+        'rgb(255, 0, 0)', // Vermelho
+        'rgb(255, 0, 255)', // Rosa
+        'rgb(255, 165, 0)', // Laranja
+        'rgb(255, 255, 255)', // Branco
+        'rgb(128, 0, 128)'  // Roxo
+      ];
+      embaralharArray(cores);
+      return cores;
+    }
 
-const playersCor = playersCores();
-Cores = atribuirCores();
+    // Função principal para carregar jogadores e atribuir cores
+    async function main() {
+      try {
+        const playersCor = await playersCores();
+        if (playersCor) {
+          const cores = atribuirCores();
+          console.log(cores);
+          console.log(playersCor);
+        } else {
+          console.error('Erro ao obter os dados dos jogadores.');
+        }
+      } catch (error) {
+        console.error('Erro ao executar a função principal:', error);
+      }
+    }
 
-console.log(Cores);
-console.log(playersCor);
-
-  </script> 
-
+    // Chamar a função principal
+    main();
+  </script>
 </body>
-  
 </html>
