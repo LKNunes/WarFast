@@ -63,11 +63,11 @@ console.log("DADOS:");
   Jogadores[i] = LobbyDados.playerSlots[i]
 
 }
-  const NumJogadores=0;
+  let NumJogadores=0;
 
   for(let i=0;i<8;i++){
   if (Jogadores[i] == ''){
-    NumJogadores=NumJogadores+1;
+    NumJogadores++;
   }  
   }
   console.log("Numero de Jogadores"+NumJogadores);
