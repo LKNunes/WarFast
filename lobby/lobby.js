@@ -54,9 +54,9 @@ async function comecarPartida(joinExistingGame = false) {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
-  Dados = dadoslobby();
+  const LobbyDados = await dadoslobby(); // Aguarda a resolução da Promise e obtém os dados do lobby
   console.log("DADOS:");
-  console.log(Dados);
+  console.log(LobbyDados);
 
 
   if (joinExistingGame) {
@@ -84,10 +84,10 @@ async function comecarPartida(joinExistingGame = false) {
           },
           body: JSON.stringify({
               id: lobbyId, // Obter valor do campo de entrada
-              leaderId: Dados.leaderId, // Criar validação de somente Admin criar partida
+              leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
               
-              playerSlots: Dados.playerSlots
+              playerSlots: LobbyDados.playerSlots
               
           })
           
