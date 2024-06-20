@@ -133,7 +133,7 @@ async function dadospartida() {
   }
 }
 
-function GravrCorPartida(){
+async function GravrCorPartida(){
   try {
     const response = await fetch('https://dbwar.onrender.com/partida', {
         method: 'POST',
