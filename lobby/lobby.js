@@ -67,7 +67,7 @@ console.log("DADOS:");
 
   for(let i=0;i<8;i++){
   if (Jogadores[i] == ''){
-    NumJogadores++;
+    NumJogadores=NumJogadores+1;
   }  
   }
   console.log("Numero de Jogadores"+NumJogadores);
