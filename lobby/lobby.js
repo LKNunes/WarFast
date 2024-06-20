@@ -66,7 +66,7 @@ console.log("DADOS:");
   let NumJogadores=0;
 
   for(let i=0;i<8;i++){
-  if (Jogadores[i] == ''){
+  if (Jogadores[i] != ''){
     NumJogadores++;
   }  
   }
