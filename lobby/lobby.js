@@ -72,7 +72,9 @@ async function comecarPartida(joinExistingGame = false) {
     Jogadores.push(jogador);
   }
   
-  console.log("Jogadores:");
+  LobbyDados.playerSlots = Jogadores;
+
+  console.log("Jogadores2:");
   console.log(Jogadores);
 
   for(let i=0;i<8;i++){
