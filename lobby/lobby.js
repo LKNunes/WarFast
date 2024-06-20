@@ -71,7 +71,7 @@ async function comecarPartida(joinExistingGame = false) {
     // Adiciona o jogador ao array Jogadores
     Jogadores.push(jogador);
   }
-  
+
   LobbyDados.playerSlots = Jogadores;
 
   console.log("Jogadores2:");
@@ -88,8 +88,6 @@ async function comecarPartida(joinExistingGame = false) {
   }  
   }
   console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de jogadores
-
-
 
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
@@ -136,7 +134,7 @@ async function comecarPartida(joinExistingGame = false) {
       // $('#cadastroModal').modal('hide');
 
       // Redirecionar para a página do lobby com o ID na URL
-      //window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
+      window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
       console.log("Partida Criada...")
   } catch (error) {
       console.error('Erro ao criar partida:', error);
