@@ -21,11 +21,14 @@ for (const territoryObject of territoryData) {
 } 
   
 // Obtém o ID do lobby da URL
-const urlParams = new URLSearchParams(window.location.search);
-const lobbyId = urlParams.get('id');
+
 
 async function playersCores() {
   try {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const lobbyId = urlParams.get('id');
+
     const response = await fetch('https://dbwar.onrender.com/partida', {
       method: 'GET',
     });
