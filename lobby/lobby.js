@@ -54,6 +54,7 @@ async function comecarPartida(joinExistingGame = false) {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
+  dadoslobby();
 
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
@@ -84,27 +85,13 @@ async function comecarPartida(joinExistingGame = false) {
               lobbyName: `Partida de ${nomeUsuario}`,
               
               playerSlots: ['', '', '', '', '', '', '', '']
-
-              //teste
-
-
-
-              //teste
               
           })
           
+          
       });
 
-      const id = LobbyExistente.id;
-      const leaderId = LobbyExistente.leaderId;
-      const lobbyName = LobbyExistente.lobbyName;
-      const playerSlots = LobbyExistente.playerSlots;
-
-      console.log('ID:', id);
-      console.log('Líder:', leaderId);
-      console.log('Nome do Lobby:', lobbyName);
-      console.log('Jogadores:', playerSlots);
-
+      
       if (!response.ok) {
           throw new Error('Erro ao criar lobby');
       }
@@ -147,6 +134,17 @@ async function dadoslobby(){
 
         const Lobs = await response.json();
         const LobbyExistente = Lobs.find(u => u.lobbyId === lobbyId);
+
+        const id = LobbyExistente.id;
+          const leaderId = LobbyExistente.leaderId;
+          const lobbyName = LobbyExistente.lobbyName;
+          const playerSlots = LobbyExistente.playerSlots;
+
+          // Exibir as informações no console (ou usar conforme necessário)
+          console.log('ID:', id);
+          console.log('Líder:', leaderId);
+          console.log('Nome do Lobby:', lobbyName);
+          console.log('Jogadores:', playerSlots);
 
     } catch (error) {
         console.error('Erro:', error);
