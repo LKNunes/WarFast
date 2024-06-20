@@ -59,7 +59,7 @@ async function comecarPartida(joinExistingGame = false) {
   let Jogadores = [];
   
   for (let i = 0; i < 8; i++) {
-    const jogadorId = `player${i + 1}`; // Gera um ID único para cada jogador
+    const jogadorId = i; // Gera um ID único para cada jogador
     const jogadorNome = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
 
     // Cria um objeto para representar o jogador com o ID e o nome
@@ -71,9 +71,6 @@ async function comecarPartida(joinExistingGame = false) {
     // Adiciona o jogador ao array Jogadores
     Jogadores.push(jogador);
   }
-
-  // Atualiza o array playerSlots no lobby com os IDs dos jogadores
-  LobbyDados.playerSlots = Jogadores;
   
 
   for(let i=0;i<8;i++){
