@@ -86,7 +86,7 @@ console.log("DADOS:");
               id: lobbyId, // Obter valor do campo de entrada
               leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
-              playerSlots: LobbyDados.playerSlots.
+              playerSlots: LobbyDados.playerSlots
               
           })
           
