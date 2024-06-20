@@ -157,7 +157,6 @@ async function dadoslobby() {
       console.log('Jogadores:', playerSlots);
 
       // Chamar a função para exibir as informações no HTML
-      exibirLobbyInfo(id, leaderId, lobbyName, playerSlots);
     } else {
       console.error('Lobby não encontrado');
       alert('Lobby não encontrado.');
@@ -165,6 +164,6 @@ async function dadoslobby() {
 
   } catch (error) {
     console.error('Erro:', error);
-    alert('Erro ao autenticar usuário.');
+    alert('Erro ao achar dados do lobby.');
   }
 }
