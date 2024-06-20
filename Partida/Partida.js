@@ -133,3 +133,34 @@ async function dadospartida() {
   }
 }
 
+async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
+  try {
+    const response = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(atualizacoes)
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao atualizar parcialmente o lobby');
+    }
+
+    const dadosAtualizados = await response.json();
+    console.log('Lobby atualizado parcialmente com sucesso:', dadosAtualizados);
+  } catch (error) {
+    console.error('Erro:', error);
+  }
+}
+
+// Exemplo de uso da função
+const lobbyId = '1718368894622'; // ID do lobby a ser atualizado
+const atualizacoes = {
+  leaderId: 'novoLeaderId',
+  // Apenas os campos que você deseja atualizar
+  lobbyName: 'Nome do Lobby Atualizado'
+};
+
+// Chama a função para atualizar parcialmente o lobby com os novos dados
+atualizarParcialmenteLobby(lobbyId, atualizacoes);
