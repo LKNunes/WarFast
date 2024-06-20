@@ -55,9 +55,26 @@ async function comecarPartida(joinExistingGame = false) {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   const LobbyDados = await dadoslobby(); // Aguarda a resolução da Promise e obtém os dados do lobby
-  let Jogadores = [];
 
-console.log("DADOS:");
+  let Jogadores = [];
+  
+  for (let i = 0; i < 8; i++) {
+    const jogadorId = `player${i + 1}`; // Gera um ID único para cada jogador
+    const jogadorNome = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
+
+    // Cria um objeto para representar o jogador com o ID e o nome
+    const jogador = {
+      id: jogadorId,
+      nome: jogadorNome
+    };
+
+    // Adiciona o jogador ao array Jogadores
+    Jogadores.push(jogador);
+  }
+
+  // Atualiza o array playerSlots no lobby com os IDs dos jogadores
+  LobbyDados.playerSlots = Jogadores;
+  
 
   for(let i=0;i<8;i++){
   Jogadores[i] = LobbyDados.playerSlots[i] // Traz os nomes de usuarios
@@ -71,7 +88,7 @@ console.log("DADOS:");
   }
   console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de jogadores
 
-  
+
 
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
