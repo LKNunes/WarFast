@@ -60,8 +60,7 @@ async function comecarPartida(joinExistingGame = false) {
 console.log("DADOS:");
 
   for(let i=0;i<8;i++){
-  Jogadores[i] = LobbyDados.playerSlots[i]
-
+  Jogadores[i] = LobbyDados.playerSlots[i] // Traz os nomes de usuarios
 }
   let NumJogadores=0;
 
@@ -70,7 +69,8 @@ console.log("DADOS:");
     NumJogadores++;
   }  
   }
-  console.log("Numero de Jogadores"+NumJogadores);
+  console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de jogadores
+
 
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
