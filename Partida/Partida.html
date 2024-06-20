@@ -133,7 +133,7 @@
   
     for (let i = 0; i < 8; i++) {
     const jogadorId = i; // Gera um ID único para cada jogador
-    const jogadorNome = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
+    const jogadorNome = PartidaDados.playerSlots[i]; // Obtém o nome do jogador do lobby
     const Cor = cores[i]
     // Cria um objeto para representar o jogador com o ID e o nome
     const jogador = {
@@ -146,7 +146,7 @@
     Jogadores.push(jogador);
   }
 
-  LobbyDados.playerSlots = Jogadores;
+  PartidaDados.playerSlots = Jogadores;
 
   try {
       const response = await fetch('https://dbwar.onrender.com/partida', {
@@ -157,9 +157,9 @@
           body: JSON.stringify({
               id: lobbyId, // Obter valor do campo de entrada
               nJogadores: NumJogadores,
-              leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
+              leaderId: PartidaDados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
-              playerSlots: LobbyDados.playerSlots  
+              playerSlots: PartidaDados.playerSlots  
           })
           
       });
