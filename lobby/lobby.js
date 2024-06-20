@@ -124,29 +124,42 @@ window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
 
 }
 
-async function dadoslobby(){
+async function dadoslobby() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
-    try {
-        const response = await fetch('https://dbwar.onrender.com/lobbies', {
-            method: 'GET',
-        });
 
-        if (!response.ok) throw new Error('Erro ao buscar usuários');
+  try {
+    const response = await fetch('https://dbwar.onrender.com/lobbies', {
+      method: 'GET',
+    });
 
-        const Lobs = await response.json();
-        const LobbyExistente = Lobs.find(u => u.lobbyId === lobbyId);
+    if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
-        const id = LobbyExistente.id;
-        const leaderId = LobbyExistente.leaderId;
-        const lobbyName = LobbyExistente.lobbyName;
-        const playerSlots = LobbyExistente.playerSlots;
+    const Lobs = await response.json();
+    const LobbyExistente = Lobs.find(u => u.lobbyId === lobbyId);
 
-        return;
-          // Exibir as informações no console (ou usar conforme necessário)
+    if (LobbyExistente) {
+      // Carregar as informações do lobby em variáveis
+      const id = LobbyExistente.id;
+      const leaderId = LobbyExistente.leaderId;
+      const lobbyName = LobbyExistente.lobbyName;
+      const playerSlots = LobbyExistente.playerSlots;
 
-    } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao carregar dados do Lobby');
+      // Exibir as informações no console (ou usar conforme necessário)
+      console.log('ID:', id);
+      console.log('Líder:', leaderId);
+      console.log('Nome do Lobby:', lobbyName);
+      console.log('Jogadores:', playerSlots);
+
+      // Chamar a função para exibir as informações no HTML
+      exibirLobbyInfo(id, leaderId, lobbyName, playerSlots);
+    } else {
+      console.error('Lobby não encontrado');
+      alert('Lobby não encontrado.');
     }
+
+  } catch (error) {
+    console.error('Erro:', error);
+    alert('Erro ao autenticar usuário.');
+  }
 }
