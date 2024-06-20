@@ -84,5 +84,4 @@ async function playersCores(){
     return null;
 
   }
-  console.log(LobbyExistente);
 }
