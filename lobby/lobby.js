@@ -84,6 +84,12 @@ async function comecarPartida(joinExistingGame = false) {
               lobbyName: `Partida de ${nomeUsuario}`,
               
               playerSlots: ['', '', '', '', '', '', '', '']
+
+              //teste
+
+              
+
+              //teste
               
           })
       });
@@ -118,4 +124,23 @@ async function Entrarpartida(lobbyId)
 {
 window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
 
+}
+
+async function dadoslobby(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const lobbyId = urlParams.get('id');
+    try {
+        const response = await fetch('https://dbwar.onrender.com/lobbies', {
+            method: 'GET',
+        });
+
+        if (!response.ok) throw new Error('Erro ao buscar usuários');
+
+        const Lobs = await response.json();
+        const LobbyExistente = Lobs.find(u => u.lobbyId === lobbyId);
+
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao autenticar usuário.');
+    }
 }
