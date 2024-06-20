@@ -55,6 +55,7 @@ async function comecarPartida(joinExistingGame = false) {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   Dados = dadoslobby();
+  console.log("DADOS:");
   console.log(Dados);
 
 
