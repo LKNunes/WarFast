@@ -128,6 +128,8 @@ async function dadoslobby() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
 
+  console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
+
   try {
     const response = await fetch('https://dbwar.onrender.com/lobbies', {
       method: 'GET',
@@ -136,7 +138,10 @@ async function dadoslobby() {
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
     const Lobs = await response.json();
-    const LobbyExistente = Lobs.find(u => u.lobbyId === lobbyId);
+    console.log("Lobbies recebidos:", Lobs); // Log para verificar os lobbies recebidos
+
+    const LobbyExistente = Lobs.find(u => u.id === lobbyId);
+    console.log("Lobby Existente:", LobbyExistente); // Log para verificar o lobby encontrado
 
     if (LobbyExistente) {
       // Carregar as informações do lobby em variáveis
@@ -152,6 +157,7 @@ async function dadoslobby() {
       console.log('Jogadores:', playerSlots);
 
       // Chamar a função para exibir as informações no HTML
+      exibirLobbyInfo(id, leaderId, lobbyName, playerSlots);
     } else {
       console.error('Lobby não encontrado');
       alert('Lobby não encontrado.');
