@@ -87,14 +87,23 @@ async function comecarPartida(joinExistingGame = false) {
 
               //teste
 
-              
+
 
               //teste
               
           })
+          
       });
 
+      const id = LobbyExistente.id;
+      const leaderId = LobbyExistente.leaderId;
+      const lobbyName = LobbyExistente.lobbyName;
+      const playerSlots = LobbyExistente.playerSlots;
 
+      console.log('ID:', id);
+      console.log('Líder:', leaderId);
+      console.log('Nome do Lobby:', lobbyName);
+      console.log('Jogadores:', playerSlots);
 
       if (!response.ok) {
           throw new Error('Erro ao criar lobby');
