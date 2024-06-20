@@ -88,3 +88,83 @@ function atribuirCores() {
   // Embaralhar as cores
   embaralharArray(cores);
 }
+
+
+async function dadospartida() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const lobbyId = urlParams.get('id');
+
+  console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
+
+  try {
+    const response = await fetch('https://dbwar.onrender.com/partida', {
+      method: 'GET',
+    });
+
+    if (!response.ok) throw new Error('Erro ao buscar lobbies');
+
+    const Lobs = await response.json();
+    console.log("Lobbies recebidos:", Lobs); // Log para verificar os lobbies recebidos
+
+    const LobbyExistente = Lobs.find(u => u.id === lobbyId);
+    console.log("Lobby Existente:", LobbyExistente); // Log para verificar o lobby encontrado
+
+    if (LobbyExistente) {
+      // Carregar as informações do lobby em variáveis
+      const id = LobbyExistente.id;
+      const leaderId = LobbyExistente.leaderId;
+      const lobbyName = LobbyExistente.lobbyName;
+      const playerSlots = LobbyExistente.playerSlots;
+      return { id, leaderId, lobbyName, playerSlots };
+
+      // Chamar a função para exibir as informações no HTML
+    } else {
+      console.error('Lobby não encontrado');
+      alert('Lobby não encontrado.');
+      return null;
+
+    }
+
+  } catch (error) {
+    console.error('Erro:', error);
+    alert('Erro ao achar dados do lobby.');
+    return null;
+
+  }
+}
+
+function GravrCorPartida(){
+  try {
+    const response = await fetch('https://dbwar.onrender.com/partida', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: lobbyId, // Obter valor do campo de entrada
+            nJogadores: NumJogadores,
+            leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
+            lobbyName: `Partida de ${nomeUsuario}`,
+            playerSlots: LobbyDados.playerSlots
+            
+        })
+        
+    });
+
+    
+    if (!response.ok) {
+        throw new Error('Erro ao criar lobby');
+    }
+
+    const data = await response.json();
+    
+    alert('Partida criada com sucesso! ID: ' + lobbyId);
+    // $('#cadastroModal').modal('hide');
+
+    // Redirecionar para a página do lobby com o ID na URL
+    window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
+    console.log("Partida Criada...")
+} catch (error) {
+    console.error('Erro ao criar partida:', error);
+}
+}
