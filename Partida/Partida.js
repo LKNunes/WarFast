@@ -22,8 +22,6 @@ for (const territoryObject of territoryData) {
   // Obtém o ID do lobby da URL
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
-
-
   
  async function playersCores(){
   try {
