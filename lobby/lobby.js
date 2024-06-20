@@ -70,6 +70,7 @@ console.log("DADOS:");
     NumJogadores++;
   }  
   }
+  console.log("Numero de Jogadores"+NumJogadores);
 
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
