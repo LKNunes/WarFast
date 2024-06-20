@@ -151,12 +151,6 @@ async function dadoslobby() {
       const lobbyName = LobbyExistente.lobbyName;
       const playerSlots = LobbyExistente.playerSlots;
 
-      // Exibir as informações no console (ou usar conforme necessário)
-      console.log('ID:', id);
-      console.log('Líder:', leaderId);
-      console.log('Nome do Lobby:', lobbyName);
-      console.log('Jogadores:', playerSlots);
-
       // Chamar a função para exibir as informações no HTML
     } else {
       console.error('Lobby não encontrado');
