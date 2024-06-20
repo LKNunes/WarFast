@@ -55,6 +55,7 @@ async function comecarPartida(joinExistingGame = false) {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   const LobbyDados = await dadoslobby(); // Aguarda a resolução da Promise e obtém os dados do lobby
+  let Jogadores = [];
 
 console.log("DADOS:");
 
