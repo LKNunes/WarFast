@@ -19,11 +19,11 @@ for (const territoryObject of territoryData) {
     })
     .catch(error => console.error('Error loading SVG:', error));
 }
-  // Obtém o ID do lobby da URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const lobbyId = urlParams.get('id');
-  
- async function playersCores(){
+// Obtém o ID do lobby da URL
+const urlParams = new URLSearchParams(window.location.search);
+const lobbyId = urlParams.get('id');
+
+async function playersCores() {
   try {
     const response = await fetch('https://dbwar.onrender.com/partida', {
       method: 'GET',
@@ -60,27 +60,27 @@ for (const territoryObject of territoryData) {
 
   }
 }
-  // Função para embaralhar um array
-  function embaralharArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
+// Função para embaralhar um array
+function embaralharArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
+}
 
-  // Função para atribuir cores aleatoriamente aos jogadores
-  function atribuirCores() {
-    const cores = [
-      'rgb(255, 255, 0)',  // Amarelo
-      'rgb(0, 128, 0)',    // Verde
-      'rgb(255, 0, 0)',    // Vermelho
-      'rgb(0, 0, 255)',    // Azul
-      'rgb(255, 105, 180)',// Rosa
-      'rgb(128, 0, 128)',  // Roxo
-      'rgb(255, 255, 255)',// Branco
-      'rgb(255, 165, 0)'   // Laranja
-    ];
+// Função para atribuir cores aleatoriamente aos jogadores
+function atribuirCores() {
+  const cores = [
+    'rgb(255, 255, 0)',  // Amarelo
+    'rgb(0, 128, 0)',    // Verde
+    'rgb(255, 0, 0)',    // Vermelho
+    'rgb(0, 0, 255)',    // Azul
+    'rgb(255, 105, 180)',// Rosa
+    'rgb(128, 0, 128)',  // Roxo
+    'rgb(255, 255, 255)',// Branco
+    'rgb(255, 165, 0)'   // Laranja
+  ];
 
-    // Embaralhar as cores
-    embaralharArray(cores);
-  }
+  // Embaralhar as cores
+  embaralharArray(cores);
+}
