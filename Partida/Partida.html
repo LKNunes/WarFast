@@ -116,7 +116,7 @@
       const lobbyId = urlParams.get('id');
       const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-      try {
+      
         const playersCor = await playersCores();
         if (playersCor) {
           const cores = atribuirCores();
@@ -125,9 +125,7 @@
         } else {
           console.error('Erro ao obter os dados dos jogadores.');
         }
-      } catch (error) {
-        console.error('Erro ao executar a função principal:', error);
-      }
+     
 
       let Jogadores = [];
   
