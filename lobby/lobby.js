@@ -61,8 +61,16 @@ console.log("DADOS:");
 
   for(let i=0;i<8;i++){
   Jogadores[i] = LobbyDados.playerSlots[i]
+
 }
-console.log(Jogadores);
+  const NumJogadores=0;
+
+  for(let i=0;i<8;i++){
+  if (Jogadores[i] == ''){
+    NumJogadores++;
+  }  
+  }
+
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
       method: 'GET',
