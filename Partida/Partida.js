@@ -133,38 +133,3 @@ async function dadospartida() {
   }
 }
 
-async function GravrCorPartida(){
-  try {
-    const response = await fetch('https://dbwar.onrender.com/partida', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            id: lobbyId, // Obter valor do campo de entrada
-            nJogadores: NumJogadores,
-            leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
-            lobbyName: `Partida de ${nomeUsuario}`,
-            playerSlots: LobbyDados.playerSlots
-            
-        })
-        
-    });
-
-    
-    if (!response.ok) {
-        throw new Error('Erro ao criar lobby');
-    }
-
-    const data = await response.json();
-    
-    alert('Partida criada com sucesso! ID: ' + lobbyId);
-    // $('#cadastroModal').modal('hide');
-
-    // Redirecionar para a página do lobby com o ID na URL
-    window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
-    console.log("Partida Criada...")
-} catch (error) {
-    console.error('Erro ao criar partida:', error);
-}
-}
