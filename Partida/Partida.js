@@ -1,4 +1,4 @@
- const mapContainer = document.getElementById('mapContainer');
+const mapContainer = document.getElementById('mapContainer');
 
 for (const territoryObject of territoryData) {
   const territory = document.createElement('div');
