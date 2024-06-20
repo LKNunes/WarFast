@@ -57,8 +57,7 @@ async function comecarPartida(joinExistingGame = false) {
   const LobbyDados = await dadoslobby(); // Aguarda a resolução da Promise e obtém os dados do lobby
 
 console.log("DADOS:");
-  console.log(LobbyDados);
-
+  console.log("Jogador 1"+LobbyDados.playerSlots[1]);
 
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
@@ -87,8 +86,7 @@ console.log("DADOS:");
               id: lobbyId, // Obter valor do campo de entrada
               leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
-              
-              playerSlots: LobbyDados.playerSlots
+              playerSlots: LobbyDados.playerSlots.
               
           })
           
