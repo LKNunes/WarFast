@@ -147,6 +147,6 @@ async function dadoslobby(){
 
     } catch (error) {
         console.error('Erro:', error);
-        alert('Erro ao autenticar usuário.');
+        alert('Erro ao carregar dados do Lobby');
     }
 }
