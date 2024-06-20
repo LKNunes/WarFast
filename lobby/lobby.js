@@ -150,15 +150,20 @@ async function dadoslobby() {
       const leaderId = LobbyExistente.leaderId;
       const lobbyName = LobbyExistente.lobbyName;
       const playerSlots = LobbyExistente.playerSlots;
+      return { id, leaderId, lobbyName, playerSlots };
 
       // Chamar a função para exibir as informações no HTML
     } else {
       console.error('Lobby não encontrado');
       alert('Lobby não encontrado.');
+      return null;
+
     }
 
   } catch (error) {
     console.error('Erro:', error);
     alert('Erro ao achar dados do lobby.');
+    return null;
+
   }
 }
