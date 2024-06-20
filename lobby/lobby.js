@@ -114,6 +114,7 @@ async function comecarPartida(joinExistingGame = false) {
           },
           body: JSON.stringify({
               id: lobbyId, // Obter valor do campo de entrada
+              nJogadores: NumJogadores,
               leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
               playerSlots: LobbyDados.playerSlots
