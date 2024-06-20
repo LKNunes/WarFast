@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atribuir Cores Aleatoriamente</title>
+</head>
+<body>
+  <h1>Atribuir Cores Aleatoriamente aos Jogadores</h1>
+  <button onclick="atribuirCores()">Atribuir Cores</button>
+  <div id="resultado"></div>
+
+  <script>
+    // Função para embaralhar um array
+    function embaralharArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Função para atribuir cores aleatoriamente aos jogadores
+    function atribuirCores() {
+      const cores = [
+        'rgb(255, 255, 0)',  // Amarelo
+        'rgb(0, 128, 0)',    // Verde
+        'rgb(255, 0, 0)',    // Vermelho
+        'rgb(0, 0, 255)',    // Azul
+        'rgb(255, 105, 180)',// Rosa
+        'rgb(128, 0, 128)',  // Roxo
+        'rgb(255, 255, 255)',// Branco
+        'rgb(255, 165, 0)'   // Laranja
+      ];
+
+      // Embaralhar as cores
+      embaralharArray(cores);
+
+      // Número de jogadores (pode ser alterado conforme necessário)
+      const jogadores = ['Jogador 1', 'Jogador 2', 'Jogador 3', 'Jogador 4', 'Jogador 5', 'Jogador 6', 'Jogador 7', 'Jogador 8'];
+
+      // Atribuir cores aos jogadores
+      let resultadoHTML = '<ul>';
+      for (let i = 0; i < jogadores.length; i++) {
+        resultadoHTML += `<li>${jogadores[i]}: <span style="color:${cores[i]}">${cores[i]}</span></li>`;
+      }
+      resultadoHTML += '</ul>';
+
+      // Exibir o resultado
+      document.getElementById('resultado').innerHTML = resultadoHTML;
+    }
+  </script>
+</body>
+</html>
