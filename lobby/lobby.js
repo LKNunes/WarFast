@@ -54,8 +54,10 @@ async function comecarPartida(joinExistingGame = false) {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
-  DadosLobby = dadoslobby();
-  
+  Dados = dadoslobby();
+  console.log(Dados);
+
+
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
       method: 'GET',
@@ -81,10 +83,10 @@ async function comecarPartida(joinExistingGame = false) {
           },
           body: JSON.stringify({
               id: lobbyId, // Obter valor do campo de entrada
-              leaderId: DadosLobby.leaderId, // Criar validação de somente Admin criar partida
+              leaderId: Dados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
               
-              playerSlots: DadosLobby.playerSlots
+              playerSlots: Dados.playerSlots
               
           })
           
@@ -136,9 +138,9 @@ async function dadoslobby(){
         const LobbyExistente = Lobs.find(u => u.lobbyId === lobbyId);
 
         const id = LobbyExistente.id;
-          const leaderId = LobbyExistente.leaderId;
-          const lobbyName = LobbyExistente.lobbyName;
-          const playerSlots = LobbyExistente.playerSlots;
+        const leaderId = LobbyExistente.leaderId;
+        const lobbyName = LobbyExistente.lobbyName;
+        const playerSlots = LobbyExistente.playerSlots;
 
           // Exibir as informações no console (ou usar conforme necessário)
           console.log('ID:', id);
