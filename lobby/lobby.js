@@ -57,8 +57,11 @@ async function comecarPartida(joinExistingGame = false) {
   const LobbyDados = await dadoslobby(); // Aguarda a resolução da Promise e obtém os dados do lobby
 
 console.log("DADOS:");
-  console.log("Jogador 1"+LobbyDados.playerSlots[0]);
 
+  for(let i;i<8;i++){
+  Jogadores[i] = LobbyDados.playerSlots[i]
+}
+console.log(Jogadores);
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
       method: 'GET',
