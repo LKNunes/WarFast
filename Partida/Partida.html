@@ -47,8 +47,9 @@
       });
     }
 
-    // Chamar a função para identificar e destacar territórios
-    identificarTerritorios();
+    document.addEventListener('DOMContentLoaded', function() {
+      identificarTerritorios();
+    });
 
     // Função para alterar o tamanho de um território ao passar o mouse sobre ele
     function alterarTamanhoTerritorio(territorio) {
