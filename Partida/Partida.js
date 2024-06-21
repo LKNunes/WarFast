@@ -154,28 +154,12 @@ async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
   }
 }
 
-function embaralharArray(array) {
+function embaralharArray() {
+  const array = Array.from({ length: 42 }, (_, index) => index + 1);
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+  return array;
 }
-
-// Função para distribuir territórios entre os jogadores
-function distribuirTerritorios(jogadores, territorios) {
-  embaralharArray(territorios);
-
-  const distribuicao = {};
-  jogadores.forEach(jogador => {
-    distribuicao[jogador.id] = [];
-  });
-
-  territorios.forEach((territorio, index) => {
-    const jogadorIndex = index % jogadores.length;
-    distribuicao[jogadores[jogadorIndex].id].push(territorio);
-  });
-
-  return distribuicao;
-}
-
 
