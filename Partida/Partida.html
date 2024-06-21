@@ -110,49 +110,52 @@
       return cores;
     }
 
-    // Função principal para carregar jogadores e atribuir cores
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
       const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-      const cores = [];
+      if (!PartidaDados) {
+        console.error('Erro ao obter os dados da partida.');
+        return;
+      }
 
-        const playersCor = await playersCores();
-        if (playersCor) {
+      const playersCor = await playersCores();
+      if (!playersCor) {
+        console.error('Erro ao obter os dados dos jogadores.');
+        return;
+      }
+
       const cores = atribuirCores();
-          
-          
-        } else {
-          console.error('Erro ao obter os dados dos jogadores.');
-        }
-     
-          
       let Jogadores = [];
-  
-    for (let i = 0; i < 8; i++) {
-    const jogadorId = i; // Gera um ID único para cada jogador
-    const jogadorNome = PartidaDados.playerSlots[i]; // Obtém o nome do jogador do lobby
-    const Cor = cores[i]
-    // Cria um objeto para representar o jogador com o ID e o nome
-    const jogador = {
-      id: jogadorId,
-      nome: jogadorNome,
-      cor: Cor
-    };
 
-    // Adiciona o jogador ao array Jogadores
-    Jogadores.push(jogador);
-  }
+      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+        const jogadorId = PartidaDados.playerSlots[i].id;
+        const jogadorNome = PartidaDados.playerSlots[i].nome;
+        const Cor = cores[i]; // Atribui a cor ao jogador
 
-  PartidaDados.playerSlots = Jogadores;
+        // Cria um objeto para representar o jogador com o ID, nome e cor
+        const jogador = {
+          id: jogadorId,
+          nome: jogadorNome,
+          cor: Cor
+        };
 
-  atualizarParcialmenteLobby(lobbyId,Jogadores);
-  console.log("djasdjlkas" + Jogadores);
-  
-      
+        // Adiciona o jogador ao array Jogadores
+        Jogadores.push(jogador);
+      }
+
+      // Atualiza os dados do lobby com os novos dados dos jogadores
+      PartidaDados.playerSlots = Jogadores;
+
+      // Atualiza o lobby no servidor
+      await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
+      console.log("Jogadores atualizados:", Jogadores);
     }
 
+    // Chama a função principal
+    main();
     
     // Chamar a função principal
     main();
