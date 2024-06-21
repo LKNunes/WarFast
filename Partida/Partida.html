@@ -116,11 +116,11 @@
       const lobbyId = urlParams.get('id');
       const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-      let cores = [];
+      const cores = [];
 
         const playersCor = await playersCores();
         if (playersCor) {
-          const cores = atribuirCores();
+      const cores = atribuirCores();
           
           
         } else {
