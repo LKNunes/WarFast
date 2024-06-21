@@ -29,18 +29,18 @@
     // Função para identificar e destacar territórios
     function identificarTerritorios() {
       const svgObject = document.getElementById('svgObject');
-
+      console.log("1");
       // Adicionar um ouvinte de evento para o carregamento do documento SVG
       svgObject.addEventListener('load', function() {
         const svgDoc = svgObject.contentDocument;
         const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
-
+          console.log("2");
         // Iterar sobre os elementos <path> e atribuir uma borda vermelha
         for (let i = 0; i < paths.length; i++) {
           // Adicionar uma borda vermelha
           paths[i].style.stroke = 'white';
           paths[i].style.strokeWidth = '0.5';
-          
+          console.log("3");
           // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
           alterarTamanhoTerritorio(paths[i]);
         }
