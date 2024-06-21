@@ -162,18 +162,3 @@ function embaralharArray(array) {
   return array;
 }
 
-function aplicarCores(jogadores) {
-  const svgObject = document.getElementById('svgObject');
-  svgObject.addEventListener('load', function() {
-    const svgDoc = svgObject.contentDocument;
-    jogadores.forEach((jogador, index) => {
-      const territorioId = `territorio${index + 1}`;
-      const territorio = svgDoc.getElementById(territorioId);
-      if (territorio) {
-        territorio.style.fill = jogador.cor; // Aplica a cor ao território
-      } else {
-        console.warn(`Território ${territorioId} não encontrado no SVG.`);
-      }
-    });
-  });
-}
