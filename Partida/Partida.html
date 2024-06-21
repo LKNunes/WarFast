@@ -146,6 +146,7 @@
         Jogadores.push(jogador);
       }
 
+
       // Atualiza os dados do lobby com os novos dados dos jogadores
       PartidaDados.playerSlots = Jogadores;
 
@@ -153,6 +154,9 @@
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
       console.log("Jogadores atualizados:", Jogadores);
+      
+      
+
     }
 
     // Chama a função principal
