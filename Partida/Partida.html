@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,12 +40,16 @@
           // Adicionar uma borda vermelha
           paths[i].style.stroke = 'white';
           paths[i].style.strokeWidth = '0.5';
+          
+
           console.log("3");
           // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
           alterarTamanhoTerritorio(paths[i]);
         }
       });
     }
+
+    
 
     document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
@@ -83,9 +87,6 @@
         console.log('IDs numéricos atribuídos aos elementos <path>.');
       });
     }
-
-    // Chamar a função para atribuir IDs numéricos aos paths
-    atribuirIDsNumericos();
 
     // Função para embaralhar um array
     function embaralharArray(array) {
@@ -146,24 +147,24 @@
         Jogadores.push(jogador);
       }
 
-
       // Atualiza os dados do lobby com os novos dados dos jogadores
       PartidaDados.playerSlots = Jogadores;
 
       // Atualiza o lobby no servidor
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
+      // Aplicar cores aos territórios
+      aplicarCores(Jogadores);
+
       console.log("Jogadores atualizados:", Jogadores);
             
-      const array = embaralharArray(paths);
-      console.log(array);
-
     }
 
     // Chama a função principal
     main();
     
-    // Chamar a função principal
+    // Chamar a função para atribuir IDs numéricos aos paths
+    atribuirIDsNumericos();
   </script>
 </body>
 </html>
