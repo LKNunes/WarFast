@@ -58,8 +58,8 @@
         const deslocamentoX = centroX - centroX * 1.05;
         const deslocamentoY = centroY - centroY * 1.05;
         
-        territorio.setAttribute('transform', 'translate(' + (-deslocamentoX) + ',' + (-deslocamentoY) + ') scale(1.05)');
-      });
+        territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
+  });
       territorio.addEventListener('mouseleave', function() {
         this.setAttribute('transform', ''); // Restaurar o tamanho original
       });
