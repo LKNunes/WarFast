@@ -198,3 +198,21 @@ function identificarTerritorios() {
         this.setAttribute('transform', ''); // Restaurar o tamanho original
       });
     } 
+
+    async function atribuirIDsNumericos() {
+      const svgObject = document.getElementById('svgObject');
+
+      // Adicionar um ouvinte de evento para o carregamento do documento SVG
+      svgObject.addEventListener('load', function() {
+        const svgDoc = svgObject.contentDocument;
+        const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
+
+        // Iterar sobre os elementos <path> e atribuir IDs numéricos
+        paths.forEach((path, index) => {
+          path.setAttribute('id', 'territorio' + (index + 1));
+          console.log('ID do path:', path.getAttribute('id'));
+        });
+
+        console.log('IDs numéricos atribuídos aos elementos <path>.');
+      });
+    }
