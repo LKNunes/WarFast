@@ -153,7 +153,6 @@ function identificarTerritorios() {
       paths[i].style.stroke = 'white';
       paths[i].style.strokeWidth = '0.5';
       
-
       console.log("3");
       // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
       alterarTamanhoTerritorio(paths[i]);
