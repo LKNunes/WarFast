@@ -98,7 +98,7 @@ async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
     }
 
     const dadosAtualizados = await response.json();
-    console.log('Lobby atualizado parcialmente com sucesso:', dadosAtualizados);
+//    console.log('Lobby atualizado parcialmente com sucesso:', dadosAtualizados);
   } catch (error) {
     console.error('Erro:', error);
   }
