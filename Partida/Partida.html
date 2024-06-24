@@ -43,7 +43,7 @@
       const lobbyId = urlParams.get('id');
       const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-      
+
 
       if (!PartidaDados) {
         console.error('Erro ao obter os dados da partida.');
@@ -85,7 +85,7 @@
 
       console.log("Jogadores atualizados:");
             
-      aplicarCores();
+      aplicarCores(PartidaDados);
 
     }
 

@@ -194,9 +194,9 @@ function atribuirCores() {
   return cores;
 }
 
-async function aplicarCores() {
+async function aplicarCores(dadospartida) {
   try {
-    const PartidaDados = await dadospartida(); // Obtém os dados da partida
+   // const PartidaDados = await dadospartida(); // Obtém os dados da partida
 
     if (!PartidaDados) {
       console.error('Erro ao obter os dados da partida.');
