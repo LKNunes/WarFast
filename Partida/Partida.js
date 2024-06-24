@@ -217,10 +217,25 @@ function identificarTerritorios() {
       });
     }
 
-        // Função para embaralhar um array
-        function embaralharArray(array) {
-          for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-          }
-        }
+// Função para embaralhar um array
+function embaralharArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+// Função para atribuir cores aos jogadores
+function atribuirCores() {
+  const cores = [
+    'rgb(0, 0, 255)', // Azul
+    'rgb(0, 255, 0)', // Verde
+    'rgb(255, 255, 0)', // Amarelo
+    'rgb(255, 0, 0)', // Vermelho
+    'rgb(255, 0, 255)', // Rosa
+    'rgb(255, 165, 0)', // Laranja
+    'rgb(255, 255, 255)', // Branco
+    'rgb(128, 0, 128)'  // Roxo
+  ];
+  embaralharArray(cores);
+  return cores;
+}
