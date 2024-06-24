@@ -58,7 +58,9 @@ async function dadospartida() {
     console.log("Lobbies recebidos:", Lobs); // Log para verificar os lobbies recebidos
 
     const LobbyExistente = Lobs.find(u => u.id === lobbyId);
-    
+
+    console.log("Lobbies recebidos:", LobbyExistente); // Log para verificar os lobbies recebidos
+
     if (LobbyExistente) {
       // Carregar as informações do lobby em variáveis
       const id = LobbyExistente.id;
