@@ -40,13 +40,7 @@ async function playersCores() {
 
   }
 }
-// Função para embaralhar um array
-function embaralharArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
+
 
 // Função para atribuir cores aleatoriamente aos jogadores
 function atribuirCores() {
@@ -193,13 +187,6 @@ function identificarTerritorios() {
       });
     }
 
-// Função para embaralhar um array
-function embaralharArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
 // Função para atribuir cores aos jogadores
 function atribuirCores() {
   const cores = [
