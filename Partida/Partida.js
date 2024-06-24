@@ -180,7 +180,7 @@ function identificarTerritorios() {
 
       console.log("3");
       // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
-     // alterarTamanhoTerritorio(paths[i]);
+      alterarTamanhoTerritorio(paths[i]);
     }
   });
 }
