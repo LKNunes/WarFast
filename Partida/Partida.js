@@ -12,10 +12,10 @@ async function playersCores() {
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
     const playersPartida = await response.json();
-    console.log("Lobbies recebidos:", playersPartida); // Log para verificar os lobbies recebidos
+    //console.log("Lobbies recebidos:", playersPartida); // Log para verificar os lobbies recebidos
 
     const LobbyExistente = playersPartida.find(u => u.id === lobbyId);
-    console.log("Lobby Existente:", LobbyExistente); // Log para verificar o lobby encontrado
+    //console.log("Lobby Existente:", LobbyExistente); // Log para verificar o lobby encontrado
 
     if (LobbyExistente) {
       // Carregar as informações do lobby em variáveis
