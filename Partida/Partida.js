@@ -214,7 +214,7 @@ async function aplicarCores() {
 
       PartidaDados.playerSlots.forEach((player, index) => {
         const cor = player.cor;
-        console.log(cor)
+        console.log("COOOOOOOOOOR"+cor)
         paths[index].style.fill = cor; // Aplica a cor ao território correspondente
         paths[index].style.stroke = cor;
       });
