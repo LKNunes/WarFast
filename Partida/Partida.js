@@ -1,5 +1,5 @@
 const mapContainer = document.getElementById('mapContainer');
-
+/*
 for (const territoryObject of territoryData) {
   const territory = document.createElement('div');
   territory.classList.add('territory');
@@ -19,7 +19,7 @@ for (const territoryObject of territoryData) {
     })
     .catch(error => console.error('Error loading SVG:', error));
 } 
-  
+  */
 // Obtém o ID do lobby da URL
 
 
