@@ -206,18 +206,19 @@ async function aplicarCores() {
     svgObject.addEventListener('load', function() {
       const svgDoc = svgObject.contentDocument;
       const paths = svgDoc.querySelectorAll('path');
-
+      console.log("CORES1");
       if (paths.length !== PartidaDados.playerSlots.length) {
         console.error('Número de paths no SVG não corresponde ao número de jogadores.');
         return;
       }
+      console.log("CORES2");
 
       PartidaDados.playerSlots.forEach((player, index) => {
         const cor = player.cor;
-        console.log("COOOOOOOOOOR"+cor)
         paths[index].style.fill = cor; // Aplica a cor ao território correspondente
         paths[index].style.stroke = cor;
       });
+      console.log("CORES3");
 
       console.log('Cores aplicadas aos territórios.');
       
