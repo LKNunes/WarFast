@@ -45,7 +45,7 @@ async function dadospartida() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
 
-  console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
+  //console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
 
   try {
     const response = await fetch('https://dbwar.onrender.com/partida', {
@@ -55,7 +55,7 @@ async function dadospartida() {
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
     const Lobs = await response.json();
-    //console.log("Lobbies recebidos:", Lobs); // Log para verificar os lobbies recebidos
+    console.log("Lobbies recebidos:", Lobs); // Log para verificar os lobbies recebidos
 
     const LobbyExistente = Lobs.find(u => u.id === lobbyId);
     
