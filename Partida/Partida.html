@@ -33,7 +33,11 @@
       identificarTerritorios();
     }); 
 
-
+   // Chamar a função para atribuir IDs numéricos aos paths
+   document.addEventListener('DOMContentLoaded', function() {
+    atribuirIDsNumericos();
+    }); 
+    
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
@@ -85,10 +89,7 @@
     // Chama a função principal
     main();
     
-    // Chamar a função para atribuir IDs numéricos aos paths
-    document.addEventListener('DOMContentLoaded', function() {
-    atribuirIDsNumericos();
-    }); 
+ 
   </script>
 </body>
 </html>
