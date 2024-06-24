@@ -68,7 +68,7 @@ async function dadospartida() {
       const lobbyName = LobbyExistente.lobbyName;
       const playerSlots = LobbyExistente.playerSlots;
       return { id, leaderId, lobbyName, playerSlots };
-      console.log(Lobs);
+      
       // Chamar a função para exibir as informações no HTML
     } else {
       console.error('Lobby não encontrado');
