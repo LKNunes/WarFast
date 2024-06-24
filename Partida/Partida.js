@@ -41,24 +41,6 @@ async function playersCores() {
   }
 }
 
-
-// Função para atribuir cores aleatoriamente aos jogadores
-function atribuirCores() {
-  const cores = [
-    'rgb(255, 255, 0)',  // Amarelo
-    'rgb(0, 128, 0)',    // Verde
-    'rgb(255, 0, 0)',    // Vermelho
-    'rgb(0, 0, 255)',    // Azul
-    'rgb(255, 105, 180)',// Rosa
-    'rgb(128, 0, 128)',  // Roxo
-    'rgb(255, 255, 255)',// Branco
-    'rgb(255, 165, 0)'   // Laranja
-  ];
-  console.log("teste");  // Embaralhar as cores
-  embaralharArray(cores);
-}
-
-
 async function dadospartida() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
