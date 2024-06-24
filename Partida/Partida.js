@@ -54,8 +54,7 @@ function atribuirCores() {
     'rgb(255, 255, 255)',// Branco
     'rgb(255, 165, 0)'   // Laranja
   ];
-
-  // Embaralhar as cores
+  console.log("teste");  // Embaralhar as cores
   embaralharArray(cores);
 }
 
@@ -186,7 +185,7 @@ function identificarTerritorios() {
         console.log('IDs numéricos atribuídos aos elementos <path>.');
       });
     }
-
+ 
 // Função para atribuir cores aos jogadores
 function atribuirCores() {
   const cores = [
