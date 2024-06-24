@@ -127,7 +127,8 @@ function identificarTerritorios() {
       // Adicionar uma borda vermelha
       paths[i].style.stroke = 'white';
       paths[i].style.strokeWidth = '0.5';
-      
+      pausecomp(500);
+
       console.log("3");
       // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
       alterarTamanhoTerritorio(paths[i]);
@@ -135,6 +136,13 @@ function identificarTerritorios() {
   });
 }
 
+function pausecomp(millis)
+{
+    var date = new Date();
+    var curDate = null;
+    do { curDate = new Date(); }
+    while(curDate-date < millis);
+}
     // Função para alterar o tamanho de um território ao passar o mouse sobre ele
     function alterarTamanhoTerritorio(territorio) {
       territorio.addEventListener('mouseenter', function() {
