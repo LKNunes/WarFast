@@ -23,19 +23,16 @@
 <body>
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
   
-  <button type="goToLobby" class="btn btn-primary" onclick="identificarTerritorios()" style="background-color: rgb(214, 102, 10); border: none; padding: 10px 10px; border-radius: 5px; color: white;">Entrar Lobby</button>
-
-
   <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
 
   <script>
     // Função para identificar e destacar territórios
     
 
-    /*document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
     }); 
-*/
+
 
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
