@@ -199,6 +199,7 @@ function atribuirCores() {
     'rgb(128, 0, 128)'  // Roxo
   ];
   embaralharArray(cores);
+  console.log("teste2");
   return cores;
 }
 
