@@ -34,39 +34,6 @@
     }); 
 
 
-
-
-    async function aplicarCores() {
-  try {
-    const PartidaDados = await dadospartida(); // Obtém os dados da partida
-
-    if (!PartidaDados) {
-      console.error('Erro ao obter os dados da partida.');
-      return;
-    }
-
-    const svgObject = document.getElementById('svgObject');
-    svgObject.addEventListener('load', function() {
-      const svgDoc = svgObject.contentDocument;
-      const paths = svgDoc.querySelectorAll('path');
-
-      if (paths.length !== PartidaDados.playerSlots.length) {
-        console.error('Número de paths no SVG não corresponde ao número de jogadores.');
-        return;
-      }
-
-      PartidaDados.playerSlots.forEach((player, index) => {
-        const cor = player.cor;
-        paths[index].style.fill = cor; // Aplica a cor ao território correspondente
-      });
-
-      console.log('Cores aplicadas aos territórios.');
-    });
-  } catch (error) {
-    console.error('Erro ao aplicar cores aos territórios:', error);
-  }
-}
-
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
