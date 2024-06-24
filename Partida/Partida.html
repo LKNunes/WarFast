@@ -27,17 +27,18 @@
 
   <script>
     // Função para identificar e destacar territórios
-    
 
-    document.addEventListener('DOMContentLoaded', function() {
-      identificarTerritorios();
-    }); 
 
 
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
       const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+      
+      document.addEventListener('DOMContentLoaded', function() {
+          identificarTerritorios();
+      }); 
 
       if (!PartidaDados) {
         console.error('Erro ao obter os dados da partida.');
