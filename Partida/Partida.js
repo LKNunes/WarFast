@@ -164,9 +164,10 @@ function embaralharArray(array) {
 
 function identificarTerritorios() {
   const svgObject = document.getElementById('svgObject');
-  console.log("1");
+
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
   svgObject.addEventListener('load', function() {
+    console.log("1");
     const svgDoc = svgObject.contentDocument;
     const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
       console.log("2");
