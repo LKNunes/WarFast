@@ -37,7 +37,7 @@
    document.addEventListener('DOMContentLoaded', function() {
     atribuirIDsNumericos();
     }); 
-    
+
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
@@ -80,10 +80,11 @@
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
       // Aplicar cores aos territórios
-      aplicarCores();
 
       console.log("Jogadores atualizados:");
             
+      aplicarCores();
+
     }
 
     // Chama a função principal
