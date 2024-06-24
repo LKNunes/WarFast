@@ -55,7 +55,7 @@ async function dadospartida() {
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
     const Lobs = await response.json();
-    console.log("Lobbies recebidos:", Lobs); // Log para verificar os lobbies recebidos
+    //console.log("Lobbies recebidos:", Lobs); // Log para verificar os lobbies recebidos
 
     const LobbyExistente = Lobs.find(u => u.id === lobbyId);
     
