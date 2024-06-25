@@ -33,6 +33,10 @@
         aplicarCores();
     }
 
+    // Adicionar o evento onload ao elemento svgObject
+    const svgObject = document.getElementById('svgObject');
+    svgObject.onload = svgLoaded;
+
     document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
     }); 
