@@ -241,12 +241,16 @@ async function aplicarCores() {
   }
   
   // Exemplo de uso
-  const distribuicao = distribuirNumerosAleatoriamente();
-  console.log(distribuicao);
-  
-  
+  const distribuicao = distribuirNumerosAleatoriamente();  
+
     //teste
 
+    for (let i = 0; i < 42; i++) {
+      let jogador = i % 8;
+      console.log(`Número ${i + 1} (Número ${distribuicao[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
+    }
+    
+  
     PartidaDados.playerSlots.forEach((player, index) => {
       const cor = player.cor;
       console.log("PLAYER" + player.id + " COR: " + player.cor);
