@@ -11,7 +11,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgb(60, 60, 255);
+      
+      background-color: rgb(255, 255, 255);
     }
 
     #svgObject {
@@ -31,7 +32,7 @@
 
     const svgObject = document.getElementById('svgObject');
     svgObject.onload = svgLoaded;
-    
+
     function svgLoaded() {
         console.log("SVG carregado");
         aplicarCores();
