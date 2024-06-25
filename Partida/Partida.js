@@ -205,7 +205,7 @@ async function aplicarCores(PartidaDados) {
 
 
     const svgObject = document.getElementById('svgObject');
-    console.log("CORES2");
+    console.log("COR: "+svgObject);
 
     svgObject.addEventListener('load', function() {
       console.log("CORES11");
