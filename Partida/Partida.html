@@ -22,20 +22,22 @@
 </head>
 <body>
   
-  <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg" onload="svgLoaded()"></object>
+  <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
   
   <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
 
   <script>
     // Função para identificar e destacar territórios
+
+    const svgObject = document.getElementById('svgObject');
+    svgObject.onload = svgLoaded;
+    svgLoaded();
     function svgLoaded() {
         console.log("SVG carregado");
         aplicarCores();
     }
 
-    // Adicionar o evento onload ao elemento svgObject
-    const svgObject = document.getElementById('svgObject');
-    svgObject.onload = svgLoaded;
+ 
 
     document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
