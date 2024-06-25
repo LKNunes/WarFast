@@ -22,7 +22,7 @@
 </head>
 <body>
   
-  <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg" onload="svgLoaded()"></object>
+  <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg" onload="await svgLoaded()"></object>
   
   <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
 
@@ -30,7 +30,6 @@
     // Função para identificar e destacar territórios
     function svgLoaded() {
         console.log("SVG carregado");
-
         aplicarCores();
     }
 
