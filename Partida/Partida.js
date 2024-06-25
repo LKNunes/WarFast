@@ -180,7 +180,7 @@ function pausecomp(millis)
 // Função para atribuir cores aos jogadores
 function atribuirCores() {
   const cores = [
-    'rgb(0, 128, 128)'
+    'rgb(0, 128, 128)',
     'rgb(0, 255, 0)', // Verde
     'rgb(255, 255, 0)', // Amarelo
     'rgb(255, 0, 0)', // Vermelho
