@@ -230,9 +230,3 @@ async function aplicarCores(PartidaDados) {
   }
 }
 
-function svgLoaded() {
-  console.log("SVG carregado");
-
-  // Coloque aqui o código que precisa ser executado quando o SVG for carregado
-  aplicarCores(PartidaDados);
-}
