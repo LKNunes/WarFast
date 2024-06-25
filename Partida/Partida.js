@@ -200,8 +200,6 @@ async function aplicarCores(PartidaDados) {
     console.log("Dados Correto?"+PartidaDados.id);
     if (!PartidaDados) {
       console.error('Erro ao obter os dados da partida.');
-      console.log("CORES1");
-
       return;
     }
     console.log("CORES11");
@@ -211,11 +209,12 @@ async function aplicarCores(PartidaDados) {
     svgObject.addEventListener('load', function() {
       const svgDoc = svgObject.contentDocument;
       const paths = svgDoc.querySelectorAll('path');
+      console.log("CORES2");
+
       if (paths.length !== PartidaDados.playerSlots.length) {
         console.error('Número de paths no SVG não corresponde ao número de jogadores.');
         return;
       }
-      console.log("CORES2");
 
       PartidaDados.playerSlots.forEach((player, index) => {
         const cor = player.cor;
