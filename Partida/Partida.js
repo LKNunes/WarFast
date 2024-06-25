@@ -194,8 +194,11 @@ function atribuirCores() {
   return cores;
 }
 
-async function aplicarCores(PartidaDados) {
+async function aplicarCores() {
   try {
+
+    const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
+
     console.log("Dados Correto?" + PartidaDados.id);
     if (!PartidaDados) {
       console.error('Erro ao obter os dados da partida.');
@@ -229,4 +232,6 @@ async function aplicarCores(PartidaDados) {
     console.error('Erro ao aplicar cores aos territórios:', error);
   }
 }
+
+
 
