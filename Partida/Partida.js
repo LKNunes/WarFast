@@ -202,13 +202,14 @@ async function aplicarCores(PartidaDados) {
       console.error('Erro ao obter os dados da partida.');
       return;
     }
-    console.log("CORES11");
 
 
     const svgObject = document.getElementById('svgObject');
     console.log("CORES2");
 
     svgObject.addEventListener('load', function() {
+      console.log("CORES11");
+
       const svgDoc = svgObject.contentDocument;
       const paths = svgDoc.querySelectorAll('path');
 
