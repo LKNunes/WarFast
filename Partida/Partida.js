@@ -186,7 +186,7 @@ function atribuirCores() {
     'rgb(255, 0, 0)', // Vermelho
     'rgb(255, 0, 255)', // Rosa
     'rgb(255, 165, 0)', // Laranja
-    'rgb(255, 255, 255)', // Branco
+    'rgb(128, 128, 128)', // Branco
     'rgb(128, 0, 128)'  // Roxo
   ];
   embaralharArray(cores);
