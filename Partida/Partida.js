@@ -215,7 +215,23 @@ async function aplicarCores() {
 
     const paths = svgDoc.querySelectorAll('path');
 
-    
+    //teste
+    function distribuirNumerosParaJogadores() {
+      const numeros = Array.from({ length: 42 }, (_, i) => i + 1);
+      const jogadores = Array.from({ length: 8 }, () => []);
+  
+      for (let i = 0; i < numeros.length; i++) {
+          jogadores[i % 8].push(numeros[i]);
+      }
+  
+      return jogadores;
+  }
+  
+  // Exemplo de uso
+  const distribuicao = distribuirNumerosParaJogadores();
+  console.log(distribuicao);
+  
+    //teste
 
     PartidaDados.playerSlots.forEach((player, index) => {
       const cor = player.cor;
