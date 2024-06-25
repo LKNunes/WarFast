@@ -196,40 +196,43 @@ function atribuirCores() {
 
 async function aplicarCores(PartidaDados) {
   try {
-   // const PartidaDados = await dadospartida(); // Obtém os dados da partida
-    console.log("Dados Correto?"+PartidaDados.id);
+    console.log("Dados Correto?" + PartidaDados.id);
     if (!PartidaDados) {
       console.error('Erro ao obter os dados da partida.');
       return;
     }
 
-
     const svgObject = document.getElementById('svgObject');
-    console.log("COR: "+svgObject);
+    const svgDoc = svgObject.contentDocument;
 
-    svgObject.addEventListener('load', function() {
-      console.log("CORES11");
+    if (!svgDoc) {
+      console.error('Erro ao acessar o conteúdo do documento SVG.');
+      return;
+    }
 
-      const svgDoc = svgObject.contentDocument;
-      const paths = svgDoc.querySelectorAll('path');
+    const paths = svgDoc.querySelectorAll('path');
 
-      if (paths.length !== PartidaDados.playerSlots.length) {
-        console.error('Número de paths no SVG não corresponde ao número de jogadores.');
-        return;
-      }
+    if (paths.length !== PartidaDados.playerSlots.length) {
+      console.error('Número de paths no SVG não corresponde ao número de jogadores.');
+      return;
+    }
 
-      PartidaDados.playerSlots.forEach((player, index) => {
-        const cor = player.cor;
-        console.log("PLAYER"+player.id+ "COR: "+player.cor);
-        paths[index].style.fill = cor; // Aplica a cor ao território correspondente
-        paths[index].style.stroke = cor;
-      });
-      console.log("CORES3");
-
-      console.log('Cores aplicadas aos territórios.');
-      
+    PartidaDados.playerSlots.forEach((player, index) => {
+      const cor = player.cor;
+      console.log("PLAYER" + player.id + " COR: " + player.cor);
+      paths[index].style.fill = cor; // Aplica a cor ao território correspondente
+      paths[index].style.stroke = cor;
     });
+
+    console.log('Cores aplicadas aos territórios.');
   } catch (error) {
     console.error('Erro ao aplicar cores aos territórios:', error);
   }
+}
+
+function svgLoaded() {
+  console.log("SVG carregado");
+
+  // Coloque aqui o código que precisa ser executado quando o SVG for carregado
+  aplicarCores(PartidaDados);
 }
