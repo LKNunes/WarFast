@@ -214,11 +214,8 @@ async function aplicarCores() {
     }
 
     const paths = svgDoc.querySelectorAll('path');
-    console.log(""+paths.length + "" + PartidaDados.playerSlots.length);
-    if (paths.length !== PartidaDados.playerSlots.length) {
-      console.error('Número de paths no SVG não corresponde ao número de jogadores.');
-      return;
-    }
+
+    
 
     PartidaDados.playerSlots.forEach((player, index) => {
       const cor = player.cor;
