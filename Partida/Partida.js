@@ -206,10 +206,11 @@ async function aplicarCores(PartidaDados) {
 
 
     const svgObject = document.getElementById('svgObject');
+    console.log("CORES2");
+
     svgObject.addEventListener('load', function() {
       const svgDoc = svgObject.contentDocument;
       const paths = svgDoc.querySelectorAll('path');
-      console.log("CORES2");
 
       if (paths.length !== PartidaDados.playerSlots.length) {
         console.error('Número de paths no SVG não corresponde ao número de jogadores.');
