@@ -248,7 +248,8 @@ async function aplicarCores() {
     for (let i = 0; i < 42; i++) {
       let jogador = i % 8;
       console.log(`Número ${i + 1} (Número ${distribuicao[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
-      console.log(PartidaDados.playerSlots[jogador+1].cor);
+      const Cor = PartidaDados.playerSlots[jogador+1].cor;
+      console.log(Cor);
      // paths[i+1].style.fill = PartidaDados.playerSlots[jogador+1].cor;
     }
     
