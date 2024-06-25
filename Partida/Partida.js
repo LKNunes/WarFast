@@ -126,7 +126,7 @@ function identificarTerritorios() {
     // Iterar sobre os elementos <path> e atribuir uma borda vermelha
     for (let i = 0; i < paths.length; i++) {
       // Adicionar uma borda vermelha
-      paths[i].style.stroke = 'white';
+      paths[i].style.stroke = 'black';
       paths[i].style.strokeWidth = '0.5';
 //      pausecomp(500);
 
