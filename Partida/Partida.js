@@ -214,7 +214,7 @@ async function aplicarCores() {
     }
 
     const paths = svgDoc.querySelectorAll('path');
-
+    console.log("");
     if (paths.length !== PartidaDados.playerSlots.length) {
       console.error('Número de paths no SVG não corresponde ao número de jogadores.');
       return;
