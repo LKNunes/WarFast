@@ -27,7 +27,11 @@
 
   <script>
     // Função para identificar e destacar territórios
-    
+    function svgLoaded() {
+        console.log("SVG carregado");
+
+        aplicarCores(PartidaDados);
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
@@ -93,12 +97,6 @@
     // Chama a função principal
     main();
     
-    function svgLoaded() {
-  console.log("SVG carregado");
-
-  // Coloque aqui o código que precisa ser executado quando o SVG for carregado
-  aplicarCores(PartidaDados);
-}
   </script>
 </body>
 </html>
