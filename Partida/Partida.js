@@ -216,20 +216,34 @@ async function aplicarCores() {
     const paths = svgDoc.querySelectorAll('path');
 
     //teste
-    function distribuirNumerosParaJogadores() {
+    function distribuirNumerosAleatoriamente() {
       const numeros = Array.from({ length: 42 }, (_, i) => i + 1);
+      
+      // Função para embaralhar a array de números
+      function embaralhar(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+      }
+      
+      // Embaralha os números
+      embaralhar(numeros);
+      
       const jogadores = Array.from({ length: 8 }, () => []);
-  
+      
+      // Distribui os números embaralhados para os jogadores
       for (let i = 0; i < numeros.length; i++) {
           jogadores[i % 8].push(numeros[i]);
       }
-  
+      
       return jogadores;
   }
   
   // Exemplo de uso
-  const distribuicao = distribuirNumerosParaJogadores();
+  const distribuicao = distribuirNumerosAleatoriamente();
   console.log(distribuicao);
+  
   
     //teste
 
