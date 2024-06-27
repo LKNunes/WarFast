@@ -11,16 +11,62 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       background-image: url('Mar.jpg');
-
       background-size: cover; /* Ajusta o tamanho para cobrir toda a tela */
       background-repeat: repeat; /* Repete a imagem na página */
+      font-family: Arial, sans-serif; /* Definindo a fonte para o formulário */
     }
 
     #svgObject {
       max-width: 100%;
       max-height: 100%;
+    }
+
+    .form-container {
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente para o formulário */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"], 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .form-group button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
@@ -28,36 +74,52 @@
   
   <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
   
+  <div class="form-container">
+    <h2>Formulário de Contato</h2>
+    <form id="formContato" action="#" method="post">
+      <div class="form-group">
+        <label for="user">Usuário:</label>
+        <input type="text" id="user" name="user" required>
+      </div>
+      <div class="form-group">
+        <label for="color">Cor Favorita:</label>
+        <input type="text" id="color" name="color" required>
+      </div>
+      <div class="form-group">
+        <label for="objective">Objetivo:</label>
+        <textarea id="objective" name="objective" required></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+
   <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
 
   <script>
     // Função para identificar e destacar territórios
-
     const svgObject = document.getElementById('svgObject');
     svgObject.onload = svgLoaded;
 
     function svgLoaded() {
-        console.log("SVG carregado");
-        aplicarCores();
+      console.log("SVG carregado");
+      aplicarCores();
     }
-
- 
 
     document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
     }); 
 
-   // Chamar a função para atribuir IDs numéricos aos paths
-   document.addEventListener('DOMContentLoaded', function() {
-    atribuirIDsNumericos();
+    // Chamar a função para atribuir IDs numéricos aos paths
+    document.addEventListener('DOMContentLoaded', function() {
+      atribuirIDsNumericos();
     }); 
 
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
       const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
-
-
 
       if (!PartidaDados) {
         console.error('Erro ao obter os dados da partida.');
@@ -96,17 +158,30 @@
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
       // Aplicar cores aos territórios
-
       console.log("Jogadores atualizados:");
-    
- //     aplicarCores(PartidaDados);
-    
-
+      // aplicarCores(PartidaDados);
     }
 
     // Chama a função principal
     main();
     
+    // Event listener para o envio do formulário
+    document.getElementById('formContato').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita o envio padrão do formulário
+
+      // Aqui você pode adicionar o código para lidar com os dados do formulário, se necessário
+      const usuario = document.getElementById('user').value;
+      const corFavorita = document.getElementById('color').value;
+      const objetivo = document.getElementById('objective').value;
+
+      // Exemplo de ação com os dados do formulário (pode ser ajustado conforme necessidade)
+      console.log('Usuário:', usuario);
+      console.log('Cor Favorita:', corFavorita);
+      console.log('Objetivo:', objetivo);
+
+      // Pode incluir aqui uma função para enviar os dados para o servidor, se necessário
+    });
   </script>
 </body>
 </html>
+
