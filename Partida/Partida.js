@@ -266,6 +266,18 @@ async function aplicarCores() {
   }
 }
 
+// Definir um objeto com as cores fixas para cada jogador
+const coresFixas = {
+  1: 'rgb(0, 128, 128)',    // Jogador 1
+  2: 'rgb(0, 255, 0)',      // Jogador 2
+  3: 'rgb(255, 255, 0)',    // Jogador 3
+  4: 'rgb(255, 0, 0)',      // Jogador 4
+  5: 'rgb(255, 0, 255)',    // Jogador 5
+  6: 'rgb(255, 165, 0)',    // Jogador 6
+  7: 'rgb(128, 128, 128)',  // Jogador 7
+  8: 'rgb(128, 0, 128)'     // Jogador 8
+};
+
 async function aplicarCores() {
   try {
       const PartidaDados = await dadospartida(); // Obter os dados da partida
@@ -285,13 +297,11 @@ async function aplicarCores() {
 
       const paths = svgDoc.querySelectorAll('path');
 
-      // Obter as cores fixas para os jogadores
-      const coresFixas = atribuirCores();
-
       // Aplicar as cores fixas aos territórios
       for (let i = 0; i < paths.length; i++) {
-          const jogadorIndex = i % coresFixas.length; // Garante que o índice esteja dentro do tamanho do array de cores
-          const corJogador = coresFixas[jogadorIndex];
+          const jogadorIndex = i % PartidaDados.playerSlots.length; // Garante que o índice esteja dentro do tamanho dos jogadores
+          const jogadorId = PartidaDados.playerSlots[jogadorIndex].id; // Supondo que cada jogador tenha um ID único
+          const corJogador = coresFixas[jogadorId];
 
           paths[i].style.fill = corJogador;
           paths[i].style.stroke = corJogador;
