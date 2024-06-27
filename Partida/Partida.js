@@ -266,5 +266,41 @@ async function aplicarCores() {
   }
 }
 
+async function aplicarCores() {
+  try {
+      const PartidaDados = await dadospartida(); // Obter os dados da partida
+      
+      if (!PartidaDados) {
+          console.error('Erro ao obter os dados da partida.');
+          return;
+      }
+
+      const svgObject = document.getElementById('svgObject');
+      const svgDoc = svgObject.contentDocument;
+
+      if (!svgDoc) {
+          console.error('Erro ao acessar o conteúdo do documento SVG.');
+          return;
+      }
+
+      const paths = svgDoc.querySelectorAll('path');
+
+      // Obter as cores para os jogadores
+      const coresJogadores = atribuirCores();
+
+      // Aplicar as cores aos territórios
+      for (let i = 0; i < paths.length; i++) {
+          const jogadorIndex = i % PartidaDados.playerSlots.length;
+          const corJogador = coresJogadores[jogadorIndex];
+
+          paths[i].style.fill = corJogador;
+          paths[i].style.stroke = corJogador;
+      }
+
+      console.log('Cores aplicadas aos territórios.');
+  } catch (error) {
+      console.error('Erro ao aplicar cores aos territórios:', error);
+  }
+}
 
 
