@@ -196,43 +196,44 @@ function atribuirCores() {
 
 async function aplicarCores() {
   try {
-      const PartidaDados = await dadospartida(); // Obter os dados da partida
-      
-      if (!PartidaDados) {
-          console.error('Erro ao obter os dados da partida.');
-          return;
-      }
+    const PartidaDados = await dadospartida(); // Obter os dados da partida
 
-      const svgObject = document.getElementById('svgObject');
-      const svgDoc = svgObject.contentDocument;
+    if (!PartidaDados) {
+      console.error('Erro ao obter os dados da partida.');
+      return;
+    }
 
-      if (!svgDoc) {
-          console.error('Erro ao acessar o conteúdo do documento SVG.');
-          return;
-      }
+    const svgObject = document.getElementById('svgObject');
+    const svgDoc = svgObject.contentDocument;
 
-      const paths = svgDoc.querySelectorAll('path');
+    if (!svgDoc) {
+      console.error('Erro ao acessar o conteúdo do documento SVG.');
+      return;
+    }
 
-      // Função para gerar cores aleatórias determinísticas baseadas no seed do lobby
-      function gerarCorAleatoriaParaLobby(lobbyId, jogadorIndex) {
-          const seed = parseInt(lobbyId.slice(-8) + jogadorIndex, 16);
-          const random = (Math.abs(seed * 1366.97 + 150889) % 1000) / 1000;
-          const hue = random * 360;
-          return `hsl(${hue}, 70%, 60%)`;
-      }
+    const paths = svgDoc.querySelectorAll('path');
 
-      // Aplicar as cores aos territórios
-      for (let i = 0; i < paths.length; i++) {
-          const jogadorIndex = i % PartidaDados.playerSlots.length;
-          const jogadorId = PartidaDados.playerSlots[jogadorIndex].id;
-          const corJogador = gerarCorAleatoriaParaLobby(PartidaDados.id, jogadorIndex);
+    // Função para gerar cores aleatórias determinísticas baseadas no seed do lobby
+    function gerarCorAleatoriaParaLobby(lobbyId, jogadorIndex) {
+      const seed = parseInt(lobbyId.slice(-8) + jogadorIndex, 16);
+      const random = (Math.abs(seed * 1366.97 + 150889) % 1000) / 1000;
+      const hue = random * 360;
+      return `hsl(${hue}, 70%, 60%)`;
+    }
 
-          paths[i].style.fill = corJogador;
-          paths[i].style.stroke = corJogador;
-      }
+    // Aplicar as cores e bordas aos territórios
+    for (let i = 0; i < paths.length; i++) {
+      const jogadorIndex = i % PartidaDados.playerSlots.length;
+      const jogadorId = PartidaDados.playerSlots[jogadorIndex].id;
+      const corJogador = gerarCorAleatoriaParaLobby(PartidaDados.id, jogadorIndex);
 
-      console.log('Cores aplicadas aos territórios.');
+      paths[i].style.fill = corJogador;
+      paths[i].style.stroke = 'white'; // Definir a cor da borda como branco
+      paths[i].style.strokeWidth = '0.5'; // Definir a largura da borda em pixels
+    }
+
+    console.log('Cores e bordas aplicadas aos territórios.');
   } catch (error) {
-      console.error('Erro ao aplicar cores aos territórios:', error);
+    console.error('Erro ao aplicar cores e bordas aos territórios:', error);
   }
 }
