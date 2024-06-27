@@ -196,86 +196,6 @@ function atribuirCores() {
 
 async function aplicarCores() {
   try {
-
-    const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
-
-    console.log("Dados Correto?" + PartidaDados.id);
-    if (!PartidaDados) {
-      console.error('Erro ao obter os dados da partida.');
-      return;
-    }
-
-    const svgObject = document.getElementById('svgObject');
-    const svgDoc = svgObject.contentDocument;
-
-    if (!svgDoc) {
-      console.error('Erro ao acessar o conteúdo do documento SVG.');
-      return;
-    }
-
-    const paths = svgDoc.querySelectorAll('path');
-
-    //teste
-    function distribuirNumerosAleatoriamente() {
-      const numeros = Array.from({ length: 42 }, (_, i) => i + 1);
-      
-      // Função para embaralhar a array de números
-      function embaralhar(array) {
-          for (let i = array.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [array[i], array[j]] = [array[j], array[i]];
-          }
-      }
-      
-      // Embaralha os números
-      embaralhar(numeros);
-      
-      const jogadores = Array.from({ length: 8 }, () => []);
-      
-      // Distribui os números embaralhados para os jogadores
-      for (let i = 0; i < numeros.length; i++) {
-          jogadores[i % 8].push(numeros[i]);
-      }
-      
-      return jogadores;
-  }
-  
-  // Exemplo de uso
-  const distribuicao = distribuirNumerosAleatoriamente();  
-
-    //teste
-
-    for (let i = 0; i < 42; i++) {
-      let jogador = i % 8;
-    //  console.log(`Número ${i + 1} (Número ${distribuicao[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
-      console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
-      paths[i].style.fill = PartidaDados.playerSlots[jogador].cor;
-    }
-    
-  
-    /*PartidaDados.playerSlots.forEach((player, index) => {
-      const cor = player.cor;
-     // console.log("PLAYER" + player.id + " COR: " + player.cor);
-      paths[index].style.fill = cor; // Aplica a cor ao território correspondente
-      paths[index].style.stroke = cor;
-    });
-*/
-    console.log('Cores aplicadas aos territórios.');
-  } catch (error) {
-    console.error('Erro ao aplicar cores aos territórios:', error);
-  }
-}
-
-// Função para gerar cores aleatórias determinísticas baseadas no ID do jogador
-function gerarCorAleatoria(jogadorId) {
-  const seed = parseInt(jogadorId, 10); // Converter o ID para um número inteiro
-  const random = (Math.abs(seed * 1366.97 + 150889) % 1000) / 1000; // Fórmula simples para gerar um número entre 0 e 1
-  const hue = random * 360; // Converter para um valor de matiz (0-360)
-  return `hsl(${hue}, 70%, 60%)`; // Retornar a cor no formato HSL
-}
-
-async function aplicarCores() {
-  try {
       const PartidaDados = await dadospartida(); // Obter os dados da partida
       
       if (!PartidaDados) {
@@ -293,57 +213,18 @@ async function aplicarCores() {
 
       const paths = svgDoc.querySelectorAll('path');
 
-      // Aplicar as cores aos territórios
-      for (let i = 0; i < paths.length; i++) {
-          const jogadorIndex = i % PartidaDados.playerSlots.length; // Garante que o índice esteja dentro do tamanho dos jogadores
-          const jogadorId = PartidaDados.playerSlots[jogadorIndex].id; // Supondo que cada jogador tenha um ID único
-          const corJogador = gerarCorAleatoria(jogadorId);
-
-          paths[i].style.fill = corJogador;
-          paths[i].style.stroke = corJogador;
+      // Função para gerar cores aleatórias determinísticas baseadas no seed do lobby
+      function gerarCorAleatoriaParaLobby(lobbyId, jogadorIndex) {
+          const seed = parseInt(lobbyId.slice(-8) + jogadorIndex, 16);
+          const random = (Math.abs(seed * 1366.97 + 150889) % 1000) / 1000;
+          const hue = random * 360;
+          return `hsl(${hue}, 70%, 60%)`;
       }
-
-      console.log('Cores aplicadas aos territórios.');
-  } catch (error) {
-      console.error('Erro ao aplicar cores aos territórios:', error);
-  }
-}
-// Função para gerar cores aleatórias determinísticas baseadas no seed do lobby
-function gerarCorAleatoriaParaLobby(lobbyId, jogadorIndex) {
-  // Combina o ID do lobby com o índice do jogador para obter um seed único para cada jogador
-  const seed = parseInt(lobbyId.slice(-8) + jogadorIndex, 16); // Usando os últimos 8 caracteres do lobbyId como seed
-
-  // Fórmula simples para gerar um número entre 0 e 1 baseado no seed
-  const random = (Math.abs(seed * 1366.97 + 150889) % 1000) / 1000;
-
-  // Converter para um valor de matiz (0-360) e retornar no formato HSL
-  const hue = random * 360;
-  return `hsl(${hue}, 70%, 60%)`;
-}
-
-async function aplicarCores() {
-  try {
-      const PartidaDados = await dadospartida(); // Obter os dados da partida
-      
-      if (!PartidaDados) {
-          console.error('Erro ao obter os dados da partida.');
-          return;
-      }
-
-      const svgObject = document.getElementById('svgObject');
-      const svgDoc = svgObject.contentDocument;
-
-      if (!svgDoc) {
-          console.error('Erro ao acessar o conteúdo do documento SVG.');
-          return;
-      }
-
-      const paths = svgDoc.querySelectorAll('path');
 
       // Aplicar as cores aos territórios
       for (let i = 0; i < paths.length; i++) {
-          const jogadorIndex = i % PartidaDados.playerSlots.length; // Garante que o índice esteja dentro do tamanho dos jogadores
-          const jogadorId = PartidaDados.playerSlots[jogadorIndex].id; // Supondo que cada jogador tenha um ID único
+          const jogadorIndex = i % PartidaDados.playerSlots.length;
+          const jogadorId = PartidaDados.playerSlots[jogadorIndex].id;
           const corJogador = gerarCorAleatoriaParaLobby(PartidaDados.id, jogadorIndex);
 
           paths[i].style.fill = corJogador;
@@ -355,7 +236,3 @@ async function aplicarCores() {
       console.error('Erro ao aplicar cores aos territórios:', error);
   }
 }
-
-
-
-
