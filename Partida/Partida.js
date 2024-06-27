@@ -228,7 +228,7 @@ async function aplicarCores() {
       const corJogador = gerarCorAleatoriaParaLobby(PartidaDados.id, jogadorIndex);
 
       paths[i].style.fill = corJogador;
-      paths[i].style.stroke = 'fff6ed'; // Definir a cor da borda como branco
+      paths[i].style.stroke = 'white'; // Definir a cor da borda como branco
       paths[i].style.strokeWidth = '0.5'; // Definir a largura da borda em pixels
     }
 
