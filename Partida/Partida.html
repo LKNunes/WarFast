@@ -52,61 +52,64 @@
     atribuirIDsNumericos();
     }); 
 
-    async function main() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const lobbyId = urlParams.get('id');
-      const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
+    async function dadospartida() {
+  try {
+    const response = await fetch('https://dbwar.onrender.com/partida');
+    if (!response.ok) {
+      throw new Error('Erro ao carregar os dados da partida');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Erro ao obter os dados da partida:', error);
+    return null;
+  }
+}
 
+async function main() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const lobbyId = urlParams.get('id');
+  
+  try {
+    const PartidaDados = await dadospartida(); // Obter dados da partida da API
 
-
-      if (!PartidaDados) {
-        console.error('Erro ao obter os dados da partida.');
-        return;
-      }
-
-      const playersCor = await playersCores();
-      if (!playersCor) {
-        console.error('Erro ao obter os dados dos jogadores.');
-        return;
-      }
-
-      const cores = atribuirCores();
-      let Jogadores = [];
-
-      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
-        const jogadorId = PartidaDados.playerSlots[i].id;
-        const jogadorNome = PartidaDados.playerSlots[i].nome;
-        const Cor = cores[i]; // Atribui a cor ao jogador
-
-        // Cria um objeto para representar o jogador com o ID, nome e cor
-        const jogador = {
-          id: jogadorId,
-          nome: jogadorNome,
-          cor: Cor
-        };
-
-        // Adiciona o jogador ao array Jogadores
-        Jogadores.push(jogador);
-      }
-
-      // Atualiza os dados do lobby com os novos dados dos jogadores
-      PartidaDados.playerSlots = Jogadores;
-
-      // Atualiza o lobby no servidor
-      await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-
-      // Aplicar cores aos territórios
-
-      console.log("Jogadores atualizados:");
-    
- //     aplicarCores(PartidaDados);
-    
-
+    if (!PartidaDados) {
+      console.error('Erro ao obter os dados da partida.');
+      return;
     }
 
-    // Chama a função principal
-    main();
-    
-  </script>
-</body>
-</html>
+    const cores = atribuirCores(); // Supondo que atribuirCores() seja uma função definida que retorna cores para os jogadores
+    let Jogadores = [];
+
+    for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+      const jogadorId = PartidaDados.playerSlots[i].id;
+      const jogadorNome = PartidaDados.playerSlots[i].nome;
+      const Cor = cores[i]; // Atribui a cor ao jogador
+
+      // Cria um objeto para representar o jogador com o ID, nome e cor
+      const jogador = {
+        id: jogadorId,
+        nome: jogadorNome,
+        cor: Cor
+      };
+
+      // Adiciona o jogador ao array Jogadores
+      Jogadores.push(jogador);
+    }
+
+    // Atualiza os dados do lobby com os novos dados dos jogadores
+    PartidaDados.playerSlots = Jogadores;
+
+    // Atualiza o lobby no servidor (você precisa implementar esta função)
+    await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
+    // Exemplo de aplicação dos dados no formulário (pode ser ajustado conforme necessidade)
+    document.getElementById('user').value = PartidaDados.playerSlots[0].nome; // Exemplo de preenchimento do campo usuário
+
+  } catch (error) {
+    console.error('Erro no main:', error);
+  }
+}
+
+// Chama a função principal
+main();
