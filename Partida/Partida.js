@@ -311,10 +311,17 @@ async function CoresMain(lobbyId){
 
       console.log("Jogadores atualizados:");
     
+      Atualizafase(1);
  //     aplicarCores(PartidaDados);
     
 }
 
 function Consultarfase(lobbyId){
-dadospartida(lobbyId)
+const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+}
+
+function Atualizafase(lobbyId)
+{
+const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
 }

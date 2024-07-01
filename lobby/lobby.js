@@ -117,7 +117,8 @@ async function comecarPartida(joinExistingGame = false) {
               nJogadores: NumJogadores,
               leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
-              playerSlots: LobbyDados.playerSlots
+              playerSlots: LobbyDados.playerSlots,
+              fase: "0"
               
           })
           
