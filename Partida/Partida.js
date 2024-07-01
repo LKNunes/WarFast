@@ -267,3 +267,51 @@ async function aplicarCores() {
 }
 
 
+async function CoresMain(){
+  const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+
+
+      if (!PartidaDados) {
+        console.error('Erro ao obter os dados da partida.');
+        return;
+      }
+
+      const playersCor = await playersCores();
+      if (!playersCor) {
+        console.error('Erro ao obter os dados dos jogadores.');
+        return;
+      }
+
+      const cores = atribuirCores();
+      let Jogadores = [];
+
+      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+        const jogadorId = PartidaDados.playerSlots[i].id;
+        const jogadorNome = PartidaDados.playerSlots[i].nome;
+        const Cor = cores[i]; // Atribui a cor ao jogador
+
+        // Cria um objeto para representar o jogador com o ID, nome e cor
+        const jogador = {
+          id: jogadorId,
+          nome: jogadorNome,
+          cor: Cor
+        };
+
+        // Adiciona o jogador ao array Jogadores
+        Jogadores.push(jogador);
+      }
+
+      // Atualiza os dados do lobby com os novos dados dos jogadores
+      PartidaDados.playerSlots = Jogadores;
+
+      // Atualiza o lobby no servidor
+      await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
+      // Aplicar cores aos territórios
+
+      console.log("Jogadores atualizados:");
+    
+ //     aplicarCores(PartidaDados);
+    
+}
