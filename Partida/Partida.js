@@ -67,6 +67,7 @@ async function dadospartida(lobbyId) {
       const id = LobbyExistente.id;
       const leaderId = LobbyExistente.leaderId;
       const lobbyName = LobbyExistente.lobbyName;
+      const fase = LobbyExistente.fase;
       const playerSlots = LobbyExistente.playerSlots;
       return { id, leaderId, lobbyName, playerSlots };
       
