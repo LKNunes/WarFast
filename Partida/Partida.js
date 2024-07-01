@@ -310,18 +310,19 @@ async function CoresMain(lobbyId){
       // Aplicar cores aos territórios
 
       console.log("Jogadores atualizados:");
-    
-      Atualizafase(1);
+      const fase = 1;
+      Atualizafase(lobbyId,fase);
  //     aplicarCores(PartidaDados);
     
 }
 
 async function Consultarfase(lobbyId){
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
+
 }
 
-async function Atualizafase(lobbyId)
+async function Atualizafase(lobbyId,fase)
 {
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-
+console.log(fase);
 }
