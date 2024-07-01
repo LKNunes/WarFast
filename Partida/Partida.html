@@ -30,12 +30,24 @@
   <script>
     // Função para identificar e destacar territórios
 
+
+    document.addEventListener('DOMContentLoaded', function() {
+    atribuirIDsNumericos();
+    }); 
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const lobbyId = urlParams.get('id');
+      if (Consultarfase(lobbyId) == 1) { 
+      CoresMain(lobbyId);
+    }
+    
     const svgObject = document.getElementById('svgObject');
+
     svgObject.onload = svgLoaded;
 
     function svgLoaded() {
         console.log("SVG carregado");
-        aplicarCores();
+        aplicarCores(lobbyId);
     }
 
  
@@ -45,15 +57,7 @@
     }); 
 
    // Chamar a função para atribuir IDs numéricos aos paths
-   document.addEventListener('DOMContentLoaded', function() {
-    atribuirIDsNumericos();
-    }); 
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const lobbyId = urlParams.get('id');
-      if (Consultarfase(lobbyId) == 1) { 
-      CoresMain(lobbyId);
-    }
 
     // Chama a função principal
     

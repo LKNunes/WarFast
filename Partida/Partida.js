@@ -195,10 +195,10 @@ function atribuirCores() {
   return cores;
 }
 
-async function aplicarCores() {
+async function aplicarCores(lobbyId) {
   try {
 
-    const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
+    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
     console.log("Dados Correto?" + PartidaDados.id);
     if (!PartidaDados) {
