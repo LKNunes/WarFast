@@ -216,7 +216,7 @@ async function aplicarCores() {
     // Função para gerar cores aleatórias determinísticas baseadas no seed do lobby
     function gerarCorAleatoriaParaLobby(lobbyId, jogadorIndex) {
       const seed = parseInt(lobbyId.slice(-8) + jogadorIndex, 16);
-      const random = (Math.abs(seed * 1366.97 + 150889) % 1000) / 1000;
+      const random = (Math.abs(seed * 1366.97 + 160889) % 1000) / 1000;
       const hue = random * 360;
       return `hsl(${hue}, 70%, 60%)`;
     }
