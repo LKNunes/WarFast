@@ -37,10 +37,11 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
-      if (Consultarfase(lobbyId) == 1) { 
+
       CoresMain(lobbyId);
-    }
+
     
+
     const svgObject = document.getElementById('svgObject');
 
     svgObject.onload = svgLoaded;
