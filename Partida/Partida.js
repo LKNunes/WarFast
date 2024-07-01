@@ -317,7 +317,7 @@ async function CoresMain(lobbyId){
 }
 
 async function Consultarfase(lobbyId){
-const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 }
 
 async function Atualizafase(lobbyId)
