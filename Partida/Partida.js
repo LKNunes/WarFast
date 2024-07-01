@@ -347,3 +347,4 @@ const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Pr
     .then(updatedJson => console.log('JSON atualizado:', updatedJson));
     Consultarfase(lobbyId);
 }
+ 
