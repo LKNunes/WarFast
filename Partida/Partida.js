@@ -180,14 +180,14 @@ function pausecomp(millis)
 // Função para atribuir cores aos jogadores
 function atribuirCores() {
   const cores = [
-    'rgb(0, 128, 128)',
-    'rgb(0, 255, 0)', // Verde
-    'rgb(255, 255, 0)', // Amarelo
-    'rgb(255, 0, 0)', // Vermelho
-    'rgb(255, 0, 255)', // Rosa
-    'rgb(255, 165, 0)', // Laranja
-    'rgb(128, 128, 128)', // Cinza
-    'rgb(128, 0, 128)'  // Roxo
+    'rgb(255, 0, 0)',
+    'rgb(255, 255, 0)', // Verde
+    'rgb(0, 255, 0)', // Amarelo
+    'rgb(128, 0, 128)', // Vermelho
+    'rgb(255, 165, 0)', // Rosa
+    'rgb(255, 192, 203)', // Laranja
+    'rgb(165, 42, 42)', // Cinza
+    'rgb(128, 128, 128)'  // Roxo
   ];
   embaralharArray(cores);
   console.log("Retornando Cores Função: atribuirCores()");
