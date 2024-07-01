@@ -326,6 +326,6 @@ console.log(PartidaDados.fase);
 async function Atualizafase(lobbyId,fase)
 {
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-console.log(fase);
+// console.log(fase);
 // faser atualização do paremetro de fase na partida
 }
