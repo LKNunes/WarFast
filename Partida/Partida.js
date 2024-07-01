@@ -329,7 +329,7 @@ const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Pr
 // console.log(fase);
 // faser atualização do paremetro de fase na partida
 
-  fetch(url)
+  fetch('https://dbwar.onrender.com/partida')
     .then(response => response.json())
     .then(json => {
       if (json.id === lobbyId) {
