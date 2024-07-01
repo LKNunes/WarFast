@@ -187,7 +187,7 @@ function atribuirCores() {
     'rgb(255, 165, 0)', // Rosa
     'rgb(255, 192, 203)', // Laranja
     'rgb(165, 42, 42)', // Cinza
-    'rgb(128, 128, 128)'  // Roxo
+    'rgb(128, 128, 128)'  // Roxo  
   ];
   embaralharArray(cores);
   console.log("Retornando Cores Função: atribuirCores()");
