@@ -312,17 +312,19 @@ async function CoresMain(lobbyId){
       console.log("Jogadores atualizados:");
       const fase = 1;
       Atualizafase(lobbyId,fase);
- //     aplicarCores(PartidaDados);
+      Consultarfase(lobbyId);
     
 }
 
 async function Consultarfase(lobbyId){
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
-
+// Consultar a fase atual da partida e retornar
+console.log(dadospartida.fase);
 }
 
 async function Atualizafase(lobbyId,fase)
 {
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 console.log(fase);
+// faser atualização do paremetro de fase na partida
 }
