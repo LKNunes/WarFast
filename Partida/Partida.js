@@ -328,4 +328,22 @@ async function Atualizafase(lobbyId,fase)
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 // console.log(fase);
 // faser atualização do paremetro de fase na partida
+
+  fetch(url)
+    .then(response => response.json())
+    .then(json => {
+      if (json.id === lobbyId) {
+        json.fase = fase;
+        return fetch('https://dbwar.onrender.com/partida', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(json)
+        });
+      }
+    })
+    .then(response => response.json())
+    .then(updatedJson => console.log('JSON atualizado:', updatedJson));
+    Consultarfase(lobbyId);
 }
