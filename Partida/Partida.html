@@ -49,7 +49,6 @@
     atribuirIDsNumericos();
     }); 
 
-    async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
       const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
@@ -99,10 +98,9 @@
  //     aplicarCores(PartidaDados);
     
 
-    }
+    
 
     // Chama a função principal
-    main();
     
   </script>
 </body>
