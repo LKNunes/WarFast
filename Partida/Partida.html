@@ -51,8 +51,9 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
-
-      CoresMain(lobbyId)
+      if (Consultarfase(lobbyId) == 1) { 
+      CoresMain(lobbyId);
+    }
 
     // Chama a função principal
     

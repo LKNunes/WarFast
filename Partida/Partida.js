@@ -41,9 +41,10 @@ async function playersCores() {
   }
 }
 
-async function dadospartida() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const lobbyId = urlParams.get('id');
+async function dadospartida(lobbyId) {
+  //const urlParams = new URLSearchParams(window.location.search);
+  //const lobbyId = urlParams.get('id');
+  
 
   //console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
 
@@ -267,10 +268,8 @@ async function aplicarCores() {
 }
 
 
-async function CoresMain(){
-  const PartidaDados = await dadospartida(); // Aguarda a resolução da Promise e obtém os dados do lobby
-
-
+async function CoresMain(lobbyId){
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       if (!PartidaDados) {
         console.error('Erro ao obter os dados da partida.');
@@ -314,4 +313,8 @@ async function CoresMain(){
     
  //     aplicarCores(PartidaDados);
     
+}
+
+function Consultarfase(lobbyId){
+dadospartida(lobbyId)
 }
