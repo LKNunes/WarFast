@@ -9,11 +9,41 @@
       height: 100%;
       margin: 0;
       display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .header {
+      height: 50px;
+      background-color: #4CAF50; /* Cor de fundo da seção superior */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #f4f4f4; /* Cor de fundo das seções laterais */
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
       justify-content: center;
       align-items: center;
       background-color: rgb(0, 157, 255);
-}
-
+    }
 
     #svgObject {
       max-width: 100%;
@@ -22,40 +52,47 @@
   </style>
 </head>
 <body>
-  
-  <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
-  
+  <div class="container">
+    <div class="header">
+      <h1>Seção Superior</h1>
+    </div>
+    <div class="content">
+      <div class="sidebar">
+        <!-- Conteúdo da barra lateral esquerda -->
+      </div>
+      <div class="main">
+        <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
+      </div>
+      <div class="sidebar">
+        <!-- Conteúdo da barra lateral direita -->
+      </div>
+    </div>
+  </div>
+
   <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
 
   <script>
     // Função para identificar e destacar territórios
+    const urlParams = new URLSearchParams(window.location.search);
+    const lobbyId = urlParams.get('id');
 
-    
+    async function main() {
+      const Fase = await Consultarfase(lobbyId);
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const lobbyId = urlParams.get('id');
-
-      async function main(){
-        const Fase = await Consultarfase(lobbyId);
-
-        if (Fase == 0){
-          CoresMain(lobbyId);
-        }
-        
-        if (Fase == 1){
-          console.log("Fase 1, ja iniciado");
-        }
-
+      if (Fase == 0) {
+        CoresMain(lobbyId);
+      } else if (Fase == 1) {
+        console.log("Fase 1, ja iniciado");
       }
-
+    }
 
     const svgObject = document.getElementById('svgObject');
 
     svgObject.onload = svgLoaded;
 
     function svgLoaded() {
-        console.log("SVG carregado");
-        aplicarCores(lobbyId);
+      console.log("SVG carregado");
+      aplicarCores(lobbyId);
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -63,8 +100,6 @@
     }); 
 
     main();
-
-
   </script>
 </body>
 </html>
