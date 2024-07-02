@@ -38,16 +38,9 @@
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
 
-      async function consultar(){
-      const Fase = await Consultarfase(lobbyId);
-      return Fase;
-    }
-   let Fase2 = consultar();
-      
-   console.log("FASE:"+Fase2);
+      CoresMain(lobbyId);
 
       if (Fase2 == 0){
-      CoresMain(lobbyId);
       }
       else if(Fase2 == 1){
         console.log("Partida ja iniciada...na fase 1");
