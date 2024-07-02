@@ -182,6 +182,17 @@ function pausecomp(millis)
       }
     }
 
+    function loadSvg(svgElement) {
+      return new Promise((resolve, reject) => {
+        svgElement.addEventListener('load', () => {
+          // Usar requestAnimationFrame para garantir que o SVG esteja pronto
+          requestAnimationFrame(() => resolve(svgElement.contentDocument));
+        });
+        svgElement.addEventListener('error', (event) => {
+          reject(event);
+        });
+      });
+    }
  
 // Função para atribuir cores aos jogadores
 function atribuirCores() {
