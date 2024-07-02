@@ -23,8 +23,8 @@
 
  // const fs = require('fs');
 
-function getUsuarioLogado() {
-    const usuarioLogado = localStorage.getItem('usuarioLogado');
+function getUsuarioLogado(UsLogado) {
+    const usuarioLogado = UsLogado;
     if (usuarioLogado) {
         return usuarioLogado;
     } else {
