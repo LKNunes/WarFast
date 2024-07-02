@@ -182,6 +182,7 @@ async function dadoslobby() {
       const lobbyName = LobbyExistente.lobbyName;
       const playerSlots = LobbyExistente.playerSlots;
       return { id, leaderId, lobbyName, playerSlots };
+      
 
       // Chamar a função para exibir as informações no HTML
     } else {
