@@ -45,18 +45,15 @@
       <div class="mb-3" id="Perfil2" style="display: none;">
         <div id="usuarioLogado" class="mb-3" style="display: none;"></div>  
         <script>
-        function getUsuarioLogado() {
-              const usuarioLogado = localStorage.getItem('usuarioLogado');
-              if (usuarioLogado) {
-                return usuarioLogado;
-              } else {
-                return 'Usuário não logado';
-              }
-            }
+
+        const UsLogado = localStorage.getItem('usuarioLogado')
+        getUsuarioLogado(UsLogado);
+        
+ 
 
             // Atualizar o conteúdo da página com os dados do usuário logado
             document.addEventListener('DOMContentLoaded', function() {
-              const usuarioLogado = getUsuarioLogado();
+              const usuarioLogado = getUsuarioLogado(UsLogado);
               const usuarioElement = document.getElementById('usuarioLogado');
               usuarioElement.textContent = 'Usuário logado: ' + usuarioLogado;
               usuarioElement.style.display = 'block'; // Mostrar o elemento agora que ele foi atualizado
