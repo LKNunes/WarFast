@@ -389,7 +389,7 @@ const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Pr
 
 
       for(i=0;i<=7;i++){
-        document.getElementById('nomeJogador'+i).textContent =  PartidaDados.playerSlots[0].id;
+        document.getElementById('nomeJogador'+i).textContent =  PartidaDados.playerSlots[i].id;
         const spanNomeJogador = document.getElementById('nomeJogador'+i);
         spanNomeJogador.style.color = PartidaDados.playerSlots[i].cor;
       }
