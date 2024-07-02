@@ -40,11 +40,11 @@
 
       async function consultar(){
       const Fase = await Consultarfase(lobbyId);
-      console.log(Fase);
       return Fase;
     }
    const Fase = consultar();
       
+   console.log("FASE:"+Fase);
 
       if (Fase == 0){
       CoresMain(lobbyId);
