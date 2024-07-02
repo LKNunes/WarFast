@@ -323,28 +323,40 @@ const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Pr
 console.log(PartidaDados.fase);
 }
 
-async function Atualizafase(lobbyId,fase)
-{
-const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-// console.log(fase);
-// faser atualização do paremetro de fase na partida
+async function Atualizafase(lobbyId, fase) {
+  try {
+    // Obter os dados da partida
+    const PartidaDados = await dadospartida(lobbyId);
 
-  fetch('https://dbwar.onrender.com/partida')
-    .then(response => response.json())
-    .then(json => {
-      if (json.id === lobbyId) {
-        json.fase = fase;
-        return fetch('https://dbwar.onrender.com/partida', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(json)
-        });
+    // Verificar se o ID da partida corresponde
+    if (PartidaDados.id === lobbyId) {
+      // Atualizar o campo "fase"
+      PartidaDados.fase = fase;
+
+      // Enviar os dados atualizados de volta para o servidor
+      const response = await fetch('https://dbwar.onrender.com/partida', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(PartidaDados)
+      });
+
+      if (!response.ok) {
+        console.error('Erro ao atualizar os dados:', response.statusText);
+        return;
       }
-    })
-    .then(response => response.json())
-    .then(updatedJson => console.log('JSON atualizado:', updatedJson));
-    Consultarfase(lobbyId);
+
+      // Obter a resposta e mostrar o JSON atualizado
+      const updatedJson = await response.json();
+      console.log('JSON atualizado:', updatedJson);
+
+      // Chamar a função Consultarfase para verificar a fase atualizada
+      Consultarfase(lobbyId);
+    }
+  } catch (error) {
+    console.error('Erro:', error);
+  }
 }
+
  
