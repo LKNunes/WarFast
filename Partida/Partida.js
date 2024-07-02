@@ -410,7 +410,7 @@ function atribuirObjetivos() {
 async function ExibeObjetivo(lobbyId,UsLogado) {
   try {
 
-    const dadospartida = await dadospartida(lobbyId);
+    let dadospartida = await dadospartida(lobbyId);
     
     for (i=0;i<=7;i++){
     if (dadospartida.playerSlots[i].nome == UsLogado)
