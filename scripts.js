@@ -24,12 +24,12 @@
  // const fs = require('fs');
 
 function getUsuarioLogado() {
-const usuarioLogado = localStorage.getItem('usuarioLogado');
-if (usuarioLogado) {
-    return usuarioLogado;
-} else {
-    return 'Usuário não logado';
-}
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (usuarioLogado) {
+        return usuarioLogado;
+    } else {
+        return 'Usuário não logado';
+    }
 }
 
 async function criarlobby() {
