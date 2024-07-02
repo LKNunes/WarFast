@@ -187,11 +187,16 @@ function pausecomp(millis)
     function loadSvg(svgElement) {
       return new Promise((resolve, reject) => {
         svgElement.addEventListener('load', () => {
-          // Usar requestAnimationFrame para garantir que o SVG esteja pronto
-          requestAnimationFrame(() => resolve(svgElement.contentDocument));
+          const svgDoc = svgElement.contentDocument;
+          if (svgDoc) {
+            resolve(svgDoc);
+          } else {
+            reject(new Error("SVG não carregado corretamente."));
+          }
         });
+
         svgElement.addEventListener('error', (event) => {
-          reject(event);
+          reject(new Error("Erro ao carregar o SVG."));
         });
       });
     }
