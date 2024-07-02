@@ -407,5 +407,24 @@ function atribuirObjetivos() {
   return Objetivos;
 }
 
+async function ExibeObjetivo(lobbyId,nomeJogador) {
+  try {
 
+    const dadospartida = dadospartida(lobbyId);
+    
+    for (i=0;i<=7;i++){
+    if (dadospartida.playerSlots[i].nome == nomeJogador)
+      {
+      return dadospartida.playerSlots[i].objetivo;
+      }
+    else{
+      console.log("Usuario não encontrado");
+    }
+  }
 
+    
+  } catch (error) {
+      console.error('Erro:', error);
+      alert('Erro ao autenticar usuário.');
+  }
+}
