@@ -417,7 +417,7 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
       {
         
       document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
-
+ 
       return PartidaDados.playerSlots[i].objetivo;
       }
     else{
