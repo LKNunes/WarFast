@@ -324,38 +324,40 @@ console.log(PartidaDados.fase);
 }
 
 async function Atualizafase(lobbyId, fase) {
-  try {
-    // Obter os dados da partida
-    const PartidaDados = await dadospartida(lobbyId);
+  // Obter os dados da partida
+  const PartidaDados = await dadospartida(lobbyId);
 
-    // Verificar se o ID da partida corresponde
-    if (PartidaDados.id === lobbyId) {
-      // Atualizar o campo "fase"
-      PartidaDados.fase = fase;
+  // Verificar se o ID da partida corresponde
+  if (PartidaDados.id === lobbyId) {
+    // Atualizar o campo "fase"
+    PartidaDados.fase = fase;
 
-      // Enviar os dados atualizados de volta para o servidor
-      const response = await fetch('https://dbwar.onrender.com/partida', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(PartidaDados)
-      });
+    console.log('Atualizando a partida com os dados:', PartidaDados);
 
-      if (!response.ok) {
-        console.error('Erro ao atualizar os dados:', response.statusText);
-        return;
-      }
+    // Enviar os dados atualizados de volta para o servidor
+    const response = await fetch('https://dbwar.onrender.com/partida', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(PartidaDados)
+    });
 
-      // Obter a resposta e mostrar o JSON atualizado
-      const updatedJson = await response.json();
-      console.log('JSON atualizado:', updatedJson);
+    console.log('Resposta do servidor:', response);
 
-      // Chamar a função Consultarfase para verificar a fase atualizada
-      Consultarfase(lobbyId);
+    if (!response.ok) {
+      console.error(`Erro ao atualizar os dados: ${response.statusText}`);
+      return;
     }
-  } catch (error) {
-    console.error('Erro:', error);
+
+    // Obter a resposta e mostrar o JSON atualizado
+    const updatedJson = await response.json();
+    console.log('JSON atualizado:', updatedJson);
+
+    // Chamar a função Consultarfase para verificar a fase atualizada
+    Consultarfase(lobbyId);
+  } else {
+    console.error(`ID da partida ${lobbyId} não corresponde.`);
   }
 }
 
