@@ -383,4 +383,11 @@ async function Atualizafase(lobbyId, fase) {
   }
 }
 
+async function ImprimirJogadores(lobbyId)
+{
+const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 
+document.getElementById('nomeJogador').textContent =  PartidaDados.playerSlots[1].id;
+document.getElementById('corJogador').textContent = PartidaDados.playerSlots[1].cor;
+
+}
