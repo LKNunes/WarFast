@@ -121,7 +121,6 @@ async function comecarPartida(joinExistingGame = false) {
               objetivo:"",
               playerSlots: LobbyDados.playerSlots
               
-              
           })
           
       });
