@@ -335,7 +335,7 @@ async function Atualizafase(lobbyId, fase) {
     console.log('Atualizando a partida com os dados:', PartidaDados);
 
     // Enviar os dados atualizados de volta para o servidor
-    const response = await fetch('https://dbwar.onrender.com/partida', {
+    const response = await fetch('https://dbwar.onrender.com/partida/${lobbyId}', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -361,4 +361,3 @@ async function Atualizafase(lobbyId, fase) {
   }
 }
 
- 
