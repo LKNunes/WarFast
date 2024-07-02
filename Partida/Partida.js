@@ -163,13 +163,13 @@ function pausecomp(millis)
 
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
-      console.log('TEste1');
-      // Adicionar um ouvinte de evento para o carregamento do documento SVG
-      svgObject.addEventListener('load', function() {
-        const svgDoc = svgObject.contentDocument;
-        const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
-        console.log('TEste2');
+      console.log('Teste1');
 
+      try {
+        const svgDoc = await loadSvg(svgObject);
+        console.log('Teste2');
+
+        const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
         // Iterar sobre os elementos <path> e atribuir IDs numéricos
         paths.forEach((path, index) => {
           path.setAttribute('id', 'territorio' + (index + 1));
@@ -177,8 +177,11 @@ function pausecomp(millis)
         });
 
         console.log('IDs numéricos atribuídos aos elementos <path>.');
-      });
+      } catch (error) {
+        console.error('Erro ao carregar o SVG:', error);
+      }
     }
+
  
 // Função para atribuir cores aos jogadores
 function atribuirCores() {
