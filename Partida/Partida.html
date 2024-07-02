@@ -37,14 +37,14 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
+      const Fase = Consultarfase(lobbyId)
+      console.log(Fase);
 
-      console.log(Consultarfase(lobbyId));
 
-
-      if (Consultarfase(lobbyId) == 0){
+      if (Fase == 0){
       CoresMain(lobbyId);
       }
-      else if(Consultarfase(lobbyId) == 1){
+      else if(Fase == 1){
         console.log("Partida ja iniciada...na fase 1");
       }
     
