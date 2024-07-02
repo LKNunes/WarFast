@@ -1,3 +1,25 @@
+document.getElementById('entrarLobby').addEventListener('click', function() {
+  document.getElementById('entrarLobbyForm').style.display = 'block';
+  document.getElementById('criarLobbyForm').style.display = 'none';
+  document.getElementById('Perfil2').style.display = 'none';
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  verificarLogin();
+});
+
+document.getElementById('criarLobby').addEventListener('click', function() {
+  document.getElementById('criarLobbyForm').style.display = 'block';
+  document.getElementById('entrarLobbyForm').style.display = 'none';
+  document.getElementById('Perfil2').style.display = 'none';
+});
+
+document.getElementById('Perfil').addEventListener('click', function() {
+  document.getElementById('criarLobbyForm').style.display = 'none';
+  document.getElementById('entrarLobbyForm').style.display = 'none';
+  document.getElementById('Perfil2').style.display = 'block';
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   // Obtém o ID do lobby da URL
   const urlParams = new URLSearchParams(window.location.search);
