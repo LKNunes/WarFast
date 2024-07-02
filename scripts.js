@@ -1,4 +1,3 @@
-// scripts.js
     document.getElementById('entrarLobby').addEventListener('click', function() {
     document.getElementById('entrarLobbyForm').style.display = 'block';
     document.getElementById('criarLobbyForm').style.display = 'none';
