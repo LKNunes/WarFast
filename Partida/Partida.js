@@ -168,6 +168,7 @@ function pausecomp(millis)
       svgObject.addEventListener('load', function() {
         const svgDoc = svgObject.contentDocument;
         const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
+        console.log('TEste2');
 
         // Iterar sobre os elementos <path> e atribuir IDs numéricos
         paths.forEach((path, index) => {
