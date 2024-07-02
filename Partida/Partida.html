@@ -37,12 +37,15 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
-      
+
+     // console.log(Consultarfase(lobbyId));
+
+
       if (Consultarfase(lobbyId) == 0){
       CoresMain(lobbyId);
       }
       else if(Consultarfase(lobbyId) == 1){
-        console.log("Partida ja iniciada...na fase 1")
+        console.log("Partida ja iniciada...na fase 1");
       }
     
 
