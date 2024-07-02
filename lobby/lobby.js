@@ -61,11 +61,12 @@ async function comecarPartida(joinExistingGame = false) {
   for (let i = 0; i < 8; i++) {
     const jogadorId = i; // Gera um ID único para cada jogador
     const jogadorNome = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
-
+    const Objetivo = "";
     // Cria um objeto para representar o jogador com o ID e o nome
     const jogador = {
       id: jogadorId,
-      nome: jogadorNome
+      nome: jogadorNome,
+      objetivo: Objetivo
     };
 
     // Adiciona o jogador ao array Jogadores
@@ -118,7 +119,6 @@ async function comecarPartida(joinExistingGame = false) {
               leaderId: LobbyDados.leaderId, // Criar validação de somente Admin criar partida
               lobbyName: `Partida de ${nomeUsuario}`,
               fase: "0",
-              objetivo:"",
               playerSlots: LobbyDados.playerSlots
               
           })
@@ -182,7 +182,7 @@ async function dadoslobby() {
       const lobbyName = LobbyExistente.lobbyName;
       const playerSlots = LobbyExistente.playerSlots;
       return { id, leaderId, lobbyName, playerSlots };
-      
+
 
       // Chamar a função para exibir as informações no HTML
     } else {
