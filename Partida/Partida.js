@@ -410,13 +410,13 @@ function atribuirObjetivos() {
 async function ExibeObjetivo(lobbyId,UsLogado) {
   try {
 
-    let dadospartida = await dadospartida(lobbyId);
+     const Dadospartida =  dadospartida(lobbyId);
     
     for (i=0;i<=7;i++){
-    if (dadospartida.playerSlots[i].nome == UsLogado)
+    if (Dadospartida.playerSlots[i].nome == UsLogado)
       {
-      console.log("Objetivo:"+dadospartida.playerSlots[i].objetivo);
-      return dadospartida.playerSlots[i].objetivo;
+      console.log("Objetivo:"+Dadospartida.playerSlots[i].objetivo);
+      return Dadospartida.playerSlots[i].objetivo;
       }
     else{
       console.log("Usuario não encontrado");
