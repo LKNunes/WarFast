@@ -355,7 +355,7 @@ async function Atualizafase(lobbyId, fase) {
     console.log('JSON atualizado:', updatedJson);
 
     // Chamar a função Consultarfase para verificar a fase atualizada
-    console.log(Consultarfase(lobbyId));
+    console.log( await Consultarfase(lobbyId));
   } else {
     console.error(`ID da partida ${lobbyId} não corresponde.`);
   }
