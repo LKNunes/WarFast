@@ -387,9 +387,9 @@ async function ImprimirJogadores(lobbyId)
 {
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 console.log(PartidaDados);
-document.getElementById('nomeJogador').textContent =  PartidaDados.playerSlots[1].nome;
-document.getElementById('corJogador').textContent = PartidaDados.playerSlots[1].cor;
+document.getElementById('nomeJogador').textContent =  PartidaDados.playerSlots[0].nome;
+document.getElementById('corJogador').textContent = PartidaDados.playerSlots[0].cor;
 
 const spanNomeJogador = document.getElementById('nomeJogador');
-      spanNomeJogador.style.color = PartidaDados.playerSlots[1].cor;
+      spanNomeJogador.style.color = PartidaDados.playerSlots[0].cor;
 }
