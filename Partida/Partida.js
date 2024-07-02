@@ -163,7 +163,7 @@ function pausecomp(millis)
 
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
-
+      console.log('TEste1');
       // Adicionar um ouvinte de evento para o carregamento do documento SVG
       svgObject.addEventListener('load', function() {
         const svgDoc = svgObject.contentDocument;
