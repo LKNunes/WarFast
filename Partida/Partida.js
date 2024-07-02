@@ -272,7 +272,7 @@ async function aplicarCores(lobbyId) {
     for (let i = 0; i < 42; i++) {
       let jogador = i % 8;
     //  console.log(`Número ${i + 1} (Número ${distribuicao[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
-      console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
+   //   console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
       paths[i].style.fill = PartidaDados.playerSlots[jogador].cor;
     }
     
