@@ -415,7 +415,9 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
     for (i=0;i<=7;i++){
     if (PartidaDados.playerSlots[i].nome == UsLogado)
       {
-      console.log("Objetivo:"+PartidaDados.playerSlots[i].objetivo);
+        
+      document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
+
       return PartidaDados.playerSlots[i].objetivo;
       }
     else{
