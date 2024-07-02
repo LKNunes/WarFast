@@ -413,8 +413,9 @@ async function ObjetivoMain()
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
     
-  for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
-  console.log(ObjetivosAleatorios);
+  for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
+  //console.log(ObjetivosAleatorios[i]); 
+  // Aqui... atribuir aleatoriamente os 16 objetivos aos 8 jogadores
   }
 }
 
