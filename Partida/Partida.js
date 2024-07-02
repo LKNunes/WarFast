@@ -400,6 +400,6 @@ function atribuirObjetivos() {
     '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'
   ];
   embaralharArray(Objetivos);
-  console.log("Retornando Objetivos Função: atribuirCores()");
+  console.log("Retornando Objetivos Função:"+Objetivos);
   return Objetivos;
 }
