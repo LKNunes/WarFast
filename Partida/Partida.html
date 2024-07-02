@@ -25,16 +25,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
     }
 
     .content {
       display: flex;
       flex: 1;
+      flex-direction: column;
     }
 
     .sidebar {
-      width: 200px;
       background-color: #f4f4f4; /* Cor de fundo das seções laterais */
+      padding: 10px;
     }
 
     .main {
@@ -43,11 +45,28 @@
       justify-content: center;
       align-items: center;
       background-color: rgb(0, 157, 255);
+      padding: 10px;
     }
 
     #svgObject {
       max-width: 100%;
       max-height: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .content {
+        flex-direction: row;
+      }
+
+      .sidebar {
+        width: 200px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .sidebar {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -59,12 +78,14 @@
     <div class="content">
       <div class="sidebar">
         <!-- Conteúdo da barra lateral esquerda -->
+        <p>Barra Lateral Esquerda</p>
       </div>
       <div class="main">
         <object id="svgObject" type="image/svg+xml" data="/IMAGE/Mundi.svg"></object>
       </div>
       <div class="sidebar">
         <!-- Conteúdo da barra lateral direita -->
+        <p>Barra Lateral Direita</p>
       </div>
     </div>
   </div>
