@@ -321,6 +321,7 @@ async function Consultarfase(lobbyId){
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 // Consultar a fase atual da partida e retornar
 console.log(PartidaDados.fase);
+return PartidaDados.fase;
 }
 
 async function Atualizafase(lobbyId, fase) {
