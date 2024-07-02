@@ -166,8 +166,10 @@ function pausecomp(millis)
       console.log('Teste1');
 
       try {
-        const svgDoc = await loadSvg(svgObject);
         console.log('Teste2');
+
+        const svgDoc = await loadSvg(svgObject);
+        console.log('Teste3');
 
         const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
         // Iterar sobre os elementos <path> e atribuir IDs numéricos
