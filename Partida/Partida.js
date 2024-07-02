@@ -407,13 +407,13 @@ function atribuirObjetivos() {
   return Objetivos;
 }
 
-async function ExibeObjetivo(lobbyId,nomeJogador) {
+async function ExibeObjetivo(lobbyId,UsLogado) {
   try {
 
     const dadospartida = dadospartida(lobbyId);
     
     for (i=0;i<=7;i++){
-    if (dadospartida.playerSlots[i].nome == nomeJogador)
+    if (dadospartida.playerSlots[i].nome == UsLogado)
       {
       return dadospartida.playerSlots[i].objetivo;
       }
