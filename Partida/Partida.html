@@ -37,10 +37,14 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
+
+      async function consultar(){
       const Fase = await Consultarfase(lobbyId);
-      
       console.log(Fase);
 
+    }
+    consultar()
+      
 
       if (Fase == 0){
       CoresMain(lobbyId);
