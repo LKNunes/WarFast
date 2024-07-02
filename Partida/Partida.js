@@ -407,6 +407,17 @@ function atribuirObjetivos() {
   return Objetivos;
 }
 
+
+async function ObjetivoMain()
+{
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+  const ObjetivosAleatorios = atribuirObjetivos();
+    
+  for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+  console.log(ObjetivosAleatorios);
+  }
+}
+
 async function ExibeObjetivo(lobbyId,UsLogado) {
   try {
 
