@@ -393,7 +393,8 @@ const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Pr
         const spanNomeJogador = document.getElementById('nomeJogador'+i);
         spanNomeJogador.style.color = PartidaDados.playerSlots[i].cor;
       }
-    }    
+    }
+    
 
 function atribuirObjetivos() {
   const Objetivos = [
