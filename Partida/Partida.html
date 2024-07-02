@@ -101,6 +101,7 @@
   </div>
 
   <script src="/Partida/Partida.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
+  <script src="/scripts.js"></script> <!-- Certifique-se de que o script Partida.js é carregado primeiro -->
 
   <script>
     // Função para identificar e destacar territórios
@@ -120,6 +121,8 @@
 
       atribuirObjetivos();
 
+      const UsLogado = localStorage.getItem('usuarioLogado')
+      getUsuarioLogado(UsLogado);
 
     }
 
