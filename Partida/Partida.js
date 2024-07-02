@@ -388,7 +388,7 @@ async function ImprimirJogadores(lobbyId)
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 
 
-      for(i=0;i=7;i++){
+      for(i=0;i<=7;i++){
         document.getElementById('nomeJogador1').textContent =  PartidaDados.playerSlots[0].id;
         const spanNomeJogador = document.getElementById('nomeJogador'+i);
         spanNomeJogador.style.color = PartidaDados.playerSlots[i].cor;
