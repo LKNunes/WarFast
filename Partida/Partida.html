@@ -38,8 +38,20 @@
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
 
-      
-      CoresMain(lobbyId);
+      async function main(){
+        const Fase = await Consultarfase(lobbyId);
+
+        if (Fase == 0){
+          CoresMain(lobbyId);
+        }
+        
+        if (Fase == 1){
+          Console.log("Fase 1, ja iniciado");
+        }
+
+      }
+
+      main();
 
     const svgObject = document.getElementById('svgObject');
 
