@@ -389,6 +389,9 @@ const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Pr
 console.log(PartidaDados);
 document.getElementById('nomeJogador').textContent =  PartidaDados.playerSlots[1].id;
 document.getElementById('corJogador').textContent = PartidaDados.playerSlots[1].cor;
-document.getElementById('sidebar').style.color = PartidaDados.playerSlots[1].cor;
+
+const spanNomeJogador = document.getElementById('nomeJogador');
+      spanNomeJogador.style.color = PartidaDados.playerSlots[1].cor;
+
 
 }
