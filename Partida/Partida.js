@@ -392,6 +392,4 @@ document.getElementById('corJogador').textContent = PartidaDados.playerSlots[1].
 
 const spanNomeJogador = document.getElementById('nomeJogador');
       spanNomeJogador.style.color = PartidaDados.playerSlots[1].cor;
-
-
 }
