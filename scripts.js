@@ -190,6 +190,8 @@ async function dadospartidasemid() {
     return partidas.find(partida => {
       console.log(`Verificando partida ID: ${partida.id}`);
       if (Array.isArray(partida.playerSlots)) {
+        console.log(`NOME partida ID: ${player.nome}`);
+
         return partida.playerSlots.some(player => player.nome === usuarioId);
       }
       return false;
