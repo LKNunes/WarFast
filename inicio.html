@@ -70,6 +70,8 @@
           document.getElementById('Perfil2').style.display = 'block';
         });
 
+
+
         const UsLogado = localStorage.getItem('usuarioLogado')
         getUsuarioLogado(UsLogado);
         
@@ -80,6 +82,19 @@
               usuarioElement.textContent = 'Usuário logado: ' + usuarioLogado;
               usuarioElement.style.display = 'block'; // Mostrar o elemento agora que ele foi atualizado
             });
+
+
+            const partidas = await dadospartidasemid();
+            const partidaUsuario = encontrarPartidaUsuario(partidas, usuarioLogado);
+
+            if (partidaUsuario) {
+            console.log(`Usuário está na partida com ID: ${partidaUsuario.id}`);
+            // Faça algo com a partida encontrada, por exemplo:
+            // mudarCorSpan(partidaUsuario);
+            } else {
+            console.log('Usuário não encontrado em nenhuma partida');
+          }
+
           </script>
       </div>
       

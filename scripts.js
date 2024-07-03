@@ -179,3 +179,15 @@ function getLobbyIdFromURL() {
   const params = new URLSearchParams(window.location.search);
   return params.get('id');
 }
+
+async function dadospartidasemid() {
+    const response = await fetch('https://dbwar.onrender.com/partidas');
+    const partidas = await response.json();
+    return partidas;
+  }
+  
+function encontrarPartidaUsuario(partidas, usuarioId) {
+    return partidas.find(partida => 
+      partida.playerSlots.some(player => player.id === usuarioId)
+    );
+}
