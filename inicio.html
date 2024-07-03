@@ -47,7 +47,7 @@
         <script src="scripts.js"></script>
 
         <script>
-async function main(){
+
         document.getElementById('entrarLobby').addEventListener('click', function() {
           document.getElementById('entrarLobbyForm').style.display = 'block';
           document.getElementById('criarLobbyForm').style.display = 'none';
@@ -70,8 +70,6 @@ async function main(){
           document.getElementById('Perfil2').style.display = 'block';
         });
 
-
-
         const UsLogado = localStorage.getItem('usuarioLogado')
         getUsuarioLogado(UsLogado);
         
@@ -83,22 +81,49 @@ async function main(){
               usuarioElement.style.display = 'block'; // Mostrar o elemento agora que ele foi atualizado
             });
 
-
-            const partidas = await dadospartidasemid();
-            const partidaUsuario = encontrarPartidaUsuario(partidas, usuarioLogado);
-            console.log(partidas);
-            console.log(partidaUsuario);
-            
-            if (partidaUsuario) {
-            console.log(`Usuário está na partida com ID: ${partidaUsuario.id}`);
-            // Faça algo com a partida encontrada, por exemplo:
-            // mudarCorSpan(partidaUsuario);
-            } else {
-            console.log('Usuário não encontrado em nenhuma partida');
-          }
+            async function dadospartidasemid() {
+      try {
+        const response = await fetch('https://dbwar.onrender.com/partida');
+        if (!response.ok) {
+          throw new Error(`Erro ao buscar partidas: ${response.statusText}`);
         }
-          main();
-          </script>
+        const partidas = await response.json();
+        return partidas;
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
+    }
+
+    function encontrarPartidaUsuario(partidas, usuarioNome) {
+      return partidas.find(partida => {
+        console.log(`Verificando partida ID: ${partida.id}`);
+        if (Array.isArray(partida.playerSlots)) {
+          return partida.playerSlots.some(player => player.nome === usuarioNome);
+        }
+        return false;
+      });
+    }
+
+    async function main() {
+      const usuarioLogado = 'nomeDoUsuario'; // Substitua pelo nome real do usuário logado
+      const partidas = await dadospartidasemid();
+
+      console.log('Todas as partidas:', partidas);
+
+      const partidaUsuario = encontrarPartidaUsuario(partidas, usuarioLogado);
+
+      if (partidaUsuario) {
+        console.log(`Usuário está na partida com ID: ${partidaUsuario.id}`);
+        // Faça algo com a partida encontrada, por exemplo:
+        // mudarCorSpan(partidaUsuario);
+      } else {
+        console.log('Usuário não encontrado em nenhuma partida');
+      }
+    }
+
+    main();
+         </script>
       </div>
       
     </div>
