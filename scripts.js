@@ -187,6 +187,7 @@ async function dadospartidasemid() {
   }
   
 function encontrarPartidaUsuario(partidas, usuarioLogado) {
+    console.log(player.nome+" x "+usuarioLogado);
     return partidas.find(partida => 
       partida.playerSlots.some(player => player.nome === usuarioLogado)
     );
