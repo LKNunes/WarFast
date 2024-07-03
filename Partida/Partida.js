@@ -406,7 +406,7 @@ function atribuirObjetivos() {
   console.log("Retornando Objetivos Função:"+Objetivos);
   return Objetivos;
 }
-
+ 
 
 async function ObjetivoMain()
 {
