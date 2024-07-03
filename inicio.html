@@ -86,7 +86,9 @@ async function main(){
 
             const partidas = await dadospartidasemid();
             const partidaUsuario = encontrarPartidaUsuario(partidas, usuarioLogado);
-
+            console.log(partidas);
+            console.log(partidaUsuario);
+            
             if (partidaUsuario) {
             console.log(`Usuário está na partida com ID: ${partidaUsuario.id}`);
             // Faça algo com a partida encontrada, por exemplo:
