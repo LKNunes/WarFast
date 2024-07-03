@@ -181,7 +181,7 @@ function getLobbyIdFromURL() {
 }
 
 async function dadospartidasemid() {
-    const response = await fetch('https://dbwar.onrender.com/partidas');
+    const response = await fetch('https://dbwar.onrender.com/partida');
     const partidas = await response.json();
     return partidas;
   }
