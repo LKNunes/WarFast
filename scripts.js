@@ -186,8 +186,8 @@ async function dadospartidasemid() {
     return partidas;
   }
   
-function encontrarPartidaUsuario(partidas, usuarioLogado) {
+  function encontrarPartidaUsuario(partidas, usuarioId) {
     return partidas.find(partida => 
-      partida.playerSlots.some(player => player.nome === usuarioLogado)
+      Array.isArray(partida.playerSlots) && partida.playerSlots.some(player => player.id === usuarioId)
     );
-}
+  }
