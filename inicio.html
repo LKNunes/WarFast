@@ -117,8 +117,9 @@
       console.log(partidaUsuario);
       if (partidaUsuario) {
         console.log(`Usuário está na partida com ID: ${partidaUsuario.id}`);
-        const partidasId = document.getElementById("PartidasID");
-        partidasId = partidaUsuario;
+
+        const partidasId = document.getElementById("PartidasID").textContent = partidaUsuario.id;
+        
         // Faça algo com a partida encontrada, por exemplo:
         // mudarCorSpan(partidaUsuario);
       } else {
