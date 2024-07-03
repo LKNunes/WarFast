@@ -44,6 +44,8 @@
       </div>
       <div class="mb-3" id="Perfil2" style="display: none;">
         <div id="usuarioLogado" class="mb-3" style="display: none;"></div>  
+        
+        <div id="PartidasID" class="mb-3" style="display: none;"></div>  
         <script src="scripts.js"></script>
 
         <script>
@@ -115,6 +117,8 @@
       console.log(partidaUsuario);
       if (partidaUsuario) {
         console.log(`Usuário está na partida com ID: ${partidaUsuario.id}`);
+        const partidasId = document.getElementById("PartidasID");
+        partidasId = partidaUsuario;
         // Faça algo com a partida encontrada, por exemplo:
         // mudarCorSpan(partidaUsuario);
       } else {
