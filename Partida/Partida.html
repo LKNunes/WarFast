@@ -124,7 +124,8 @@
         try {
         ObjetivoMain(lobbyId);
         } catch (error) {
-        return error;  
+         console.error('Erro:', error);
+          return null;
         }
 
       } else if (Fase == 1) {
