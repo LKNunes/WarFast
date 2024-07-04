@@ -345,6 +345,7 @@ async function CoresMain(lobbyId){
 async function Consultarfase(lobbyId){
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 // Consultar a fase atual da partida e retornar
+console.log(lobbyId);
 return PartidaDados.fase;
 }
 
