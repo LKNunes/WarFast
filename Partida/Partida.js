@@ -416,6 +416,39 @@ async function ObjetivoMain()
   for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
   //console.log(ObjetivosAleatorios[i]); 
   // Aqui... atribuir aleatoriamente os 16 objetivos aos 8 jogadores
+
+
+    //teste
+
+    let Jogadores = [];
+    let Objetivos8= [];
+      let Objetivos8 = ObjetivosAleatorios();
+
+      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+        const jogadorId = PartidaDados.playerSlots[i].id;
+        const jogadorNome = PartidaDados.playerSlots[i].nome;
+        const Objetivo = Objetivos8[i];
+        const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
+        
+
+        // Cria um objeto para representar o jogador com o ID, nome e cor
+        const jogador = {
+          id: jogadorId,
+          nome: jogadorNome,
+          objetivo: Objetivo,
+          cor: Cor
+        };
+
+        // Adiciona o jogador ao array Jogadores
+        Jogadores.push(jogador);
+      }
+
+      PartidaDados.playerSlots = Jogadores;
+
+    //teste
+
+  await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
   }
 }
 
