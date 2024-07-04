@@ -408,7 +408,7 @@ function atribuirObjetivos() {
 }
  
 
-async function ObjetivoMain()
+async function ObjetivoMain(lobbyId)
 {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
