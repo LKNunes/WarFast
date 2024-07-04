@@ -421,11 +421,13 @@ async function ObjetivoMain()
     //teste
 
     let Jogadores = [];
-   
+    let Objetivos8= [];
+      let Objetivos8 = ObjetivosAleatorios();
+
       for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
         const jogadorId = PartidaDados.playerSlots[i].id;
         const jogadorNome = PartidaDados.playerSlots[i].nome;
-        const Objetivo = ObjetivosAleatorios[i];
+        const Objetivo = Objetivos8[i];
         const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
         
 
