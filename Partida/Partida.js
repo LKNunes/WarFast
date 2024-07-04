@@ -337,7 +337,7 @@ async function CoresMain(lobbyId){
 
       console.log("Jogadores atualizados:");
       const fase = 1;
-      Atualizafase(lobbyId,fase);
+      await Atualizafase(lobbyId,fase);
   
     
 }
