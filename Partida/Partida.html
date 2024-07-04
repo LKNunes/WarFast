@@ -115,10 +115,11 @@
         const UsLogado = localStorage.getItem('usuarioLogado')
 
       if (Fase == 0) {
+        ObjetivoMain(lobbyId);
+
         CoresMain(lobbyId);
         atribuirObjetivos();
         getUsuarioLogado(UsLogado);
-        ObjetivoMain(lobbyId);
 
       } else if (Fase == 1) {
         console.log("Fase 1, ja iniciado");
