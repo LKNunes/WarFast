@@ -338,8 +338,7 @@ async function CoresMain(lobbyId){
 
       console.log("Jogadores atualizados:");
       const fase = 1;
-       Atualizafase(lobbyId,fase);
-  
+      Atualizafase(lobbyId,fase);
     
 }
 
@@ -415,7 +414,9 @@ async function ObjetivoMain(lobbyId)
 {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
-    
+  
+  
+
   for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
   //console.log(ObjetivosAleatorios[i]); 
   // Aqui... atribuir aleatoriamente os 16 objetivos aos 8 jogadores
