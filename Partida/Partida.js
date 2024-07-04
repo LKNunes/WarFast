@@ -210,7 +210,7 @@ function atribuirCores() {
     'rgb(128, 0, 128)'  // Roxo
   ];
   embaralharArray(cores);
-  console.log("Retornando Cores Função: atribuirCores()");
+  //console.log("Retornando Cores Função: atribuirCores()");
   return cores;
 }
 
@@ -219,7 +219,7 @@ async function aplicarCores(lobbyId) {
 
     const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-    console.log("Dados Correto?" + PartidaDados.id);
+    //console.log("Dados Correto?" + PartidaDados.id);
     if (!PartidaDados) {
       console.error('Erro ao obter os dados da partida.');
       return;
