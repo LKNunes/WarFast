@@ -108,6 +108,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const lobbyId = urlParams.get('id');
 
+    verificarLogin();
+
     async function main() {
       const Fase = await Consultarfase(lobbyId);
 
@@ -118,15 +120,13 @@
         CoresMain(lobbyId);
   //      atribuirObjetivos();
         getUsuarioLogado(UsLogado);
+        ExibeObjetivo(lobbyId,UsLogado);
+        ObjetivoMain(lobbyId);
 
       } else if (Fase == 1) {
         console.log("Fase 1, ja iniciado");
-      }
+      }      
       
-      
-      verificarLogin();
-      ExibeObjetivo(lobbyId,UsLogado);
-      ObjetivoMain(lobbyId);
   
     }
 
