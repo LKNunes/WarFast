@@ -118,10 +118,14 @@
 
       if (Fase == 0) {
         CoresMain(lobbyId);
-  //      atribuirObjetivos();
+  //    atribuirObjetivos();
         getUsuarioLogado(UsLogado);
         ExibeObjetivo(lobbyId,UsLogado);
-      //  ObjetivoMain(lobbyId);
+        try {
+        ObjetivoMain(lobbyId);
+        } catch (error) {
+        return error;  
+        }
 
       } else if (Fase == 1) {
         console.log("Fase 1, ja iniciado");
