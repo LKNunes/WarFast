@@ -331,7 +331,7 @@ async function CoresMain(lobbyId){
 
       // Aplicar cores aos territórios
 
-      console.log("Jogadores atualizados:");
+      //console.log("Jogadores atualizados:");
       const fase = 1;
       Atualizafase(lobbyId,fase);
     
@@ -361,7 +361,7 @@ async function Atualizafase(lobbyId, fase) {
       body: JSON.stringify(PartidaDados)
     });
 
-    console.log('Resposta do servidor:', response);
+   // console.log('Resposta do servidor:', response);
 
     if (!response.ok) {
       console.error(`Erro ao atualizar os dados: ${response.statusText}`);
@@ -370,11 +370,11 @@ async function Atualizafase(lobbyId, fase) {
 
     // Obter a resposta e mostrar o JSON atualizado
     const updatedJson = await response.json();
-    console.log('JSON atualizado:', updatedJson);
+    //console.log('JSON atualizado:', updatedJson);
 
     // Chamar a função Consultarfase para verificar a fase atualizada
-    console.log(lobbyId);
-    console.log( await Consultarfase(lobbyId));
+   // console.log(lobbyId);
+   // console.log( await Consultarfase(lobbyId));
   } else {
     console.error(`ID da partida ${lobbyId} não corresponde.`);
   }
