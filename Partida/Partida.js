@@ -422,7 +422,7 @@ async function ObjetivoMain()
 
     let Jogadores = [];
     let Objetivos8= [];
-       Objetivos8 = ObjetivosAleatorios();
+       Objetivos8 = await ObjetivosAleatorios();
 
       for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
         const jogadorId = PartidaDados.playerSlots[i].id;
