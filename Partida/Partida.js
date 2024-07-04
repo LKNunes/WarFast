@@ -60,7 +60,7 @@ async function dadospartida(lobbyId) {
 
     const LobbyExistente = Lobs.find(u => u.id === lobbyId);
 
-    console.log("Lobbies recebidos:", LobbyExistente); // Log para verificar os lobbies recebidos
+   // console.log("Lobbies recebidos:", LobbyExistente); // Log para verificar os lobbies recebidos
 
 
     if (LobbyExistente) {
@@ -122,10 +122,9 @@ function identificarTerritorios() {
 
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
   svgObject.addEventListener('load', function() {
-    console.log("1");
+  
     const svgDoc = svgObject.contentDocument;
     const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
-      console.log("2");
     // Iterar sobre os elementos <path> e atribuir uma borda vermelha
     for (let i = 0; i < paths.length; i++) {
       // Adicionar uma borda vermelha
@@ -133,7 +132,6 @@ function identificarTerritorios() {
       paths[i].style.strokeWidth = '0.5';
 //      pausecomp(500);
 
-      console.log("3");
       // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
       alterarTamanhoTerritorio(paths[i]);
     }
@@ -164,22 +162,19 @@ function pausecomp(millis)
 
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
-      console.log('Teste1');
 
       try {
-        console.log('Teste2');
 
         const svgDoc =  loadSvg(svgObject);
-        console.log('Teste3');
 
         const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
         // Iterar sobre os elementos <path> e atribuir IDs numéricos
         paths.forEach((path, index) => {
           path.setAttribute('id', 'territorio' + (index + 1));
-          console.log('ID do path:', path.getAttribute('id'));
+       //   console.log('ID do path:', path.getAttribute('id'));
         });
 
-        console.log('IDs numéricos atribuídos aos elementos <path>.');
+       // console.log('IDs numéricos atribuídos aos elementos <path>.');
       } catch (error) {
         console.error('Erro ao carregar o SVG:', error);
       }
@@ -345,7 +340,6 @@ async function CoresMain(lobbyId){
 async function Consultarfase(lobbyId){
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 // Consultar a fase atual da partida e retornar
-console.log(lobbyId);
 return PartidaDados.fase;
 }
 
@@ -357,8 +351,6 @@ async function Atualizafase(lobbyId, fase) {
   if (PartidaDados.id === lobbyId) {
     // Atualizar o campo "fase"
     PartidaDados.fase = fase;
-
-    console.log('Atualizando a partida com os dados:', PartidaDados);
     
     // Enviar os dados atualizados de volta para o servidor
     const response = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
@@ -405,7 +397,6 @@ function atribuirObjetivos() {
     '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'
   ];
   embaralharArray(Objetivos);
-  console.log("Retornando Objetivos Função:"+Objetivos);
   return Objetivos;
 }
  
