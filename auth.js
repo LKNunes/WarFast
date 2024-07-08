@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function logout() {
     localStorage.removeItem('loggedIn');
     window.location.href = '../../index.html'; // Redireciona para a página inicial após logout
-}
+} 
 
 async function signup() {
     const nomeUsuario = document.getElementById('usuarioLogin').value;
