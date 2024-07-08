@@ -132,17 +132,17 @@
         console.log("Fase 1, ja iniciado");
       }      
       
-    const svgObject = document.getElementById('svgObject');
-
-      svgObject.onload = svgLoaded;
-
-      function svgLoaded() {
-        console.log("SVG carregado");
-        aplicarCores(lobbyId);
-      }
+  
     }
 
-    
+    const svgObject = document.getElementById('svgObject');
+
+    svgObject.onload = svgLoaded;
+
+    function svgLoaded() {
+      console.log("SVG carregado");
+      aplicarCores(lobbyId);
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
