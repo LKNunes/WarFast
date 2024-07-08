@@ -65,7 +65,7 @@ async function signup() {
                 id: Date.now(), // Adicionando um ID fictício
                 usuario: nomeUsuario,
                 senha: senhaUsuario
-            })
+            }) 
         });
 
         if (!response.ok) throw new Error('Erro ao cadastrar usuário');
