@@ -422,6 +422,7 @@ async function ObjetivoMain(lobbyId)
 {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
+  sleep(10000);
   console.log(PartidaDados+"ObjetivoMaindados")
 
   for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
