@@ -5,7 +5,7 @@ async function playersCores() {
     const urlParams = new URLSearchParams(window.location.search);
     const lobbyId = urlParams.get('id');
 
-    const response = await fetch('https://dbwar.onrender.com/partida', {
+    const response = await fetch('https://45.140.193.150/partida', {
       method: 'GET',
     });
 
