@@ -337,7 +337,7 @@ async function CoresMain(lobbyId){
 
       // Atualiza os dados do lobby com os novos dados dos jogadores
       PartidaDados.playerSlots = Jogadores;
-      console.log(PartidaDados);
+      console.log(PartidaDados+"DADOS");
       // Atualiza o lobby no servidor
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
       await sleep(5000);
