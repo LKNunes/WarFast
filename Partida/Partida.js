@@ -307,7 +307,6 @@ async function CoresMain(lobbyId){
     console.log("SairCoresMain..."+Fase);
     return null;
   };
-  console.log("ContinuarCoresMain..."+Fase);
 
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
@@ -429,6 +428,13 @@ function atribuirObjetivos() {
 
 async function ObjetivoMain(lobbyId)
 {
+  const Fase = await Consultarfase(lobbyId);
+
+  if ( Fase == 1 ){
+    console.log("SairObjetivoMain..."+Fase);
+    return null;
+  };
+
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
   sleep(10000);
