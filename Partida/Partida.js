@@ -293,7 +293,7 @@ async function aplicarCores(lobbyId) {
 
 async function CoresMain(lobbyId){
   const Fase = await Consultarfase(lobbyId);
-
+ sleep(5000);
   if ( Fase == 1 ){
     return null;
   };
