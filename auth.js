@@ -66,7 +66,7 @@ async function signup() {
                 usuario: nomeUsuario,
                 senha: senhaUsuario
             }) 
-        });
+        }); 
 
         if (!response.ok) throw new Error('Erro ao cadastrar usuário');
 
