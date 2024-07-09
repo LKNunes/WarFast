@@ -12,8 +12,6 @@ async function playersCores() {
     const response = await fetch('https://45.140.193.150:8443/partida', {
       method: 'GET',
     });
-    await  sleep(2000);
-    console.log("PAUSA");
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
@@ -58,9 +56,6 @@ async function dadospartida(lobbyId) {
     const response = await fetch('https://45.140.193.150:8443/partida', {
       method: 'GET',
     });
-    await  sleep(2000);
-    
-    console.log("PAUSA");
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
@@ -69,7 +64,7 @@ async function dadospartida(lobbyId) {
 
     const LobbyExistente = Lobs.find(u => u.id === lobbyId);
 
-    console.log("Lobbies recebidos:", LobbyExistente); // Log para verificar os lobbies recebidos
+    //console.log("Lobbies recebidos:", LobbyExistente); // Log para verificar os lobbies recebidos
 
 
     if (LobbyExistente) {
@@ -106,10 +101,6 @@ async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
       },
       body: JSON.stringify(atualizacoes)
     });
-    await  sleep(2000);
-        
-    console.log("PAUSA");
-
 
     if (!response.ok) {
       throw new Error('Erro ao atualizar parcialmente o lobby');
@@ -383,11 +374,6 @@ async function Atualizafase(lobbyId, fase) {
       },
       body: JSON.stringify(PartidaDados)
     });
-    await  sleep(2000);
-        
-    console.log(JSON.stringify(PartidaDados) + " dadosfaase3");
-
-    console.log("PAUSA");
 
    // console.log('Resposta do servidor:', response);
 
@@ -440,8 +426,6 @@ async function ObjetivoMain(lobbyId)
 
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
-  sleep(10000);
-  console.log(JSON.stringify(PartidaDados) + " ObjetivoDados0");
 
   for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
   //console.log(ObjetivosAleatorios[i]); 
@@ -449,7 +433,6 @@ async function ObjetivoMain(lobbyId)
 
 
     //teste
-    console.log(JSON.stringify(PartidaDados) + " ObjetivoDados1");
 
     let Jogadores = [];
 
@@ -478,11 +461,7 @@ async function ObjetivoMain(lobbyId)
   }
 
       //teste
-
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-      await sleep(5000);
-    
-      console.log(JSON.stringify(PartidaDados) + " ObjetivoDados2");
     
 }
 
