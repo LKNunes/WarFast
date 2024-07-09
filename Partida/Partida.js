@@ -284,7 +284,7 @@ async function aplicarCores(lobbyId) {
       paths[index].style.stroke = cor;
     });
 */
-    console.log('Cores aplicadas aos territórios.');
+    //console.log('Cores aplicadas aos territórios.');
   } catch (error) {
     console.error('Erro ao aplicar cores aos territórios:', error);
   }
