@@ -107,19 +107,15 @@
     // Função para identificar e destacar territórios
     const urlParams = new URLSearchParams(window.location.search);
     const lobbyId = urlParams.get('id');
-    
-    verificarLogin();
-    
-    ImprimirJogadores(lobbyId);
- 
     const UsLogado = localStorage.getItem('usuarioLogado')
+    verificarLogin();
 
+    ImprimirJogadores(lobbyId);
     getUsuarioLogado(UsLogado);
     ExibeObjetivo(lobbyId,UsLogado);
 
     CoresMain(lobbyId);
     ObjetivoMain(lobbyId);
-
     Atualizafase(lobbyId,1);
 
     const svgObject = document.getElementById('svgObject');

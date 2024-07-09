@@ -417,7 +417,7 @@ async function ObjetivoMain(lobbyId)
   if ( Fase == 1 ){
     return null;
   };
-
+  console.log("Objetivo Main...");
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
 
