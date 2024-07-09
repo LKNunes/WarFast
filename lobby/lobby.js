@@ -91,7 +91,7 @@ async function comecarPartida(joinExistingGame = false) {
   console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de jogadores
 
   if (joinExistingGame) {
-    const gameExistsResponse = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
+    const gameExistsResponse = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ async function comecarPartida(joinExistingGame = false) {
   }
 
   try {
-      const response = await fetch('https://dbwar.onrender.com/partida', {
+      const response = await fetch('https://45.140.193.150:8443/partida', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -163,7 +163,7 @@ async function dadoslobby() {
   console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
 
   try {
-    const response = await fetch('https://dbwar.onrender.com/lobbies', {
+    const response = await fetch('https://45.140.193.150:8443/lobbies', {
       method: 'GET',
     });
 
