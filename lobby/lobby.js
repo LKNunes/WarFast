@@ -137,7 +137,7 @@ async function comecarPartida(joinExistingGame = false) {
 
       const data = await response.json();
       
-      console.log('Partida criada com sucesso! ID: ' + lobbyId);
+      console.log('Partida criada com sucesso! ID: ' + lobbyId); 
       // $('#cadastroModal').modal('hide');
 
       // Redirecionar para a página do lobby com o ID na URL
