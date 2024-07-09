@@ -34,7 +34,7 @@ async function criarlobby() {
       const data = await response.json();
       const lobbyId = data.id; // Pegando o ID do lobby criado
 
-      alert('Lobby criado com sucesso! ID: ' + lobbyId);
+      console.log('Lobby criado com sucesso! ID: ' + lobbyId);
       // $('#cadastroModal').modal('hide');
 
       // Redirecionar para a página do lobby com o ID na URL
@@ -79,12 +79,12 @@ async function adicionarUsuarioAoLobby() {
       
       const jaexiste = lobby.playerSlots.findIndex(slot => slot === usuarioLogado);
       if (jaexiste !== -1) {
-          alert('Já está no lobby! ANIMAL');
+          console.log('Já está no lobby! ANIMAL');
           return;
       }      // Encontre o primeiro slot vazio
       const slotIndex = lobby.playerSlots.findIndex(slot => slot === '');
       if (slotIndex === -1) {
-          alert('Não há slots vazios disponíveis no lobby');
+        console.log('Não há slots vazios disponíveis no lobby');
           return;
       }
 
@@ -104,7 +104,7 @@ async function adicionarUsuarioAoLobby() {
           throw new Error('Erro ao atualizar lobby');
       }
 
-      alert('Usuário adicionado com sucesso ao lobby!');
+      console.log('Usuário adicionado com sucesso ao lobby!');
       redirect(`/lobby/lobby.html?id=${lobbyNumber}`); // Redirecionar para a página do lobby
 
   } catch (error) {
@@ -123,12 +123,12 @@ async function removerUsuarioDoLobby() {
   const usuarioLogado = localStorage.getItem('usuarioLogado'); // Obter ID do usuário logado do localStorage
 
   if (!lobbyNumber) {
-      alert('Por favor, insira um número de lobby.');
+    console.log('Por favor, insira um número de lobby.');
       return;
   }
 
   if (!usuarioLogado) {
-      alert('Usuário não está logado.');
+    console.log('Usuário não está logado.');
       return;
   }
 
@@ -144,7 +144,7 @@ async function removerUsuarioDoLobby() {
       // Encontrar o índice do usuário no array de playerSlots
       const slotIndex = lobby.playerSlots.findIndex(slot => slot === usuarioLogado);
       if (slotIndex === -1) {
-          alert('Usuário não encontrado no lobby');
+        console.log('Usuário não encontrado no lobby');
           return;
       }
 
@@ -164,7 +164,7 @@ async function removerUsuarioDoLobby() {
           throw new Error('Erro ao atualizar lobby');
       }
 
-      alert('Usuário removido com sucesso do lobby!');
+      console.log('Usuário removido com sucesso do lobby!');
       redirect(`/lobby/lobby.html?id=${lobbyNumber}`); // Redirecionar para a página do lobby
   } catch (error) {
       console.error('Erro ao remover usuário do lobby:', error);
