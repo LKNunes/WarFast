@@ -14,7 +14,7 @@ async function criarlobby() {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   
   try {
-      const response = await fetch('https://dbwar.onrender.com/lobbies', {
+      const response = await fetch('https://45.140.193.150:8443/lobbies', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ async function adicionarUsuarioAoLobby() {
       
       const usuarioLogado = localStorage.getItem('usuarioLogado'); // Obter ID do usuário logado do localStorage
       
-      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`);
+      const response = await fetch(`https://45.140.193.150:8443/lobbies/${lobbyNumber}`);
       if (!response.ok) {
           throw new Error('Erro ao buscar lobby');
       }
@@ -92,7 +92,7 @@ async function adicionarUsuarioAoLobby() {
       lobby.playerSlots[slotIndex] = usuarioLogado;
 
       // Envie a atualização de volta ao servidor
-      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`, {
+      const updateResponse = await fetch(`https://45.140.193.150:8443/lobbies/${lobbyNumber}`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json'
@@ -134,7 +134,7 @@ async function removerUsuarioDoLobby() {
 
   try {
       // Buscar o lobby existente pelo ID
-      const response = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`);
+      const response = await fetch(`https://45.140.193.150:8443/lobbies/${lobbyNumber}`);
       if (!response.ok) {
           throw new Error('Erro ao buscar lobby');
       }
@@ -152,7 +152,7 @@ async function removerUsuarioDoLobby() {
       lobby.playerSlots[slotIndex] = '';
 
       // Enviar a atualização de volta ao servidor
-      const updateResponse = await fetch(`https://dbwar.onrender.com/lobbies/${lobbyNumber}`, {
+      const updateResponse = await fetch(`https://45.140.193.150:8443/${lobbyNumber}`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json'
@@ -181,7 +181,7 @@ function getLobbyIdFromURL() {
 }
 
 async function dadospartidasemid() {
-    const response = await fetch('https://dbwar.onrender.com/partida');
+    const response = await fetch('https://45.140.193.150:8443/partida');
     const partidas = await response.json();
     return partidas;
   }
