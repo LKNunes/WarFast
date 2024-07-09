@@ -117,7 +117,10 @@
 
     async function main() {
       const Fase = await Consultarfase(lobbyId);
+      return fase;
     }
+
+    const Fase = main();
       console.log("2");
 
       ImprimirJogadores(lobbyId);
@@ -143,7 +146,6 @@
       
       console.log("6");
 
-    main();
     console.log("7");
 
     const svgObject = document.getElementById('svgObject');
