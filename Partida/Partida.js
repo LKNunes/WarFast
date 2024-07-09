@@ -342,9 +342,7 @@ async function CoresMain(lobbyId){
 
       //console.log("Jogadores atualizados:");
       const fase = 1;
-
-      sleep(5000);
-
+      
       Atualizafase(lobbyId,fase);
     
 }
@@ -359,6 +357,7 @@ return PartidaDados.fase;
 async function Atualizafase(lobbyId, fase) {
   // Obter os dados da partida
   const PartidaDados = await dadospartida(lobbyId);
+ sleep(5000);
   // Verificar se o ID da partida corresponde
   if (PartidaDados.id === lobbyId) {
     // Atualizar o campo "fase"
