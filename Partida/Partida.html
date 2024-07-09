@@ -122,6 +122,8 @@
       svgObject.onload = svgLoaded;
       
       async function svgLoaded() {
+        const urlParams = new URLSearchParams(window.location.search);
+
         const lobbyId = urlParams.get('id');
         console.log("SVG carregado");
         await aplicarCores(lobbyId);
