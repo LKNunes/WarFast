@@ -137,7 +137,7 @@ async function comecarPartida(joinExistingGame = false) {
 
       const data = await response.json();
       
-      alert('Partida criada com sucesso! ID: ' + lobbyId);
+      console.log('Partida criada com sucesso! ID: ' + lobbyId);
       // $('#cadastroModal').modal('hide');
 
       // Redirecionar para a página do lobby com o ID na URL
@@ -193,14 +193,14 @@ async function dadoslobby() {
       // Chamar a função para exibir as informações no HTML
     } else {
       console.error('Lobby não encontrado');
-      alert('Lobby não encontrado.');
+      console.log('Lobby não encontrado.');
       return null;
 
     }
 
   } catch (error) {
     console.error('Erro:', error);
-    alert('Erro ao achar dados do lobby.');
+    console.log('Erro ao achar dados do lobby.');
     return null;
 
   }
