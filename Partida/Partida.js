@@ -5,7 +5,7 @@ async function playersCores() {
     const urlParams = new URLSearchParams(window.location.search);
     const lobbyId = urlParams.get('id');
 
-    const response = await fetch('https://45.140.193.150/partida', {
+    const response = await fetch('https://45.140.193.150/ partida', {
       method: 'GET',
     });
 
@@ -49,7 +49,7 @@ async function dadospartida(lobbyId) {
   //console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
 
   try {
-    const response = await fetch('https://dbwar.onrender.com/partida', {
+    const response = await fetch('https://45.140.193.150:8443/partida', {
       method: 'GET',
     });
 
@@ -90,7 +90,7 @@ async function dadospartida(lobbyId) {
 
 async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
   try {
-    const response = await fetch(`https://dbwar.onrender.com/partida/${lobbyId}`, {
+    const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
