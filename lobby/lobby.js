@@ -100,7 +100,7 @@ async function comecarPartida(joinExistingGame = false) {
         'Content-Type': 'application/json',
       },
     });
-    sleep(2000);
+    await sleep(2000);
 
     if (gameExistsResponse.ok) {
       // Game exists, join the game
@@ -129,7 +129,7 @@ async function comecarPartida(joinExistingGame = false) {
           
       });
 
-      sleep(2000);
+      await   sleep(2000);
 
       if (!response.ok) {
           throw new Error('Erro ao criar lobby');
@@ -171,7 +171,7 @@ async function dadoslobby() {
     const response = await fetch('https://45.140.193.150:8443/lobbies', {
       method: 'GET',
     });
-    sleep(2000);
+    await  sleep(2000);
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
