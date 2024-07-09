@@ -301,6 +301,10 @@ async function aplicarCores(lobbyId) {
 
 
 async function CoresMain(lobbyId){
+  const Fase = await Consultarfase(lobbyId);
+
+  if ( Fase == 1 ){return null};
+
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       if (!PartidaDados) {
@@ -352,6 +356,7 @@ async function CoresMain(lobbyId){
 async function Consultarfase(lobbyId){
 const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 // Consultar a fase atual da partida e retornar
+
 return PartidaDados.fase;
 }
 
