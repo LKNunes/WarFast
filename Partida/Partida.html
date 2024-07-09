@@ -107,38 +107,18 @@
     // Função para identificar e destacar territórios
     const urlParams = new URLSearchParams(window.location.search);
     const lobbyId = urlParams.get('id');
-
-
-    console.log("0");
     
     verificarLogin();
-
-    console.log("1");
-
-
-      console.log("2");
-
-      ImprimirJogadores(lobbyId);
-        const UsLogado = localStorage.getItem('usuarioLogado')
-    console.log("3");
-
-  
-        console.log("4");
-
-        CoresMain(lobbyId);
-  //    atribuirObjetivos();
-        getUsuarioLogado(UsLogado);
-        ExibeObjetivo(lobbyId,UsLogado);
-        ObjetivoMain(lobbyId);
     
-        console.log("5");
+    ImprimirJogadores(lobbyId);
+ 
+    const UsLogado = localStorage.getItem('usuarioLogado')
 
-        console.log("Fase 1, ja iniciado");
-      
-      
-      console.log("6");
+    getUsuarioLogado(UsLogado);
+    ExibeObjetivo(lobbyId,UsLogado);
 
-    console.log("7");
+    CoresMain(lobbyId);
+    ObjetivoMain(lobbyId);
 
     const svgObject = document.getElementById('svgObject');
 
@@ -147,17 +127,11 @@
     function svgLoaded() {
       console.log("SVG carregado");
       aplicarCores(lobbyId);
-      console.log("8");
-
     }
 
     document.addEventListener('DOMContentLoaded', function() {
       identificarTerritorios();
-      console.log("9");
-
-    }); 
-
-    console.log("10");
+    });
 
   </script>
 </body>
