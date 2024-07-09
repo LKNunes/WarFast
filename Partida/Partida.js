@@ -341,7 +341,7 @@ async function CoresMain(lobbyId){
 
       // Atualiza o lobby no servidor
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-
+      await sleep(5000);
       // Aplicar cores aos territórios
 
       //console.log("Jogadores atualizados:");
@@ -458,6 +458,7 @@ async function ObjetivoMain(lobbyId)
     //teste
 
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+  await sleep(5000);
 
   }
 }
