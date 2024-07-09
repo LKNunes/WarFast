@@ -446,7 +446,9 @@ async function ObjetivoMain(lobbyId)
 
   }
       PartidaDados.playerSlots = Jogadores;
-      console.log(""+PartidaDados);
+      
+      console.log(JSON.stringify(PartidaDados) + " DADOS");
+
       //teste
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
