@@ -478,6 +478,8 @@ async function ObjetivoMain(lobbyId)
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
   await sleep(5000);
 
+  console.log(JSON.stringify(PartidaDados) + " ObjetivoDados1");
+
   }
 }
 
