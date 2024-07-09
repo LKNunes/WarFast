@@ -108,10 +108,11 @@
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
       const UsLogado = localStorage.getItem('usuarioLogado');
-
+      
       await verificarLogin();
       await ImprimirJogadores(lobbyId);
       await getUsuarioLogado(UsLogado);
+      await identificarTerritorios;
       await ExibeObjetivo(lobbyId, UsLogado);
       await CoresMain(lobbyId);
       await ObjetivoMain(lobbyId);
