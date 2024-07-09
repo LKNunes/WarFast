@@ -127,10 +127,11 @@
 
         const lobbyId = urlParams.get('id');
         console.log("SVG carregado");
-        await identificarTerritorios();
 
         await aplicarCores(lobbyId);
       }
+      await identificarTerritorios();
+
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
