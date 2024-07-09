@@ -294,9 +294,11 @@ async function aplicarCores(lobbyId) {
 async function CoresMain(lobbyId){
   const Fase = await Consultarfase(lobbyId);
  sleep(5000);
-  if ( Fase == 1 ){
+  if ( Fase >= 1 ){
     return null;
   };
+
+  Atualizafase(lobbyId,1);
 
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
@@ -413,10 +415,13 @@ async function ObjetivoMain(lobbyId)
 {
   const Fase = await Consultarfase(lobbyId);
 
-  if ( Fase == 1 ){
+  if ( Fase >= 2 ){
     return null;
   };
   console.log("Objetivo Main...");
+  
+  Atualizafase(lobbyId,2);
+  
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
   let Jogadores = [];
