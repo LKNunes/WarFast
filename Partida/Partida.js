@@ -449,6 +449,7 @@ async function ObjetivoMain(lobbyId)
 
 
     //teste
+    console.log(JSON.stringify(PartidaDados) + " ObjetivoDados0");
 
     let Jogadores = [];
 
