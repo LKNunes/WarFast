@@ -323,7 +323,6 @@ async function CoresMain(lobbyId){
         const Objetivo = PartidaDados.playerSlots[i].objetivo;
         const Cor = cores[i]; // Atribui a cor ao jogador
         
-
         // Cria um objeto para representar o jogador com o ID, nome e cor
         const jogador = {
           id: jogadorId,
@@ -338,7 +337,7 @@ async function CoresMain(lobbyId){
 
       // Atualiza os dados do lobby com os novos dados dos jogadores
       PartidaDados.playerSlots = Jogadores;
-
+      console.log(PartidaDados);
       // Atualiza o lobby no servidor
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
       await sleep(5000);
