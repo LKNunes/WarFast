@@ -95,7 +95,7 @@ async function dadospartida(lobbyId) {
 async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
   try {
     const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -423,7 +423,6 @@ async function ObjetivoMain(lobbyId)
   for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
   //console.log(ObjetivosAleatorios[i]); 
   // Aqui... atribuir aleatoriamente os 16 objetivos aos 8 jogadores
-
 
     //teste
 
