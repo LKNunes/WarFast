@@ -356,7 +356,6 @@ return PartidaDados.fase;
 async function Atualizafase(lobbyId, fase) {
   // Obter os dados da partida
   const PartidaDados = await dadospartida(lobbyId);
-  console.log(JSON.stringify(PartidaDados) + " dadosfaase");
  sleep(5000);
   // Verificar se o ID da partida corresponde
   if (PartidaDados.id === lobbyId) {
