@@ -116,7 +116,6 @@
       await ExibeObjetivo(lobbyId, UsLogado);
       await CoresMain(lobbyId);
       await ObjetivoMain(lobbyId);
-      await identificarTerritorios;
 
     }
 
@@ -129,7 +128,7 @@
         const lobbyId = urlParams.get('id');
         console.log("SVG carregado");
         await aplicarCores(lobbyId);
-        identificarTerritorios();
+        await identificarTerritorios();
       }
     document.addEventListener('DOMContentLoaded', init);
   </script>
