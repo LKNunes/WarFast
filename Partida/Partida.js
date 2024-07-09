@@ -303,7 +303,7 @@ async function aplicarCores(lobbyId) {
 async function CoresMain(lobbyId){
   const Fase = await Consultarfase(lobbyId);
 
-  if ( Fase == 1 ){return null};
+  if ( Fase == 1 ){return null;console.log("SairCoresMain...");};
 
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
