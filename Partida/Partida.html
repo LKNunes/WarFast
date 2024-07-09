@@ -104,10 +104,6 @@
   <script src="/scripts.js"></script>
 
   <script>
-
-const svgObject = document.getElementById('svgObject');
-svgObject.onload = svgLoaded;
-
     async function init() {
       const urlParams = new URLSearchParams(window.location.search);
       const lobbyId = urlParams.get('id');
@@ -120,7 +116,8 @@ svgObject.onload = svgLoaded;
       await CoresMain(lobbyId);
       await ObjetivoMain(lobbyId);
 
-     
+      const svgObject = document.getElementById('svgObject');
+      svgObject.onload = svgLoaded;
       
       async function svgLoaded() {
         console.log("SVG carregado");
