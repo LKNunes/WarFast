@@ -50,6 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function comecarPartida(joinExistingGame = false) {
   const nomeUsuario = localStorage.getItem('usuarioLogado');
   const urlParams = new URLSearchParams(window.location.search);
@@ -89,7 +93,6 @@ async function comecarPartida(joinExistingGame = false) {
   }  
   }
   console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de jogadores
-
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
       method: 'GET',
@@ -97,6 +100,7 @@ async function comecarPartida(joinExistingGame = false) {
         'Content-Type': 'application/json',
       },
     });
+    sleep(2000);
 
     if (gameExistsResponse.ok) {
       // Game exists, join the game
@@ -125,7 +129,8 @@ async function comecarPartida(joinExistingGame = false) {
           
       });
 
-      
+      sleep(2000);
+
       if (!response.ok) {
           throw new Error('Erro ao criar lobby');
       }
@@ -166,6 +171,7 @@ async function dadoslobby() {
     const response = await fetch('https://45.140.193.150:8443/lobbies', {
       method: 'GET',
     });
+    sleep(2000);
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 

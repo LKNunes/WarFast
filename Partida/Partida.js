@@ -8,6 +8,7 @@ async function playersCores() {
     const response = await fetch('https://45.140.193.150:8443/partida', {
       method: 'GET',
     });
+    sleep(2000);
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
@@ -52,6 +53,7 @@ async function dadospartida(lobbyId) {
     const response = await fetch('https://45.140.193.150:8443/partida', {
       method: 'GET',
     });
+    sleep(2000);
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
@@ -97,6 +99,8 @@ async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
       },
       body: JSON.stringify(atualizacoes)
     });
+    sleep(2000);
+
 
     if (!response.ok) {
       throw new Error('Erro ao atualizar parcialmente o lobby');
@@ -360,6 +364,7 @@ async function Atualizafase(lobbyId, fase) {
       },
       body: JSON.stringify(PartidaDados)
     });
+    sleep(2000);
 
    // console.log('Resposta do servidor:', response);
 
