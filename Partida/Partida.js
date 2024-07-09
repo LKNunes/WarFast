@@ -121,7 +121,7 @@ function embaralharArray(array) {
   return array;
 }
 
-function identificarTerritorios() {
+async function identificarTerritorios() {
   const svgObject = document.getElementById('svgObject');
 
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
