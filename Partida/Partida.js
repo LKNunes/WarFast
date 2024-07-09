@@ -295,7 +295,6 @@ async function CoresMain(lobbyId){
   const Fase = await Consultarfase(lobbyId);
 
   if ( Fase == 1 ){
-    console.log("SairCoresMain..."+Fase);
     return null;
   };
 
