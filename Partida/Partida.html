@@ -129,7 +129,7 @@ const svgObject = document.getElementById('svgObject');
 
         const lobbyId = urlParams.get('id');
         console.log("SVG carregado");
-      //  await aplicarCores(lobbyId);
+        await aplicarCores(lobbyId);
         await identificarTerritorios();
       }
     document.addEventListener('DOMContentLoaded', init);
