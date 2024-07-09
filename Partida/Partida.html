@@ -116,7 +116,9 @@
       await CoresMain(lobbyId);
       await ObjetivoMain(lobbyId);
 
-      const svgObject = document.getElementById('svgObject');
+    }
+
+    const svgObject = document.getElementById('svgObject');
       svgObject.onload = svgLoaded;
       
       async function svgLoaded() {
@@ -124,8 +126,6 @@
         await aplicarCores(lobbyId);
         identificarTerritorios();
       }
-    }
-
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
