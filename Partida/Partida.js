@@ -474,14 +474,16 @@ async function ObjetivoMain(lobbyId)
 
       PartidaDados.playerSlots = Jogadores;
 
-    //teste
-
-  await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-  await sleep(5000);
-
-  console.log(JSON.stringify(PartidaDados) + " ObjetivoDados2");
 
   }
+
+      //teste
+
+      await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+      await sleep(5000);
+    
+      console.log(JSON.stringify(PartidaDados) + " ObjetivoDados2");
+    
 }
 
 async function ExibeObjetivo(lobbyId,UsLogado) {
