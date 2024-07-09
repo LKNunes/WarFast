@@ -152,7 +152,7 @@ async function removerUsuarioDoLobby() {
       lobby.playerSlots[slotIndex] = '';
 
       // Enviar a atualização de volta ao servidor
-      const updateResponse = await fetch(`https://45.140.193.150:8443/${lobbyNumber}`, {
+      const updateResponse = await fetch(`https://45.140.193.150:8443/lobbies/${lobbyNumber}`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json'
