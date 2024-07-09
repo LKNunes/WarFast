@@ -119,11 +119,13 @@
 
     }
 
-    const svgObject = document.getElementById('svgObject');
-      svgObject.onload = svgLoaded;
-      
+    
       async function svgLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
+
+const svgObject = document.getElementById('svgObject');
+      svgObject.onload = svgLoaded;
+      
 
         const lobbyId = urlParams.get('id');
         console.log("SVG carregado");
