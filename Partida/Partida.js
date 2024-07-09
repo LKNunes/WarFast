@@ -419,16 +419,14 @@ async function ObjetivoMain(lobbyId)
   console.log("Objetivo Main...");
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
+  let Jogadores = [];
 
   for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
   //console.log(ObjetivosAleatorios[i]); 
   // Aqui... atribuir aleatoriamente os 16 objetivos aos 8 jogadores
 
     //teste
-
-    let Jogadores = [];
-
-      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+  
         const jogadorId = PartidaDados.playerSlots[i].id;
         const jogadorNome = PartidaDados.playerSlots[i].nome;
         const Objetivo = ObjetivosAleatorios[i];
@@ -445,12 +443,12 @@ async function ObjetivoMain(lobbyId)
 
         // Adiciona o jogador ao array Jogadores
         Jogadores.push(jogador);
-      }
+      
 
-      PartidaDados.playerSlots = Jogadores;
 
 
   }
+      PartidaDados.playerSlots = Jogadores;
 
       //teste
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
