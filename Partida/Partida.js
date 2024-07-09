@@ -443,13 +443,10 @@ async function ObjetivoMain(lobbyId)
 
         // Adiciona o jogador ao array Jogadores
         Jogadores.push(jogador);
-      
-
-
 
   }
       PartidaDados.playerSlots = Jogadores;
-
+      console.log(""+PartidaDados);
       //teste
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
