@@ -13,6 +13,7 @@ async function playersCores() {
       method: 'GET',
     });
     sleep(2000);
+    console.log("PAUSA");
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
@@ -58,6 +59,7 @@ async function dadospartida(lobbyId) {
       method: 'GET',
     });
     sleep(2000);
+    console.log("PAUSA");
 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
@@ -104,6 +106,8 @@ async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
       body: JSON.stringify(atualizacoes)
     });
     sleep(2000);
+    
+    console.log("PAUSA");
 
 
     if (!response.ok) {
@@ -369,6 +373,8 @@ async function Atualizafase(lobbyId, fase) {
       body: JSON.stringify(PartidaDados)
     });
     sleep(2000);
+    
+    console.log("PAUSA");
 
    // console.log('Resposta do servidor:', response);
 
