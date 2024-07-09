@@ -342,7 +342,7 @@ async function CoresMain(lobbyId){
 
       //console.log("Jogadores atualizados:");
       const fase = 1;
-      
+      sleep(5000);
       Atualizafase(lobbyId,fase);
     
 }
