@@ -341,7 +341,7 @@ async function CoresMain(lobbyId){
       // Aplicar cores aos territórios
 
       //console.log("Jogadores atualizados:");
-      const fase = 0;
+      const fase = 1;
 
       sleep(5000);
 
