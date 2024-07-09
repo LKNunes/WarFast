@@ -3,7 +3,7 @@ async function login() {
     const senha = document.getElementById('senhaLogin').value;
 
     try {
-        const response = await fetch('https://dbwar.onrender.com/usuarios', {
+        const response = await fetch('http://45.140.193.150:3000/usuarios', {
             method: 'GET',
         });
 
@@ -56,7 +56,7 @@ async function signup() {
      console.log(nomeUsuario)
      console.log(senhaUsuario)
     try {
-        const response = await fetch('https://dbwar.onrender.com/usuarios', {
+        const response = await fetch('http://45.140.193.150:3000/usuarios', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
