@@ -419,7 +419,6 @@ async function ObjetivoMain(lobbyId)
   const Fase = await Consultarfase(lobbyId);
 
   if ( Fase == 1 ){
-    console.log("SairObjetivoMain..."+Fase);
     return null;
   };
 
