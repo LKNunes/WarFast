@@ -129,8 +129,11 @@ const svgObject = document.getElementById('svgObject');
 
         const lobbyId = urlParams.get('id');
         console.log("SVG carregado");
-try{
-        await aplicarCores(lobbyId);)catch{}
+try {
+  await aplicarCores(lobbyId);
+} catch (error) {
+  console.error("Erro ao aplicar cores:", error);
+  alert("Ocorreu um erro ao aplicar as cores. Tente novamente mais tarde.");
 }
         await identificarTerritorios();
       }
