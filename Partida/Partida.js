@@ -278,9 +278,8 @@ async function aplicarCores(lobbyId) {
 
     const donoterritorios = [
       { idterritorio: 1, dono: 0},
-      { idterritorio: 2, dono: 0},
+      { idterritorio: 2, dono: 0}
       
-      { numero: 16, descricao: 'Destruir Vermelho' }
     ];
 
     for (let i = 0; i < 42; i++) {
