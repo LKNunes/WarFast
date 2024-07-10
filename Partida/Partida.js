@@ -470,20 +470,20 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
       {
       
         const objetivos = [
-          { numero: 1, descricao: 'Conquistar a América do Norte' },
-          { numero: 2, descricao: 'Conquistar a América do Sul' },
-          { numero: 3, descricao: 'Conquistar a África' },
-          { numero: 4, descricao: 'Conquistar a Europa' },
-          { numero: 5, descricao: 'Conquistar a Ásia' },
-          { numero: 6, descricao: 'Conquistar a Oceania' },
-          { numero: 7, descricao: 'Conquistar 18 territórios' },
-          { numero: 8, descricao: 'Destruir Roxo Escuro' },
+          { numero: 1, descricao: 'Conquistar America do Norte e Africa'},
+          { numero: 2, descricao: 'Conquistar Asia e Africa'},
+          { numero: 3, descricao: 'Conquistar America do Norte e Oceania'},
+          { numero: 4, descricao: 'Conquistar Europa Ameria do Sul e mais um à sua escolha' },
+          { numero: 5, descricao: 'Conquistar Asia e America do Sul'},
+          { numero: 6, descricao: 'Conquistar Europa, Oceania e mais um à sua escolha' },
+          { numero: 7, descricao: 'Conquistar 18 territorios, com 2 tropas em cada pelo menos'},
+          { numero: 8, descricao: 'Conquistar 24 territorios, a sua escolha' },
           { numero: 9, descricao: 'Destruir Cinza' },
           { numero: 10, descricao: 'Destruir Laraja' },
           { numero: 11, descricao: 'Destruir Roxo' },
           { numero: 12, descricao: 'Destruir Verde Escuro' },
           { numero: 13, descricao: 'Destruir Verde Claro' },
-          { numero: 14, descricao: 'Destruir amarelo' },
+          { numero: 14, descricao: 'Destruir Roxo Escuro' },
           { numero: 15, descricao: 'Destruir Amarelo' },
           { numero: 16, descricao: 'Destruir Vermelho' }
         ];
