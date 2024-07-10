@@ -438,7 +438,7 @@ async function ObjetivoMain(lobbyId)
         const jogadorNome = PartidaDados.playerSlots[i].nome;
         const Objetivo = ObjetivosAleatorios[i];
         const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
-        console.log("J"+jogadorId+" Obj:"+Objetivo);
+        //console.log("J"+jogadorId+" Obj:"+Objetivo);
 
         // Cria um objeto para representar o jogador com o ID, nome e cor
         const jogador = {
