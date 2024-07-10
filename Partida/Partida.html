@@ -131,7 +131,9 @@ async function init() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   const UsLogado = localStorage.getItem('usuarioLogado');
-  
+  const preloader = document.getElementById('preloader');
+
+
   await verificarLogin(); 
  
   await ImprimirJogadores(lobbyId);
@@ -144,7 +146,8 @@ async function init() {
 
   await ObjetivoMain(lobbyId); // Muda para fase 1  
 
-  await MostrarHTML('preloader');
+
+  await MostrarHTML(preloader);
 
 }
 
