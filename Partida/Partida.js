@@ -287,9 +287,9 @@ async function aplicarCores(lobbyId) {
     }
     if (fase > 0){
       const Territorios = Territorios2;
-      }
+    }
     //teste
-
+    console.log(Territorios);
     for (let i = 0; i < 42; i++) {
       let jogador = i % 8;
      // console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
