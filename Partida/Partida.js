@@ -464,9 +464,7 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
   try {
 
     const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-  
-    document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
-  
+    
     for (i=0;i<=7;i++){
     if (PartidaDados.playerSlots[i].nome == UsLogado)
       {
