@@ -92,32 +92,8 @@ async function comecarPartida(joinExistingGame = false) {
     NumJogadores++;
   }  
   }
-  console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de 
+  console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de Jogadores
   
-//testes de territorio
-  
-
-  let Territorios = [];
-
-  for (let i = 0; i < 42; i++) {
-    const Territorioid = i; // Gera um ID único para cada jogador
-    const Dono = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
-    const Tropas = i;
-    // Cria um objeto para representar o jogador com o ID e o nome
-    const territorio = {
-      id: Territorioid,
-      dono: Dono,
-      NTropas: Tropas 
-    };
-
-    // Adiciona o jogador ao array Jogadores
-    Territorios.push(territorio);
-  
-  }
-
-
-
-//testes de territorio
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
       method: 'GET',
