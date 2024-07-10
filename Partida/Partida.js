@@ -547,7 +547,7 @@ async function AtualizaTurno(lobbyId,turno){
     document.getElementById('TurnoAtual').textContent = PartidaDados.turno;
 }
 
-async function VerificaTurno()
+async function VerificaTurno(lobbyId)
 {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
    
