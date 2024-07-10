@@ -157,6 +157,8 @@ async function init() {
  
   await getUsuarioLogado(UsLogado);
   
+  await MostrarHTML(preloader);
+
 }
 
 async function svgLoaded() {
@@ -179,7 +181,6 @@ async function svgLoaded() {
 
   await ExibeObjetivo(lobbyId, UsLogado); // 
 
-  await MostrarHTML(preloader);
 
 }
 
