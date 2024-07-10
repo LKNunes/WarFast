@@ -551,6 +551,6 @@ async function VerificaTurno(lobbyId)
 {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
    
+  console.log("Turno Verificado:"+PartidaDados.turno);
   return PartidaDados.turno;
-  console.log("Turno:"+PartidaDados.turno);
 }
