@@ -288,8 +288,10 @@ async function aplicarCores(lobbyId) {
     //  console.log(`Número ${i + 1} (Número ${distribuicao[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
       console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
       
-      donoterritorios.idterritorio = i+1;
-      donoterritorios.dono = PartidaDados.playerSlots[jogador].id;
+      donoterritorios.idterritorio[i] = i+1;
+      donoterritorios[i].dono = PartidaDados.playerSlots[jogador].id;
+      console.log("Territorio:"+donoterritorios[i].idterritorio)+" Dono:"+donoterritorios[i].dono;
+
       
       paths[i].style.fill = PartidaDados.playerSlots[jogador].cor;
       paths[i].style.stroke = 'white';
@@ -297,7 +299,6 @@ async function aplicarCores(lobbyId) {
       alterarTamanhoTerritorio(paths[i]);
     } 
 
-    console.log(""+donoterritorios);
     //console.log('Cores aplicadas aos territórios.');
   } catch (error) {
     console.error('Erro ao aplicar cores aos territórios:', error);
