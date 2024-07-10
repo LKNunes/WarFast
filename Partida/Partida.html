@@ -178,13 +178,12 @@ async function svgLoaded() {
   await ExibeObjetivo(lobbyId, UsLogado); // 
 
   await ExibeTurno(lobbyId);
-
+  
   await MostrarHTML(preloader);
 
-
-
-  await AtualizaTurno(lobbyId,1);
-  await VerificaTurno(lobbyId);
+  
+  //await AtualizaTurno(lobbyId,1);
+  //await VerificaTurno(lobbyId);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

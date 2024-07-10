@@ -61,7 +61,7 @@ async function comecarPartida(joinExistingGame = false) {
   const LobbyDados = await dadoslobby(); // Aguarda a resolução da Promise e obtém os dados do lobby
 
   let Jogadores = [];
-  
+
   for (let i = 0; i < 8; i++) {
     const jogadorId = i; // Gera um ID único para cada jogador
     const jogadorNome = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
@@ -92,7 +92,32 @@ async function comecarPartida(joinExistingGame = false) {
     NumJogadores++;
   }  
   }
-  console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de jogadores
+  console.log("Numero de Jogadores"+NumJogadores); // Traz o numero de 
+  
+//testes de territorio
+  
+
+  let Territorios = [];
+
+  for (let i = 0; i < 42; i++) {
+    const Territorioid = i; // Gera um ID único para cada jogador
+    const Dono = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
+    const Tropas = i;
+    // Cria um objeto para representar o jogador com o ID e o nome
+    const territorio = {
+      id: Territorioid,
+      dono: Dono,
+      NTropas: Tropas 
+    };
+
+    // Adiciona o jogador ao array Jogadores
+    Territorios.push(territorio);
+  
+  }
+
+
+
+//testes de territorio
   if (joinExistingGame) {
     const gameExistsResponse = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
       method: 'GET',
@@ -124,6 +149,7 @@ async function comecarPartida(joinExistingGame = false) {
               lobbyName: `Partida de ${nomeUsuario}`,
               fase: "0",
               turno: "0",
+              territorios: Territorios,
               playerSlots: LobbyDados.playerSlots
               
           })
