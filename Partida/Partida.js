@@ -278,7 +278,7 @@ async function aplicarCores(lobbyId) {
     }
 
     const paths = svgDoc.querySelectorAll('path');
-
+    const Territorios2 = [];
     const fase = await Consultarfase(lobbyId);
     if (fase == 0){
     const Territorios = await DestribuirTerritorios(lobbyId);
