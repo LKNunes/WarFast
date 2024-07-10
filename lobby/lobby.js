@@ -151,7 +151,7 @@ async function comecarPartida(joinExistingGame = false) {
 async function voltarLobby(){
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
-  window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
+//  window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
 
 }
 
