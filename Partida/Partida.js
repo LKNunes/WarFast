@@ -339,7 +339,7 @@ async function CoresMain(lobbyId){
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
       // Aplicar cores aos territórios
-      await Atualizafase(lobbyId,1);
+      //await Atualizafase(lobbyId,1);
 
       //console.log("Jogadores atualizados:");
     
@@ -416,7 +416,7 @@ async function ObjetivoMain(lobbyId)
 {
   const Fase = await Consultarfase(lobbyId);
 
-  if ( Fase >= 2 ){
+  if ( Fase >= 1 ){
     return null;
   };
   console.log("Objetivo Main...");
@@ -455,7 +455,7 @@ async function ObjetivoMain(lobbyId)
 
       //teste
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-      await Atualizafase(lobbyId,2);
+      await Atualizafase(lobbyId,1);
 
 }
 
