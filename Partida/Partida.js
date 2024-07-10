@@ -486,5 +486,5 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
 
 async function MostrarHTML(element){
   
-  element.style.display = 'nome';
+  element.style.display = 'none';
 }
