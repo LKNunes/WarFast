@@ -108,8 +108,11 @@ async function init() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   const UsLogado = localStorage.getItem('usuarioLogado');
+  console.time('verificarLogin');
 
   await verificarLogin(); 
+  console.timeEnd('verificarLogin');
+
   await ImprimirJogadores(lobbyId);
   await getUsuarioLogado(UsLogado);
   await ExibeObjetivo(lobbyId, UsLogado);
