@@ -109,7 +109,7 @@ async function init() {
   const lobbyId = urlParams.get('id');
   const UsLogado = localStorage.getItem('usuarioLogado');
 
-  await verificarLogin();
+  await verificarLogin(); 
   await ImprimirJogadores(lobbyId);
   await getUsuarioLogado(UsLogado);
   await ExibeObjetivo(lobbyId, UsLogado);

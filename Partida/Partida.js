@@ -123,19 +123,21 @@ function embaralharArray(array) {
 
 async function identificarTerritorios() {
   const svgObject = document.getElementById('svgObject');
-
+  console.log("Aguardando documento");
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
   svgObject.addEventListener('load', function() {
-  
+    console.log("documento carregado");
     const svgDoc = svgObject.contentDocument;
     const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
     // Iterar sobre os elementos <path> e atribuir uma borda vermelha
     for (let i = 0; i < paths.length; i++) {
       // Adicionar uma borda vermelha
+      console.log("For para Cor");
       paths[i].style.stroke = 'white';
       paths[i].style.strokeWidth = '0.5';
 
       // Chamar a função para alterar o tamanho do território ao passar o mouse sobre ele
+      console.log("Função para Tamanho");
       alterarTamanhoTerritorio(paths[i]);
     }
   });
@@ -155,7 +157,7 @@ function pausecomp(millis)
         const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
         const deslocamentoX = centroX - centroX * 1.05;
         const deslocamentoY = centroY - centroY * 1.05;
-        
+        console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
       territorio.addEventListener('mouseleave', function() {
