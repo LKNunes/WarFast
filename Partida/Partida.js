@@ -521,7 +521,7 @@ async function AtualizaTurno(lobbyId,turno){
       // Atualizar o campo "fase"
       PartidaDados.turno = turno;
       console.log(JSON.stringify(PartidaDados, null, 2));
-      console.log("Atualizando para fase"+turno+" :"+PartidaDados.turno);
+      console.log("Atualizando para turno"+turno+" :"+PartidaDados.turno);
       // Enviar os dados atualizados de volta para o servidor
       const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
         method: 'PUT',
