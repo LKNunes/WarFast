@@ -141,10 +141,7 @@ async function init() {
 
   await getUsuarioLogado(UsLogado);
   
-  await ExibeObjetivo(lobbyId, UsLogado); // 
   
-
-
   await MostrarHTML(preloader);
 
 }
@@ -155,6 +152,8 @@ async function svgLoaded() {
   
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');  
+
+  await ExibeObjetivo(lobbyId, UsLogado); // 
 
   await CoresMain(lobbyId); // Muda para fase 1
 
