@@ -137,8 +137,6 @@ async function init() {
  
   await getUsuarioLogado(UsLogado);
   
-  
-
 }
 
 async function svgLoaded() {
@@ -149,9 +147,10 @@ async function svgLoaded() {
   const lobbyId = urlParams.get('id');  
   const UsLogado = localStorage.getItem('usuarioLogado');
 
+  await CoresMain(lobbyId); // Muda para fase 1
+
   await ImprimirJogadores(lobbyId);
 
-  await CoresMain(lobbyId); // Muda para fase 1
 
   await ObjetivoMain(lobbyId); // Muda para fase 1  
 
