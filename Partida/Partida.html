@@ -104,40 +104,36 @@
   <script src="/scripts.js"></script>
 
   <script>
-    async function init() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const lobbyId = urlParams.get('id');
-      const UsLogado = localStorage.getItem('usuarioLogado');
-      
-      await verificarLogin();
-      
-      await ImprimirJogadores(lobbyId);
-      await getUsuarioLogado(UsLogado);
-      await ExibeObjetivo(lobbyId, UsLogado);
-      await CoresMain(lobbyId);
-      await ObjetivoMain(lobbyId);
+async function init() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const lobbyId = urlParams.get('id');
+  const UsLogado = localStorage.getItem('usuarioLogado');
 
-    }
-
-    
-      async function svgLoaded() {
-        const urlParams = new URLSearchParams(window.location.search);
-
-const svgObject = document.getElementById('svgObject');
-     // svgObject.onload = svgLoaded;
-      
-
-        const lobbyId = urlParams.get('id');
-        console.log("SVG carregado");
-try {
-  await aplicarCores(lobbyId);
-} catch (error) {
-  console.error("Erro ao aplicar cores:", error);
-  alert("Ocorreu um erro ao aplicar as cores. Tente novamente mais tarde.");
+  await verificarLogin();
+  await ImprimirJogadores(lobbyId);
+  await getUsuarioLogado(UsLogado);
+  await ExibeObjetivo(lobbyId, UsLogado);
+  await CoresMain(lobbyId);
+  await ObjetivoMain(lobbyId);
 }
-        await identificarTerritorios();
-      }
-    document.addEventListener('DOMContentLoaded', init);
+
+async function svgLoaded() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const lobbyId = urlParams.get('id');
+  console.log("SVG carregado");
+
+  await aplicarCores(lobbyId);
+  await identificarTerritorios();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+
+  const svgObject = document.getElementById('svgObject');
+  if (svgObject) {
+    svgObject.onload = svgLoaded;
+  }
+});
   </script>
 </body>
 </html>
