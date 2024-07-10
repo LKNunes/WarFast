@@ -297,7 +297,6 @@ async function CoresMain(lobbyId){
     return null;
   };
 
-  Atualizafase(lobbyId,1);
 
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
@@ -340,6 +339,7 @@ async function CoresMain(lobbyId){
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
       // Aplicar cores aos territórios
+      await Atualizafase(lobbyId,1);
 
       //console.log("Jogadores atualizados:");
     
@@ -420,9 +420,7 @@ async function ObjetivoMain(lobbyId)
     return null;
   };
   console.log("Objetivo Main...");
-  
-  Atualizafase(lobbyId,2);
-  
+    
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
   let Jogadores = [];
@@ -457,7 +455,8 @@ async function ObjetivoMain(lobbyId)
 
       //teste
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-    
+      await Atualizafase(lobbyId,2);
+
 }
 
 async function ExibeObjetivo(lobbyId,UsLogado) {
