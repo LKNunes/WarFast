@@ -222,6 +222,40 @@ function atribuirCores() {
   return cores;
 }
 
+async function DestribuirTerritorios()
+{
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+  
+    //teste
+    function distribuirNumerosAleatoriamente() {
+      const numeros = Array.from({ length: 42 }, (_, i) => i + 1);
+      
+      // Função para embaralhar a array de números
+      function embaralhar(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+          }
+      }
+      // Embaralha os números
+      embaralhar(numeros);
+      
+      const jogadores = Array.from({ length: 8 }, () => []);
+      
+      // Distribui os números embaralhados para os jogadores
+      for (let i = 0; i < numeros.length; i++) {
+          jogadores[i % 8].push(numeros[i]);
+      }
+      return jogadores;
+  }
+  
+  // Exemplo de uso
+  const distribuicao = distribuirNumerosAleatoriamente();  
+
+  return distribuicao;
+
+}
+
 async function aplicarCores(lobbyId) {
   try {
 
@@ -245,41 +279,15 @@ async function aplicarCores(lobbyId) {
 
     const paths = svgDoc.querySelectorAll('path');
 
-    //teste
-    function distribuirNumerosAleatoriamente() {
-      const numeros = Array.from({ length: 42 }, (_, i) => i + 1);
-      
-      // Função para embaralhar a array de números
-      function embaralhar(array) {
-          for (let i = array.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [array[i], array[j]] = [array[j], array[i]];
-          }
-      }
-      
-      // Embaralha os números
-      embaralhar(numeros);
-      
-      const jogadores = Array.from({ length: 8 }, () => []);
-      
-      // Distribui os números embaralhados para os jogadores
-      for (let i = 0; i < numeros.length; i++) {
-          jogadores[i % 8].push(numeros[i]);
-      }
-      
-      return jogadores;
-  }
-  
-  // Exemplo de uso
-  const distribuicao = distribuirNumerosAleatoriamente();  
-
+    Territorios = DestribuirTerritorios();
     //teste
 
     for (let i = 0; i < 42; i++) {
       let jogador = i % 8;
-      console.log(`Número ${i + 1} (Número ${distribuicao[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
+      console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
       //console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
-      nterritorio = distribuicao[jogador][Math.floor(i / 8)]-1;
+      nterritorio = Territorios[jogador][Math.floor(i / 8)]-1;
+
       paths[nterritorio].style.fill = PartidaDados.playerSlots[jogador].cor;
       paths[nterritorio].style.stroke = 'white';
       paths[nterritorio].style.strokeWidth = '0.5';
