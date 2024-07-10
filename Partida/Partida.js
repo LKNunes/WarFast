@@ -282,7 +282,7 @@ async function aplicarCores(lobbyId) {
     const fase = await Consultarfase(lobbyId);
     if (fase == 0){
     const Territorios = await DestribuirTerritorios(lobbyId);
-    Territorios2 = Territorios;
+    const Territorios2 = Territorios;
     }
     if (fase > 0){
       const Territorios = Territorios2;
