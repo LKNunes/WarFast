@@ -468,8 +468,29 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
     for (i=0;i<=7;i++){
     if (PartidaDados.playerSlots[i].nome == UsLogado)
       {
-        
-      document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
+      
+        const objetivos = [
+          { numero: 1, descricao: 'Conquistar a América do Norte' },
+          { numero: 2, descricao: 'Conquistar a América do Sul' },
+          { numero: 3, descricao: 'Conquistar a África' },
+          { numero: 4, descricao: 'Conquistar a Europa' },
+          { numero: 5, descricao: 'Conquistar a Ásia' },
+          { numero: 6, descricao: 'Conquistar a Oceania' },
+          { numero: 7, descricao: 'Conquistar 18 territórios' },
+          { numero: 8, descricao: 'Conquistar 24 territórios' },
+          { numero: 9, descricao: 'Conquistar 30 territórios' },
+          { numero: 10, descricao: 'Conquistar 24 territórios e manter por 3 turnos' },
+          { numero: 11, descricao: 'Conquistar 18 territórios e manter por 3 turnos' },
+          { numero: 12, descricao: 'Destruir vermelho' },
+          { numero: 13, descricao: 'Destruir azul' },
+          { numero: 14, descricao: 'Destruir amarelo' },
+          { numero: 15, descricao: 'Destruir verde' },
+          { numero: 16, descricao: 'Destruir preto' }
+        ];
+
+      //document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
+ 
+      document.getElementById('Objetivo').textContent = objetivos.descricao;  
  
       return PartidaDados.playerSlots[i].objetivo;
       }
