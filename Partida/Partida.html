@@ -133,8 +133,7 @@ async function svgLoaded() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');  
   await aplicarCores(lobbyId);
-  document.getElementsByClassName('content')[0].style.display = 'block';
-  document.getElementsByClassName('preload')[0].style.display = 'none'; // Esconde o preload
+
 
 }
 
@@ -144,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const svgObject = document.getElementById('svgObject');
   if (svgObject) {
     svgObject.onload = svgLoaded;
+    document.getElementsByClassName('content')[0].style.display = 'block';
+    document.getElementsByClassName('preload')[0].style.display = 'none'; // Esconde o preload
   }
 });
   </script>
