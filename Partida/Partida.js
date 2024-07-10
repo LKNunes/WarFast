@@ -511,3 +511,9 @@ async function MostrarHTML(element){
   
   element.style.display = 'none';
 }
+
+async function ExibeTurno(lobbyId){
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+  
+    document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
+}
