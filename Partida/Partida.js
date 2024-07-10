@@ -278,21 +278,14 @@ async function aplicarCores(lobbyId) {
     }
 
     const paths = svgDoc.querySelectorAll('path');
-    const Territorios2 = [];
-    const Territorios = [];
-    const fase = await Consultarfase(lobbyId);
-    if (fase == 0){
+
     const Territorios = await DestribuirTerritorios(lobbyId);
-    const Territorios2 = Territorios;
-    }
-    if (fase > 0){
-      const Territorios = Territorios2;
-    }
+    
     //teste
-    console.log(Territorios);
+
     for (let i = 0; i < 42; i++) {
       let jogador = i % 8;
-     // console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
+      console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
       //console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
       nterritorio = Territorios[jogador][Math.floor(i / 8)]-1;
 
