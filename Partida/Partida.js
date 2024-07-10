@@ -464,7 +464,9 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
   try {
 
     const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-    
+  
+    document.getElementById('turno').textContent = PartidaDados.turno; 
+  
     for (i=0;i<=7;i++){
     if (PartidaDados.playerSlots[i].nome == UsLogado)
       {
@@ -492,7 +494,7 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
       const x = PartidaDados.playerSlots[i].objetivo-1;
       console.log(objetivos[x].numero);
       document.getElementById('Objetivo').textContent = objetivos[x].descricao;  
-  
+
       return PartidaDados.playerSlots[i].objetivo;
       }
     else{
