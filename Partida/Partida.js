@@ -222,7 +222,7 @@ function atribuirCores() {
   return cores;
 }
 
-async function DestribuirTerritorios()
+async function DestribuirTerritorios(lobbyId)
 {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   
@@ -279,7 +279,7 @@ async function aplicarCores(lobbyId) {
 
     const paths = svgDoc.querySelectorAll('path');
 
-    const Territorios = await DestribuirTerritorios();
+    const Territorios = await DestribuirTerritorios(lobbyId);
     //teste
 
     for (let i = 0; i < 42; i++) {
