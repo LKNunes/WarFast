@@ -483,3 +483,11 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
       alert('Erro ao autenticar usuário.');
   }
 }
+
+async function showElement(element) {
+  element.classList.remove('hidden');
+}
+
+async function hideElement(element) {
+  element.classList.add('hidden');
+}
