@@ -171,7 +171,6 @@ async function svgLoaded() {
 
   await ObjetivoMain(lobbyId); // Muda para fase 1  
 
-
   await ImprimirJogadores(lobbyId);
 
   await aplicarCores(lobbyId); //aplicação visual
@@ -181,6 +180,8 @@ async function svgLoaded() {
   await ExibeTurno(lobbyId);
 
   await MostrarHTML(preloader);
+
+
 
   AtualizaTurno(lobbyId,1);
 
