@@ -133,6 +133,7 @@ async function svgLoaded() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');  
   await aplicarCores(lobbyId);
+  document.getElementById('content').style.display = 'block';
   
 }
 
