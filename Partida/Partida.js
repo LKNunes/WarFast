@@ -373,8 +373,6 @@ async function Atualizafase(lobbyId, fase) {
       body: JSON.stringify(PartidaDados)
     });
 
-   // console.log('Resposta do servidor:', response);
-
     if (!response.ok) {
       console.error(`Erro ao atualizar os dados: ${response.statusText}`);
       return;
@@ -382,11 +380,8 @@ async function Atualizafase(lobbyId, fase) {
 
     // Obter a resposta e mostrar o JSON atualizado
     const updatedJson = await response.json();
-    //console.log('JSON atualizado:', updatedJson);
 
-    // Chamar a função Consultarfase para verificar a fase atualizada
-   // console.log(lobbyId);
-   // console.log( await Consultarfase(lobbyId));
+
   } else {
     console.error(`ID da partida ${lobbyId} não corresponde.`);
   }
@@ -516,4 +511,13 @@ async function ExibeTurno(lobbyId){
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   
     document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
+}
+
+async function AtualizaTurno(lobbyId){
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+  
+    document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
+
+
+
 }
