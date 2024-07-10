@@ -129,8 +129,8 @@
   <script>
 async function init() {
   const urlParams = new URLSearchParams(window.location.search);
-  const lobbyId = urlParams.get('id');
   const UsLogado = localStorage.getItem('usuarioLogado');
+  const lobbyId = urlParams.get('id');
   const preloader = document.getElementById('preloader');
 
 
@@ -152,6 +152,8 @@ async function svgLoaded() {
   
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');  
+  const UsLogado = localStorage.getItem('usuarioLogado');
+
 
   await ExibeObjetivo(lobbyId, UsLogado); // 
 
