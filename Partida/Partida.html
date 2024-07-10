@@ -75,10 +75,7 @@
     <div class="header">
       <h1>WAR JS</h1>
     </div>
-    <div class="preload" style="display: block">
-      <p class="preload-text">Carregando...</p>
-    </div>
-    <div class="content"  style="display: none";>
+    <div class="content";>
       <div class="sidebar">
         <!-- Conteúdo da barra lateral esquerda -->
         <p>Seu Objetivo :<span id="Objetivo"></span></p>
@@ -130,11 +127,10 @@ async function init() {
 async function svgLoaded() {
 
   const svgObject = document.getElementById('svgObject');
+  
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');  
   await aplicarCores(lobbyId);
-  await document.getElementsByClassName('content')[0].style.display = 'block';
-  await document.getElementsByClassName('preload')[0].style.display = 'none'; // Esconde o preload
 
 }
 
@@ -144,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const svgObject = document.getElementById('svgObject');
   if (svgObject) {
     svgObject.onload = svgLoaded;
-    
   }
 });
 
