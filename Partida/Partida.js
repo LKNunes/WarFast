@@ -513,11 +513,35 @@ async function ExibeTurno(lobbyId){
     document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
 }
 
-async function AtualizaTurno(lobbyId){
+async function AtualizaTurno(lobbyId,turno){
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+   
+    if (PartidaDados.id === lobbyId) {
+      // Atualizar o campo "fase"
+      PartidaDados.turno = turno;
+      console.log(JSON.stringify(PartidaDados, null, 2));
+      console.log("Atualizando para fase"+turno+" :"+PartidaDados.turno);
+      // Enviar os dados atualizados de volta para o servidor
+      const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(PartidaDados)
+      });
   
-    document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
+      if (!response.ok) {
+        console.error(`Erro ao atualizar os dados: ${response.statusText}`);
+        return;
+      }
+  
+      // Obter a resposta e mostrar o JSON atualizado
+      const updatedJson = await response.json();
+  
+  
+    } else {
+      console.error(`ID da partida ${lobbyId} não corresponde.`);
+    }
 
-
-
+    document.getElementById('TurnoAtual').textContent = PartidaDados.turno;
 }
