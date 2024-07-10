@@ -135,7 +135,7 @@ async function init() {
   console.timeEnd('ObjetivoMain');
 }
 
-async function svgLoaded() {
+async function svgLoaded(svgObject) {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   console.log("SVG carregado");
@@ -144,7 +144,7 @@ async function svgLoaded() {
   console.timeEnd('aplicarCores');
 
   console.time('identificarTerritorios');
-  await identificarTerritorios();
+  await identificarTerritorios(svgObject);
   console.timeEnd('identificarTerritorios');
 }
 
