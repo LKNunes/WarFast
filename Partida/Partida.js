@@ -477,15 +477,15 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
           { numero: 5, descricao: 'Conquistar a Ásia' },
           { numero: 6, descricao: 'Conquistar a Oceania' },
           { numero: 7, descricao: 'Conquistar 18 territórios' },
-          { numero: 8, descricao: 'Conquistar 24 territórios' },
-          { numero: 9, descricao: 'Conquistar 30 territórios' },
-          { numero: 10, descricao: 'Conquistar 24 territórios e manter por 3 turnos' },
-          { numero: 11, descricao: 'Conquistar 18 territórios e manter por 3 turnos' },
-          { numero: 12, descricao: 'Destruir vermelho' },
-          { numero: 13, descricao: 'Destruir azul' },
+          { numero: 8, descricao: 'Destruir Roxo Escuro' },
+          { numero: 9, descricao: 'Destruir Cinza' },
+          { numero: 10, descricao: 'Destruir Laraja' },
+          { numero: 11, descricao: 'Destruir Roxo' },
+          { numero: 12, descricao: 'Destruir Verde Escuro' },
+          { numero: 13, descricao: 'Destruir Verde Claro' },
           { numero: 14, descricao: 'Destruir amarelo' },
-          { numero: 15, descricao: 'Destruir verde' },
-          { numero: 16, descricao: 'Destruir preto' }
+          { numero: 15, descricao: 'Destruir Amarelo' },
+          { numero: 16, descricao: 'Destruir Vermelho' }
         ];
 
       //document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
