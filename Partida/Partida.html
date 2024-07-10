@@ -137,12 +137,9 @@ async function init() {
 
   await verificarLogin(); 
  
-  await ImprimirJogadores(lobbyId);
-
   await getUsuarioLogado(UsLogado);
   
   
-  await MostrarHTML(preloader);
 
 }
 
@@ -154,6 +151,7 @@ async function svgLoaded() {
   const lobbyId = urlParams.get('id');  
   const UsLogado = localStorage.getItem('usuarioLogado');
 
+  await ImprimirJogadores(lobbyId);
 
   await ExibeObjetivo(lobbyId, UsLogado); // 
 
@@ -162,6 +160,8 @@ async function svgLoaded() {
   await ObjetivoMain(lobbyId); // Muda para fase 1  
 
   await aplicarCores(lobbyId); //aplicação visual
+
+  await MostrarHTML(preloader);
 
 }
 
