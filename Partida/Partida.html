@@ -111,23 +111,41 @@ async function init() {
   console.time('verificarLogin');
 
   await verificarLogin(); 
+
   console.timeEnd('verificarLogin');
 
+  console.time('ImprimirJogadores');
   await ImprimirJogadores(lobbyId);
+  console.timeEnd('ImprimirJogadores');
+
+  console.time('getUsuarioLogado');
   await getUsuarioLogado(UsLogado);
+  console.timeEnd('getUsuarioLogado');
+
+  console.time('ExibeObjetivo');
   await ExibeObjetivo(lobbyId, UsLogado);
+  console.timeEnd('ExibeObjetivo');
+
+  console.time('CoresMain');
   await CoresMain(lobbyId);
+  console.timeEnd('CoresMain');
+
+  console.time('ObjetivoMain');
   await ObjetivoMain(lobbyId);
+  console.timeEnd('ObjetivoMain');
 }
 
 async function svgLoaded() {
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   console.log("SVG carregado");
-
-  
+  console.time('aplicarCores');
   await aplicarCores(lobbyId);
-  identificarTerritorios();
+  console.timeEnd('aplicarCores');
+
+  console.time('identificarTerritorios');
+  await identificarTerritorios();
+  console.timeEnd('identificarTerritorios');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
