@@ -489,6 +489,8 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
         ];
 
       //document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
+      console.log(i+" "+PartidaDados.playerSlots[i].objetivo)
+      document.getElementById('Objetivo').textContent = objetivos[PartidaDados.playerSlots[i].objetivo].descricao;  
  
       document.getElementById('Objetivo').textContent = objetivos[PartidaDados.playerSlots[i].objetivo-1].descricao;  
  
