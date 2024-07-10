@@ -339,7 +339,7 @@ async function CoresMain(lobbyId){
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
       // Aplicar cores aos territórios
-      await Atualizafase(lobbyId,1);
+   //   await Atualizafase(lobbyId,1);
 
       //console.log("Jogadores atualizados:");
     
