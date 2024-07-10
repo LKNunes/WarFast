@@ -146,9 +146,6 @@ async function svgLoaded() {
   await aplicarCores(lobbyId);
   console.timeEnd('aplicarCores');
 
-  console.time('identificarTerritorios');
-  await identificarTerritorios(svgObject);
-  console.timeEnd('identificarTerritorios');
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -282,9 +282,7 @@ async function aplicarCores(lobbyId) {
       paths[i].style.stroke = 'white';
       paths[i].style.strokeWidth = '0.5';
       alterarTamanhoTerritorio(paths[i]);
-    }
-    
-  
+    } 
 
     //console.log('Cores aplicadas aos territórios.');
   } catch (error) {
