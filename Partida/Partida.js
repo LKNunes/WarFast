@@ -223,7 +223,7 @@ function atribuirCores() {
 
 async function aplicarCores(lobbyId) {
   try {
-    console.log("Cores");
+    //console.log("Cores");
     const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
     //console.log("Dados Correto?" + PartidaDados.id);
