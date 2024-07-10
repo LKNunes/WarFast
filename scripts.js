@@ -197,11 +197,11 @@ async function dadospartidasemid() {
     });
   }
 
-  function showElement(element) {
+  async function showElement(element) {
     element.classList.remove('hidden');
   }
   
-  function hideElement(element) {
+  async function hideElement(element) {
     element.classList.add('hidden');
   }
   
