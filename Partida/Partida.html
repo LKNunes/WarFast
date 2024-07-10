@@ -109,19 +109,20 @@ async function init() {
   const lobbyId = urlParams.get('id');
   const UsLogado = localStorage.getItem('usuarioLogado');
   
-
   await verificarLogin(); 
  
   await ImprimirJogadores(lobbyId);
 
   await getUsuarioLogado(UsLogado);
   
-  await ExibeObjetivo(lobbyId, UsLogado);
+  await ExibeObjetivo(lobbyId, UsLogado); // 
   
-  await CoresMain(lobbyId);
+  await CoresMain(lobbyId); // Muda para fase 1
 
-  await ObjetivoMain(lobbyId);
+  await ObjetivoMain(lobbyId); // Muda para fase 2  
+
   
+
 }
 
 async function svgLoaded() {
@@ -130,7 +131,7 @@ async function svgLoaded() {
   
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');  
-  await aplicarCores(lobbyId);
+  await aplicarCores(lobbyId); //aplicação visual
 
 }
 
