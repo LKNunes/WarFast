@@ -484,6 +484,8 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
   }
 }
 
+async function MostrarHTML(){}
+
 async function showElement(element) {
   element.classList.remove('hidden');
 }
