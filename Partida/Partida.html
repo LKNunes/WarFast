@@ -122,8 +122,9 @@ async function svgLoaded() {
   const lobbyId = urlParams.get('id');
   console.log("SVG carregado");
 
-  await identificarTerritorios();
+  
   await aplicarCores(lobbyId);
+  identificarTerritorios();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
