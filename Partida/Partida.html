@@ -135,7 +135,10 @@ async function init() {
   console.timeEnd('ObjetivoMain');
 }
 
-async function svgLoaded(svgObject) {
+async function svgLoaded() {
+
+  const svgObject = document.getElementById('svgObject');
+
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');
   console.log("SVG carregado");
