@@ -122,14 +122,14 @@ function embaralharArray(array) {
 }
 
 async function identificarTerritorios(svgObject) {
-  console.log("Aguardando documento");
-
+  console.log("Aguardando documento"+svgObject);
+  const SVG = svgObject;
   //const svgObject = document.getElementById('svgObject');
 
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
-  svgObject.addEventListener('load', function() {
+  SVG.addEventListener('load', function() {
     console.log("documento carregado");
-    const svgDoc = svgObject.contentDocument;
+    const svgDoc = SVG.contentDocument;
     const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
     // Iterar sobre os elementos <path> e atribuir uma borda vermelha
     for (let i = 0; i < paths.length; i++) {
