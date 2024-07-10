@@ -140,9 +140,9 @@ async function comecarPartida(joinExistingGame = false) {
       
       console.log('Partida criada com sucesso! ID: ' + lobbyId); 
       // $('#cadastroModal').modal('hide');
- pause
+return null
       // Redirecionar para a página do lobby com o ID na URL
-   //   window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
+      window.location.href = `/Partida/Partida.html?id=${lobbyId}`;
       console.log("Partida Criada...")
   } catch (error) {
       console.error('Erro ao criar partida:', error);
