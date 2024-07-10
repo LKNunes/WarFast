@@ -223,6 +223,8 @@ function atribuirCores() {
 
 async function aplicarCores(lobbyId) {
   try {
+
+    
     //console.log("Cores");
     const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
@@ -277,16 +279,13 @@ async function aplicarCores(lobbyId) {
     //  console.log(`Número ${i + 1} (Número ${distribuicao[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
    //   console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
       paths[i].style.fill = PartidaDados.playerSlots[jogador].cor;
+      paths[i].style.stroke = 'white';
+      paths[i].style.strokeWidth = '0.5';
+      alterarTamanhoTerritorio(paths[i]);
     }
     
   
-    /*PartidaDados.playerSlots.forEach((player, index) => {
-      const cor = player.cor;
-     // console.log("PLAYER" + player.id + " COR: " + player.cor);
-      paths[index].style.fill = cor; // Aplica a cor ao território correspondente
-      paths[index].style.stroke = cor;
-    });
-*/
+
     //console.log('Cores aplicadas aos territórios.');
   } catch (error) {
     console.error('Erro ao aplicar cores aos territórios:', error);
