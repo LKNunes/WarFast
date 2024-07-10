@@ -125,7 +125,6 @@ async function comecarPartida(joinExistingGame = false) {
               lobbyName: `Partida de ${nomeUsuario}`,
               fase: "0",
               turno: "0",
-              territorios: Territorios,
               playerSlots: LobbyDados.playerSlots
               
           })
