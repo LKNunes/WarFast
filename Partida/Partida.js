@@ -290,7 +290,7 @@ async function aplicarCores(lobbyId) {
       
       donoterritorios.idterritorio[i] = i+1;
       donoterritorios[i].dono = PartidaDados.playerSlots[jogador].id;
-      console.log("Territorio:"+donoterritorios[i].idterritorio)+" Dono:"+donoterritorios[i].dono;
+      console.log("Territorio:"+donoterritorios[i].idterritorio+" Dono:"+donoterritorios[i].dono);
 
       
       paths[i].style.fill = PartidaDados.playerSlots[jogador].cor;
