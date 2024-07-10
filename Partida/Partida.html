@@ -183,8 +183,8 @@ async function svgLoaded() {
 
 
 
-  AtualizaTurno(lobbyId,1);
-
+  await AtualizaTurno(lobbyId,1);
+  await  VerificaTurno();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
