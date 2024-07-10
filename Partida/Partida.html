@@ -134,6 +134,7 @@ async function init() {
   const preloader = document.getElementById('preloader');
 
 
+
   await verificarLogin(); 
  
   await ImprimirJogadores(lobbyId);
@@ -142,9 +143,6 @@ async function init() {
   
   await ExibeObjetivo(lobbyId, UsLogado); // 
   
-  await CoresMain(lobbyId); // Muda para fase 1
-
-  await ObjetivoMain(lobbyId); // Muda para fase 1  
 
 
   await MostrarHTML(preloader);
@@ -157,6 +155,11 @@ async function svgLoaded() {
   
   const urlParams = new URLSearchParams(window.location.search);
   const lobbyId = urlParams.get('id');  
+
+  await CoresMain(lobbyId); // Muda para fase 1
+
+  await ObjetivoMain(lobbyId); // Muda para fase 1  
+
   await aplicarCores(lobbyId); //aplicação visual
 
 }
