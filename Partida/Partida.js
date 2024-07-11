@@ -613,6 +613,7 @@ async function ExibirTropas(){
   const centerX = bbox.getBBox().x + bbox.getBBox().width /2 ;
   const centerY = bbox.getBBox().y + bbox.getBBox().height / 2;
   
+  console.log("Centro: X: "+centerX+"Y: "+centerY);
   // Cria um elemento de texto
   const text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
