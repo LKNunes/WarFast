@@ -610,7 +610,7 @@ async function ExibirTropas(){
     // Itera sobre cada id do path
     paths.forEach(function(id) {
         var path = document.getElementById(id);
-        var bbox = path.getBBox(); // Obtém o bounding box do path
+        var bbox = await path.getBBox(); // Obtém o bounding box do path
 
         // Calcula o centro do path
         var centerX = bbox.x + bbox.width / 2;
