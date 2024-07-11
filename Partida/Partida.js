@@ -604,8 +604,8 @@ async function ExibirTropas(){
   const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-  
-
+  const i=0;
+  dadospartida = await PartidaDados(lobbyId);
 
    paths.forEach(function(path) {
     var bbox = path// Obtém o bounding box do path
@@ -620,11 +620,10 @@ async function ExibirTropas(){
 
   text.setAttribute('x', centerX+2);
   text.setAttribute('y', centerY-26);
-  text.textContent = '1'; // Número a ser exibido
-
+  text.textContent = dadospartida.territorios[i].tropas;
   // Define o tamanho da fonte do texto
   text.style.fontSize = '6px'; // Ajuste o tamanho da fonte conforme necessário
-
+  i++;
   // Adiciona o texto dentro do próprio SVG
   svgDoc.documentElement.appendChild(text);
   });
