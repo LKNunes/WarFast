@@ -605,6 +605,7 @@ async function ExibirTropas(lobbyId){
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
   var i=0;
+  let cordenadas = []
   PartidaDados = await dadospartida(lobbyId);
 
    paths.forEach(function(path) {
@@ -620,7 +621,7 @@ async function ExibirTropas(lobbyId){
 
   text.setAttribute('x', centerX+2);
   text.setAttribute('y', centerY-26);
-  text.textContent = PartidaDados.territorios[i].tropas;
+  text.textContent = PartidaDados.territorios[i].id;
   // Define o tamanho da fonte do texto
   text.style.fontSize = '6px'; // Ajuste o tamanho da fonte conforme necessário
   i++;
