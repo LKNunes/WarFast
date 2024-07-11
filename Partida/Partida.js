@@ -271,7 +271,7 @@ async function DestribuirTerritorios(lobbyId)
     Territorios.push(territorio);
   }
 
-  console.log(""+Territorios);
+  console.log("Exemplo"+Territorios);
   // Atualiza os dados do lobby com os novos dados dos jogadores
   PartidaDados.territorios = Territorios;
  
