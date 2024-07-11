@@ -633,4 +633,4 @@ async function ExibirTropas(){
   
   
 
-}
+} 
