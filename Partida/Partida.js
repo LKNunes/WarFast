@@ -605,6 +605,10 @@ async function ExibirTropas(){
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
   
+  // Cria um grupo <g> para os textos
+  var group = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'g');
+  svgDoc.documentElement.appendChild(group); // Adiciona o grupo ao documento SVG
+  
   paths.forEach(function(path) {
       var bbox = path.getBBox(); // Obtém o bounding box do path
   
@@ -618,9 +622,10 @@ async function ExibirTropas(){
       text.setAttribute('y', centerY);
       text.textContent = '1'; // Número a ser exibido
   
-      // Adiciona o texto ao SVG
-      svgDoc.appendChild(text); // Adicione ao documento SVG, ou ao elemento que deseja dentro do SVG
+      // Adiciona o texto dentro do grupo <g>
+      group.appendChild(text);
   });
+  
   
 
 }
