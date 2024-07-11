@@ -600,7 +600,7 @@ async function VerificaTurno(lobbyId)
   return PartidaDados.turno;
 }
 
-async function ExibirTropas(){
+async function ExibirTropas(lobbyId){
   const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
