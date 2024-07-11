@@ -619,10 +619,10 @@ async function ExibirTropas(){
 
   text.setAttribute('x', centerX+2);
   text.setAttribute('y', centerY-26);
-  text.textContent = '.'; // Número a ser exibido
+  text.textContent = '1'; // Número a ser exibido
 
   // Define o tamanho da fonte do texto
-  text.style.fontSize = '8px'; // Ajuste o tamanho da fonte conforme necessário
+  text.style.fontSize = '6px'; // Ajuste o tamanho da fonte conforme necessário
 
   // Adiciona o texto dentro do próprio SVG
   svgDoc.documentElement.appendChild(text);
