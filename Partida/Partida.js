@@ -314,7 +314,7 @@ async function aplicarCores(lobbyId) {
 
     for (let i = 0; i < 42; i++) { // Itera por 42 territórios
       let jogador = i % 8; // Determina o jogador atual (0-7)
-      console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
+      //console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
       // console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
       nterritorio = Territorios[jogador][Math.floor(i / 8)] - 1; // Calcula o índice do território
 
