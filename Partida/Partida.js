@@ -311,7 +311,7 @@ async function aplicarCores(lobbyId) {
     //const Territorios = await DestribuirTerritorios(lobbyId); // Aguarda a resolução da Promise que distribui os territórios
     const Territorios = PartidaDados.territorios;    
 
-    console.log(Territorios);
+    console.log(PartidaDados.territorios);
 
     for (let i = 0; i < 42; i++) { // Itera por 42 territórios
       
