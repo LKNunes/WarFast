@@ -274,7 +274,7 @@ async function DestribuirTerritorios(lobbyId)
     const territorio = {
       id: TerritorioID,
       dono: Dono,
-      tropas: "1"
+      tropas: 1
     };
 
 
