@@ -605,13 +605,13 @@ async function ExibirTropas(){
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
   
-  var territorio = paths[0].getBBox(); // Obtém o bounding box do path
+  var bbox = paths[0] // Obtém o bounding box do path
 
 
   // paths.forEach(function(path) {
   // Calcula um ponto aproximado para o centro do path
-  const centerX = territorio.getBBox().x + territorio.getBBox().width / 2;
-  const centerY = territorio.getBBox().y + territorio.getBBox().height / 2;
+  const centerX = bbox.getBBox().x + bbox.getBBox().width / 2;
+  const centerY = bbox.getBBox().y + bbox.getBBox().height / 2;
   
   // Cria um elemento de texto
   var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
