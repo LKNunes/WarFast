@@ -618,7 +618,7 @@ async function ExibirTropas(){
 
   text.setAttribute('x', centerX);
   text.setAttribute('y', centerY+10);
-  text.textContent = 'X'; // Número a ser exibido
+  text.textContent = '.'; // Número a ser exibido
 
   // Define o tamanho da fonte do texto
   text.style.fontSize = '8px'; // Ajuste o tamanho da fonte conforme necessário
