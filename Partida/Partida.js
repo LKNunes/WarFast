@@ -313,11 +313,11 @@ async function aplicarCores(lobbyId) {
     //const Territorios = await DestribuirTerritorios(lobbyId); // Aguarda a resolução da Promise que distribui os territórios
     const Territorios = PartidaDados.territorios;    
 
-    console.log(PartidaDados);
-
     for (let i = 0; i < 42; i++) { // Itera por 42 territórios
       
       nterritorio = Territorios[i].id 
+
+      console.log(Territorios[i].id +"  "+nterritorio)
 
       paths[nterritorio].style.fill = PartidaDados.playerSlots[Territorios[i].dono].cor; // Aplica a cor do jogador ao território
       paths[nterritorio].style.stroke = 'white'; // Define a cor da borda do território
