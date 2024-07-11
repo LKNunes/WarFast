@@ -610,8 +610,8 @@ async function ExibirTropas(){
 
   // paths.forEach(function(path) {
   // Calcula um ponto aproximado para o centro do path
-  var centerX = bbox.x + bbox.width / 2;
-  var centerY = bbox.y + bbox.height / 2;
+  var centerX = bbox.x + bbox.width ;
+  var centerY = bbox.y + bbox.height ;
 
   // Cria um elemento de texto
   var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -622,7 +622,7 @@ async function ExibirTropas(){
 
   text.setAttribute('x', centerX);
   text.setAttribute('y', centerY);
-  text.textContent = '1'; // Número a ser exibido
+  text.textContent = '.'; // Número a ser exibido
 
   // Define o tamanho da fonte do texto
   text.style.fontSize = '8px'; // Ajuste o tamanho da fonte conforme necessário
