@@ -257,7 +257,7 @@ async function DestribuirTerritorios(lobbyId)
 
   //teste
 
-  let Territorios = distribuicao;
+  let Territorios = [];
 
   for (let i = 0; i < 42; i++) {
     let jogador = i % 8; // Determina o jogador atual (0-7)
