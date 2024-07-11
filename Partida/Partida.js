@@ -623,7 +623,7 @@ async function ExibirTropas(lobbyId){
   text.setAttribute('y', centerY-26);
   text.textContent = PartidaDados.territorios[i].id;
   // Define o tamanho da fonte do texto
-  text.style.fontSize = '6px'; // Ajuste o tamanho da fonte conforme necessário
+  text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
   i++;
   // Adiciona o texto dentro do próprio SVG
   svgDoc.documentElement.appendChild(text);
