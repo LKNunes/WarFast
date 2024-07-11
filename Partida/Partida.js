@@ -266,9 +266,12 @@ async function DestribuirTerritorios(lobbyId)
       id: TerritorioID,
       dono: Dono
     };
+
+
     Territorios.push(territorio);
   }
 
+  console.log(""+Territorios);
   // Atualiza os dados do lobby com os novos dados dos jogadores
   PartidaDados.territorios = Territorios;
  
