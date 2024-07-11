@@ -610,26 +610,19 @@ async function ExibirTropas(){
       var bbox = paths[0].getBBox(); // Obtém o bounding box do path
   
 
-      // Calcula o centro do path
       var centerX = bbox.x + bbox.width / 2;
       var centerY = bbox.y + bbox.height / 2;
   
       // Cria um elemento de texto
       var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('text-anchor', 'middle'); // Ancora o texto no meio para centralizar horizontalmente
+      text.setAttribute('dominant-baseline', 'middle'); // Centraliza verticalmente
       text.setAttribute('x', centerX);
       text.setAttribute('y', centerY);
-      text.textContent = '.'; // Número a ser exibido
+      text.textContent = '1'; // Número a ser exibido
   
       // Define o tamanho da fonte do texto
       text.style.fontSize = '8px'; // Ajuste o tamanho da fonte conforme necessário
-  
-      // Ajusta o posicionamento do texto para que o centro do texto fique no centro do path
-      var textBBox = text.getBBox();
-      var textX = centerX - textBBox.width / 2;
-      var textY = centerY + textBBox.height / 4; // Ajuste vertical para centrar melhor o texto
-  
-      text.setAttribute('x', textX);
-      text.setAttribute('y', textY);
   
       // Adiciona o texto dentro do próprio SVG
       svgDoc.documentElement.appendChild(text);
