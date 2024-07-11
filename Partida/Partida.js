@@ -276,7 +276,7 @@ async function DestribuirTerritorios(lobbyId)
 
   console.log("Exemplo"+Territorios);
   // Atualiza os dados do lobby com os novos dados dos jogadores
-  PartidaDados.territorios = Territorios;
+  PartidaDados.territorios = distribuicao;
  
   // Atualiza o lobby no servidor
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
