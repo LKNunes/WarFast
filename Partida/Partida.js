@@ -605,10 +605,11 @@ async function ExibirTropas(){
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
   
-  var bbox = paths[0] // Obtém o bounding box do path
 
 
-  // paths.forEach(function(path) {
+   paths.forEach(function(path) {
+    var bbox = path// Obtém o bounding box do path
+
   // Calcula um ponto aproximado para o centro do path
   const centerX = bbox.getBBox().x + bbox.getBBox().width /2 ;
   const centerY = bbox.getBBox().y + bbox.getBBox().height / 2;
@@ -626,7 +627,7 @@ async function ExibirTropas(){
 
   // Adiciona o texto dentro do próprio SVG
   svgDoc.documentElement.appendChild(text);
-  //});
+  });
   
   
 
