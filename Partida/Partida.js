@@ -262,7 +262,7 @@ async function DestribuirTerritorios(lobbyId)
   for (let i = 1; i < 43; i++) {
     let jogador = i % 8; // Determina o jogador atual (0-7)
 
-    const TerritorioID = Territorios[jogador][Math.floor(i / 8)] - 1
+    const TerritorioID = Territorios[jogador][Math.floor(i / 8)]
     const Dono =  jogador+1;
 
     const territorio = {
