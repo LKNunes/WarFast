@@ -167,11 +167,11 @@ async function svgLoaded() {
   const lobbyId = urlParams.get('id');  
   const UsLogado = localStorage.getItem('usuarioLogado');
 
-  await DestribuirTerritorios(lobbyId)
-
   await CoresMain(lobbyId); // Muda para fase 1
 
   await ObjetivoMain(lobbyId); // Muda para fase 1  
+
+  await DestribuirTerritorios(lobbyId)
 
   await ImprimirJogadores(lobbyId);
 

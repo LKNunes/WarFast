@@ -288,7 +288,8 @@ async function DestribuirTerritorios(lobbyId)
   // Atualiza o lobby no servidor
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
   //Armazenar territorios no DB na primeira vez e chamar a função para aplicar as cores do DB no SVG
-  
+  await Atualizafase(lobbyId,1);
+
   return distribuicao;
 
 }
@@ -496,7 +497,6 @@ async function ObjetivoMain(lobbyId)
 
       //teste
       await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-      await Atualizafase(lobbyId,1);
 
 }
 
