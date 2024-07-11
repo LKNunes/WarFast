@@ -615,10 +615,6 @@ async function ExibirTropas(){
   
   // Cria um elemento de texto
   var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
-  text.setAttribute('text-anchor', 'middle'); // Ancora o texto no meio para centralizar horizontalmente
-
-  // Ajusta a baseline do texto para centralizar verticalmente
-  text.setAttribute('dominant-baseline', 'central');
 
   text.setAttribute('x', centerX);
   text.setAttribute('y', centerY);
