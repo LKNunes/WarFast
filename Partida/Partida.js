@@ -610,7 +610,7 @@ async function ExibirTropas(){
 
   // paths.forEach(function(path) {
   // Calcula um ponto aproximado para o centro do path
-  var centerX = bbox.x + bbox.width / 3;
+  var centerX = bbox.x + bbox.width / 2;
   var centerY = bbox.y + bbox.height / 2;
 
   // Cria um elemento de texto
