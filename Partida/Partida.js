@@ -254,46 +254,26 @@ async function DestribuirTerritorios(lobbyId)
 
   //teste
 
-  let Territorios = [];
-
-  for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
-    const jogadorId = PartidaDados.playerSlots[i].id;
-    const jogadorNome = PartidaDados.playerSlots[i].nome;
-    const Objetivo = PartidaDados.playerSlots[i].objetivo;
-    const Cor =  PartidaDados.playerSlots[i].objetivo;
-    
-    // Cria um objeto para representar o jogador com o ID, nome e cor
-    const jogador = {
-      id: jogadorId,
-      nome: jogadorNome,
-      objetivo: Objetivo,
-      cor: Cor
-      
-    };
-
-    // Adiciona o jogador ao array Jogadores
-    Jogadores.push(jogador);
-  }
+  let Territorios = distribuicao;
 
   for (let i = 0; i < 42; i++) {
-    
+    let jogador = i % 8; // Determina o jogador atual (0-7)
+
+    const TerritorioID = Territorios[jogador][Math.floor(i / 8)] - 1
+    const Dono =  Jogador+1;
+
     const territorio = {
-      id: jogadorId,
-      nome: jogadorNome,
-      objetivo: Objetivo,
-      cor: Cor
-      
+      id: TerritorioID,
+      dono: Dono
     };
     Territorios.push(territorio);
   }
 
   // Atualiza os dados do lobby com os novos dados dos jogadores
-  PartidaDados.playerSlots = Jogadores;
   PartidaDados.territorios = Territorios;
  
   // Atualiza o lobby no servidor
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-
   //Armazenar territorios no DB na primeira vez e chamar a função para aplicar as cores do DB no SVG
   
   return distribuicao;
