@@ -622,6 +622,8 @@ async function ExibirTropas(){
       text.setAttribute('y', centerY);
       text.textContent = '1'; // Número a ser exibido
   
+      text.style.fontSize = '8px'; // Ajuste o tamanho da fonte conforme necessário
+
       // Adiciona o texto dentro do grupo <g>
       group.appendChild(text);
   });
