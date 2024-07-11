@@ -256,13 +256,13 @@ async function DestribuirTerritorios(lobbyId)
 
 
   //teste
-/*
-  let Territorios = distribuicao;
+
+  let Territorios = [];
 
   for (let i = 0; i < 42; i++) {
     let jogador = i % 8; // Determina o jogador atual (0-7)
 
-    const TerritorioID = Territorios[jogador][Math.floor(i / 8)] - 1
+    const TerritorioID = distribuicao[jogador][Math.floor(i / 8)] - 1
     const Dono =  jogador+1;
 
     const territorio = {
@@ -276,8 +276,8 @@ async function DestribuirTerritorios(lobbyId)
 
   console.log("Exemplo"+Territorios);
   // Atualiza os dados do lobby com os novos dados dos jogadores
-*/  
-  PartidaDados.territorios = distribuicao;
+ 
+  PartidaDados.territorios = Territorios;
  
   // Atualiza o lobby no servidor
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
