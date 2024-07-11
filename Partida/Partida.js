@@ -617,8 +617,8 @@ async function ExibirTropas(){
   // Cria um elemento de texto
   const text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-  text.setAttribute('x', centerX);
-  text.setAttribute('y', centerY+10);
+  text.setAttribute('x', centerX+2);
+  text.setAttribute('y', centerY-26);
   text.textContent = '.'; // Número a ser exibido
 
   // Define o tamanho da fonte do texto
