@@ -53,8 +53,6 @@ async function signup() {
     const nomeUsuario = document.getElementById('usuarioLogin').value;
     const senhaUsuario = document.getElementById('senhaLogin').value;
  
-     console.log(nomeUsuario)
-     console.log(senhaUsuario)
     try {
         const response = await fetch('https://45.140.193.150:8443/usuarios', {
             method: 'POST',
