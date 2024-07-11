@@ -258,48 +258,47 @@ async function DestribuirTerritorios(lobbyId)
 
 async function aplicarCores(lobbyId) {
   try {
-
-    
-    //console.log("Cores");
+    // console.log("Cores");
     const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-    //console.log("Dados Correto?" + PartidaDados.id);
+    // console.log("Dados Correto?" + PartidaDados.id);
     if (!PartidaDados) {
       console.error('Erro ao obter os dados da partida.');
       return;
     }
 
-    const svgObject = document.getElementById('svgObject');
-    const svgDoc = svgObject.contentDocument;
+    const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+    const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
     if (!svgDoc) {
       console.error('Erro ao acessar o conteúdo do documento SVG.');
       return;
     }
 
-    const paths = svgDoc.querySelectorAll('path');
+    const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
-    const Territorios = await DestribuirTerritorios(lobbyId);
-    
-    //teste
+    const Territorios = await DestribuirTerritorios(lobbyId); // Aguarda a resolução da Promise que distribui os territórios
 
-    for (let i = 0; i < 42; i++) {
-      let jogador = i % 8;
+    // teste
+
+    for (let i = 0; i < 42; i++) { // Itera por 42 territórios
+      let jogador = i % 8; // Determina o jogador atual (0-7)
       console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
-      //console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
-      nterritorio = Territorios[jogador][Math.floor(i / 8)]-1;
+      // console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
+      nterritorio = Territorios[jogador][Math.floor(i / 8)] - 1; // Calcula o índice do território
 
-      paths[nterritorio].style.fill = PartidaDados.playerSlots[jogador].cor;
-      paths[nterritorio].style.stroke = 'white';
-      paths[nterritorio].style.strokeWidth = '0.5';
-      alterarTamanhoTerritorio(paths[nterritorio]);
+      paths[nterritorio].style.fill = PartidaDados.playerSlots[jogador].cor; // Aplica a cor do jogador ao território
+      paths[nterritorio].style.stroke = 'white'; // Define a cor da borda do território
+      paths[nterritorio].style.strokeWidth = '0.5'; // Define a largura da borda
+      alterarTamanhoTerritorio(paths[nterritorio]); // Chama a função para alterar o tamanho do território
     } 
 
-    //console.log('Cores aplicadas aos territórios.');
+    // console.log('Cores aplicadas aos territórios.');
   } catch (error) {
-    console.error('Erro ao aplicar cores aos territórios:', error);
+    console.error('Erro ao aplicar cores aos territórios:', error); // Loga qualquer erro que ocorrer no processo
   }
 }
+
 
 
 async function CoresMain(lobbyId){
