@@ -308,17 +308,16 @@ async function aplicarCores(lobbyId) {
 
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
-    const Territorios = await DestribuirTerritorios(lobbyId); // Aguarda a resolução da Promise que distribui os territórios
+    //const Territorios = await DestribuirTerritorios(lobbyId); // Aguarda a resolução da Promise que distribui os territórios
+    const Territorios = PartidaDados.territorios;    
 
-    // teste
+
 
     for (let i = 0; i < 42; i++) { // Itera por 42 territórios
-      let jogador = i % 8; // Determina o jogador atual (0-7)
-      //console.log(`Número ${i + 1} (Número ${Territorios[jogador][Math.floor(i / 8)]}) está com o Jogador ${jogador + 1}`);
-      // console.log("Cor"+i+PartidaDados.playerSlots[jogador].cor);
-      nterritorio = Territorios[jogador][Math.floor(i / 8)] - 1; // Calcula o índice do território
+      
+      nterritorio = Territorios[i].id 
 
-      paths[nterritorio].style.fill = PartidaDados.playerSlots[jogador].cor; // Aplica a cor do jogador ao território
+      paths[nterritorio].style.fill = PartidaDados.playerSlots[Territorios[i].dono].cor; // Aplica a cor do jogador ao território
       paths[nterritorio].style.stroke = 'white'; // Define a cor da borda do território
       paths[nterritorio].style.strokeWidth = '0.5'; // Define a largura da borda
       alterarTamanhoTerritorio(paths[nterritorio]); // Chama a função para alterar o tamanho do território
