@@ -614,7 +614,7 @@ async function ExibirTropas(){
   const centerY = bbox.getBBox().y + bbox.getBBox().height / 2;
   
   // Cria um elemento de texto
-  var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+  const text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
   text.setAttribute('x', centerX);
   text.setAttribute('y', centerY);
