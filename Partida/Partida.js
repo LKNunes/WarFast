@@ -621,7 +621,7 @@ async function ExibirTropas(lobbyId){
 
   text.setAttribute('x', centerX+2);
   text.setAttribute('y', centerY-26);
-  text.textContent = PartidaDados.territorios[i].id;
+  text.textContent = PartidaDados.territorios[i].dono;
   // Define o tamanho da fonte do texto
   text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
   i++;
