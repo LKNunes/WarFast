@@ -252,6 +252,9 @@ async function DestribuirTerritorios(lobbyId)
   // Exemplo de uso
   const distribuicao = distribuirNumerosAleatoriamente();  
 
+  console.log("Exemplo"+ distribuicao);
+
+
   //teste
 
   let Territorios = distribuicao;
