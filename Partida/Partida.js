@@ -252,6 +252,10 @@ async function DestribuirTerritorios(lobbyId)
   // Exemplo de uso
   const distribuicao = distribuirNumerosAleatoriamente();  
 
+  
+
+  //Armazenar territorios no DB na primeira vez e chamar a função para aplicar as cores do DB no SVG
+  
   return distribuicao;
 
 }
