@@ -31,6 +31,7 @@
             color: white;
             padding: 15px;
             text-align: center;
+            position: relative;
         }
 
         .login-body {
@@ -89,21 +90,7 @@
         </div>
     </div>
 
-    <script>
-        function login() {
-            const usuario = document.getElementById('usuarioLogin').value;
-            const senha = document.getElementById('senhaLogin').value;
-            console.log('Usuário:', usuario);
-            console.log('Senha:', senha);
-            // Adicione a lógica de login aqui
-        }
-
-        function redirectCriarConta() {
-            console.log('Redirecionar para criar conta');
-            // Adicione a lógica de redirecionamento para criar conta aqui
-        }
-    </script>
-
+    <script src="./auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
