@@ -610,9 +610,9 @@ async function ExibirTropas(){
 
   // paths.forEach(function(path) {
   // Calcula um ponto aproximado para o centro do path
-  var centerX = bbox.x + bbox.width ;
-  var centerY = bbox.y + bbox.height ;
-
+  const centerX = territorio.getBBox().x + territorio.getBBox().width / 2;
+  const centerY = territorio.getBBox().y + territorio.getBBox().height / 2;
+  
   // Cria um elemento de texto
   var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
   text.setAttribute('text-anchor', 'middle'); // Ancora o texto no meio para centralizar horizontalmente
