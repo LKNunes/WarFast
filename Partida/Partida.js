@@ -317,7 +317,7 @@ async function aplicarCores(lobbyId) {
       
       nterritorio = Territorios[i].id 
 
-      console.log(Territorios[i].id +"  "+nterritorio+""+Territorios[i].dono)
+      console.log(Territorios[i].id +"  "+nterritorio+" "+Territorios[i].dono)
 
       paths[nterritorio].style.fill = PartidaDados.playerSlots[Territorios[i].dono].cor; // Aplica a cor do jogador ao território
       paths[nterritorio].style.stroke = 'white'; // Define a cor da borda do território
