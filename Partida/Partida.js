@@ -599,3 +599,31 @@ async function VerificaTurno(lobbyId)
   console.log("Turno Verificado:"+PartidaDados.turno);
   return PartidaDados.turno;
 }
+
+async function ExibirTropas(){
+
+    // Array com os ids dos paths
+    const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+    const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+    const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+
+    // Itera sobre cada id do path
+    paths.forEach(function(id) {
+        var path = document.getElementById(id);
+        var bbox = path.getBBox(); // Obtém o bounding box do path
+
+        // Calcula o centro do path
+        var centerX = bbox.x + bbox.width / 2;
+        var centerY = bbox.y + bbox.height / 2;
+
+        // Cria um elemento de texto
+        var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', centerX);
+        text.setAttribute('y', centerY);
+        text.textContent = '1'; // Número a ser exibido
+
+        // Adiciona o texto ao SVG
+        path.parentNode.appendChild(text);
+    })
+  
+  }
