@@ -171,6 +171,8 @@ async function svgLoaded() {
 
   await ObjetivoMain(lobbyId); // Muda para fase 1  
 
+  await DestribuirTerritorios(lobbyId)
+
   await ImprimirJogadores(lobbyId);
 
   await aplicarCores(lobbyId); //aplicação visual
