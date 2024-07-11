@@ -256,7 +256,7 @@ async function DestribuirTerritorios(lobbyId)
 
 
   //teste
-
+/*
   let Territorios = distribuicao;
 
   for (let i = 0; i < 42; i++) {
@@ -276,6 +276,7 @@ async function DestribuirTerritorios(lobbyId)
 
   console.log("Exemplo"+Territorios);
   // Atualiza os dados do lobby com os novos dados dos jogadores
+*/  
   PartidaDados.territorios = distribuicao;
  
   // Atualiza o lobby no servidor
