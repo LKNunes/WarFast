@@ -604,40 +604,92 @@ async function ExibirTropas(lobbyId) {
   const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-  
+
   const PartidaDados = await dadospartida(lobbyId);
   var i = 0;
-  
-  //paths.forEach(function(path) {
-    // Obtém o bounding box do path
-    var bbox = paths[0].getBBox();
-  
-    // Calcula o centro do bounding box
-    var centerX = bbox.x + bbox.width / 2;
-    var centerY = bbox.y + bbox.height / 2;
-  
+
+  paths.forEach(function(path) {
+    // Calcula o centro do path usando a função `getCenter()`
+    var center = getCenter(path);
+
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
-  
-    // Define a posição do texto no centro do bounding box
-    text.setAttribute('x', centerX);
-    text.setAttribute('y', centerY);
-  
+
+    // Define a posição do texto no centro do path
+    text.setAttribute('x', center.x);
+    text.setAttribute('y', center.y);
+
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
-    
-    text.textContent = ".";
-  
+
     // Define o tamanho da fonte do texto
     text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
-  
+
     // Ajuste a posição do texto para centralizar melhor
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('dominant-baseline', 'central');
-  
+
     // Adiciona o texto ao SVG
     svgDoc.documentElement.appendChild(text);
-  
-  //  i++;
-//  });
+
+    i++;
+  });
+}
+
+function parsePathData(pathData) {
+  const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
+  let points = [];
+  let currentPoint = [0, 0];
+
+  commands.forEach(command => {
+    const type = command[0];
+    const args = command.slice(1).trim().split(/[\s,]+/).map(Number);
+
+    switch (type) {
+      case 'M':
+      case 'L':
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint = [args[i], args[i + 1]];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      case 'm':
+      case 'l':
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint[0] += args[i];
+          currentPoint[1] += args[i + 1];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      // Adicione mais casos aqui para outros comandos SVG, se necessário
+    }
+  });
+
+  return points;
+}
+
+function getCenter(path) {
+  // Obtém o atributo `d` do path
+  const pathData = path.getAttribute('d');
+  const points = parsePathData(pathData);
+
+  // Inicializa as variáveis para armazenar as coordenadas do centro
+  let centerX = 0;
+  let centerY = 0;
+
+  // Soma as coordenadas de todos os pontos do path
+  for (let i = 0; i < points.length; i++) {
+    centerX += points[i].x;
+    centerY += points[i].y;
+  }
+
+  // Divide as somas pela quantidade de pontos para obter a média
+  centerX /= points.length;
+  centerY /= points.length;
+
+  // Retorna um objeto com as coordenadas do centro
+  return {
+    x: centerX,
+    y: centerY
+  };
 }
