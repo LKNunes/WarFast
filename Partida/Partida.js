@@ -607,7 +607,7 @@ async function ExibirTropas(lobbyId) {
 
   const PartidaDados = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
   const territorios = PartidaDados.territorios; // Suponho que 'territorios' contém os dados dos territórios
-
+  
   // Array com as coordenadas x e y para cada texto
   const coordenadasTextos = [
     { x: 68, y: 108 },
@@ -658,7 +658,7 @@ async function ExibirTropas(lobbyId) {
   paths.forEach(function(path, i) {
     // Obtém as coordenadas para o texto
     const coords = coordenadasTextos[i];
-
+    console.log(i);
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
