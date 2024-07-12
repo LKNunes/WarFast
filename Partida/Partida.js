@@ -654,8 +654,6 @@ async function ExibirTropas(lobbyId) {
     { x: 200, y: 200 }
     // Adicione mais coordenadas conforme necessário
   ];
-
-
   
   paths.forEach(function(path, i) {
     // Obtém as coordenadas para o texto
