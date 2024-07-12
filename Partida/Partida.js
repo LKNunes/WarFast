@@ -608,7 +608,7 @@ async function ExibirTropas(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId);
   var i = 0;
   
-  paths.forEach(function(path) {
+  //paths.forEach(function(path) {
     // Obtém o bounding box do path
     var bbox = paths[0].getBBox();
   
@@ -636,8 +636,8 @@ async function ExibirTropas(lobbyId) {
     // Adiciona o texto ao SVG
     svgDoc.documentElement.appendChild(text);
   
-    i++;
-  });
+  //  i++;
+//  });
 }
 
 function parsePathData(pathData) {
