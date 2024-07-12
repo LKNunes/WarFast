@@ -608,27 +608,57 @@ async function ExibirTropas(lobbyId){
   let cordenadas = []
   PartidaDados = await dadospartida(lobbyId);
 
-   paths.forEach(function(path) {
-    var bbox = path// Obtém o bounding box do path
-
-  // Calcula um ponto aproximado para o centro do path
-  const centerX = bbox.getBBox().x + bbox.getBBox().width /2 ;
-  const centerY = bbox.getBBox().y + bbox.getBBox().height / 2;
+  paths.forEach(function(path) {
+    // Obtém o bounding box do path
+    var bbox = path.getBBox();
   
-  console.log("Centro: X: "+centerX+"Y: "+centerY);
-  // Cria um elemento de texto
-  const text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
-
-  text.setAttribute('x', centerX+2);
-  text.setAttribute('y', centerY-26);
-  text.textContent = PartidaDados.territorios[i].dono;
-  // Define o tamanho da fonte do texto
-  text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
-  i++;
-  // Adiciona o texto dentro do próprio SVG
-  svgDoc.documentElement.appendChild(text);
+    // Calcula o centro do path usando a função `getCenter()`
+    var center = getCenter(path);
+  
+    // Cria um elemento de texto
+    var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+  
+    // Define a posição do texto no centro do path
+    text.setAttribute('x', center.x);
+    text.setAttribute('y', center.y);
+  
+    // Adiciona o texto do número
+    text.textContent = PartidaDados.territorios[i].dono;
+  
+    // Define o tamanho da fonte do texto
+    text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
+  
+    // Adiciona o texto ao SVG
+    svgDoc.documentElement.appendChild(text);
+  
+    i++;
   });
-  
   
 
 } 
+
+
+function getCenter(path) {
+  // Obtém os pontos do path
+  var points = path.getPoints();
+
+  // Inicializa as variáveis para armazenar as coordenadas do centro
+  var centerX = 0;
+  var centerY = 0;
+
+  // Soma as coordenadas de todos os pontos do path
+  for (var i = 0; i < points.length; i++) {
+    centerX += points[i].x;
+    centerY += points[i].y;
+  }
+
+  // Divide as somas pela quantidade de pontos para obter a média
+  centerX /= points.length;
+  centerY /= points.length;
+
+  // Retorna um objeto com as coordenadas do centro
+  return {
+    x: centerX,
+    y: centerY
+  };
+}
