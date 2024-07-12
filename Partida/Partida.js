@@ -610,7 +610,7 @@ async function ExibirTropas(lobbyId) {
   
   //paths.forEach(function(path) {
     // Obtém o bounding box do path
-    var bbox = paths[3].getBBox();
+    var bbox = paths[0].getBBox();
   
     // Calcula o centro do bounding box
     var centerX = bbox.x + bbox.width / 2;
