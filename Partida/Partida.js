@@ -610,7 +610,7 @@ async function ExibirTropas(lobbyId) {
 
   paths.forEach(function(path) {
     // Calcula o centro do path usando a função `getCenter()`
-    var center = getCenter(path);
+    var center = calcularCentroideSVG(path);
 
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -636,64 +636,80 @@ async function ExibirTropas(lobbyId) {
     i++;
   });
 }
+// Função para calcular o centroide de um caminho SVG
+function calcularCentroideSVG(svgPath) {
+  // Obtém o atributo 'd' do caminho SVG
+  const pathData = svgPath.getAttribute('d');
+  // Parseia os dados do caminho SVG para obter os comandos e argumentos
+  const commands = parsePathData(pathData);
+  
+  let centroidX = 0;
+  let centroidY = 0;
+  let totalLength = 0;
 
-function parsePathData(pathData) {
-  const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
-  let points = [];
-  let currentPoint = [0, 0];
-
-  commands.forEach(command => {
-    const type = command[0];
-    const args = command.slice(1).trim().split(/[\s,]+/).map(Number);
-
-    switch (type) {
-      case 'M':
-      case 'L':
-        for (let i = 0; i < args.length; i += 2) {
-          currentPoint = [args[i], args[i + 1]];
-          points.push({ x: currentPoint[0], y: currentPoint[1] });
-        }
-        break;
-      case 'm':
-      case 'l':
-        for (let i = 0; i < args.length; i += 2) {
-          currentPoint[0] += args[i];
-          currentPoint[1] += args[i + 1];
-          points.push({ x: currentPoint[0], y: currentPoint[1] });
-        }
-        break;
-      // Adicione mais casos aqui para outros comandos SVG, se necessário
-    }
-  });
-
-  return points;
+  // Itera pelos comandos do caminho SVG
+  for (let i = 0; i < commands.length; i++) {
+      const command = commands[i];
+      if (command.type === 'L') { // Segmento de linha
+          const startX = command.startX;
+          const startY = command.startY;
+          const endX = command.endX;
+          const endY = command.endY;
+          
+          // Calcula o comprimento do segmento
+          const segmentLength = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+          totalLength += segmentLength;
+          
+          // Calcula o centroide do segmento (média das coordenadas)
+          const segmentCentroidX = (startX + endX) / 2;
+          const segmentCentroidY = (startY + endY) / 2;
+          
+          // Adiciona ao centroide geral ponderado pelo comprimento
+          centroidX += segmentCentroidX * segmentLength;
+          centroidY += segmentCentroidY * segmentLength;
+      }
+      // Adicione mais casos para outros comandos SVG, se necessário (como curvas C, etc.)
+  }
+  
+  // Calcula o centroide geral dividindo pelo comprimento total
+  centroidX /= totalLength;
+  centroidY /= totalLength;
+  
+  // Retorna o centroide calculado
+  return { x: centroidX, y: centroidY };
 }
 
-function getCenter(path) {
-  // Obtém o atributo `d` do path
-  const pathData = path.getAttribute('d');
-  const points = parsePathData(pathData);
-  console.log(points);
-  // Inicializa as variáveis para armazenar as coordenadas do centro
-  let centerX = 0;
-  let centerY = 0;
+// Função para parsear os dados do caminho SVG
+function parsePathData(pathData) {
+  const commands = [];
+  const regex = /([MLC])([^MLC]*)/gi;
+  let match;
+  let currentX = 0;
+  let currentY = 0;
 
-  // Soma as coordenadas de todos os pontos do path
-  for (let i = 0; i < points.length; i++) {
-    centerX += points[i].x;
-    centerY += points[i].y;
+  while ((match = regex.exec(pathData)) !== null) {
+      const type = match[1];
+      const args = match[2].trim().split(/[\s,]+/).map(parseFloat);
+
+      switch (type) {
+          case 'M': // Move to
+              currentX = args[0];
+              currentY = args[1];
+              break;
+          case 'L': // Line to
+              commands.push({
+                  type: 'L',
+                  startX: currentX,
+                  startY: currentY,
+                  endX: args[0],
+                  endY: args[1]
+              });
+              currentX = args[0];
+              currentY = args[1];
+              break;
+          // Adicione mais casos para outros comandos SVG, como curvas C, se necessário
+      }
   }
 
-  console.log("X: "+centerX+"Y: "+centerY+" ")
-  // Divide as somas pela quantidade de pontos para obter a média
-  centerX /= points.length;
-  centerY /= points.length;
-
-  console.log("X: "+centerX+"Y: "+centerY+" ")
-
-  // Retorna um objeto com as coordenadas do centro
-  return {
-    x: centerX,
-    y: centerY
-  };
+  return commands;
 }
