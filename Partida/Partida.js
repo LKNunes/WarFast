@@ -608,9 +608,9 @@ async function ExibirTropas(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId);
   var i = 0;
 
-  paths.forEach(function(path) {
+  //paths.forEach(function(path) {
     // Calcula o centro do path usando a função `getCenter()`
-    var center = getCenter(path);
+    var center = getCenter(paths[0]);
 
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -632,8 +632,8 @@ async function ExibirTropas(lobbyId) {
     // Adiciona o texto ao SVG
     svgDoc.documentElement.appendChild(text);
 
-    i++;
-  });
+    //i++;
+  //});
 }
 
 function parsePathData(pathData) {
