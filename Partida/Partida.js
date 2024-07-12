@@ -670,7 +670,7 @@ async function ExibirTropas(lobbyId) {
     text.textContent = territorios[i].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
 
     // Define o tamanho da fonte do texto
-    text.style.fontSize = '12px'; // Ajuste o tamanho da fonte conforme necessário
+    text.style.fontSize = '8px'; // Ajuste o tamanho da fonte conforme necessário
 
     // Ajuste a posição do texto para centralizar melhor
     text.setAttribute('text-anchor', 'middle');
