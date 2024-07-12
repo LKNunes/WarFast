@@ -677,6 +677,8 @@ function calcularCentroideSVG(svgPath) {
   centroidX /= totalLength;
   centroidY /= totalLength;
   
+  console.log(centroidX);
+
   // Retorna o centroide calculado
   return { x: centroidX, y: centroidY };
 }
