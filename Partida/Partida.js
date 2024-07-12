@@ -605,36 +605,34 @@ async function ExibirTropas(lobbyId) {
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
-  const PartidaDados = await dadospartida(lobbyId);
-  var i = 0;
+  const PartidaDados = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
+  const territorios = PartidaDados.territorios; // Suponho que 'territorios' contém os dados dos territórios
 
-  paths.forEach(function(path) {
-    // Calcula o centro do path usando a função `getCenter()`
-
-    const center = [{x:"1",y:"1"}];
+  paths.forEach(function(path, i) {
+    // Calcula o centro do path
+    const bbox = path.getBBox(); // Obtém a bounding box do path
+    const centerX = bbox.x + bbox.width / 2; // Calcula o centro horizontal
+    const centerY = bbox.y + bbox.height / 2; // Calcula o centro vertical
 
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
     // Define a posição do texto no centro do path
-    text.setAttribute('x', center[i].x);
-    text.setAttribute('y', center[i].y);
+    text.setAttribute('x', centerX);
+    text.setAttribute('y', centerY);
 
-    // Adiciona o texto do número
-    text.textContent = PartidaDados.territorios[i].dono;
-    text.textContent = ".";
+    // Adiciona o texto do número do dono do território
+    text.textContent = territorios[i].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
 
     // Define o tamanho da fonte do texto
-    text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
+    text.style.fontSize = '12px'; // Ajuste o tamanho da fonte conforme necessário
 
     // Ajuste a posição do texto para centralizar melhor
     text.setAttribute('text-anchor', 'middle');
-    text.setAttribute('dominant-baseline', 'central');
+    text.setAttribute('dominant-baseline', 'middle');
 
     // Adiciona o texto ao SVG
     svgDoc.documentElement.appendChild(text);
-
-    i++;
   });
 }
 
