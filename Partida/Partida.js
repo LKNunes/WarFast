@@ -656,11 +656,11 @@ async function ExibirTropas(lobbyId) {
   ];
   
   
-  console.log(territorios[0].id)
+  console.log(territorios[0].id);
 
-  console.log(territorios[0].dono)
+  console.log(territorios[0].dono);
 
-  console.log(territorios[0].tropas)
+  console.log(territorios[0].tropas);
 
   paths.forEach(function(path, i) {
     // Obtém as coordenadas para o texto
