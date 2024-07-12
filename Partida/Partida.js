@@ -666,37 +666,34 @@ function getCenter(path) {
   };
 }
 
-// Função para parsear os dados do caminho SVG
 function parsePathData(pathData) {
-  const commands = [];
-  const regex = /([MLC])([^MLC]*)/gi;
-  let match;
-  let currentX = 0;
-  let currentY = 0;
+  const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
+  let points = [];
+  let currentPoint = [0, 0];
 
-  while ((match = regex.exec(pathData)) !== null) {
-      const type = match[1];
-      const args = match[2].trim().split(/[\s,]+/).map(parseFloat);
+  commands.forEach(command => {
+    const type = command[0];
+    const args = command.slice(1).trim().split(/[\s,]+/).map(Number);
 
-      switch (type) {
-          case 'M': // Move to
-              currentX = args[0];
-              currentY = args[1];
-              break;
-          case 'L': // Line to
-              commands.push({
-                  type: 'L',
-                  startX: currentX,
-                  startY: currentY,
-                  endX: args[0],
-                  endY: args[1]
-              });
-              currentX = args[0];
-              currentY = args[1];
-              break;
-          // Adicione mais casos para outros comandos SVG, como curvas C, se necessário
-      }
-  }
+    switch (type) {
+      case 'M': // moveto absoluto
+      case 'L': // lineto absoluto
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint = [args[i], args[i + 1]];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      case 'm': // moveto relativo
+      case 'l': // lineto relativo
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint[0] += args[i];
+          currentPoint[1] += args[i + 1];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      // Adicione mais casos aqui para outros comandos SVG, se necessário
+    }
+  });
 
-  return commands;
+  return points;
 }
