@@ -608,9 +608,9 @@ async function ExibirTropas(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId);
   var i = 0;
 
-  paths.forEach(function(path) {
+  //paths.forEach(function(path) {
     // Calcula o centro do path usando a função `getCenter()`
-    var center = getCenter(path);
+    var center = getCenter(paths[0]);
 
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -632,8 +632,8 @@ async function ExibirTropas(lobbyId) {
     // Adiciona o texto ao SVG
     svgDoc.documentElement.appendChild(text);
 
-    i++;
-  });
+    //i++;
+  //});
 }
 
 function parsePathData(pathData) {
@@ -672,28 +672,23 @@ function getCenter(path) {
   // Obtém o atributo `d` do path
   const pathData = path.getAttribute('d');
   const points = parsePathData(pathData);
-
+  console.log(points);
   // Inicializa as variáveis para armazenar as coordenadas do centro
-  let area = 0;
   let centerX = 0;
   let centerY = 0;
 
-  // Calcula a área e o centroide usando a fórmula do polígono
+  // Soma as coordenadas de todos os pontos do path
   for (let i = 0; i < points.length; i++) {
-    const x0 = points[i].x;
-    const y0 = points[i].y;
-    const x1 = points[(i + 1) % points.length].x;
-    const y1 = points[(i + 1) % points.length].y;
-
-    const a = x0 * y1 - x1 * y0;
-    area += a;
-    centerX += (x0 + x1) * a;
-    centerY += (y0 + y1) * a;
+    centerX += points[i].x;
+    centerY += points[i].y;
   }
 
-  area *= 0.5;
-  centerX = (centerX / (6 * area));
-  centerY = (centerY / (6 * area));
+  console.log("X: "+centerX+"Y: "+centerY+" ")
+  // Divide as somas pela quantidade de pontos para obter a média
+  centerX /= points.length;
+  centerY /= points.length;
+
+  console.log("X: "+centerX+"Y: "+centerY+" ")
 
   // Retorna um objeto com as coordenadas do centro
   return {
