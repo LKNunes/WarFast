@@ -605,56 +605,75 @@ async function ExibirTropas(lobbyId) {
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
-  const PartidaDados = await dadospartida(lobbyId); // Obtém os dados da partida
+  const PartidaDados = await dadospartida(lobbyId);
+  var i = 0;
 
-  paths.forEach(function(path, index) {
+  paths.forEach(function(path) {
     // Calcula o centro do path usando a função `getCenter()`
     var center = getCenter(path);
 
-    // Verifica se o centro calculado é válido
-    if (center && !isNaN(center.x) && !isNaN(center.y)) {
-      // Cria um ponto SVG dentro do documento SVG
-      var svgPoint = svgDoc.createSVGPoint();
-      svgPoint.x = center.x;
-      svgPoint.y = center.y;
+    // Cria um elemento de texto
+    var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-      // Obtém a matriz de transformação do path
-      var CTM = path.getScreenCTM();
+    // Define a posição do texto no centro do path
+    text.setAttribute('x', center.x);
+    text.setAttribute('y', center.y);
 
-      // Transforma o ponto SVG usando a matriz de transformação do path
-      var transformedPoint = svgPoint.matrixTransform(CTM);
+    // Adiciona o texto do número
+    text.textContent = PartidaDados.territorios[i].dono;
+    text.textContent = ".";
 
-      // Cria um elemento de texto
-      var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+    // Define o tamanho da fonte do texto
+    text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
 
-      // Define a posição do texto ajustada para considerar a posição absoluta do path
-      text.setAttribute('x', transformedPoint.x);
-      text.setAttribute('y', transformedPoint.y);
+    // Ajuste a posição do texto para centralizar melhor
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('dominant-baseline', 'central');
 
-      // Adiciona o texto do número do território
-      text.textContent = PartidaDados.territorios[index].dono;
+    // Adiciona o texto ao SVG
+    svgDoc.documentElement.appendChild(text);
 
-      // Define o tamanho da fonte do texto
-      text.style.fontSize = '12px'; // Ajuste o tamanho da fonte conforme necessário
-
-      // Ajuste a posição do texto para centralizar melhor
-      text.setAttribute('text-anchor', 'middle'); // Centraliza o texto horizontalmente
-      text.setAttribute('dominant-baseline', 'central'); // Centraliza o texto verticalmente
-
-      // Adiciona o texto como filho do elemento SVG do documento
-      svgDoc.documentElement.appendChild(text);
-    }
+    i++;
   });
 }
 
+function parsePathData(pathData) {
+  const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
+  let points = [];
+  let currentPoint = [0, 0];
+
+  commands.forEach(command => {
+    const type = command[0];
+    const args = command.slice(1).trim().split(/[\s,]+/).map(Number);
+
+    switch (type) {
+      case 'M':
+      case 'L':
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint = [args[i], args[i + 1]];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      case 'm':
+      case 'l':
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint[0] += args[i];
+          currentPoint[1] += args[i + 1];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      // Adicione mais casos aqui para outros comandos SVG, se necessário
+    }
+  });
+
+  return points;
+}
 
 function getCenter(path) {
-  // Obtém o atributo `d` do path, que define os comandos para desenhar o path
+  // Obtém o atributo `d` do path
   const pathData = path.getAttribute('d');
-  
-  // Obtém os pontos do caminho SVG usando a função `parsePathData`
   const points = parsePathData(pathData);
-
+  console.log(points);
   // Inicializa as variáveis para armazenar as coordenadas do centro
   let centerX = 0;
   let centerY = 0;
@@ -665,45 +684,16 @@ function getCenter(path) {
     centerY += points[i].y;
   }
 
+  console.log("X: "+centerX+"Y: "+centerY+" ")
   // Divide as somas pela quantidade de pontos para obter a média
   centerX /= points.length;
   centerY /= points.length;
+
+  console.log("X: "+centerX+"Y: "+centerY+" ")
 
   // Retorna um objeto com as coordenadas do centro
   return {
     x: centerX,
     y: centerY
   };
-}
-
-function parsePathData(pathData) {
-  const commands = pathData.match(/[a-df-z][^a-df-z]*/ig); // Separa os comandos do path
-  let points = [];
-  let currentPoint = [0, 0];
-
-  commands.forEach(command => {
-    const type = command[0]; // Obtém o tipo de comando (M, L, etc.)
-    const args = command.slice(1).trim().split(/[\s,]+/).map(Number); // Obtém os argumentos do comando
-
-    switch (type) {
-      case 'M': // moveto absoluto
-      case 'L': // lineto absoluto
-        for (let i = 0; i < args.length; i += 2) {
-          currentPoint = [args[i], args[i + 1]]; // Define o ponto atual
-          points.push({ x: currentPoint[0], y: currentPoint[1] }); // Adiciona o ponto aos pontos do path
-        }
-        break;
-      case 'm': // moveto relativo
-      case 'l': // lineto relativo
-        for (let i = 0; i < args.length; i += 2) {
-          currentPoint[0] += args[i]; // Atualiza o ponto atual x
-          currentPoint[1] += args[i + 1]; // Atualiza o ponto atual y
-          points.push({ x: currentPoint[0], y: currentPoint[1] }); // Adiciona o ponto aos pontos do path
-        }
-        break;
-      // Adicione mais casos aqui para outros comandos SVG, se necessário
-    }
-  });
-
-  return points; // Retorna a lista de pontos que definem o path
 }
