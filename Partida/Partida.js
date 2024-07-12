@@ -671,7 +671,7 @@ async function ExibirTropas(lobbyId) {
 
     // Define o tamanho da fonte do texto
     text.style.fontSize = '7px'; // Ajuste o tamanho da fonte conforme necessário
-    text.style.fontFamily = 'Roboto, Arial, sans-serif';
+    text.style.fontFamily = 'Fantasia, Arial, sans-serif';
     text.style.letterSpacing = '0.5px'; // Ajuste o espaçamento entre letras conforme necessário
     text.style.textAlign = 'center'; // Alinhe o texto conforme necessário
     text.style.fill = '#ffffff'; // Cor do texto, substitua pela cor desejada
