@@ -608,42 +608,32 @@ async function ExibirTropas(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId);
   var i = 0;
 
+  const textContainer = document.getElementById('textContainer'); // Obtém o container de texto
+
   paths.forEach(function(path) {
     // Calcula o centro do path usando a função `getCenter()`
     var center = getCenter(path);
 
-    // Cria um grupo SVG para conter o path e o texto
-    var group = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'g');
-
-    // Adiciona o path ao grupo
-    group.appendChild(path.cloneNode(true)); // Clona o path e adiciona ao grupo
-
     // Cria um elemento de texto
-    var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+    var text = document.createElement('div');
 
-    // Define a posição do texto no centro do path
-    text.setAttribute('x', center.x);
-    text.setAttribute('y', center.y);
+    // Define a posição do texto no centro do path, ajustando para o posicionamento visual
+    text.style.position = 'absolute';
+    text.style.left = `${center.x}px`;
+    text.style.top = `${center.y - 10}px`; // Ajuste conforme necessário para o posicionamento acima do path
+    text.style.fontSize = '10px'; // Ajuste o tamanho da fonte conforme necessário
+    text.style.textAlign = 'center';
 
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
 
-    // Define o tamanho da fonte do texto
-    text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
-
-    // Ajuste a posição do texto para centralizar melhor
-    text.setAttribute('text-anchor', 'middle');
-    text.setAttribute('dominant-baseline', 'central');
-
-    // Adiciona o texto ao grupo
-    group.appendChild(text);
-
-    // Substitui o path original pelo grupo no DOM
-    path.parentNode.replaceChild(group, path);
+    // Adiciona o texto ao container de texto
+    textContainer.appendChild(text);
 
     i++;
   });
 }
+
 
 
 
