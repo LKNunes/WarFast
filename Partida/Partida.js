@@ -688,6 +688,7 @@ function getCenter(path) {
   centerX /= points.length;
   centerY /= points.length;
 
+  console.log("X: "+centerX+"Y: "+centerX+" ")
 
   // Retorna um objeto com as coordenadas do centro
   return {
