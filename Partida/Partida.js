@@ -621,7 +621,6 @@ async function ExibirTropas(lobbyId) {
 
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
-    text.textContent = "•";
 
     // Define o tamanho da fonte do texto
     text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
@@ -630,44 +629,13 @@ async function ExibirTropas(lobbyId) {
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('dominant-baseline', 'central');
 
-    // Adiciona o texto ao SVG
-    svgDoc.documentElement.appendChild(text);
+    // Adiciona o texto como filho do path
+    path.appendChild(text);
 
     i++;
   });
 }
 
-function parsePathData(pathData) {
-  const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
-  let points = [];
-  let currentPoint = [0, 0];
-
-  commands.forEach(command => {
-    const type = command[0];
-    const args = command.slice(1).trim().split(/[\s,]+/).map(Number);
-
-    switch (type) {
-      case 'M':
-      case 'L':
-        for (let i = 0; i < args.length; i += 2) {
-          currentPoint = [args[i], args[i + 1]];
-          points.push({ x: currentPoint[0], y: currentPoint[1] });
-        }
-        break;
-      case 'm':
-      case 'l':
-        for (let i = 0; i < args.length; i += 2) {
-          currentPoint[0] += args[i];
-          currentPoint[1] += args[i + 1];
-          points.push({ x: currentPoint[0], y: currentPoint[1] });
-        }
-        break;
-      // Adicione mais casos aqui para outros comandos SVG, se necessário
-    }
-  });
-
-  return points;
-}
 
 function getCenter(path) {
   // Obtém o atributo `d` do path
