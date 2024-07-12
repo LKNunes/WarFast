@@ -615,7 +615,7 @@ async function ExibirTropas(lobbyId) {
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-    if (!isNaN(centerX) && !isNaN(centerY)) {
+    if (!isNaN(center.X) && !isNaN(center.Y)) {
       text.setAttribute('x', center.x);
       text.setAttribute('y', center.y);
   } else {
