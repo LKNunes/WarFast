@@ -613,7 +613,7 @@ async function ExibirTropas(lobbyId) {
     var center = getCenter(path);
 
     // Verifica se o centro calculado é válido
-    if (center) {
+    if (center && !isNaN(center.x) && !isNaN(center.y)) {
       // Cria um elemento de texto
       var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
@@ -641,13 +641,18 @@ async function ExibirTropas(lobbyId) {
 
 // Função para obter o centro do path
 function getCenter(path) {
+  // Obtém o atributo `d` do path
   const pathData = path.getAttribute('d');
+
+  // Obtém os pontos do caminho SVG usando a função parsePathData
   const points = parsePathData(pathData);
 
+  // Verifica se há pontos válidos
   if (points.length === 0) {
-    return null; // Retorna null se não houver pontos válidos
+    return { x: 0, y: 0 }; // Retorna um valor padrão se não houver pontos válidos
   }
 
+  // Calcula o centro dos pontos
   let totalX = 0;
   let totalY = 0;
 
