@@ -683,12 +683,12 @@ function getCenter(path) {
     centerY += points[i].y;
   }
 
-  console.log("X: "+centerX+"Y: "+centerX+" ")
+  console.log("X: "+centerX+"Y: "+centerY+" ")
   // Divide as somas pela quantidade de pontos para obter a média
   centerX /= points.length;
   centerY /= points.length;
 
-  console.log("X: "+centerX+"Y: "+centerX+" ")
+  console.log("X: "+centerX+"Y: "+centerY+" ")
 
   // Retorna um objeto com as coordenadas do centro
   return {
