@@ -608,12 +608,12 @@ async function ExibirTropas(lobbyId){
   let cordenadas = []
   PartidaDados = await dadospartida(lobbyId);
 
-  //paths.forEach(function(path) {
+  paths.forEach(function(path) {
     // Obtém o bounding box do path
-    var bbox = paths[0].getBBox();
+    var bbox = path.getBBox();
   
     // Calcula o centro do path usando a função `getCenter()`
-    var center = getCenter(bbox);
+    var center = getCenter(path);
   
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -631,8 +631,8 @@ async function ExibirTropas(lobbyId){
     // Adiciona o texto ao SVG
     svgDoc.documentElement.appendChild(text);
   
-  //  i++;
-  //});
+    i++;
+  });
   
 
 } 
