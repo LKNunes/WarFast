@@ -655,7 +655,7 @@ async function ExibirTropas(lobbyId) {
     // Adicione mais coordenadas conforme necessário
   ];
   
-  
+  console.log(territorios);
 
 
   paths.forEach(function(path, i) {
