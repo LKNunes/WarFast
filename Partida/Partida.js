@@ -619,7 +619,7 @@ async function ExibirTropas(lobbyId) {
       text.setAttribute('x', center.x);
       text.setAttribute('y', center.y);
   } else {
-      console.error('Valor de centroide inválido:', center.X, center.Y);
+      console.error('Valor de centroide inválido:', center.x, center.y);
   }
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
