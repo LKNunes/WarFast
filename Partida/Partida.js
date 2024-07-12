@@ -670,8 +670,13 @@ async function ExibirTropas(lobbyId) {
     text.textContent = territorios[i].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
 
     // Define o tamanho da fonte do texto
-    text.style.fontSize = '8px'; // Ajuste o tamanho da fonte conforme necessário
 
+// Ajusta o tamanho da fonte e outros estilos
+textElement.style.fontSize = '8px';
+textElement.style.fontFamily = 'Arial, sans-serif'; // Exemplo de escolha de fonte
+textElement.style.letterSpacing = '0.5px'; // Ajuste o espaçamento entre letras conforme necessário
+textElement.style.textAlign = 'center'; // Alinhe o texto conforme necessário
+textElement.style.fill = '#333'; // Cor do texto, substitua pela cor desejada
     // Ajuste a posição do texto para centralizar melhor
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('dominant-baseline', 'middle');
