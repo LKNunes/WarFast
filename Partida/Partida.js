@@ -659,6 +659,7 @@ async function ExibirTropas(lobbyId) {
     // Obtém as coordenadas para o texto
     const coords = coordenadasTextos[i];
     console.log(i);
+    territorios.territorios[i].dono;
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
