@@ -615,10 +615,12 @@ async function ExibirTropas(lobbyId) {
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-    // Define a posição do texto no centro do path
-    text.setAttribute('x', center.x);
-    text.setAttribute('y', center.y);
-
+    if (!isNaN(centerX) && !isNaN(centerY)) {
+      text.setAttribute('x', centerX);
+      text.setAttribute('y', centerY);
+  } else {
+      console.error('Valor de centroide inválido:', centerX, centerY);
+  }
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
     text.textContent = "•";
