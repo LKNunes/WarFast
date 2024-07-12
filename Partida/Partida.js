@@ -615,12 +615,9 @@ async function ExibirTropas(lobbyId) {
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-    if (!isNaN(center.x) && !isNaN(center.y)) {
+   
       text.setAttribute('x', center.x);
       text.setAttribute('y', center.y);
-  } else {
-      console.error('Valor de centroide inválido:', center.x, center.y);
-  }
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
     text.textContent = "•";
@@ -676,8 +673,6 @@ function calcularCentroideSVG(svgPath) {
   // Calcula o centroide geral dividindo pelo comprimento total
   centroidX /= totalLength;
   centroidY /= totalLength;
-  
-  console.log(centroidX);
 
   // Retorna o centroide calculado
   return { x: centroidX, y: centroidY };
