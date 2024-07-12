@@ -617,8 +617,8 @@ async function ExibirTropas(lobbyId) {
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
     // Define a posição do texto no centro do path
-    text.setAttribute('x', center.x);
-    text.setAttribute('y', center.y);
+    text.setAttribute('x', center[i].x);
+    text.setAttribute('y', center[i].y);
 
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
