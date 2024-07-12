@@ -665,3 +665,38 @@ function getCenter(path) {
     y: centerY
   };
 }
+
+// Função para parsear os dados do caminho SVG
+function parsePathData(pathData) {
+  const commands = [];
+  const regex = /([MLC])([^MLC]*)/gi;
+  let match;
+  let currentX = 0;
+  let currentY = 0;
+
+  while ((match = regex.exec(pathData)) !== null) {
+      const type = match[1];
+      const args = match[2].trim().split(/[\s,]+/).map(parseFloat);
+
+      switch (type) {
+          case 'M': // Move to
+              currentX = args[0];
+              currentY = args[1];
+              break;
+          case 'L': // Line to
+              commands.push({
+                  type: 'L',
+                  startX: currentX,
+                  startY: currentY,
+                  endX: args[0],
+                  endY: args[1]
+              });
+              currentX = args[0];
+              currentY = args[1];
+              break;
+          // Adicione mais casos para outros comandos SVG, como curvas C, se necessário
+      }
+  }
+
+  return commands;
+}
