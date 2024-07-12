@@ -612,6 +612,12 @@ async function ExibirTropas(lobbyId) {
     // Calcula o centro do path usando a função `getCenter()`
     var center = getCenter(path);
 
+    // Cria um grupo SVG para conter o path e o texto
+    var group = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+    // Adiciona o path ao grupo
+    group.appendChild(path.cloneNode(true)); // Clona o path e adiciona ao grupo
+
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
@@ -629,12 +635,16 @@ async function ExibirTropas(lobbyId) {
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('dominant-baseline', 'central');
 
-    // Adiciona o texto como filho do path
-    path.appendChild(text);
+    // Adiciona o texto ao grupo
+    group.appendChild(text);
+
+    // Substitui o path original pelo grupo no DOM
+    path.parentNode.replaceChild(group, path);
 
     i++;
   });
 }
+
 
 
 function getCenter(path) {
