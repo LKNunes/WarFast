@@ -631,7 +631,7 @@ async function ExibirTropas(lobbyId) {
       text.setAttribute('text-anchor', 'middle'); // Centraliza o texto horizontalmente
       text.setAttribute('dominant-baseline', 'central'); // Centraliza o texto verticalmente
 
-      // Adiciona o texto ao SVG
+      // Adiciona o texto como filho do elemento SVG do documento
       svgDoc.documentElement.appendChild(text);
     }
 
@@ -690,7 +690,11 @@ function parsePathData(pathData) {
       case 'm': // moveto relativo
       case 'l': // lineto relativo
         for (let i = 0; i < args.length; i += 2) {
-          points.push({ x: points[points.length - 1].x + args[i], y: points[points.length - 1].y + args[i + 1] });
+          if (points.length > 0) {
+            points.push({ x: points[points.length - 1].x + args[i], y: points[points.length - 1].y + args[i + 1] });
+          } else {
+            points.push({ x: args[i], y: args[i + 1] });
+          }
         }
         break;
       // Adicione mais casos aqui para outros comandos SVG, se necessário
