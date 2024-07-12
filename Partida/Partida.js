@@ -666,7 +666,7 @@ async function ExibirTropas(lobbyId) {
     text.setAttribute('y', coords.y);
 
     // Adiciona o texto do número do dono do território
-    text.textContent = PartidaDados.territorios[territorios.id].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
+    text.textContent = territorios[PartidaDados.territorios[i].id].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
 
     // Define o tamanho da fonte do texto
     text.style.fontSize = '7px'; // Ajuste o tamanho da fonte conforme necessário
