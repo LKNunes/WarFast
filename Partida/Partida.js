@@ -609,21 +609,29 @@ async function ExibirTropas(lobbyId) {
   var i = 0;
   
   paths.forEach(function(path) {
-    // Calcula o centro do path usando a função `getCenter()`
-    var center = getCenter(path);
+    // Obtém o bounding box do path
+    var bbox = path.getBBox();
+  
+    // Calcula o centro do bounding box
+    var centerX = bbox.x + bbox.width / 2;
+    var centerY = bbox.y + bbox.height / 2;
   
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
   
-    // Define a posição do texto no centro do path
-    text.setAttribute('x', center.x);
-    text.setAttribute('y', center.y);
+    // Define a posição do texto no centro do bounding box
+    text.setAttribute('x', centerX);
+    text.setAttribute('y', centerY);
   
     // Adiciona o texto do número
     text.textContent = PartidaDados.territorios[i].dono;
   
     // Define o tamanho da fonte do texto
     text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
+  
+    // Ajuste a posição do texto para centralizar melhor
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('dominant-baseline', 'central');
   
     // Adiciona o texto ao SVG
     svgDoc.documentElement.appendChild(text);
