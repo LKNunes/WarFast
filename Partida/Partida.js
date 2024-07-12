@@ -608,18 +608,23 @@ async function ExibirTropas(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
   const territorios = PartidaDados.territorios; // Suponho que 'territorios' contém os dados dos territórios
 
+  // Array com as coordenadas x e y para cada texto
+  const coordenadasTextos = [
+    { x: 100, y: 100 },
+    { x: 200, y: 200 },
+    // Adicione mais coordenadas conforme necessário
+  ];
+
   paths.forEach(function(path, i) {
-    // Calcula o centro do path
-    const bbox = path.getBBox(); // Obtém a bounding box do path
-    const centerX = bbox.x + bbox.width / 2; // Calcula o centro horizontal
-    const centerY = bbox.y + bbox.height / 2; // Calcula o centro vertical
+    // Obtém as coordenadas para o texto
+    const coords = coordenadasTextos[i];
 
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-    // Define a posição do texto no centro do path
-    text.setAttribute('x', centerX);
-    text.setAttribute('y', centerY);
+    // Define a posição do texto com base nas coordenadas informadas
+    text.setAttribute('x', coords.x);
+    text.setAttribute('y', coords.y);
 
     // Adiciona o texto do número do dono do território
     text.textContent = territorios[i].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
