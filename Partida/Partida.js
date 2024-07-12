@@ -612,25 +612,28 @@ async function ExibirTropas(lobbyId) {
     // Calcula o centro do path usando a função `getCenter()`
     var center = getCenter(path);
 
-    // Cria um elemento de texto
-    var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+    // Verifica se o centro calculado é válido
+    if (center) {
+      // Cria um elemento de texto
+      var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-    // Define a posição do texto no centro do path
-    text.setAttribute('x', center.x);
-    text.setAttribute('y', center.y);
+      // Define a posição do texto no centro do path
+      text.setAttribute('x', center.x);
+      text.setAttribute('y', center.y);
 
-    // Adiciona o texto do número
-    text.textContent = PartidaDados.territorios[i].dono;
+      // Adiciona o texto do número
+      text.textContent = PartidaDados.territorios[i].dono;
 
-    // Define o tamanho da fonte do texto
-    text.style.fontSize = '12px'; // Ajuste o tamanho da fonte conforme necessário
+      // Define o tamanho da fonte do texto
+      text.style.fontSize = '12px'; // Ajuste o tamanho da fonte conforme necessário
 
-    // Ajuste a posição do texto para centralizar melhor
-    text.setAttribute('text-anchor', 'middle'); // Centraliza o texto horizontalmente
-    text.setAttribute('dominant-baseline', 'central'); // Centraliza o texto verticalmente
+      // Ajuste a posição do texto para centralizar melhor
+      text.setAttribute('text-anchor', 'middle'); // Centraliza o texto horizontalmente
+      text.setAttribute('dominant-baseline', 'central'); // Centraliza o texto verticalmente
 
-    // Adiciona o texto ao SVG
-    svgDoc.documentElement.appendChild(text);
+      // Adiciona o texto ao SVG
+      svgDoc.documentElement.appendChild(text);
+    }
 
     i++;
   });
@@ -640,6 +643,10 @@ async function ExibirTropas(lobbyId) {
 function getCenter(path) {
   const pathData = path.getAttribute('d');
   const points = parsePathData(pathData);
+
+  if (points.length === 0) {
+    return null; // Retorna null se não houver pontos válidos
+  }
 
   let totalX = 0;
   let totalY = 0;
@@ -659,6 +666,10 @@ function getCenter(path) {
 function parsePathData(pathData) {
   const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
   let points = [];
+
+  if (!commands) {
+    return points; // Retorna array vazio se não houver comandos válidos
+  }
 
   commands.forEach(function(command) {
     const type = command[0];
