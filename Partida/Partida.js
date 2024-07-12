@@ -672,7 +672,7 @@ function getCenter(path) {
   // Obtém o atributo `d` do path
   const pathData = path.getAttribute('d');
   const points = parsePathData(pathData);
-
+  console.log(points);
   // Inicializa as variáveis para armazenar as coordenadas do centro
   let centerX = 0;
   let centerY = 0;
