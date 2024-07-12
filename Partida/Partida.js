@@ -655,10 +655,11 @@ async function ExibirTropas(lobbyId) {
     // Adicione mais coordenadas conforme necessário
   ];
 
+
+  
   paths.forEach(function(path, i) {
     // Obtém as coordenadas para o texto
     const coords = coordenadasTextos[i];
-    console.log(i+""+  territorios[i].dono    );
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
@@ -667,7 +668,7 @@ async function ExibirTropas(lobbyId) {
     text.setAttribute('y', coords.y);
 
     // Adiciona o texto do número do dono do território
-    text.textContent = PartidaDados.territorios[i].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
+    text.textContent = PartidaDados.territorios[territorios.id].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
 
     // Define o tamanho da fonte do texto
     text.style.fontSize = '7px'; // Ajuste o tamanho da fonte conforme necessário
