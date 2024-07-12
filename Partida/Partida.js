@@ -674,7 +674,7 @@ async function ExibirTropas(lobbyId) {
     text.style.fontFamily = 'Arial, sans-serif'; // Exemplo de escolha de fonte
     text.style.letterSpacing = '0.5px'; // Ajuste o espaçamento entre letras conforme necessário
     text.style.textAlign = 'center'; // Alinhe o texto conforme necessário
-    text.style.fill = '#333'; // Cor do texto, substitua pela cor desejada
+    text.style.fill = RGB(1,1,1); // Cor do texto, substitua pela cor desejada
     text.style.fontWeight = 'bold';
     // Ajuste a posição do texto para centralizar melhor
     text.setAttribute('text-anchor', 'middle');
