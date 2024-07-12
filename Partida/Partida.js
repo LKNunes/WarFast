@@ -687,18 +687,22 @@ async function ExibirTropas(lobbyId) {
   });
 }
 
-
 // Obtém o elemento SVG
 const svgObject = document.getElementById('svgObject');
 
-// Função para atualizar as coordenadas do mouse
-function updateCoords(event) {
-  const svgRect = svgObject.getBoundingClientRect();
-  const mouseX = event.clientX - svgRect.left;
-  const mouseY = event.clientY - svgRect.top;
+// Verifica se o elemento foi encontrado
+if (svgObject) {
+  // Função para atualizar as coordenadas do mouse
+  function updateCoords(event) {
+    const svgRect = svgObject.getBoundingClientRect();
+    const mouseX = event.clientX - svgRect.left;
+    const mouseY = event.clientY - svgRect.top;
+    
+    console.log(`Mouse X: ${mouseX.toFixed(2)}, Y: ${mouseY.toFixed(2)}`);
+  }
   
-  console.log(`Mouse X: ${mouseX.toFixed(2)}, Y: ${mouseY.toFixed(2)}`);
+  // Adiciona um ouvinte de evento de mouse ao elemento SVG
+  svgObject.addEventListener('mousemove', updateCoords);
+} else {
+  console.error('Elemento SVG não encontrado.');
 }
-
-// Adiciona um ouvinte de evento de mouse ao elemento SVG
-svgObject.addEventListener('mousemove', updateCoords);
