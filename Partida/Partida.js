@@ -656,11 +656,7 @@ async function ExibirTropas(lobbyId) {
   ];
   
   
-  console.log(territorios[0].id);
 
-  console.log(territorios[0].dono);
-
-  console.log(territorios[0].tropas);
 
   paths.forEach(function(path, i) {
     // Obtém as coordenadas para o texto
@@ -673,8 +669,7 @@ async function ExibirTropas(lobbyId) {
     text.setAttribute('y', coords.y);
 
     // Adiciona o texto do número do dono do território
-    text.textContent = territorios[PartidaDados.territorios[i].id].dono; // Ajuste conforme a estrutura do seu objeto 'territorios'
-
+    text.textContent = territorios[i].id;
     // Define o tamanho da fonte do texto
     text.style.fontSize = '7px'; // Ajuste o tamanho da fonte conforme necessário
     text.style.fontFamily = 'Fantasia, Arial, sans-serif';
