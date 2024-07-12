@@ -612,6 +612,16 @@ async function ExibirTropas(lobbyId) {
   const coordenadasTextos = [
     { x: 100, y: 100 },
     { x: 200, y: 200 },
+    { x: 100, y: 100 },
+    { x: 200, y: 200 },
+    { x: 100, y: 100 },
+    { x: 200, y: 200 },
+    { x: 100, y: 100 },
+    { x: 200, y: 200 },
+    { x: 100, y: 100 },
+    { x: 200, y: 200 },
+    { x: 100, y: 100 },
+    { x: 200, y: 200 },
     // Adicione mais coordenadas conforme necessário
   ];
 
