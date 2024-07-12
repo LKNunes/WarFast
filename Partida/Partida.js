@@ -614,18 +614,25 @@ async function ExibirTropas(lobbyId) {
 
     // Verifica se o centro calculado é válido
     if (center && !isNaN(center.x) && !isNaN(center.y)) {
+      // Ajusta as coordenadas do centro para considerar a posição absoluta do path no SVG
+      var svgPoint = svgObject.createSVGPoint();
+      svgPoint.x = center.x;
+      svgPoint.y = center.y;
+
+      var transformedPoint = svgPoint.matrixTransform(path.getScreenCTM());
+
       // Cria um elemento de texto
       var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
-      // Define a posição do texto no centro do path
-      text.setAttribute('x', center.x);
-      text.setAttribute('y', center.y);
+      // Define a posição do texto ajustada para considerar a posição absoluta do path
+      text.setAttribute('x', transformedPoint.x);
+      text.setAttribute('y', transformedPoint.y);
 
       // Adiciona o texto do número
       text.textContent = PartidaDados.territorios[i].dono;
 
       // Define o tamanho da fonte do texto
-      text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
+      text.style.fontSize = '12px'; // Ajuste o tamanho da fonte conforme necessário
 
       // Ajuste a posição do texto para centralizar melhor
       text.setAttribute('text-anchor', 'middle'); // Centraliza o texto horizontalmente
@@ -638,6 +645,7 @@ async function ExibirTropas(lobbyId) {
     i++;
   });
 }
+
 
 // Função para obter o centro do path
 function getCenter(path) {
