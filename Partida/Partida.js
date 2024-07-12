@@ -611,7 +611,7 @@ async function ExibirTropas(lobbyId) {
   paths.forEach(function(path) {
     // Calcula o centro do path usando a função `getCenter()`
 
-    const center = [{id:1,x:1,y:1}];
+    const center = [{x:"1",y:"1"}];
 
     // Cria um elemento de texto
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
