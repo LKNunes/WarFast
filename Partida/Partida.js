@@ -616,8 +616,8 @@ async function ExibirTropas(lobbyId) {
     var text = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
 
     if (!isNaN(centerX) && !isNaN(centerY)) {
-      text.setAttribute('x', centerX);
-      text.setAttribute('y', centerY);
+      text.setAttribute('x', center.x);
+      text.setAttribute('y', center.y);
   } else {
       console.error('Valor de centroide inválido:', centerX, centerY);
   }
