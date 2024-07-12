@@ -655,6 +655,13 @@ async function ExibirTropas(lobbyId) {
     // Adicione mais coordenadas conforme necessário
   ];
   
+  
+  console.log(territorios[0].id)
+
+  console.log(territorios[0].dono)
+
+  console.log(territorios[0].tropas)
+
   paths.forEach(function(path, i) {
     // Obtém as coordenadas para o texto
     const coords = coordenadasTextos[i];
