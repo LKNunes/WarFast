@@ -600,18 +600,15 @@ async function VerificaTurno(lobbyId)
   return PartidaDados.turno;
 }
 
-async function ExibirTropas(lobbyId){
+async function ExibirTropas(lobbyId) {
   const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
   const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-  var i=0;
-  let cordenadas = []
-  PartidaDados = await dadospartida(lobbyId);
-
-  paths.forEach(function(path) {
-    // Obtém o bounding box do path
-    var bbox = path.getBBox();
   
+  const PartidaDados = await dadospartida(lobbyId);
+  var i = 0;
+  
+  paths.forEach(function(path) {
     // Calcula o centro do path usando a função `getCenter()`
     var center = getCenter(path);
   
@@ -633,21 +630,51 @@ async function ExibirTropas(lobbyId){
   
     i++;
   });
-  
+}
 
-} 
+function parsePathData(pathData) {
+  const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
+  let points = [];
+  let currentPoint = [0, 0];
 
+  commands.forEach(command => {
+    const type = command[0];
+    const args = command.slice(1).trim().split(/[\s,]+/).map(Number);
+
+    switch (type) {
+      case 'M':
+      case 'L':
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint = [args[i], args[i + 1]];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      case 'm':
+      case 'l':
+        for (let i = 0; i < args.length; i += 2) {
+          currentPoint[0] += args[i];
+          currentPoint[1] += args[i + 1];
+          points.push({ x: currentPoint[0], y: currentPoint[1] });
+        }
+        break;
+      // Adicione mais casos aqui para outros comandos SVG, se necessário
+    }
+  });
+
+  return points;
+}
 
 function getCenter(path) {
-  // Obtém os pontos do path
-  var points = path.getPoints();
+  // Obtém o atributo `d` do path
+  const pathData = path.getAttribute('d');
+  const points = parsePathData(pathData);
 
   // Inicializa as variáveis para armazenar as coordenadas do centro
-  var centerX = 0;
-  var centerY = 0;
+  let centerX = 0;
+  let centerY = 0;
 
   // Soma as coordenadas de todos os pontos do path
-  for (var i = 0; i < points.length; i++) {
+  for (let i = 0; i < points.length; i++) {
     centerX += points[i].x;
     centerY += points[i].y;
   }
