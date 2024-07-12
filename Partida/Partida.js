@@ -640,8 +640,10 @@ async function ExibirTropas(lobbyId) {
 function getCenter(path) {
   // Obtém o atributo `d` do path
   const pathData = path.getAttribute('d');
+  
+  // Obtém os pontos do caminho SVG usando a função parsePathData
   const points = parsePathData(pathData);
-  console.log(points);
+
   // Inicializa as variáveis para armazenar as coordenadas do centro
   let centerX = 0;
   let centerY = 0;
@@ -652,12 +654,9 @@ function getCenter(path) {
     centerY += points[i].y;
   }
 
-  console.log("X: "+centerX+"Y: "+centerY+" ")
   // Divide as somas pela quantidade de pontos para obter a média
   centerX /= points.length;
   centerY /= points.length;
-
-  console.log("X: "+centerX+"Y: "+centerY+" ")
 
   // Retorna um objeto com as coordenadas do centro
   return {
@@ -665,6 +664,7 @@ function getCenter(path) {
     y: centerY
   };
 }
+
 
 function parsePathData(pathData) {
   const commands = pathData.match(/[a-df-z][^a-df-z]*/ig);
