@@ -692,7 +692,7 @@ async function ExibirTropas(lobbyId) {
     text.style.fill = '#ffffff'; // Cor do texto, substitua pela cor desejada
     text.style.fontWeight = 'normal';
     text.style.stroke = '#000000'; // Cor da borda do texto
-    text.style.strokeWidth = '0.3px'; // Largura da borda do texto
+    text.style.strokeWidth = '0.2px'; // Largura da borda do texto
     text.style.cursor = "default"; // Remove cursor de texto
     text.style.pointerEvents = "none"; // Ignora o objeto de texto
 
