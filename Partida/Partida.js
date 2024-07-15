@@ -172,7 +172,7 @@ function pausecomp(millis)
         
         console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
-        console.log("X "+centroX+"Y "+centroY);
+        console.log("X "+centroX+"Y "+centroY+" ID"+territorio.id);
   });
       territorio.addEventListener('mouseleave', function() {
         this.setAttribute('transform', ''); // Restaurar o tamanho original
