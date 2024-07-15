@@ -621,7 +621,7 @@ async function ExibirTropas(lobbyId) {
   
   // Array com as coordenadas x e y para cada texto
 
-  const Ajuste = 0;
+  const Ajuste = 21 ;
   const coordenadasTextos = [
     
     { x: 69, y: 106 },
