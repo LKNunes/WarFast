@@ -620,14 +620,16 @@ async function ExibirTropas(lobbyId) {
   const territorios = PartidaDados.territorios; // Suponho que 'territorios' contém os dados dos territórios
   
   // Array com as coordenadas x e y para cada texto
+
+  const ajuste = 20;
   const coordenadasTextos = [
     { x: 68, y: 108 },
     { x: 57, y: 127 },
     { x: 50, y: 90 },
     { x: 54, y: 110 },
-    { x: 39, y: 101-20 },
-    { x: 38, y: 83-20 },
-    { x: 100, y: 100 },
+    { x: 39, y: 101-ajuste },
+    { x: 38, y: 83-ajuste},
+    { x: 36, y: 66-ajuste },
     { x: 200, y: 200 },
     { x: 100, y: 100 },
     { x: 200, y: 200 },
