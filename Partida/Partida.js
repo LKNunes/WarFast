@@ -754,7 +754,8 @@ async function turnofase1(lobbyId)
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
-    // Finalizar turno, proximo jogador.
+    console.log("...Final do turno teste");
+        // Finalizar turno, proximo jogador.
     
 
 }
