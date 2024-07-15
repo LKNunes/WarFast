@@ -769,15 +769,16 @@ async function turnofase1(lobbyId)
      function mostrarInput() {
      document.getElementById('inputContainer').classList.remove('hidden');
      }
-     function processarInput() {
 
+     function processarInput() {
      document.getElementById('mostrarInputBtn').addEventListener('click', mostrarInput);
      var numero = document.getElementById('numeroInput').value;
      numero = parseInt(numero);
      document.getElementById('inputContainer').classList.add('hidden');
      document.getElementById('submitBtn').addEventListener('click', processarInput);
-
+     return numero;
      }
+
      document.getElementById('submitBtn').addEventListener('click', processarInput);
 
      console.log(""+numero);
