@@ -729,7 +729,7 @@ async function turnofase1(lobbyId)
     for(j=0;j<42;j++){
       if (PartidaDados.territorios[j].dono == i)
         {
-        QuantidadeTropasJ.id[i].tropas = QuantidadeTropasJ.id[i].tropas+1;
+        QuantidadeTropasJ[i].tropas = QuantidadeTropasJ[i].tropas+1;
         }
     }
   }
