@@ -157,39 +157,21 @@ function pausecomp(millis)
 }
     // Função para alterar o tamanho de um território ao passar o mouse sobre ele
     function alterarTamanhoTerritorio(territorio) {
-      const svg = document.getElementById('svgObject'); // Substitua 'svgObject' pelo ID do seu elemento SVG
-      const coordinatesDisplay = document.getElementById('coordinates'); // Substitua 'coordinates' pelo ID do seu elemento de exibição de coordenadas
-    
-      // Função para atualizar as coordenadas do mouse
-      function atualizarCoordenadas(event) {
-        const pt = svg.createSVGPoint();
-        pt.x = event.clientX;
-        pt.y = event.clientY;
-        const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
-        coordinatesDisplay.textContent = `Mouse Coordinates: x: ${svgPoint.x.toFixed(2)}, y: ${svgPoint.y.toFixed(2)}`;
-      }
-    
-      territorio.addEventListener('mouseenter', function(event) {
+      territorio.addEventListener('mouseenter', function() {
         const centroX = territorio.getBBox().x + territorio.getBBox().width / 2;
         const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
         const deslocamentoX = centroX - centroX * 1.05;
         const deslocamentoY = centroY - centroY * 1.05;
-    
-        console.log("Dentro da função tamanho");
+
+        
+        console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
-    
-        // Adiciona o listener para monitorar as coordenadas do mouse
-        svg.addEventListener('mousemove', atualizarCoordenadas);
-      });
-    
-      territorio.addEventListener('mouseleave', function(event) {
+  });
+      territorio.addEventListener('mouseleave', function() {
         this.setAttribute('transform', ''); // Restaurar o tamanho original
-    
-        // Remove o listener quando o mouse sai do território
-        svg.removeEventListener('mousemove', atualizarCoordenadas);
       });
-    }
-    
+    } 
+
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
 
