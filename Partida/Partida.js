@@ -764,7 +764,7 @@ async function turnofase1(lobbyId)
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
-    for (i=0;i<8;i++){
+    for (i=0;i<8;i++) { 
      console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
      function mostrarInput() {
      document.getElementById('inputContainer').classList.remove('hidden');
@@ -779,7 +779,7 @@ async function turnofase1(lobbyId)
      console.log(""+numero);
      }
 
-     document.getElementById('submitBtn').addEventListener('click', processarInput);
+     document.getElementById('submitBtn').addEventListener('click', await processarInput);
 
     }
 
