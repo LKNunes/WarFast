@@ -771,15 +771,15 @@ async function turnofase1(lobbyId)
      }
 
      function processarInput() {
-     document.getElementById('mostrarInputBtn').addEventListener('click', await mostrarInput);
+     document.getElementById('mostrarInputBtn').addEventListener('click', mostrarInput);
      var numero = document.getElementById('numeroInput').value;
      numero = parseInt(numero);
      document.getElementById('inputContainer').classList.add('hidden');
-     document.getElementById('submitBtn').addEventListener('click',  await processarInput);
+     document.getElementById('submitBtn').addEventListener('click', processarInput);
      console.log(""+numero);
      }
 
-     document.getElementById('submitBtn').addEventListener('click', await processarInput);
+     document.getElementById('submitBtn').addEventListener('click', processarInput);
 
     }
 
