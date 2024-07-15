@@ -694,6 +694,8 @@ async function ExibirTropas(lobbyId) {
     text.style.stroke = '#000000'; // Cor da borda do texto
     text.style.strokeWidth = '0.3px'; // Largura da borda do texto
     text.style.cursor = "default";
+    text.style.pointerEvents = "none";
+
 
     // Ajuste a posição do texto para centralizar melhor
     text.setAttribute('text-anchor', 'middle');
