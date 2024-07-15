@@ -780,7 +780,7 @@ async function turnofase1(lobbyId)
      }
      document.getElementById('submitBtn').addEventListener('click', processarInput);
 
-     PartidaDados.playerSlots[i].tropas
+     console.log(""+numero);
     }
 
     console.log("...Final do turno teste");
