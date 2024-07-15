@@ -766,7 +766,19 @@ async function turnofase1(lobbyId)
 
     for (i=0;i<8;i++){
      console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
+     function mostrarInput() {
      document.getElementById('inputContainer').classList.remove('hidden');
+     }
+     function processarInput() {
+
+     document.getElementById('mostrarInputBtn').addEventListener('click', mostrarInput);
+     var numero = document.getElementById('numeroInput').value;
+     numero = parseInt(numero);
+     document.getElementById('inputContainer').classList.add('hidden');
+     document.getElementById('submitBtn').addEventListener('click', processarInput);
+
+     }
+     document.getElementById('submitBtn').addEventListener('click', processarInput);
 
      PartidaDados.playerSlots[i].tropas
     }
