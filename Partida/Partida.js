@@ -739,7 +739,7 @@ async function turnofase1(lobbyId)
       const jogadorNome = PartidaDados.playerSlots[i].nome;
       const Objetivo = PartidaDados.playerSlots[i].objetivo;
       const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
-      const Tropas = QuantidadeTropasJ[i].tropas;
+      const Tropas = QuantidadeTropasJ[i].tropas/2;
       console.log("Tropas: "+QuantidadeTropasJ[i]);
 
       // Cria um objeto para representar o jogador com o ID, nome e cor
@@ -763,6 +763,10 @@ async function turnofase1(lobbyId)
     PartidaDados.playerSlots = Jogadores;
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
+    for (i=0;i<8;i++){
+     PartidaDados.playerSlots[i].tropas
+    }
 
     console.log("...Final do turno teste");
         // Finalizar turno, proximo jogador.
