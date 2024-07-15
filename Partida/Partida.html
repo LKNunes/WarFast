@@ -191,21 +191,6 @@ async function svgLoaded() {
   
   await ExibirTropas(lobbyId);
 
-  svgObject.addEventListener("DOMContentLoaded", function() {
-            const svg = document.getElementById('svgObject');
-            const coordinatesDisplay = document.getElementById('coordinates');
-
-            svg.addEventListener('mousemove', function(event) {
-                const pt = svg.createSVGPoint();
-                pt.x = event.clientX;
-                pt.y = event.clientY;
-
-                const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
-
-                coordinatesDisplay.textContent = `Mouse Coordinates: x: ${svgPoint.x.toFixed(2)}, y: ${svgPoint.y.toFixed(2)}`;
-            });
-        });
-
   //await AtualizaTurno(lobbyId,1);
   //await VerificaTurno(lobbyId);
 }
