@@ -677,7 +677,8 @@ async function ExibirTropas(lobbyId) {
     text.style.textAlign = 'center'; // Alinhe o texto conforme necessário
     text.style.fill = '#ffffff'; // Cor do texto, substitua pela cor desejada
     text.style.fontWeight = 'normal';
-
+    text.style.stroke = '#000000'; // Cor da borda do texto
+    text.style.strokeWidth = '0.5px'; // Largura da borda do texto
     
     // Ajuste a posição do texto para centralizar melhor
     text.setAttribute('text-anchor', 'middle');
