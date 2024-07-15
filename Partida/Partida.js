@@ -710,12 +710,12 @@ async function turnofase1(lobbyId)
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
 
-
+  let Jogadores = [];
+  let QuantidadeTropasJ = [];
   for(i=0;i<8;i++)
     {
     // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
-    let Jogadores = [];
-    let QuantidadeTropasJ = [];
+   
     for (i=0;i<8;i++){
     for(j=0;j<42;j++){
       if (PartidaDados.territorios[j].dono == i)
