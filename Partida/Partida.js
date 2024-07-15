@@ -337,7 +337,7 @@ async function aplicarCores(lobbyId) {
       paths[nterritorio].style.fill = PartidaDados.playerSlots[Territorios[i].dono].cor; // Aplica a cor do jogador ao território
       paths[nterritorio].style.stroke = 'white'; // Define a cor da borda do território
       paths[nterritorio].style.strokeWidth = '0.5'; // Define a largura da borda
-    //  alterarTamanhoTerritorio(paths[nterritorio]); // Chama a função para alterar o tamanho do território
+      alterarTamanhoTerritorio(paths[nterritorio]); // Chama a função para alterar o tamanho do território
     } 
 
     // console.log('Cores aplicadas aos territórios.');
