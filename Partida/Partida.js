@@ -771,11 +771,11 @@ async function turnofase1(lobbyId)
      }
 
      function processarInput() {
-     document.getElementById('mostrarInputBtn').addEventListener('click', mostrarInput);
+     document.getElementById('mostrarInputBtn').addEventListener('click', await mostrarInput);
      var numero = document.getElementById('numeroInput').value;
      numero = parseInt(numero);
      document.getElementById('inputContainer').classList.add('hidden');
-     document.getElementById('submitBtn').addEventListener('click', processarInput);
+     document.getElementById('submitBtn').addEventListener('click',  await processarInput);
      console.log(""+numero);
      }
 
