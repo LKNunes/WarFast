@@ -689,7 +689,7 @@ async function ExibirTropas(lobbyId) {
     text.style.fontFamily = 'Fantasia, Arial, sans-serif';
     text.style.letterSpacing = '0.5px'; // Ajuste o espaçamento entre letras conforme necessário
     text.style.textAlign = 'center'; // Alinhe o texto conforme necessário
-    text.style.fill = '#000000'; // Cor do texto, substitua pela cor desejada
+    text.style.fill = '#ffffff'; // Cor do texto, substitua pela cor desejada
     text.style.fontWeight = 'normal';
     //text.style.stroke = '#ffffff'; // Cor da borda do texto
     text.style.strokeWidth = '0.1px'; // Largura da borda do texto
