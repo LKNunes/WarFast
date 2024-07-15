@@ -711,7 +711,16 @@ async function turnofase1(lobbyId)
 
 
   let Jogadores = [];
-  let QuantidadeTropasJ = [];
+  let QuantidadeTropasJ = [
+    {id:0,tropas:0},
+    {id:1,tropas:0},
+    {id:2,tropas:0},
+    {id:3,tropas:0},
+    {id:4,tropas:0},
+    {id:5,tropas:0},
+    {id:6,tropas:0},
+    {id:7,tropas:0},
+  ];
   for(i=0;i<8;i++)
     {
     // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
