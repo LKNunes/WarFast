@@ -705,3 +705,21 @@ async function ExibirTropas(lobbyId) {
   });
 }
 
+async function turnofase1()
+{
+// Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+
+// Finalizar turno, proximo jogador.
+}
+
+
+async function turnofase2acima()
+{
+// Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+// Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
+// logica dos dados 1:1 1:2 1:3.
+// Transferir territorios e Atuzalizar tropas, destribuir as tropas para territorio conquistado
+// Remanejar tropas restantes
+// Finalizar turno, proximo jogador.
+}
+
