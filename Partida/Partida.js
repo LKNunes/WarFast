@@ -630,7 +630,7 @@ async function ExibirTropas(lobbyId) {
     { x: 54, y: 110},
     { x: 39, y: 81 },
     { x: 36, y: 60 },
-    { x: 36.65, y: 66.05-Ajuste },
+    { x: 35, y: 43 },
     { x: 43.34, y: 50.82-Ajuste },
     { x: 19.66, y: 56.92-Ajuste },
     { x: 65.97, y: 69.37-Ajuste },
