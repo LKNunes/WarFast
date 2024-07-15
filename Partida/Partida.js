@@ -172,6 +172,7 @@ function pausecomp(millis)
         
         console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
+        console.log("X "+centroX+"Y "+centroY);
   });
       territorio.addEventListener('mouseleave', function() {
         this.setAttribute('transform', ''); // Restaurar o tamanho original
@@ -338,6 +339,7 @@ async function aplicarCores(lobbyId) {
       paths[nterritorio].style.stroke = 'white'; // Define a cor da borda do território
       paths[nterritorio].style.strokeWidth = '0.5'; // Define a largura da borda
       alterarTamanhoTerritorio(paths[nterritorio]); // Chama a função para alterar o tamanho do território
+
     } 
 
     // console.log('Cores aplicadas aos territórios.');
