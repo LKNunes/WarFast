@@ -705,11 +705,58 @@ async function ExibirTropas(lobbyId) {
   });
 }
 
-async function turnofase1()
+async function turnofase1(lobbyId)
 {
-// Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-// Finalizar turno, proximo jogador.
+
+
+  for(i=0;i<8;i++)
+    {
+    // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+    let Jogadores = [];
+    let QuantidadeTropasJ = [];
+    for (i=0;i<8;i++){
+    for(j=0;j<42;j++){
+      if (PartidaDados.territorios[j].dono == i)
+        {
+        QuantidadeTropasJ[i]++;
+        }
+    }
+  }
+
+    for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+      const jogadorId = PartidaDados.playerSlots[i].id;
+      const jogadorNome = PartidaDados.playerSlots[i].nome;
+      const Objetivo = PartidaDados.playerSlots[i].objetivo;
+      const Cor = PartidaDados.playerSlots[i].cores; // Atribui a cor ao jogador
+      const tropas = QuantidadeTropasJ[i];
+
+      // Cria um objeto para representar o jogador com o ID, nome e cor
+      const jogador = {
+        id: jogadorId,
+        nome: jogadorNome,
+        objetivo: Objetivo,
+        cor: Cor,
+        tropas: Tropas
+      };
+
+      // Adiciona o jogador ao array Jogadores
+      Jogadores.push(jogador);
+    }
+
+    // Atualiza os dados do lobby com os novos dados dos jogadores
+   
+
+  }
+
+    PartidaDados.playerSlots = Jogadores;
+
+    await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
+    // Finalizar turno, proximo jogador.
+    
+
 }
 
 
