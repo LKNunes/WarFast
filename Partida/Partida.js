@@ -1,22 +1,3 @@
-function getMousePosition(svgElement, event) {
-  var rect = svgElement.getBoundingClientRect();
-  return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top
-  };
-}
-
-// Exemplo de uso:
-var svgObject = document.getElementById('svgObject');
-
-svgObject.addEventListener('mousemove', function(event) {
-  var coords = getMousePosition(svgObject, event);
-  console.log('Coordenadas do mouse dentro do SVG:', coords.x, coords.y);
-});
-
-svgObject.addEventListener('click', function(event) {
-  console.log('Clique dentro do SVG:', event.clientX, event.clientY);
-});
 
 // Exemplo de uso:
 
