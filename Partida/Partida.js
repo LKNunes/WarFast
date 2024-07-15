@@ -14,6 +14,10 @@ svgObject.addEventListener('mousemove', function(event) {
   console.log('Coordenadas do mouse dentro do SVG:', coords.x, coords.y);
 });
 
+svgObject.addEventListener('click', function(event) {
+  console.log('Clique dentro do SVG:', event.clientX, event.clientY);
+});
+
 // Exemplo de uso:
 
 
