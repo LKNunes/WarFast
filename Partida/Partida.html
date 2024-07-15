@@ -162,6 +162,22 @@ async function init() {
   await verificarLogin(); 
  
   await getUsuarioLogado(UsLogado);
+
+  // Obtém o elemento SVG pelo ID
+const svgObject = document.getElementById('svgObject');
+
+// Função para atualizar e imprimir as coordenadas do mouse
+function atualizarCoordenadas(event) {
+  const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+  const pt = svgDoc.createSVGPoint(); // Cria um ponto SVG
+  pt.x = event.clientX;
+  pt.y = event.clientY;
+  const svgPoint = pt.matrixTransform(svgDoc.documentElement.getScreenCTM().inverse()); // Transforma para coordenadas SVG
+  console.log(`Mouse Coordinates: x: ${svgPoint.x.toFixed(2)}, y: ${svgPoint.y.toFixed(2)}`);
+}
+
+// Adiciona o listener para monitorar as coordenadas do mouse
+svgObject.addEventListener('mousemove', atualizarCoordenadas);
   
 }
 
