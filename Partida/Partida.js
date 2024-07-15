@@ -779,7 +779,7 @@ async function turnofase1(lobbyId)
      return numero;
      }
 
-     document.getElementById('submitBtn').addEventListener('click', processarInput);
+     numero = document.getElementById('submitBtn').addEventListener('click', processarInput);
 
      console.log(""+numero);
     }
