@@ -664,7 +664,7 @@ async function ExibirTropas(lobbyId) {
     { x: 173, y: 114 }, //38
     { x: 189, y: 104 }, //39
     { x: 143, y: 132 }, //40
-    { x: 87, y: 49 } //41
+    { x: 87, y: 51 } //41
 // Adicione mais coordenadas conforme necessário
   ];
   
