@@ -1,4 +1,22 @@
 
+function getMousePosition(svgElement, event) {
+  var CTM = svgElement.getScreenCTM();
+  if (event.touches) event = event.touches[0];
+  return {
+      x: (event.clientX - CTM.e) / CTM.a,
+      y: (event.clientY - CTM.f) / CTM.d
+  };
+}
+
+// Exemplo de uso:
+var svg = document.getElementById('svgObject');
+
+svg.addEventListener('mousemove', function(event) {
+  var coords = getMousePosition(svg, event);
+  console.log('Coordenadas do mouse:', coords.x, coords.y);
+});
+
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -155,6 +173,9 @@ function pausecomp(millis)
     do { curDate = new Date(); }
     while(curDate-date < millis);
 }
+
+
+
     // Função para alterar o tamanho de um território ao passar o mouse sobre ele
     function alterarTamanhoTerritorio(territorio) {
       territorio.addEventListener('mouseenter', function() {
@@ -174,7 +195,6 @@ function pausecomp(millis)
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
 
-      
       try {
 
         const svgDoc =  loadSvg(svgObject);
