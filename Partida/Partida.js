@@ -281,6 +281,8 @@ async function DestribuirTerritorios(lobbyId)
     Territorios.push(territorio);
   }
 
+  Territorios.sort((a, b) => a.id - b.id);
+
   console.log("Exemplo"+Territorios);
   // Atualiza os dados do lobby com os novos dados dos jogadores
  
