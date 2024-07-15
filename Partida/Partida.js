@@ -1,13 +1,3 @@
-function atualizarCoordenadas(event) {
-  const pt = svg.createSVGPoint();
-  pt.x = event.clientX;
-  pt.y = event.clientY;
-  const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
-  console.log(`Mouse Coordinates: x: ${svgPoint.x.toFixed(2)}, y: ${svgPoint.y.toFixed(2)}`);
-}
-
-svg.addEventListener('mousemove', atualizarCoordenadas);
-
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -173,23 +163,11 @@ function pausecomp(millis)
         const deslocamentoX = centroX - centroX * 1.05;
         const deslocamentoY = centroY - centroY * 1.05;
 
-        function atualizarCoordenadas(event) {
-          const pt = svg.createSVGPoint();
-          pt.x = event.clientX;
-          pt.y = event.clientY;
-          const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
-          console.log(`Mouse Coordinates: x: ${svgPoint.x.toFixed(2)}, y: ${svgPoint.y.toFixed(2)}`);
-        }
-      
         
         console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
-  
-      territorio.addEventListener('mousemove', function() {
-        atualizarCoordenadas();
-      });
-          territorio.addEventListener('mouseleave', function() {
+      territorio.addEventListener('mouseleave', function() {
         this.setAttribute('transform', ''); // Restaurar o tamanho original
       });
     } 
