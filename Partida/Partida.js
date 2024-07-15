@@ -163,6 +163,16 @@ function pausecomp(millis)
         const deslocamentoX = centroX - centroX * 1.05;
         const deslocamentoY = centroY - centroY * 1.05;
 
+                  // Função para atualizar e imprimir as coordenadas do mouse
+        function atualizarCoordenadas(event) {
+          const x = event.clientX; // Coordenada X do mouse
+          const y = event.clientY; // Coordenada Y do mouse
+          console.log(`Mouse Coordinates: x: ${x}, y: ${y}`);
+        }
+
+        // Adiciona o listener para monitorar as coordenadas do mouse
+        svgObject.addEventListener('mousemove', atualizarCoordenadas);
+          
         
         console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
@@ -175,16 +185,7 @@ function pausecomp(millis)
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
 
-        // Função para atualizar e imprimir as coordenadas do mouse
-function atualizarCoordenadas(event) {
-  const x = event.clientX; // Coordenada X do mouse
-  const y = event.clientY; // Coordenada Y do mouse
-  console.log(`Mouse Coordinates: x: ${x}, y: ${y}`);
-}
-
-// Adiciona o listener para monitorar as coordenadas do mouse
- svgObject.addEventListener('mousemove', atualizarCoordenadas);
-  
+      
       try {
 
         const svgDoc =  loadSvg(svgObject);
