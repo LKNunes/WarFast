@@ -764,8 +764,8 @@ async function turnofase1(lobbyId)
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
-    for (i=0;i<8;i++) { 
-     console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
+  //  for (i=0;i<8;i++) { 
+     console.log("Vez do Jogador:"+PartidaDados.playerSlots[0].id);
      function mostrarInput() {
      document.getElementById('inputContainer').classList.remove('hidden');
      }
@@ -781,7 +781,7 @@ async function turnofase1(lobbyId)
 
      document.getElementById('submitBtn').addEventListener('click', processarInput);
 
-    }
+  //  }
 
     console.log("...Final do turno teste");
         // Finalizar turno, proximo jogador.
