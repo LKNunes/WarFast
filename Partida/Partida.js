@@ -162,6 +162,9 @@ function pausecomp(millis)
         const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
         const deslocamentoX = centroX - centroX * 1.05;
         const deslocamentoY = centroY - centroY * 1.05;
+
+
+        
         console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
   });
