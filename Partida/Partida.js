@@ -621,7 +621,6 @@ async function ExibirTropas(lobbyId) {
   
   // Array com as coordenadas x e y para cada texto
 
-  const Ajuste = 21 ;
   const coordenadasTextos = [
     
     { x: 69, y: 106 }, // 0
@@ -647,25 +646,25 @@ async function ExibirTropas(lobbyId) {
     { x: 113, y: 62 }, //20
     { x: 96, y: 70 }, //21
     { x: 176, y: 66 }, //22
-    { x: 180.07, y: 107.85-Ajuste }, //23
-    { x: 137.36, y: 103.34-Ajuste }, //24
-    { x: 162.97, y: 103.30-Ajuste }, //25
-    { x: 51.08, y: 67.95-Ajuste }, //26
-    { x: 53.52, y: 85.85-Ajuste }, //27
-    { x: 76.71, y: 42.48-Ajuste }, //28
-    { x: 97.05, y: 54.27-Ajuste }, //29
-    { x: 122.93, y: 107.77-Ajuste }, //30
-    { x: 107.77, y: 113.83-Ajuste }, //31
-    { x: 122.30, y: 132.08-Ajuste }, //32
-    { x: 133.97, y: 128.68-Ajuste }, //33
-    { x: 125.50, y: 149.48-Ajuste }, //34
-    { x: 188.31, y: 158.26-Ajuste }, //35
-    { x: 208.02, y: 138.14-Ajuste }, //36
-    { x: 209.88, y: 76.33-Ajuste }, //37
-    { x: 173.73, y: 134.79-Ajuste }, //38
-    { x: 189.87, y: 124.29-Ajuste }, //39
-    { x: 145.07, y: 154.65-Ajuste }, //40
-    { x: 87.52, y: 69.71-Ajuste } //41
+    { x: 180, y: 87 }, //23
+    { x: 137, y: 83 }, //24
+    { x: 162, y: 83 }, //25
+    { x: 51, y: 47 }, //26
+    { x: 53, y: 65}, //27
+    { x: 76, y: 22}, //28
+    { x: 97, y: 34 }, //29
+    { x: 122, y: 87 }, //30
+    { x: 107, y: 93 }, //31
+    { x: 122, y: 112 }, //32
+    { x: 133, y: 108 }, //33
+    { x: 125, y: 129 }, //34
+    { x: 188, y: 138 }, //35
+    { x: 208, y: 118 }, //36
+    { x: 209, y: 56 }, //37
+    { x: 173, y: 114 }, //38
+    { x: 189, y: 104 }, //39
+    { x: 145, y: 134 }, //40
+    { x: 87, y: 49 } //41
 // Adicione mais coordenadas conforme necessário
   ];
   
