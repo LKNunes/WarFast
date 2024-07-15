@@ -765,6 +765,8 @@ async function turnofase1(lobbyId)
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
     for (i=0;i<8;i++){
+     console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
+     
      PartidaDados.playerSlots[i].tropas
     }
 
