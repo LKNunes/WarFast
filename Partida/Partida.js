@@ -175,6 +175,16 @@ function pausecomp(millis)
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
 
+        // Função para atualizar e imprimir as coordenadas do mouse
+function atualizarCoordenadas(event) {
+  const x = event.clientX; // Coordenada X do mouse
+  const y = event.clientY; // Coordenada Y do mouse
+  console.log(`Mouse Coordinates: x: ${x}, y: ${y}`);
+}
+
+// Adiciona o listener para monitorar as coordenadas do mouse
+ svgObject.addEventListener('mousemove', atualizarCoordenadas);
+  
       try {
 
         const svgDoc =  loadSvg(svgObject);

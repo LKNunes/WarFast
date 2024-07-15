@@ -163,16 +163,6 @@ async function init() {
  
   await getUsuarioLogado(UsLogado);
 
-  // Função para atualizar e imprimir as coordenadas do mouse
-function atualizarCoordenadas(event) {
-  const x = event.clientX; // Coordenada X do mouse
-  const y = event.clientY; // Coordenada Y do mouse
-  console.log(`Mouse Coordinates: x: ${x}, y: ${y}`);
-}
-
-// Adiciona o listener para monitorar as coordenadas do mouse
-svgObject.addEventListener('mouseclick', atualizarCoordenadas);
-  
 }
 
 async function svgLoaded() {
