@@ -776,12 +776,11 @@ async function turnofase1(lobbyId)
      numero = parseInt(numero);
      document.getElementById('inputContainer').classList.add('hidden');
      document.getElementById('submitBtn').addEventListener('click', processarInput);
-     return numero;
+     console.log(""+numero);
      }
 
-     numero = document.getElementById('submitBtn').addEventListener('click', processarInput);
+     document.getElementById('submitBtn').addEventListener('click', processarInput);
 
-     console.log(""+numero);
     }
 
     console.log("...Final do turno teste");
