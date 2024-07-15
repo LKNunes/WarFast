@@ -1,10 +1,8 @@
-
 function getMousePosition(svgElement, event) {
-  var CTM = svgElement.getScreenCTM();
-  if (event.touches) event = event.touches[0];
+  var rect = svgElement.getBoundingClientRect();
   return {
-      x: (event.clientX - CTM.e) / CTM.a,
-      y: (event.clientY - CTM.f) / CTM.d
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
   };
 }
 
@@ -13,8 +11,11 @@ var svg = document.getElementById('svgObject');
 
 svg.addEventListener('mousemove', function(event) {
   var coords = getMousePosition(svg, event);
-  console.log('Coordenadas do mouse:', coords.x, coords.y);
+  console.log('Coordenadas do mouse dentro do SVG:', coords.x, coords.y);
 });
+
+// Exemplo de uso:
+
 
 
 function sleep(ms) {
