@@ -766,7 +766,8 @@ async function turnofase1(lobbyId)
 
     for (i=0;i<8;i++){
      console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
-     
+     document.getElementById('inputContainer').classList.remove('hidden');
+
      PartidaDados.playerSlots[i].tropas
     }
 
