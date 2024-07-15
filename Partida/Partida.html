@@ -180,9 +180,9 @@ svgObject.addEventListener('mousemove', function(event) {
 });
 
 svgObject.addEventListener('click', function(event) {
-  console.log('Clique dentro do SVG:', event.clientX, event.clientY);
+  var coords = getMousePosition(svgObject, event);
+  console.log('Clique dentro do SVG:', coords.x, coords.y);
 });
-
 }
 
 async function svgLoaded() {
