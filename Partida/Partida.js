@@ -7,10 +7,10 @@ function getMousePosition(svgElement, event) {
 }
 
 // Exemplo de uso:
-var svg = document.getElementById('svgObject');
+var svgObject = document.getElementById('svgObject');
 
-window.addEventListener('click', function(event) {
-  var coords = getMousePosition(svg, event);
+svgObject.addEventListener('click', function(event) {
+  var coords = getMousePosition(svgObject, event);
   console.log('Coordenadas do mouse dentro do SVG:', coords.x, coords.y);
 });
 
