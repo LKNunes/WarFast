@@ -177,8 +177,17 @@ function pausecomp(millis)
 
       try {
 
-        const svgDoc =  loadSvg(svgObject);
+        function atualizarCoordenadas(event) {
+          const pt = svg.createSVGPoint();
+          pt.x = event.clientX;
+          pt.y = event.clientY;
+          const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
+          console.log(`Mouse Coordinates: x: ${svgPoint.x.toFixed(2)}, y: ${svgPoint.y.toFixed(2)}`);
+        }
+      
 
+        const svgDoc =  loadSvg(svgObject);
+        svgDoc.addEventListenerI('mousemove',atualizarCoordenadas);
         const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
         // Iterar sobre os elementos <path> e atribuir IDs numéricos
         paths.forEach((path, index) => {
