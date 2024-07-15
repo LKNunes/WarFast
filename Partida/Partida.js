@@ -770,12 +770,12 @@ async function turnofase1(lobbyId)
      document.getElementById('inputContainer').classList.remove('hidden');
      }
 
+
      function processarInput() {
      document.getElementById('mostrarInputBtn').addEventListener('click', mostrarInput);
      var numero = document.getElementById('numeroInput').value;
      numero = parseInt(numero);
      document.getElementById('inputContainer').classList.add('hidden');
-     document.getElementById('submitBtn').addEventListener('click', processarInput);
      console.log(""+numero);
      }
 
