@@ -157,39 +157,19 @@ function pausecomp(millis)
 }
     // Função para alterar o tamanho de um território ao passar o mouse sobre ele
     function alterarTamanhoTerritorio(territorio) {
-      let monitorandoCoordenadas = false;
-    
-      function atualizarCoordenadas(event) {
-        const x = event.clientX; // Coordenada X do mouse
-        const y = event.clientY; // Coordenada Y do mouse
-        console.log(`Mouse Coordinates: x: ${x}, y: ${y}`);
-      }
-    
       territorio.addEventListener('mouseenter', function() {
         const centroX = territorio.getBBox().x + territorio.getBBox().width / 2;
         const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
         const deslocamentoX = centroX - centroX * 1.05;
         const deslocamentoY = centroY - centroY * 1.05;
-    
-        console.log("Dentro da função tamanho");
+        
+        console.log("DEntro da funçaõ tamanho");
         territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
-    
-        if (!monitorandoCoordenadas) {
-          window.addEventListener('mousemove', atualizarCoordenadas);
-          monitorandoCoordenadas = true;
-        }
-      });
-    
+  });
       territorio.addEventListener('mouseleave', function() {
         this.setAttribute('transform', ''); // Restaurar o tamanho original
-    
-        if (monitorandoCoordenadas) {
-          window.removeEventListener('mousemove', atualizarCoordenadas);
-          monitorandoCoordenadas = false;
-        }
       });
-    }
-    
+    } 
 
     async function atribuirIDsNumericos() {
       const svgObject = document.getElementById('svgObject');
