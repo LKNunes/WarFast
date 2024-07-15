@@ -1,3 +1,13 @@
+function atualizarCoordenadas(event) {
+  const pt = svg.createSVGPoint();
+  pt.x = event.clientX;
+  pt.y = event.clientY;
+  const svgPoint = pt.matrixTransform(svg.getScreenCTM().inverse());
+  console.log(`Mouse Coordinates: x: ${svgPoint.x.toFixed(2)}, y: ${svgPoint.y.toFixed(2)}`);
+}
+
+svg.addEventListener('mousemove', atualizarCoordenadas);
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
