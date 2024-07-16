@@ -52,9 +52,12 @@
         /* Preloader CSS */
     /* Preloader CSS */
     @keyframes roll {
-    0% { transform: translate(0, 0) rotateX(0) rotateY(0); }
-    100% { transform: translate(200px, 200px) rotateX(720deg) rotateY(720deg); }
-}
+      0% { transform: translateY(0) rotateX(0) rotateY(0); }
+    20% { transform: translateY(200px) rotateX(360deg) rotateY(360deg); }
+    40% { transform: translateY(100px) rotateX(720deg) rotateY(720deg); }
+    60% { transform: translateY(150px) rotateX(1080deg) rotateY(1080deg); }
+    80% { transform: translateY(50px) rotateX(1440deg) rotateY(1440deg); }
+    100% { transform: translateY(0) rotateX(1800deg) rotateY(1800deg); }}
 
 #dice.rolling {
     animation: roll 2s ease-in-out forwards;
