@@ -49,6 +49,15 @@
 .bottom { transform: rotateX(-90deg) translateZ(50px); }
         /* Preloader CSS */
     /* Preloader CSS */
+    @keyframes roll {
+    0% { transform: translate(0, 0) rotateX(0) rotateY(0); }
+    100% { transform: translate(200px, 200px) rotateX(720deg) rotateY(720deg); }
+}
+
+#dice.rolling {
+    animation: roll 2s ease-in-out forwards;
+}
+
 .preloader {
   position: fixed;
   top: 0;
