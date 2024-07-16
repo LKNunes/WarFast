@@ -766,7 +766,8 @@ async function turnofase1(lobbyId)
     
     // Criando logica para inserir tropas a destribuir
 
-              for (i=0;i<8;i++) { 
+  for (i=0;i<8;i++) { // Lopping da Vez do Jogador
+
               console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
 
               function mostrarInput() {
@@ -807,10 +808,10 @@ async function turnofase1(lobbyId)
                   mostrarInput();
                   const numero = await esperarInput();
                   console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero);
-                
-                console.log("Todos os jogadores inseriram seus números.");
+
               }
-              
+              console.log("Todos os jogadores inseriram seus números.");
+
               // Inicia a sequência chamando rodadaDeJogadores()
               await rodadaDeJogadores();
               
