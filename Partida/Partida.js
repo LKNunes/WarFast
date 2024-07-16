@@ -861,11 +861,11 @@ function rollDice() {
                 break;
             case 3:
                 xRotation = 0;
-                yRotation = 90;
+                yRotation = -90;
                 break;
             case 4:
                 xRotation = 0;
-                yRotation = -90;
+                yRotation = 90;
                 break;
             case 5:
                 xRotation = 90;
