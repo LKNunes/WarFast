@@ -810,11 +810,11 @@ async function turnofase1(lobbyId)
                   console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero);
 
               }
-              console.log("Todos os jogadores inseriram seus números.");
 
               // Inicia a sequência chamando rodadaDeJogadores()
               await rodadaDeJogadores();
-              
+              console.log("Todos os jogadores inseriram seus números.");
+
               }
 
     console.log("...Final do turno teste");
