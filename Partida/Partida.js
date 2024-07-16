@@ -763,24 +763,55 @@ async function turnofase1(lobbyId)
     PartidaDados.playerSlots = Jogadores;
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+    
 
-    for (i=0;i<8;i++) { 
-     console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
+    // Criando logica para inserir tropas a destribuir
 
-     document.getElementById('inputContainer').classList.remove('hidden');
+              for (i=0;i<8;i++) { 
+              console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
 
+              function mostrarInput() {
+                document.getElementById('inputContainer').classList.remove('hidden');
+              }
+              
+              function esconderInput() {
+                document.getElementById('inputContainer').classList.add('hidden');
+                document.getElementById('numeroInput').value = ''; // Limpa o input
+              }
+              
+              function esperarInput() {
+                return new Promise((resolve) => {
+                  document.getElementById('submitBtn').addEventListener('click', function processarInput() {
+                    const numero = parseInt(document.getElementById('numeroInput').value);
+                    
+                    if (isNaN(numero)) {
+                      alert("Por favor, insira um número válido.");
+                      return;
+                    }
+                    
+                    resolve(numero);
+                    esconderInput();
+                    
+                    // Remove o event listener após a resolução da promessa
+                    document.getElementById('submitBtn').removeEventListener('click', processarInput);
+                  });
+                });
+              }
+              
+              async function rodadaDeJogadores() {
+                for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+                  console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id);
+                  mostrarInput();
+                  const numero = await esperarInput();
+                  console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero);
+                }
+                console.log("Todos os jogadores inseriram seus números.");
+              }
+              
+              // Inicia a sequência chamando rodadaDeJogadores()
+              rodadaDeJogadores();
 
-     function processarInput() {
-     document.getElementById('mostrarInputBtn').addEventListener('click', mostrarInput);
-     var numero = document.getElementById('numeroInput').value;
-     numero = parseInt(numero);
-     document.getElementById('inputContainer').classList.add('hidden');
-     console.log(""+numero);
-     }
-
-     document.getElementById('submitBtn').addEventListener('click', processarInput);
-
-    }
+              }
 
     console.log("...Final do turno teste");
         // Finalizar turno, proximo jogador.
