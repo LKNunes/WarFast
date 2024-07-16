@@ -12,6 +12,37 @@
       flex-direction: column;
     }
 
+    #dice-container {
+    perspective: 1000px;
+}
+
+#dice {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg);
+    transition: transform 2s;
+}
+
+.face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.front { transform: rotateY(0deg) translateZ(50px); }
+.back { transform: rotateY(180deg) translateZ(50px); }
+.right { transform: rotateY(90deg) translateZ(50px); }
+.left { transform: rotateY(-90deg) translateZ(50px); }
+.top { transform: rotateX(90deg) translateZ(50px); }
+.bottom { transform: rotateX(-90deg) translateZ(50px); }
         /* Preloader CSS */
     /* Preloader CSS */
 .preloader {

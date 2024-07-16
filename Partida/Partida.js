@@ -833,3 +833,45 @@ async function turnofase2acima()
 // Finalizar turno, proximo jogador.
 }
 
+
+const dice = document.getElementById('dice');
+const rollBtn = document.getElementById('rollBtn');
+
+rollBtn.addEventListener('click', rollDice);
+
+function rollDice() {
+    const randNumber = Math.floor(Math.random() * 6) + 1;
+    let xRotation = 0;
+    let yRotation = 0;
+
+    switch (randNumber) {
+        case 1:
+            xRotation = 0;
+            yRotation = 0;
+            break;
+        case 2:
+            xRotation = 0;
+            yRotation = 180;
+            break;
+        case 3:
+            xRotation = 0;
+            yRotation = 90;
+            break;
+        case 4:
+            xRotation = 0;
+            yRotation = -90;
+            break;
+        case 5:
+            xRotation = 90;
+            yRotation = 0;
+            break;
+        case 6:
+            xRotation = -90;
+            yRotation = 0;
+            break;
+    }
+
+    dice.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+
+    console.log(`Número rolado: ${randNumber}`);
+}
