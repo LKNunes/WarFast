@@ -764,10 +764,8 @@ async function turnofase1(lobbyId)
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
-
     // Criando logica para inserir tropas a destribuir
 
-              for (i=0;i<8;i++) { 
               console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
 
               function mostrarInput() {
@@ -804,19 +802,19 @@ async function turnofase1(lobbyId)
               }
               
               async function rodadaDeJogadores() {
-
+                for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
                   console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id);
                   mostrarInput();
                   const numero = await esperarInput();
                   console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero);
-                
+                }
                 console.log("Todos os jogadores inseriram seus números.");
               }
               
               // Inicia a sequência chamando rodadaDeJogadores()
               await rodadaDeJogadores();
               
-              }
+              
 
     console.log("...Final do turno teste");
         // Finalizar turno, proximo jogador.
