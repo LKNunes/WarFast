@@ -783,7 +783,7 @@ async function turnofase1(lobbyId)
                 return new Promise((resolve) => {
                   document.getElementById('submitBtn').addEventListener('click', function processarInput() {
                     const numero = parseInt(document.getElementById('numeroInput').value);
-                    
+                    console.log(numero);
                     if (isNaN(numero)) {
                       alert("Por favor, insira um número válido.");
                       return;
