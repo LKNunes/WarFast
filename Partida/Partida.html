@@ -89,9 +89,9 @@ text {
   margin-bottom: 20px; /* Spacing between spinner and text */
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes roll {
+    0%, 100% { transform: translate(0, 0) rotateX(0) rotateY(0); }
+    50% { transform: translate(200px, 200px) rotateX(720deg) rotateY(720deg); }
 }
 
 .hidden {
