@@ -804,7 +804,7 @@ async function turnofase1(lobbyId)
               }
               
               async function rodadaDeJogadores() {
-                
+
                   console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id);
                   mostrarInput();
                   const numero = await esperarInput();
@@ -814,7 +814,7 @@ async function turnofase1(lobbyId)
               }
               
               // Inicia a sequência chamando rodadaDeJogadores()
-              rodadaDeJogadores();
+              await rodadaDeJogadores();
               
               }
 
