@@ -781,15 +781,25 @@ async function turnofase1(lobbyId)
               
               function esperarInput() {
                 return new Promise((resolve) => {
-                  document.getElementById('submitBtn').addEventListener('click', function processarInput() {
+                  const submitBtn = document.getElementById('submitBtn');
+                  const numeroInput = document.getElementById('numeroInput');
+              
+                  function processarInput() {
                     const numero = parseInt(numeroInput.value, 10);
+                    
+                    if (isNaN(numero)) {
+                      alert("Por favor, insira um número válido.");
+                      return;
+                    }
                     
                     resolve(numero);
                     esconderInput();
                     
                     // Remove o event listener após a resolução da promessa
-                    document.getElementById('submitBtn').removeEventListener('click', processarInput);
-                  });
+                    submitBtn.removeEventListener('click', processarInput);
+                  }
+              
+                  submitBtn.addEventListener('click', processarInput);
                 });
               }
               
@@ -805,7 +815,7 @@ async function turnofase1(lobbyId)
               
               // Inicia a sequência chamando rodadaDeJogadores()
               rodadaDeJogadores();
-
+              
               }
 
     console.log("...Final do turno teste");
