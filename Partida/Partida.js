@@ -886,7 +886,8 @@ function EsperaClick() {
           
                   paths[PathA-1].style.opacity = '0.3';
                   paths[PathA-1].style.pointerEvents = "none"; // Ignora o objeto
-          
+                  removerEventListeners();
+
                   }
           
               }
@@ -901,7 +902,6 @@ function EsperaClick() {
           const Territorio2 = await EsperaClick();
           
           console.log("3");
-          removerEventListeners();
 
           console.log("4");
 
