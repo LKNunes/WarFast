@@ -757,67 +757,97 @@ async function turnofase1(lobbyId)
 
     // Atualiza os dados do lobby com os novos dados dos jogadores
    
-
   }
 
     PartidaDados.playerSlots = Jogadores;
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
-    // Criando logica para inserir tropas a destribuir
+    // Ate aqui logica para atualizar o DB com as tropas disponiveis 
+    // Apartir daqui logica para destribuir tropas
 
-  for (i=0;i<8;i++) { // Lopping da Vez do Jogador
+    async function EsperaClick(){
+      const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+      const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+  
+      if (!svgDoc) {
+        console.error('Erro ao acessar o conteúdo do documento SVG.');
+        return;
+      }
+  
+      const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+      
+      for (let path of paths) {
+        path.addEventListener('click', function(event) {
+            const clickedPath = event.target;
+            console.log('Path clicado:', clickedPath.id); // Mostra no console o ID do path clicado
+        });
+    }
 
-              console.log("Vez do Jogador:"+PartidaDados.playerSlots[i].id);
 
-              function mostrarInput() {
-                document.getElementById('inputContainer').classList.remove('hidden');
-              }
+    }
+    await EsperaClick();
+    //
+
+    for (i = 0; i < 8; i++) { // Looping da Vez do Jogador
+
+      console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+  
+      function mostrarInput() {
+          // Mostra o container de input
+          document.getElementById('inputContainer').classList.remove('hidden');
+      }
+      
+      function esconderInput() {
+          // Esconde o container de input e limpa o valor do input
+          document.getElementById('inputContainer').classList.add('hidden');
+          document.getElementById('numeroInput').value = ''; // Limpa o input
+      }
+      
+      function esperarInput() {
+          return new Promise((resolve) => {
+              // Cria uma nova promessa que será resolvida quando o input for processado
+              const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
+              const numeroInput = document.getElementById('numeroInput'); // Campo de input
               
-              function esconderInput() {
-                document.getElementById('inputContainer').classList.add('hidden');
-                document.getElementById('numeroInput').value = ''; // Limpa o input
-              }
-              
-              function esperarInput() {
-                return new Promise((resolve) => {
-                  const submitBtn = document.getElementById('submitBtn');
-                  const numeroInput = document.getElementById('numeroInput');
-              
-                  function processarInput() {
-                    const numero = parseInt(numeroInput.value, 10);
-                    
-                    if (isNaN(numero)) {
+              function processarInput() {
+                  // Processa o input do usuário
+                  const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
+                  
+                  if (isNaN(numero)) {
+                      // Se o valor não for um número válido, exibe um alerta
                       alert("Por favor, insira um número válido.");
                       return;
-                    }
-                    
-                    resolve(numero);
-                    esconderInput();
-                    
-                    // Remove o event listener após a resolução da promessa
-                    submitBtn.removeEventListener('click', processarInput);
                   }
-              
-                  submitBtn.addEventListener('click', processarInput);
-                });
+                  
+                  resolve(numero); // Resolve a promessa com o número inserido
+                  esconderInput(); // Esconde o input
+                  
+                  // Remove o event listener após a resolução da promessa
+                  submitBtn.removeEventListener('click', processarInput);
               }
               
-              async function rodadaDeJogadores() {
-                  console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id);
-                  mostrarInput();
-                  const numero = await esperarInput();
-                  console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero);
-
-              }
-
-              // Inicia a sequência chamando rodadaDeJogadores()
-              await rodadaDeJogadores();
-
-              }
-              console.log("Todos os jogadores inseriram seus números.");
-
-    console.log("...Final do turno teste");
+              // Adiciona um event listener para o botão de submissão
+              submitBtn.addEventListener('click', processarInput);
+          });
+      }
+      
+      async function rodadaDeJogadores() {
+          // Função assíncrona que gerencia a rodada de jogadores
+          console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+          mostrarInput(); // Mostra o input para o jogador
+          const numero = await esperarInput(); // Espera o jogador inserir um número
+          console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
+      }
+  
+      // Inicia a sequência chamando rodadaDeJogadores()
+      await rodadaDeJogadores(); // Espera a função assíncrona finalizar antes de continuar o loop
+  
+  }
+  console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
+  
+  console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
+  
         // Finalizar turno, proximo jogador.
     
 
