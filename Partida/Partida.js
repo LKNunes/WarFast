@@ -1037,7 +1037,7 @@ function EsperaClick() {
          
 
         }
-        await AtualizaTurno[PartidaDados2.id,PartidaDados2.turno+1];
+        await AtualizaTurno(PartidaDados2.id,PartidaDados2.turno+1);
 
         }
 
