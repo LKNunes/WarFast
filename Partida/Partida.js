@@ -852,6 +852,8 @@ async function turnofase1(lobbyId)
           const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
           const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
+          const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+
           for(j=0;j<42;j++){
             if (PartidaDados.territorios[j].dono != i)
               {
@@ -863,7 +865,6 @@ async function turnofase1(lobbyId)
                   return;
                 }
             
-                const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
                 for (let path of paths) {
                   PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
           
@@ -883,6 +884,7 @@ async function turnofase1(lobbyId)
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
           
           for(i=0;i<42;i++){
+            
             paths[i].style.opacity = '1.0';
             paths[i].style.style.pointerEvents = "auto"; // Ignora o objeto
 
