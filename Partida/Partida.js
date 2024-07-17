@@ -807,12 +807,17 @@ function EsperaClick() {
             resolve(null); // Resolve com null em caso de erro
             return;
         }
-
+        console("EsperaClick1");
         const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
+        console("EsperaClick2");
         paths.forEach(path => {
+          
+        console("EsperaClick3");
             path.addEventListener('click', handleClick, { once: true }); // Adiciona o event listener para um único clique
         });
+        
+        console("EsperaClick4");
     });
 }
   
