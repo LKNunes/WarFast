@@ -868,6 +868,7 @@ async function turnofase1(lobbyId)
                   PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
           
                   paths[PathA-1].style.opacity = '0.3';
+                  paths[PathA-1].style.pointerEvents = "none"; // Ignora o objeto
           
                   }
           
