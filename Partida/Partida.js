@@ -739,7 +739,7 @@ async function turnofase1(lobbyId)
       const jogadorNome = PartidaDados.playerSlots[i].nome;
       const Objetivo = PartidaDados.playerSlots[i].objetivo;
       const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
-      const Tropas = Math.floor(QuantidadeTropasJ[i].tropas/2);
+      const Tropas = Math.floor(QuantidadeTropasJ[i].tropas/2); // Dividde por 2 arredonda
       console.log("Tropas: "+QuantidadeTropasJ[i]);
 
       // Cria um objeto para representar o jogador com o ID, nome e cor
