@@ -914,17 +914,17 @@ function EsperaClick() {
         }
       }
     // Função para atualizar as tropas de um território por ID
-    async function atualizarTropasTerritorio(PartidaDados2, territorioId, novoNumeroTropas) {
+    async function atualizarTropasTerritorio(idPartida, territorioId, novoNumeroTropas) {
       try {
           // Encontrar o território na lista de territórios da partida
-          const territorio = PartidaDados2.territorios.find(territorio => territorio.id === territorioId);
+          const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
           
           if (territorio) {
               // Atualizar as tropas do território encontrado
               territorio.tropas = novoNumeroTropas;
               
               // Montar a URL para a requisição PUT
-              const url = `https://45.140.193.150:8443/partida/${PartidaDados2.id}`;
+              const url = `https://45.140.193.150:8443/partida/${idPartida}`;
               
               // Fazer a requisição PUT para atualizar a partida
               const response = await fetch(url, {
@@ -932,7 +932,7 @@ function EsperaClick() {
                   headers: {
                       'Content-Type': 'application/json'
                   },
-                  body: JSON.stringify(PartidaDados2) // Enviar toda a partida com o território modificado
+                  body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
               });
               
               // Verificar se a requisição foi bem-sucedida
