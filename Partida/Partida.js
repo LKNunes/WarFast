@@ -787,19 +787,7 @@ async function turnofase1(lobbyId)
   
     
 
-  function handleClick(event) {
-    const clickedPath = event.target;
-    console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-    const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-    // paths[PathA-1].style.opacity = '0.3';
-
-    // Remove o event listener deste path após o clique
-    removerEventListeners();
-    // Resolve a Promise com o path clicado
-    resolve(clickedPath);
-}
-
-function EsperaClick() {
+  function EsperaClick() {
     return new Promise(resolve => {
         const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
         const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
@@ -809,19 +797,36 @@ function EsperaClick() {
             resolve(null); // Resolve com null em caso de erro
             return;
         }
-        console.log("EsperaClick1");
+
         const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
-        console.log("EsperaClick2");
         paths.forEach(path => {
-          
-        console.log("EsperaClick3");
-            path.addEventListener('click', handleClick, { once: true }); // Adiciona o event listener para um único clique
+            path.addEventListener('click', function handleClick(event) {
+                const clickedPath = event.target;
+                console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
+                const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+                // paths[PathA-1].style.opacity = '0.3';
+
+                // Remove o event listener deste path após o clique
+                removerEventListeners();
+                // Resolve a Promise com o path clicado
+                resolve(clickedPath);
+            }, { once: true }); // Adiciona o event listener para um único clique
         });
-        
-        console.log("EsperaClick4");
     });
 }
+
+async function main() {
+    const Territorio1 = await EsperaClick();
+    console.log('Território 1:', Territorio1);
+
+    const Territorio2 = await EsperaClick();
+    console.log('Território 2:', Territorio2);
+}
+
+// Chamada da função principal
+main();
+
   
 
 
