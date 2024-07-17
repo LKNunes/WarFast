@@ -1031,14 +1031,14 @@ function EsperaClick() {
          await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
 //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
          await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1-1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10          
-         
+         await AtualizaTurno[lobbyId,i+1];
+
         }
       }
 
   
       // Inicia a sequência chamando rodadaDeJogadores()
       await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
-      await AtualizaTurno[lobbyId,i+1];
 
   }
   console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
