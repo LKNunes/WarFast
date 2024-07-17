@@ -988,7 +988,7 @@ function EsperaClick() {
          // Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
 
 
-          //console.log(""+Territorio1);
+          console.log("Identificação:"+Territorio1);
           
           //console.log("Tropas"+PartidaDados2.playerSlots[i].tropas);
 
