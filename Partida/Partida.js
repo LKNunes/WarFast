@@ -570,43 +570,36 @@ async function ExibeTurno(lobbyId){
     document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
 }
 
-async function AtualizaTurno(lobbyId, turno, PartidaDados) {
-  try {
-    if (PartidaDados.id === lobbyId) {
-      // Atualizar o campo "turno"
-      PartidaDados.turno = turno;
+async function AtualizaTurno(lobbyId,turno) {
+  // Obter os dados da partida
+  const PartidaDados = await dadospartida(lobbyId);
 
-      // Log para depuração
-      console.log(JSON.stringify(PartidaDados, null, 2));
-      console.log(`Atualizando para turno ${turno}: ${PartidaDados.turno}`);
+  // Verificar se o ID da partida corresponde
+  if (PartidaDados.id === lobbyId) {
+    // Atualizar o campo "fase"
+    PartidaDados.turno = turno;
+    console.log(JSON.stringify(PartidaDados, null, 2));
+    console.log("Atualizando para turno"+turno+" :"+PartidaDados.turno);
+    // Enviar os dados atualizados de volta para o servidor
+    const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(PartidaDados)
+    });
 
-      // Enviar os dados atualizados de volta para o servidor
-      const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(PartidaDados)
-      });
-
-      // Verificar se a resposta foi bem-sucedida
-      if (!response.ok) {
-        throw new Error(`Erro ao atualizar os dados: ${response.statusText}`);
-      }
-
-      // Obter a resposta como JSON (opcional, depende do que você precisa)
-      const updatedJson = await response.json();
-      console.log('Dados atualizados:', updatedJson);
-
-      // Atualizar elemento na página (exemplo: assumindo que há um elemento com id 'TurnoAtual')
-      document.getElementById('TurnoAtual').textContent = PartidaDados.turno;
-
-    } else {
-      console.error(`ID da partida ${lobbyId} não corresponde.`);
+    if (!response.ok) {
+      console.error(`Erro ao atualizar os dados: ${response.statusText}`);
+      return;
     }
-  } catch (error) {
-    console.error('Erro ao atualizar turno da partida:', error);
-    // Aqui você pode adicionar tratamentos adicionais de erro, se necessário
+
+    // Obter a resposta e mostrar o JSON atualizado
+    const updatedJson = await response.json();
+
+
+  } else {
+    console.error(`ID da partida ${lobbyId} não corresponde.`);
   }
 }
 
