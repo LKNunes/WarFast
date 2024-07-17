@@ -897,8 +897,6 @@ function EsperaClick() {
           
           const PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-          console.log("Trioas"+PartidaDados2.playerSlots[0].tropas);
-
           for(j=0;j<42;j++){
             if (PartidaDados.territorios[j].dono != i)
               {
@@ -933,6 +931,8 @@ function EsperaClick() {
 
 
           console.log(""+Territorio1);
+
+          console.log("Trioas"+PartidaDados2.playerSlots[0].tropas);
 
 
           mostrarInput(); // Mostra o input para o jogador
