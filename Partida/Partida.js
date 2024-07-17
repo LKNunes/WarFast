@@ -801,7 +801,7 @@ async function turnofase1(lobbyId)
     resolve(clickedPath);
 }
 
-function EsperaClick() {
+async function EsperaClick() {
   return new Promise(resolve => {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
