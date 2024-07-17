@@ -886,7 +886,7 @@ function EsperaClick() {
           });
       }
       
-          const baseUrl = 'https://45.140.193.150:8443'; // Substitua pelo URL correto do seu servidor json-server
+      const baseUrl = `https://45.140.193.150:8443/partida/${lobbyId}`;
 
     // Função para atualizar as tropas de um jogador por ID
     async function atualizarTropasJogador(idJogador, novasTropas) {
