@@ -886,6 +886,52 @@ function EsperaClick() {
           });
       }
       
+          const baseUrl = 'https://45.140.193.150:8443'; // Substitua pelo URL correto do seu servidor json-server
+
+    // Função para atualizar as tropas de um jogador por ID
+    async function atualizarTropasJogador(idJogador, novasTropas) {
+      try {
+        const response = await fetch(`${baseUrl}/playerSlots/${idJogador}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ tropas: novasTropas })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          console.log(`Tropas do jogador ${idJogador} atualizadas para ${novasTropas}`);
+          console.log(data);
+        } else {
+          console.error(`Erro ao atualizar tropas do jogador ${idJogador}`);
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    }
+
+    // Função para atualizar as tropas de um território por ID
+    async function atualizarTropasTerritorio(idTerritorio, novasTropas) {
+      try {
+        const response = await fetch(`${baseUrl}/territorios/${idTerritorio}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ tropas: novasTropas })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          console.log(`Tropas do território ${idTerritorio} atualizadas para ${novasTropas}`);
+          console.log(data);
+        } else {
+          console.error(`Erro ao atualizar tropas do território ${idTerritorio}`);
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    }
+
       async function rodadaDeJogadores(lobbyId) {
           // Função assíncrona que gerencia a rodada de jogadores
           console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
@@ -897,7 +943,7 @@ function EsperaClick() {
           
           var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-          while(PartidaDados2.playerSlots[i].tropas > 0){
+          while(PartidaDados2.playerSlots[i].tropas > 0){ // Distribuir ate zerar as tropas
           PartidaDados2 = await dadospartida(lobbyId);
           for(j=0;j<42;j++){
             if (PartidaDados.territorios[j].dono != i)
@@ -952,7 +998,11 @@ function EsperaClick() {
             console.log("teste");
           }
 
-          PartidaDados2.playerSlots[i].tropas = PartidaDados2.playerSlots[i].tropas-numero;
+          TropasJogador = PartidaDados2.playerSlots[i].tropas-numero;
+
+          atualizarTropasJogador(i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
+          atualizarTropasTerritorio(Territorio1,numero); // Atualiza as tropas do território com ID 2 para 10          
+
         }
       }
 
