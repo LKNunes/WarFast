@@ -852,7 +852,7 @@ async function turnofase1(lobbyId)
           
 
           for(j=0;j<42;j++){
-            if (PartidaDados.territorios[j].dono == i)
+            if (PartidaDados.territorios[j].dono != i)
               {
               
                 const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
