@@ -924,7 +924,7 @@ function EsperaClick() {
               territorio.tropas = novoNumeroTropas;
               
               // Montar a URL para a requisição PUT
-              const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
+              const url = `https://45.140.193.150:8443/partida/${PartidaDados2.id}`;
               
               // Fazer a requisição PUT para atualizar a partida
               const response = await fetch(url, {
