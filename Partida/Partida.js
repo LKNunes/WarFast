@@ -789,7 +789,7 @@ async function turnofase1(lobbyId)
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
             const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
             //paths[PathA-1].style.opacity = '0.3';
-            return PathA;
+            return clickedPath;
         });
 
     }
@@ -887,6 +887,7 @@ async function turnofase1(lobbyId)
 
           const Territorio1 = await EsperaClick();
           const Territorio2 = await EsperaClick();
+
          console.log(""+Territorio1+" "+Territorio2);
       }
   
