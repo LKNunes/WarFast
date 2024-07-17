@@ -789,7 +789,18 @@ async function turnofase1(lobbyId)
     
 
   // Função para remover event listeners de todos os paths
-function removerEventListeners(paths, handleClick) {
+function removerEventListeners(handleClick) {
+
+  const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+    const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+
+    if (!svgDoc) {
+        console.error('Erro ao acessar o conteúdo do documento SVG.');
+        return;
+    }
+
+    const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+
   paths.forEach(path => {
       path.removeEventListener('click', handleClick);
   });
@@ -815,7 +826,7 @@ function EsperaClick() {
           // paths[PathA-1].style.opacity = '0.3';
 
           // Remove o event listener deste path após o clique
-          removerEventListeners(paths, handleClick);
+          removerEventListeners(handleClick);
   
           // Resolve a Promise com o path clicado
           resolve(clickedPath);
