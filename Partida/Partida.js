@@ -996,7 +996,7 @@ function EsperaClick() {
          // let Territorio2 = await EsperaClick();
           removerEventListeners();
 
-          Territorio1 = Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
+          Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])
          // Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
 
 
@@ -1024,7 +1024,7 @@ function EsperaClick() {
 
          await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
 //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
-         await atualizarTropasTerritorio(PartidaDados2, lobbyId, 36, numero); // Atualiza as tropas do território com ID 2 para 10          
+         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1, numero); // Atualiza as tropas do território com ID 2 para 10          
          
         }
       }
