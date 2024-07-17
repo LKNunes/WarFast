@@ -916,6 +916,7 @@ function EsperaClick() {
     // Função para atualizar as tropas de um território por ID
     async function atualizarTropasTerritorio(partidaDados, territorioId, novoNumeroTropas) {
       const territorio = partidaDados.territorios.find(terr => terr.id === territorioId);
+      console.log(""+terr.id+""+territorioId);
       if (territorio) {
           territorio.tropas = novoNumeroTropas;
   
