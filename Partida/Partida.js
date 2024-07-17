@@ -913,6 +913,7 @@ function EsperaClick() {
           console.error(`Jogador com ID ${idJogador} não encontrado.`);
         }
       }
+      
     // Função para atualizar as tropas de um território por ID
     async function atualizarTropasTerritorio(partidaDados,idPartida, territorioId, novoNumeroTropas) {
       try {
@@ -924,7 +925,7 @@ function EsperaClick() {
               territorio.tropas = novoNumeroTropas;
               
               // Montar a URL para a requisição PUT
-              const url = `https://45.140.193.150:8443/partida/${idPartida}`;
+              const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
               
               // Fazer a requisição PUT para atualizar a partida
               const response = await fetch(url, {
