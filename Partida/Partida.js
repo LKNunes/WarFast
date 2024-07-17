@@ -570,8 +570,7 @@ async function ExibeTurno(lobbyId){
     document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
 }
 
-async function AtualizaTurno(lobbyId,turno){
-  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+async function AtualizaTurno(lobbyId,turno,PartidaDados){
    
     if (PartidaDados.id === lobbyId) {
       // Atualizar o campo "fase"
@@ -1032,7 +1031,8 @@ function EsperaClick() {
           //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
          await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1-1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
          console.log("Atualizar Turno...");      
-         await AtualizaTurno[lobbyId,i+1];
+         
+         await AtualizaTurno[lobbyId,i+1,PartidaDados2];
 
         }
         }
