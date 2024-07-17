@@ -766,6 +766,20 @@ async function turnofase1(lobbyId)
     // Ate aqui logica para atualizar o DB com as tropas disponiveis 
     // Apartir daqui logica para destribuir tropas
 
+    // Função que destaca o path clicado e desfoca os outros
+    function destacarPath(clickedPath) {
+      const paths = document.getElementsByClassName('path');
+      for (let path of paths) {
+          if (path === clickedPath) {
+              path.classList.add('highlighted');
+              path.classList.remove('dimmed');
+          } else {
+              path.classList.add('dimmed');
+              path.classList.remove('highlighted');
+          }
+      }
+    }
+
     async function EsperaClick(){
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
@@ -781,12 +795,17 @@ async function turnofase1(lobbyId)
         path.addEventListener('click', function(event) {
             const clickedPath = event.target;
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
+            destacarPath(clickedPath);
+
         });
+
     }
+
 
 
     }
     await EsperaClick();
+
     //
 
     for (i = 0; i < 8; i++) { // Looping da Vez do Jogador
