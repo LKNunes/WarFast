@@ -768,7 +768,7 @@ async function turnofase1(lobbyId)
 
     // Função que destaca o path clicado e desfoca os outros
     function destacarPath(clickedPath) {
-      const paths = document.getElementsByClassName('path');
+      const paths = document.getElementsByClassName('svgObject');
       for (let path of paths) {
           if (path === clickedPath) {
               path.classList.add('highlighted');
