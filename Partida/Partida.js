@@ -886,7 +886,7 @@ function EsperaClick() {
           });
       }
       
-      async function rodadaDeJogadores() {
+      async function rodadaDeJogadores(lobbyId) {
           // Função assíncrona que gerencia a rodada de jogadores
           console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
 
@@ -894,6 +894,9 @@ function EsperaClick() {
           const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
           const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+          
+          const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+          
 
           for(j=0;j<42;j++){
             if (PartidaDados.territorios[j].dono != i)
@@ -950,7 +953,7 @@ function EsperaClick() {
 
   
       // Inicia a sequência chamando rodadaDeJogadores()
-      await rodadaDeJogadores(); // Espera a função assíncrona finalizar antes de continuar o loop
+      await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
 
 
 
