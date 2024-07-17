@@ -1030,12 +1030,13 @@ function EsperaClick() {
           TropasJogador = PartidaDados2.playerSlots[i].tropas-numero;
           NovaTropasTerritorio = PartidaDados2.territorios[Territorio1-1].tropas + numero; 
 
+          await AtualizaTurno[PartidaDados2.id,PartidaDados.turno+1];
+
          await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
           //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
          await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1-1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
          console.log("Atualizar Turno...");      
          
-         await AtualizaTurno[PartidaDados2.id,PartidaDados.turno+1];
 
         }
         }
