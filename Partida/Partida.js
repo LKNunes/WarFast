@@ -786,7 +786,9 @@ async function turnofase1(lobbyId)
         path.addEventListener('click', function(event) {
             const clickedPath = event.target;
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-            paths[0].style.opacity = '0.3';
+            const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+            paths[PathA-1].style.opacity = '0.3';
         });
 
     }
