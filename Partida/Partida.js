@@ -1000,8 +1000,8 @@ function EsperaClick() {
 
           TropasJogador = PartidaDados2.playerSlots[i].tropas-numero;
 
-          atualizarTropasJogador(i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
-          atualizarTropasTerritorio(Territorio1,numero); // Atualiza as tropas do território com ID 2 para 10          
+         await atualizarTropasJogador(i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
+         await atualizarTropasTerritorio(Territorio1,numero); // Atualiza as tropas do território com ID 2 para 10          
 
         }
       }
