@@ -874,12 +874,18 @@ async function turnofase1(lobbyId)
               
               }
           
+          
+          
+          const Territorio1 = await EsperaClick();
+          const Territorio2 = await EsperaClick();
+
 
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
           
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
-          
+        
+
           for(j=0;j<42;j++){
             
             paths[j].style.opacity = '1.0';
@@ -888,11 +894,10 @@ async function turnofase1(lobbyId)
             console.log("teste");
           }
 
-          const Territorio1 = await EsperaClick();
-          const Territorio2 = await EsperaClick();
 
          console.log(""+Territorio1+" "+Territorio2);
       }
+
   
       // Inicia a sequência chamando rodadaDeJogadores()
       await rodadaDeJogadores(); // Espera a função assíncrona finalizar antes de continuar o loop
