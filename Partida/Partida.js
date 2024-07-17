@@ -881,10 +881,10 @@ async function turnofase1(lobbyId)
           
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
           
-          for(i=0;i<42;i++){
+          for(j=0;j<42;j++){
             
-            paths[i].style.opacity = '1.0';
-            paths[i].style.pointerEvents = "auto"; // Ignora o objeto
+            paths[j].style.opacity = '1.0';
+            paths[j].style.pointerEvents = "auto"; // Ignora o objeto
 
             console.log("teste");
           }
