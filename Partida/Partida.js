@@ -919,8 +919,8 @@ function EsperaClick() {
         }
       }
       
-    // Função para atualizar as tropas de um território por ID
-    async function atualizarTropasTerritorio(partidaDados,idPartida, territorioId, novoNumeroTropas) {
+      // Função para atualizar as tropas de um território por ID
+      async function atualizarTropasTerritorio(partidaDados,idPartida, territorioId, novoNumeroTropas) {
       try {
           // Encontrar o território na lista de territórios da partida
           const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
@@ -955,7 +955,7 @@ function EsperaClick() {
           console.error('Erro ao atualizar tropas do território:', error.message);
           throw error;
       }
-  }
+     }
   
  
   
@@ -1029,26 +1029,26 @@ function EsperaClick() {
           NovaTropasTerritorio = PartidaDados2.territorios[Territorio1-1].tropas + numero; 
 
          await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
-//          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
+          //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
          await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1-1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10          
          await AtualizaTurno[lobbyId,i+1];
 
         }
-      }
+        }
 
   
       // Inicia a sequência chamando rodadaDeJogadores()
-      await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
+        await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
+
+        }
+        console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
+        
+        console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
+        
+              // Finalizar turno, proximo jogador.
+          
 
   }
-  console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
-  
-  console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
-  
-        // Finalizar turno, proximo jogador.
-    
-
-}
 
 
 async function turnofase2acima()
