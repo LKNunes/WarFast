@@ -788,16 +788,12 @@ async function turnofase1(lobbyId)
             const clickedPath = event.target;
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
             const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-            paths[PathA-1].style.opacity = '0.3';
-
-           
-            
-
+            //paths[PathA-1].style.opacity = '0.3';
+            return PathA;
         });
 
     }
     }
-    await EsperaClick();
 
 
     //
@@ -892,7 +888,13 @@ async function turnofase1(lobbyId)
   
       // Inicia a sequência chamando rodadaDeJogadores()
       await rodadaDeJogadores(); // Espera a função assíncrona finalizar antes de continuar o loop
-      
+      const Territorio1 = await EsperaClick();
+       const Territorio2 = await EsperaClick();
+      console.log(""+Territorio1+" "+Territorio2);
+
+
+
+
   }
   console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
   
