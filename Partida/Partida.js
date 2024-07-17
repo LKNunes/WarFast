@@ -1038,10 +1038,7 @@ function EsperaClick() {
   
       // Inicia a sequência chamando rodadaDeJogadores()
       await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
-      await AtualizaTurno[i+1];
-
-
-
+      await AtualizaTurno[lobbyId,i+1];
 
   }
   console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
