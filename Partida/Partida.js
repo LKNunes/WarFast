@@ -914,6 +914,7 @@ function EsperaClick() {
 
           console.log("Roda2");
           const Territorio2 = await EsperaClick();
+          removerEventListeners();
 
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
