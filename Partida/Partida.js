@@ -920,15 +920,15 @@ function EsperaClick() {
           console.log("Roda1");
           let Territorio1 = await EsperaClick();
 
-          console.log("Roda2");
-          let Territorio2 = await EsperaClick();
+          console.log("Territorio Selecionado");
+         // let Territorio2 = await EsperaClick();
           removerEventListeners();
 
           Territorio1 = Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
-          Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
+         // Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
 
 
-          console.log(""+Territorio1+" "+Territorio2);
+          console.log(""+Territorio1);
 
 
           mostrarInput(); // Mostra o input para o jogador
