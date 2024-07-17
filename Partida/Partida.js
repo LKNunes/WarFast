@@ -795,7 +795,7 @@ function removerEventListeners(paths, handleClick) {
   });
 }
 
-function EsperaClick() {
+async function EsperaClick() {
   return new Promise(resolve => {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
@@ -815,7 +815,7 @@ function EsperaClick() {
           // paths[PathA-1].style.opacity = '0.3';
 
           // Remove o event listener deste path após o clique
-          removerEventListeners(paths, handleClick);
+         await removerEventListeners(paths, handleClick);
   
           // Resolve a Promise com o path clicado
           resolve(clickedPath);
