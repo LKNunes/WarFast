@@ -874,7 +874,7 @@ async function turnofase1(lobbyId)
               }
               
               }
-          }
+          
 
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
