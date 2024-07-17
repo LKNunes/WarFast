@@ -895,7 +895,7 @@ function EsperaClick() {
 
           const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
           
-          const PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+          var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
           while(PartidaDados2.playerSlots[i].tropas > 0){
           PartidaDados2 = await dadospartida(lobbyId);
