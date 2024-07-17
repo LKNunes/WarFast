@@ -768,6 +768,7 @@ async function turnofase1(lobbyId)
 
     // Função que destaca o path clicado e desfoca os outros
 
+    
 
     async function EsperaClick(){
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
@@ -784,15 +785,13 @@ async function turnofase1(lobbyId)
         path.addEventListener('click', function(event) {
             const clickedPath = event.target;
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-
+            paths[0].style.opacity = '1';
         });
 
     }
-
-
-
     }
     await EsperaClick();
+
 
     //
 
