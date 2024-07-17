@@ -883,6 +883,7 @@ async function turnofase1(lobbyId)
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
           for(i=0;i<42;i++){
             paths[i].style.opacity = '1.0';
+            console.log("teste");
           }
       }
   
