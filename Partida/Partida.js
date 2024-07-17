@@ -769,6 +769,22 @@ async function turnofase1(lobbyId)
 
     // Função que destaca o path clicado e desfoca os outros
 
+    function removerEventListeners() {
+      const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+      const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+  
+      if (!svgDoc) {
+          console.error('Erro ao acessar o conteúdo do documento SVG.');
+          return;
+      }
+  
+      const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+  
+      paths.forEach(path => {
+          path.removeEventListener('click', handleClick);
+      });
+  }
+  
     
 
     function EsperaClick() {
@@ -883,6 +899,7 @@ async function turnofase1(lobbyId)
           
           const Territorio1 = await EsperaClick();
           const Territorio2 = await EsperaClick();
+          removerEventListeners();
 
 
           mostrarInput(); // Mostra o input para o jogador
