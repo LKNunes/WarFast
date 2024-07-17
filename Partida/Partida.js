@@ -879,9 +879,10 @@ async function turnofase1(lobbyId)
 
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
+          
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
           for(i=0;i<42;i++){
-            paths[j].style.opacity = '1.0';
+            paths[i].style.opacity = '1.0';
           }
       }
   
