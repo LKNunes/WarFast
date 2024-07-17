@@ -788,20 +788,14 @@ async function turnofase1(lobbyId)
   
     
 
-  async function handleClick(event) {
-    const clickedPath = event.target;
-    console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-    const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-    // paths[PathA-1].style.opacity = '0.3';
-
-    // Remove o event listener deste path após o clique
-    await removerEventListeners();
- 
-    // Resolve a Promise com o path clicado
-    resolve(clickedPath);
+  // Função para remover event listeners de todos os paths
+function removerEventListeners(paths, handleClick) {
+  paths.forEach(path => {
+      path.removeEventListener('click', handleClick);
+  });
 }
 
-async function EsperaClick() {
+function EsperaClick() {
   return new Promise(resolve => {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
@@ -814,22 +808,25 @@ async function EsperaClick() {
 
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
-      paths.forEach(path => {
-          path.addEventListener('click', function handleClick(event) {
-              const clickedPath = event.target;
-              console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-              const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-              // paths[PathA-1].style.opacity = '0.3';
+      function handleClick(event) {
+          const clickedPath = event.target;
+          console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
+          const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+          // paths[PathA-1].style.opacity = '0.3';
 
-              // Remove o event listener deste path após o clique
-              clickedPath.removeEventListener('click', handleClick);
- 
-              // Resolve a Promise com o path clicado
-              resolve(clickedPath);
-          }, { once: true }); // Adiciona o event listener para um único clique
+          // Remove o event listener deste path após o clique
+          removerEventListeners(paths, handleClick);
+  
+          // Resolve a Promise com o path clicado
+          resolve(clickedPath);
+      }
+
+      paths.forEach(path => {
+          path.addEventListener('click', handleClick, { once: true }); // Adiciona o event listener para um único clique
       });
   });
 }
+
   
 
 
