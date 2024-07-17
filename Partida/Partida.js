@@ -780,8 +780,9 @@ async function turnofase1(lobbyId)
       }
   
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-      
+      let i=0
       for (let path of paths) {
+        i++;
         path.addEventListener('click', function(event) {
             const clickedPath = event.target;
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
