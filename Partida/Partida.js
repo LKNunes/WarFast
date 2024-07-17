@@ -858,8 +858,6 @@ async function turnofase1(lobbyId)
             if (PartidaDados.territorios[j].dono != i)
               {
               
-                
-            
                 if (!svgDoc) {
                   console.error('Erro ao acessar o conteúdo do documento SVG.');
                   return;
