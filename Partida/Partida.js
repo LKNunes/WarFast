@@ -713,9 +713,7 @@ async function turnofase1(lobbyId)
 
   const Fase = await Consultarfase(lobbyId);
   const Turno = PartidaDados.turno; 
-  if ( Fase >= 1 && Turno >= 1 ){
-    return null;
-  };
+  if ( Fase >= 1 && Turno <= 0 ){
 
   let Jogadores = [];
   let QuantidadeTropasJ = [
@@ -770,7 +768,7 @@ async function turnofase1(lobbyId)
     PartidaDados.playerSlots = Jogadores;
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-    
+  };
     // Ate aqui logica para atualizar o DB com as tropas disponiveis 
     // Apartir daqui logica para destribuir tropas
 
@@ -845,12 +843,9 @@ function EsperaClick() {
   });
 }
 
-  
-
-
     //
 
-    for (i = 0; i < 8; i++) { // Looping da Vez do Jogador
+    for (i = partidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
 
       console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
   
