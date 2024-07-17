@@ -768,17 +768,19 @@ async function turnofase1(lobbyId)
 
     // Função que destaca o path clicado e desfoca os outros
     function destacarPath(clickedPath) {
-      const paths = document.getElementsByClassName('path');
+      const paths = document.getElementsByTagName('path');
       for (let path of paths) {
           if (path === clickedPath) {
-              path.classList.add('highlighted');
-              path.classList.remove('dimmed');
+              path.style.transition = 'transform 0.3s, opacity 0.3s';
+              path.style.transform = 'scale(1.2)';
+              path.style.opacity = '1';
           } else {
-              path.classList.add('dimmed');
-              path.classList.remove('highlighted');
+              path.style.transition = 'opacity 0.3s';
+              path.style.transform = 'scale(1)';
+              path.style.opacity = '0.3';
           }
       }
-    }
+  }
 
     async function EsperaClick(){
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
