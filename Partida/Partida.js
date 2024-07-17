@@ -932,7 +932,7 @@ function rollDice() {
         dice.style.transform = `rotateX(${xRotation + 1800}deg) rotateY(${yRotation + 1800}deg)`;
 
         console.log(`Número rolado: ${randNumber}`);
-    }, 5000); // The duration of the roll animation
+    }, 2000); // The duration of the roll animation
 }
 
 dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
