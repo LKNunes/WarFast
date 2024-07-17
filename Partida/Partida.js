@@ -781,18 +781,18 @@ async function turnofase1(lobbyId)
       }
   
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-      let i=0
+
       for (let path of paths) {
-        i++;
         path.addEventListener('click', function handleClick(event) {
             const clickedPath = event.target;
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
             const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
             //paths[PathA-1].style.opacity = '0.3';
 
-            this.removeEventListener('click', handleClick);
-            path.removeEventListener('click', handleClick);
-            return path;
+            paths.forEach(path => {
+              path.removeEventListener('click', handleClick);
+          });
+                      return path;
         });
 
     }
