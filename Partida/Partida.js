@@ -917,7 +917,7 @@ function EsperaClick() {
     async function atualizarTropasTerritorio(PartidaDados2, territorioId, novoNumeroTropas) {
       try {
           // Encontrar o território na lista de territórios da partida
-          const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
+          const territorio = PartidaDados2.territorios.find(territorio => territorio.id === territorioId);
           
           if (territorio) {
               // Atualizar as tropas do território encontrado
@@ -932,7 +932,7 @@ function EsperaClick() {
                   headers: {
                       'Content-Type': 'application/json'
                   },
-                  body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
+                  body: JSON.stringify(PartidaDados2) // Enviar toda a partida com o território modificado
               });
               
               // Verificar se a requisição foi bem-sucedida
