@@ -730,6 +730,7 @@ async function turnofase1(lobbyId)
       if (PartidaDados.territorios[j].dono == i)
         {
         QuantidadeTropasJ[i].tropas = QuantidadeTropasJ[i].tropas+1;
+
         }
     }
   }
@@ -787,8 +788,11 @@ async function turnofase1(lobbyId)
             const clickedPath = event.target;
             console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
             const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-
             paths[PathA-1].style.opacity = '0.3';
+
+           
+            
+
         });
 
     }
@@ -844,6 +848,34 @@ async function turnofase1(lobbyId)
       async function rodadaDeJogadores() {
           // Função assíncrona que gerencia a rodada de jogadores
           console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+
+          
+
+          for(j=0;j<42;j++){
+            if (PartidaDados.territorios[j].dono == i)
+              {
+              
+                const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+                const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+            
+                if (!svgDoc) {
+                  console.error('Erro ao acessar o conteúdo do documento SVG.');
+                  return;
+                }
+            
+                const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+                for (let path of paths) {
+                  PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+          
+                  paths[PathA-1].style.opacity = '0.3';
+          
+                  }
+          
+              }
+              
+              }
+          }
+
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
