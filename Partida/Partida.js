@@ -572,6 +572,8 @@ async function ExibeTurno(lobbyId){
 
 async function AtualizaTurno(lobbyId,turno) {
   // Obter os dados da partida
+  console.log("Atualizando para turno"+turno);
+
   const PartidaDados = await dadospartida(lobbyId);
 
   // Verificar se o ID da partida corresponde
