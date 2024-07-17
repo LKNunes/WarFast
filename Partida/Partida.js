@@ -1033,7 +1033,7 @@ function EsperaClick() {
   
       // Inicia a sequência chamando rodadaDeJogadores()
       await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
-
+      await AtualizaTurno[i+1];
 
 
 
