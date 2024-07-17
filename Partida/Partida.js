@@ -918,10 +918,10 @@ function EsperaClick() {
           
           
           console.log("Roda1");
-          const Territorio1 = await EsperaClick();
+          let Territorio1 = await EsperaClick();
 
           console.log("Roda2");
-          const Territorio2 = await EsperaClick();
+          let Territorio2 = await EsperaClick();
           removerEventListeners();
 
           Territorio1 = Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
