@@ -939,7 +939,7 @@ function EsperaClick() {
           }
 
 
-         console.log(""+Territorio1+" "+Territorio2);
+         console.log(""+Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]+" "+Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]);
       }
 
   
