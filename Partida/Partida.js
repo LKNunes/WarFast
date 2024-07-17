@@ -682,7 +682,7 @@ async function ExibirTropas(lobbyId) {
     text.setAttribute('y', coords.y);
 
     // Adiciona o texto do número do dono do território
-    text.textContent = territorios[i].id;
+    text.textContent = territorios[i].dono;
     // Define o tamanho da fonte do texto
     text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
     text.style.fontFamily = 'Arial, sans-serif';
