@@ -914,26 +914,30 @@ function EsperaClick() {
         }
       }
     // Função para atualizar as tropas de um território por ID
-    async function atualizarTropasTerritorio(idPartida, territorioId, novoNumeroTropas) {
-      try {
-          const url = `https://45.140.193.150:8443/partida/${idPartida}/territorios/${territorioId}`;
-          const response = await fetch(url, {
-              method: 'PUT',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ tropas: novoNumeroTropas })
-          });
+    async function atualizarTropasTerritorio(partidaDados, territorioId, novoNumeroTropas) {
+      const territorio = partidaDados.territorios.find(terr => terr.id === territorioId);
+      if (territorio) {
+          territorio.tropas = novoNumeroTropas;
   
-          if (!response.ok) {
-              console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
-              throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
+          const url = `https://45.140.193.150:8443/partida/${partidaDados.id}/territorios/${territorioId}`;
+          try {
+              const response = await fetch(url, {
+                  method: 'PUT',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ tropas: novoNumeroTropas })
+              });
+              if (response.ok) {
+                  console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
+              } else {
+                  console.error(`Erro ao atualizar as tropas do território ${territorioId}: ${response.status} ${response.statusText}`);
+              }
+          } catch (error) {
+              console.error('Erro na requisição:', error);
           }
-  
-          console.log(`Tropas atualizadas com sucesso para o território ${territorioId}. Novo número de tropas: ${novoNumeroTropas}`);
-      } catch (error) {
-          console.error('Erro ao atualizar tropas do território:', error.message);
-          throw error;
+      } else {
+          console.error(`Território com ID ${territorioId} não encontrado.`);
       }
   }
 
@@ -1007,7 +1011,7 @@ function EsperaClick() {
 
          await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
          try {
-          await atualizarTropasTerritorio(lobbyId, Territorio1, numero); // Atualiza as tropas do território com ID 2 para 10          
+          await atualizarTropasTerritorio(PartidaDados2, Territorio1, numero); // Atualiza as tropas do território com ID 2 para 10          
           
          } catch (error) {
           console.error('Erro ao atualizar as tropas do território:', error);
