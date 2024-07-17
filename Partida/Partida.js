@@ -796,7 +796,7 @@ async function turnofase1(lobbyId)
 
     // Remove o event listener deste path após o clique
     await removerEventListeners();
-
+ 
     // Resolve a Promise com o path clicado
     resolve(clickedPath);
 }
