@@ -820,8 +820,7 @@ function EsperaClick() {
               // paths[PathA-1].style.opacity = '0.3';
 
               // Remove o event listener deste path após o clique
-              clickedPath.removeEventListener('click', handleClick);
-
+              removerEventListeners();
               // Resolve a Promise com o path clicado
               resolve(clickedPath);
           }, { once: true }); // Adiciona o event listener para um único clique
