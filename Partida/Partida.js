@@ -897,6 +897,8 @@ function EsperaClick() {
           
           const PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
+          while(PartidaDados2.playerSlots[i].tropas > 0){
+          PartidaDados2 = await dadospartida(lobbyId);
           for(j=0;j<42;j++){
             if (PartidaDados.territorios[j].dono != i)
               {
@@ -930,14 +932,15 @@ function EsperaClick() {
          // Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
 
 
-          console.log(""+Territorio1);
+          //console.log(""+Territorio1);
+          
+          //console.log("Tropas"+PartidaDados2.playerSlots[i].tropas);
 
-          console.log("Trioas"+PartidaDados2.playerSlots[0].tropas);
 
 
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
-          
+
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
         
 
@@ -949,7 +952,8 @@ function EsperaClick() {
             console.log("teste");
           }
 
-
+          PartidaDados2.playerSlots[i].tropas = PartidaDados2.playerSlots[i].tropas-numero;
+        }
       }
 
   
