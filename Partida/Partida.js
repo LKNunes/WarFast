@@ -923,7 +923,13 @@ function EsperaClick() {
           console.log("Roda2");
           const Territorio2 = await EsperaClick();
           removerEventListeners();
-          console.log(""+Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]+" "+Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]);
+
+          Territorio1 = Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
+          Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
+
+
+          console.log(""+Territorio1+" "+Territorio2);
+
 
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
