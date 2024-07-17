@@ -791,7 +791,7 @@ async function turnofase1(lobbyId)
             //paths[PathA-1].style.opacity = '0.3';
 
             this.removeEventListener('click', handleClick);
-
+            paths.removeEventListener('click', handleClick);
             return path;
         });
 
