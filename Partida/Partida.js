@@ -891,7 +891,7 @@ async function turnofase1(lobbyId)
           const Territorio1 = await EsperaClick();
           const Territorio2 = await EsperaClick();
 
-         console.log(""+Territorio1+" "+Territorio2);
+         console.log(""+Territorio1.getAttribute('inkscape:label')+" "+Territorio2.getAttribute('inkscape:label'));
       }
   
       // Inicia a sequência chamando rodadaDeJogadores()
