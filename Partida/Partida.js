@@ -780,7 +780,7 @@ async function turnofase1(lobbyId)
       for (let path of paths) {
         path.addEventListener('click', function(event) {
             const clickedPath = event.target;
-            console.log('Path clicado:', clickedPath.label); // Mostra no console o ID do path clicado
+            console.log('Path clicado:', clickedPath.{'inkscape:label'}); // Mostra no console o ID do path clicado
         });
     }
 
