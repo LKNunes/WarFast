@@ -769,7 +769,7 @@ async function turnofase1(lobbyId)
 
     // Função que destaca o path clicado e desfoca os outros
 
-    function removerEventListeners() {
+    async function removerEventListeners() {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   
@@ -795,7 +795,7 @@ async function turnofase1(lobbyId)
     // paths[PathA-1].style.opacity = '0.3';
 
     // Remove o event listener deste path após o clique
-    removerEventListeners();
+    await removerEventListeners();
 
     // Resolve a Promise com o path clicado
     resolve(clickedPath);
@@ -813,7 +813,7 @@ function EsperaClick() {
       }
 
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-      removerEventListeners();
+      await  removerEventListeners();
 
       paths.forEach(path => {
           path.addEventListener('click', function handleClick(event) {
@@ -824,7 +824,7 @@ function EsperaClick() {
 
               // Remove o event listener deste path após o clique
               clickedPath.removeEventListener('click', handleClick);
-              removerEventListeners();
+              await     removerEventListeners();
 
               // Resolve a Promise com o path clicado
               resolve(clickedPath);
