@@ -771,32 +771,36 @@ async function turnofase1(lobbyId)
 
     
 
-    async function EsperaClick(){
+    async function EsperaClick() {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
   
       if (!svgDoc) {
-        console.error('Erro ao acessar o conteúdo do documento SVG.');
-        return;
+          console.error('Erro ao acessar o conteúdo do documento SVG.');
+          return;
       }
   
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-
-      for (let path of paths) {
-        path.addEventListener('click', function handleClick(event) {
-            const clickedPath = event.target;
-            console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-            const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-            //paths[PathA-1].style.opacity = '0.3';
-
-            paths.forEach(path => {
+  
+      function handleClick(event) {
+          const clickedPath = event.target;
+          console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
+          const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+          // paths[PathA-1].style.opacity = '0.3';
+  
+          // Remove o event listener de todos os paths após o primeiro clique
+          paths.forEach(path => {
               path.removeEventListener('click', handleClick);
           });
-                      return path;
-        });
-
-    }
-    }
+  
+          return clickedPath;
+      }
+  
+      paths.forEach(path => {
+          path.addEventListener('click', handleClick);
+      });
+  }
+  
 
 
     //
