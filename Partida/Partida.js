@@ -790,7 +790,7 @@ async function turnofase1(lobbyId)
             const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
             //paths[PathA-1].style.opacity = '0.3';
 
-            path.removeEventListener('click');
+            this.removeEventListener('click', EsperaClick);
 
             return clickedPath;
         });
