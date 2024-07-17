@@ -792,7 +792,7 @@ async function turnofase1(lobbyId)
 
             this.removeEventListener('click', handleClick);
 
-            return clickedPath;
+            return path;
         });
 
     }
