@@ -849,14 +849,14 @@ async function turnofase1(lobbyId)
           // Função assíncrona que gerencia a rodada de jogadores
           console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
 
-          
+          const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+          const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
           for(j=0;j<42;j++){
             if (PartidaDados.territorios[j].dono != i)
               {
               
-                const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
-                const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+                
             
                 if (!svgDoc) {
                   console.error('Erro ao acessar o conteúdo do documento SVG.');
@@ -880,11 +880,14 @@ async function turnofase1(lobbyId)
           mostrarInput(); // Mostra o input para o jogador
           const numero = await esperarInput(); // Espera o jogador inserir um número
           console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
+          for(i=0;i<42;i++){
+            paths[j].style.opacity = '1.0';
+          }
       }
   
       // Inicia a sequência chamando rodadaDeJogadores()
       await rodadaDeJogadores(); // Espera a função assíncrona finalizar antes de continuar o loop
-  
+      
   }
   console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
   
