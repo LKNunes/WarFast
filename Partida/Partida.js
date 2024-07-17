@@ -914,14 +914,44 @@ function EsperaClick() {
         }
       }
     // Função para atualizar as tropas de um território por ID
+    async function atualizarTropasTerritorio(partidaDados,idPartida, territorioId, novoNumeroTropas) {
+      try {
+          // Encontrar o território na lista de territórios da partida
+          const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
+          
+          if (territorio) {
+              // Atualizar as tropas do território encontrado
+              territorio.tropas = novoNumeroTropas;
+              
+              // Montar a URL para a requisição PUT
+              const url = `https://45.140.193.150:8443/partida/${idPartida}`;
+              
+              // Fazer a requisição PUT para atualizar a partida
+              const response = await fetch(url, {
+                  method: 'PUT',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
+              });
+              
+              // Verificar se a requisição foi bem-sucedida
+              if (response.ok) {
+                  console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
+              } else {
+                  console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
+                  throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
+              }
+          } else {
+              console.error(`Território com ID ${territorioId} não encontrado.`);
+          }
+      } catch (error) {
+          console.error('Erro ao atualizar tropas do território:', error.message);
+          throw error;
+      }
+  }
   
-  
-  // Exemplo de uso:
-  const idPartida = "1721230231074";
-  const territorioId = 20;
-  const novoNumeroTropas = 5;
-  
-  await atualizarTropasTerritorio(idPartida, territorioId, novoNumeroTropas);
+ 
   
       async function rodadaDeJogadores(lobbyId) {
           // Função assíncrona que gerencia a rodada de jogadores
@@ -993,7 +1023,7 @@ function EsperaClick() {
 
          await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
 //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
-       //  await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1, numero); // Atualiza as tropas do território com ID 2 para 10          
+         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1, numero); // Atualiza as tropas do território com ID 2 para 10          
          
         }
       }
