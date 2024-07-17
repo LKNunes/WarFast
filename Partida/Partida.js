@@ -888,7 +888,6 @@ function EsperaClick() {
           
                   paths[PathA-1].style.opacity = '0.3';
                   paths[PathA-1].style.pointerEvents = "none"; // Ignora o objeto
-                  removerEventListeners();
 
                   }
           
