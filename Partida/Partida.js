@@ -1011,7 +1011,7 @@ function EsperaClick() {
 
          await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
          try {
-          console.log("Objeto:"+PartidaDados2.id+" "+Territorio1+" "+numero+"");
+          console.log("Objeto:"+PartidaDados2.territorios[territorio1].id+" "+Territorio1+" "+numero+"");
           await atualizarTropasTerritorio(PartidaDados2, Territorio1, numero); // Atualiza as tropas do território com ID 2 para 10          
           
          } catch (error) {
