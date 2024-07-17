@@ -1034,10 +1034,10 @@ function EsperaClick() {
           //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
          await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1-1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
          console.log("Atualizar Turno...");      
-         
+         await AtualizaTurno(PartidaDados2.id,PartidaDados2.turno+1);
+
 
         }
-        await AtualizaTurno(PartidaDados2.id,PartidaDados2.turno+1);
 
         }
 
