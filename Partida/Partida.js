@@ -793,6 +793,7 @@ async function turnofase1(lobbyId)
     const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
     // paths[PathA-1].style.opacity = '0.3';
     removerEventListeners();
+    return
 
     // Remove o event listener deste path após o clique
     clickedPath.removeEventListener('click', handleClick);
