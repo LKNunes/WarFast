@@ -823,8 +823,7 @@ async function EsperaClick() {
 
               // Remove o event listener deste path após o clique
               clickedPath.removeEventListener('click', handleClick);
-              await     removerEventListeners();
-
+ 
               // Resolve a Promise com o path clicado
               resolve(clickedPath);
           }, { once: true }); // Adiciona o event listener para um único clique
