@@ -777,12 +777,13 @@ async function turnofase1(lobbyId)
           console.error('Erro ao acessar o conteúdo do documento SVG.');
           return;
       }
-  
+      
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
   
       paths.forEach(path => {
           path.removeEventListener('click', handleClick);
       });
+      console.log("Removido os Eventos");
   }
   
     
