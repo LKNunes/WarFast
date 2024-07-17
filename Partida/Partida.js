@@ -884,7 +884,7 @@ async function turnofase1(lobbyId)
           for(i=0;i<42;i++){
             
             paths[i].style.opacity = '1.0';
-            paths[i].style.style.pointerEvents = "auto"; // Ignora o objeto
+            paths[i].style.pointerEvents = "auto"; // Ignora o objeto
 
             console.log("teste");
           }
