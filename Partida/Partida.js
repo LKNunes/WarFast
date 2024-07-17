@@ -884,13 +884,15 @@ async function turnofase1(lobbyId)
 
             console.log("teste");
           }
+
+          const Territorio1 = await EsperaClick();
+          const Territorio2 = await EsperaClick();
+         console.log(""+Territorio1+" "+Territorio2);
       }
   
       // Inicia a sequência chamando rodadaDeJogadores()
       await rodadaDeJogadores(); // Espera a função assíncrona finalizar antes de continuar o loop
-      const Territorio1 = await EsperaClick();
-       const Territorio2 = await EsperaClick();
-      console.log(""+Territorio1+" "+Territorio2);
+
 
 
 
