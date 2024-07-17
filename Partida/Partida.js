@@ -812,6 +812,7 @@ function EsperaClick() {
       }
 
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+      removerEventListeners();
 
       paths.forEach(path => {
           path.addEventListener('click', function handleClick(event) {
