@@ -711,7 +711,7 @@ async function turnofase1(lobbyId)
 
   const Fase = await Consultarfase(lobbyId);
   const Turno = PartidaDados.turno; 
-  if ( Fase >= 1 && Turno >= 0 ){
+  if ( Fase >= 1 && Turno >= 1 ){
     return null;
   };
 
