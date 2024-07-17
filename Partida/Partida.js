@@ -845,7 +845,7 @@ function EsperaClick() {
 
     //
 
-    for (i = partidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
+    for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
 
       console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
   
