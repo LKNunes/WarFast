@@ -872,6 +872,12 @@ async function turnofase1(lobbyId) {
             return;
           }
 
+          if (numero <= 0) {
+            // Se o valor não for um número válido, exibe um alerta
+            alert("Por favor, insira um número válido.");
+            return;
+          }
+
           if (numero > PartidaDados.playerSlots[PartidaDados.turno].tropas) {
             // Se o valor for maior que as tropas disponiveis, exibe um alerta
             alert("Tropas restantes:"+PartidaDados.playerSlots[PartidaDados.turno].tropas);
@@ -1039,7 +1045,6 @@ async function turnofase1(lobbyId) {
 
     // Inicia a sequência chamando rodadaDeJogadores()
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
-
     
     if (PartidaDados2.turno >= 8){
     await AtualizaTurno(PartidaDados2.id, 0);
