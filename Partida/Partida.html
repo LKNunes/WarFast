@@ -256,7 +256,7 @@ async function svgLoaded() {
 
   await ObjetivoMain(lobbyId); // Muda para fase 1  
 
-  await DestribuirTerritorios(lobbyId)
+  await DestribuirTerritorios(lobbyId) 
 
   await ImprimirJogadores(lobbyId);
 
@@ -270,7 +270,9 @@ async function svgLoaded() {
   
   await ExibirTropas(lobbyId);
 
-  await turnofase1(lobbyId);
+  await turnofase1(lobbyId); //Muda para fase 2
+
+  await turnofase2acima(lobbyId); // Demais fases...
 
   //await AtualizaTurno(lobbyId,1);
   //await VerificaTurno(lobbyId);
