@@ -237,7 +237,7 @@ async function DestribuirTerritorios(lobbyId)
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
  
   const Fase = await Consultarfase(lobbyId);
-  if ( Fase > 1 ){
+  if ( Fase >= 1 ){
     return null;
   };
     //teste
@@ -713,7 +713,7 @@ async function turnofase1(lobbyId)
 
   const Fase = await Consultarfase(lobbyId);
   const Turno = PartidaDados.turno; 
-  if ( Fase >= 1 && Turno <= 0 ){
+  if ( Fase == 1 && Turno <= 7 ){
 
   let Jogadores = [];
   let QuantidadeTropasJ = [
