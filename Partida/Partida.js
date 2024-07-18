@@ -888,7 +888,7 @@ async function turnofase1(lobbyId) {
 
           resolve(numero); // Resolve a promessa com o número inserido
           esconderInput(); // Esconde o input
-          await ExibirTropas(lobbyId);
+          await ExibirTropas(lobbyId); // Lentrete( Criar função para atualizar tropas no mapa)
           // Remove o event listener após a resolução da promessa
           submitBtn.removeEventListener('click', processarInput);
         }
