@@ -856,7 +856,7 @@ async function turnofase1(lobbyId) {
       document.getElementById('numeroInput').value = ''; // Limpa o input
     }
 
-    function esperarInput() {
+    async function esperarInput() {
       return new Promise((resolve) => {
         // Cria uma nova promessa que será resolvida quando o input for processado
         const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
@@ -878,9 +878,11 @@ async function turnofase1(lobbyId) {
             return;
           }
 
-          if (numero > PartidaDados.playerSlots[PartidaDados.turno].tropas) {
+          const PartidaDados3 = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
+
+          if (numero > PartidaDados3.playerSlots[PartidaDados3.turno].tropas) {
             // Se o valor for maior que as tropas disponiveis, exibe um alerta
-            alert("Tropas restantes:"+PartidaDados.playerSlots[PartidaDados.turno].tropas);
+            alert("Tropas restantes:"+PartidaDados3.playerSlots[PartidaDados3.turno].tropas);
             return;
           }
 
