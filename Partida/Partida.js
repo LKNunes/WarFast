@@ -713,6 +713,11 @@ async function turnofase1(lobbyId)
 
   const Fase = await Consultarfase(lobbyId);
   const Turno = PartidaDados.turno; 
+
+  if ( Fase >= 2 ){
+    return null;
+  };
+
   if ( Fase == 1 && Turno <= 0 ){
 
   let Jogadores = [];
