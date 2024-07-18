@@ -1051,6 +1051,7 @@ async function turnofase1(lobbyId) {
     if (PartidaDados2.turno > 8){
     await AtualizaTurno(PartidaDados2.id, 0);
     await Atualizafase(lobbyId, 2);
+    return;
     }
   }
   console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
