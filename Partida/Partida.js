@@ -956,7 +956,7 @@ function EsperaClick() {
   
  
   
-      async function rodadaDeJogadores(lobbyId) {
+      async function rodadaDeJogadores(lobbyId,PartidaDados2) {
           // Função assíncrona que gerencia a rodada de jogadores
           console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
 
@@ -965,8 +965,6 @@ function EsperaClick() {
 
           const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
           
-          var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-
           while(PartidaDados2.playerSlots[i].tropas > 0){ // Distribuir ate zerar as tropas
           PartidaDados2 = await dadospartida(lobbyId);
           for(j=0;j<42;j++){
@@ -1035,10 +1033,11 @@ function EsperaClick() {
         await AtualizaTurno(PartidaDados2.id,PartidaDados2.turno+1);
 
         }
+        var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
  
       // Inicia a sequência chamando rodadaDeJogadores()
-        await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
+        await rodadaDeJogadores(lobbyId,PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
 
         await AtualizaTurno(PartidaDados2.id,0);
         await Atualizafase(lobbyId,2);
