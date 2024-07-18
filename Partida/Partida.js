@@ -237,7 +237,7 @@ async function DestribuirTerritorios(lobbyId)
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
  
   const Fase = await Consultarfase(lobbyId);
-  if ( Fase >= 1 ){
+  if ( Fase == 1 ){
     return null;
   };
     //teste
