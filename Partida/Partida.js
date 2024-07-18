@@ -1036,7 +1036,8 @@ function EsperaClick() {
 
         }
 
-  
+        await AtualizaTurno(PartidaDados2.id,0);
+        await Atualizafase(lobbyId,2);
       // Inicia a sequência chamando rodadaDeJogadores()
         await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
 
