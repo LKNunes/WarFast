@@ -1026,6 +1026,7 @@ async function turnofase1(lobbyId) {
         for (j = 0; j < 42; j++) {
 
           paths[j].style.opacity = '1.0';
+          paths[PathA - 1].style.stroke = 'white';
           paths[j].style.pointerEvents = "auto"; // Ignora o objeto
 
           console.log("teste");
