@@ -1032,13 +1032,13 @@ function EsperaClick() {
 
 
         }
-        await AtualizaTurno(PartidaDados2.id,PartidaDados2.turno+1);
 
         }
 
-  
+        
       // Inicia a sequência chamando rodadaDeJogadores()
         await rodadaDeJogadores(lobbyId); // Espera a função assíncrona finalizar antes de continuar o loop
+        await AtualizaTurno(PartidaDados2.id,PartidaDados2.turno+1);
 
         }
         console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
