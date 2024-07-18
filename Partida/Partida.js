@@ -713,7 +713,7 @@ async function turnofase1(lobbyId)
 
   const Fase = await Consultarfase(lobbyId);
   const Turno = PartidaDados.turno; 
-  if ( Fase == 1 && Turno <= 7 ){
+  if ( Fase == 1 && Turno <= 0 ){
 
   let Jogadores = [];
   let QuantidadeTropasJ = [
