@@ -1055,8 +1055,11 @@ async function turnofase1(lobbyId) {
     }
   }
   console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
-  if (PartidaDados2.turno >= 8){
-    await AtualizaTurno(PartidaDados2.id, 0);
+  
+  var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+  if (PartidaDados4.turno >= 8){
+    await AtualizaTurno(PartidaDados4.id, 0);
     await Atualizafase(lobbyId, 2);
     return;
     }
