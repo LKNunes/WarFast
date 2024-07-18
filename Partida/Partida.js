@@ -420,7 +420,7 @@ async function Atualizafase(lobbyId, fase) {
   if (PartidaDados.id === lobbyId) {
     // Atualizar o campo "fase"
     PartidaDados.fase = fase;
-    console.log(JSON.stringify(PartidaDados, null, 2));
+   // console.log(JSON.stringify(PartidaDados, null, 2));
     console.log("Atualizando para fase"+fase+" :"+PartidaDados.fase);
     // Enviar os dados atualizados de volta para o servidor
     const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
