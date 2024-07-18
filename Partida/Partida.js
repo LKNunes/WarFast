@@ -856,13 +856,13 @@ async function turnofase1(lobbyId) {
       document.getElementById('numeroInput').value = ''; // Limpa o input
     }
 
-    async function esperarInput() {
+     function esperarInput() {
       return new Promise((resolve) => {
         // Cria uma nova promessa que será resolvida quando o input for processado
         const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
         const numeroInput = document.getElementById('numeroInput'); // Campo de input
 
-        function processarInput() {
+        async function processarInput() {
           // Processa o input do usuário
           const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
 
