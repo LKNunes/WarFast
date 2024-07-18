@@ -872,6 +872,12 @@ async function turnofase1(lobbyId) {
             return;
           }
 
+          if (numero > PartidaDados.playerSlots[PartidaDados.turno].tropas) {
+            // Se o valor for maior que as tropas disponiveis, exibe um alerta
+            alert("Tropas restantes:"+PartidaDados.playerSlots[PartidaDados.turno].tropas);
+            return;
+          }
+
           resolve(numero); // Resolve a promessa com o número inserido
           esconderInput(); // Esconde o input
 
@@ -1048,6 +1054,7 @@ async function turnofase1(lobbyId) {
 
 
 async function turnofase2acima() {
+
   // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
   // Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
   // logica dos dados 1:1 1:2 1:3.
