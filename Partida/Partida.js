@@ -990,8 +990,6 @@ async function turnofase1(lobbyId) {
 
               paths[PathA - 1].style.opacity = '0.5';
               paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
-              
-
             }
 
           }
