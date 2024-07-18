@@ -52,7 +52,7 @@ async function playersCores() {
 async function dadospartida(lobbyId) {
   //const urlParams = new URLSearchParams(window.location.search);
   //const lobbyId = urlParams.get('id');
-  
+
 
   //console.log("Lobby ID from URL:", lobbyId); // Log para verificar se o lobbyId está correto
 
@@ -80,9 +80,9 @@ async function dadospartida(lobbyId) {
       const turno = LobbyExistente.turno;
       const playerSlots = LobbyExistente.playerSlots;
       const territorios = LobbyExistente.territorios;
-      
+
       return { id, leaderId, lobbyName, fase, turno, playerSlots, territorios };
-      
+
       // Chamar a função para exibir as informações no HTML
     } else {
       console.error('Lobby não encontrado');
@@ -114,12 +114,12 @@ async function atualizarParcialmenteLobby(lobbyId, atualizacoes) {
     }
 
     const dadosAtualizados = await response.json();
-//    console.log('Lobby atualizado parcialmente com sucesso:', dadosAtualizados);
+    //    console.log('Lobby atualizado parcialmente com sucesso:', dadosAtualizados);
   } catch (error) {
     console.error('Erro:', error);
   }
 }
- 
+
 function embaralharArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -129,12 +129,12 @@ function embaralharArray(array) {
 }
 
 async function identificarTerritorios(svgObject) {
-  console.log("Aguardando documento"+svgObject);
+  console.log("Aguardando documento" + svgObject);
   const SVG = svgObject;
   //const svgObject = document.getElementById('svgObject');
 
   // Adicionar um ouvinte de evento para o carregamento do documento SVG
-  SVG.addEventListener('load', function() {
+  SVG.addEventListener('load', function () {
     console.log("documento carregado");
     const svgDoc = SVG.contentDocument;
     const paths = svgDoc.getElementsByTagName('path'); // Selecionar todos os elementos <path>
@@ -152,69 +152,68 @@ async function identificarTerritorios(svgObject) {
   });
 }
 
-function pausecomp(millis)
-{
-    var date = new Date();
-    var curDate = null;
-    do { curDate = new Date(); }
-    while(curDate-date < millis);
+function pausecomp(millis) {
+  var date = new Date();
+  var curDate = null;
+  do { curDate = new Date(); }
+  while (curDate - date < millis);
 }
 
 
 
-    // Função para alterar o tamanho de um território ao passar o mouse sobre ele
-    function alterarTamanhoTerritorio(territorio) {
-      territorio.addEventListener('mouseenter', function() {
-        const centroX = territorio.getBBox().x + territorio.getBBox().width / 2;
-        const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
-        const deslocamentoX = centroX - centroX * 1.05;
-        const deslocamentoY = centroY - centroY * 1.05;
-        
-       // console.log("DEntro da funçaõ tamanho");
-        territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
-       // console.log("X "+centroX.toFixed(2)+",Y "+centroY.toFixed(2)+",ID"+territorio.id);
+// Função para alterar o tamanho de um território ao passar o mouse sobre ele
+function alterarTamanhoTerritorio(territorio) {
+  territorio.addEventListener('mouseenter', function () {
+    const centroX = territorio.getBBox().x + territorio.getBBox().width / 2;
+    const centroY = territorio.getBBox().y + territorio.getBBox().height / 2;
+    const deslocamentoX = centroX - centroX * 1.05;
+    const deslocamentoY = centroY - centroY * 1.05;
+
+    // console.log("DEntro da funçaõ tamanho");
+    territorio.setAttribute('transform', 'scale(1.05) translate(' + deslocamentoX + ' ' + deslocamentoY + ')');
+    // console.log("X "+centroX.toFixed(2)+",Y "+centroY.toFixed(2)+",ID"+territorio.id);
   });
-      territorio.addEventListener('mouseleave', function() {
-        this.setAttribute('transform', ''); // Restaurar o tamanho original
-      });
-    } 
+  territorio.addEventListener('mouseleave', function () {
+    this.setAttribute('transform', ''); // Restaurar o tamanho original
+  });
+}
 
-    async function atribuirIDsNumericos() {
-      const svgObject = document.getElementById('svgObject');
+async function atribuirIDsNumericos() {
+  const svgObject = document.getElementById('svgObject');
 
-      try {
+  try {
 
-        const svgDoc =  loadSvg(svgObject);
-        const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
-        // Iterar sobre os elementos <path> e atribuir IDs numéricos
-        paths.forEach((path, index) => {
-          path.setAttribute('id', 'territorio' + (index + 1));
-       //   console.log('ID do path:', path.getAttribute('id'));
-        });
+    const svgDoc = loadSvg(svgObject);
+    const paths = svgDoc.querySelectorAll('path'); // Selecionar todos os elementos <path>
+    // Iterar sobre os elementos <path> e atribuir IDs numéricos
+    paths.forEach((path, index) => {
+      path.setAttribute('id', 'territorio' + (index + 1));
+      //   console.log('ID do path:', path.getAttribute('id'));
+    });
 
-       // console.log('IDs numéricos atribuídos aos elementos <path>.');
-      } catch (error) {
-        console.error('Erro ao carregar o SVG:', error);
+    // console.log('IDs numéricos atribuídos aos elementos <path>.');
+  } catch (error) {
+    console.error('Erro ao carregar o SVG:', error);
+  }
+}
+
+function loadSvg(svgElement) {
+  return new Promise((resolve, reject) => {
+    svgElement.addEventListener('load', () => {
+      const svgDoc = svgElement.contentDocument;
+      if (svgDoc) {
+        resolve(svgDoc);
+      } else {
+        reject(new Error("SVG não carregado corretamente."));
       }
-    }
+    });
 
-    function loadSvg(svgElement) {
-      return new Promise((resolve, reject) => {
-        svgElement.addEventListener('load', () => {
-          const svgDoc = svgElement.contentDocument;
-          if (svgDoc) {
-            resolve(svgDoc);
-          } else {
-            reject(new Error("SVG não carregado corretamente."));
-          }
-        });
+    svgElement.addEventListener('error', (event) => {
+      reject(new Error("Erro ao carregar o SVG."));
+    });
+  });
+}
 
-        svgElement.addEventListener('error', (event) => {
-          reject(new Error("Erro ao carregar o SVG."));
-        });
-      });
-    }
- 
 // Função para atribuir cores aos jogadores
 function atribuirCores() {
   const cores = [
@@ -232,41 +231,40 @@ function atribuirCores() {
   return cores;
 }
 
-async function DestribuirTerritorios(lobbyId)
-{
+async function DestribuirTerritorios(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
- 
+
   const Fase = await Consultarfase(lobbyId);
-  if ( Fase >= 1 ){
+  if (Fase >= 1) {
     return null;
   };
-    //teste
-    function distribuirNumerosAleatoriamente() {
-      const numeros = Array.from({ length: 42 }, (_, i) => i + 1);
-      
-      // Função para embaralhar a array de números
-      function embaralhar(array) {
-          for (let i = array.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [array[i], array[j]] = [array[j], array[i]];
-          }
-      }
-      // Embaralha os números
-      embaralhar(numeros);
-      
-      const jogadores = Array.from({ length: 8 }, () => []);
-      
-      // Distribui os números embaralhados para os jogadores
-      for (let i = 0; i < numeros.length; i++) {
-          jogadores[i % 8].push(numeros[i]);
-      }
-      return jogadores;
-  }
-  
-  // Exemplo de uso
-  const distribuicao = distribuirNumerosAleatoriamente();  
+  //teste
+  function distribuirNumerosAleatoriamente() {
+    const numeros = Array.from({ length: 42 }, (_, i) => i + 1);
 
-  console.log("Exemplo"+ distribuicao);
+    // Função para embaralhar a array de números
+    function embaralhar(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    // Embaralha os números
+    embaralhar(numeros);
+
+    const jogadores = Array.from({ length: 8 }, () => []);
+
+    // Distribui os números embaralhados para os jogadores
+    for (let i = 0; i < numeros.length; i++) {
+      jogadores[i % 8].push(numeros[i]);
+    }
+    return jogadores;
+  }
+
+  // Exemplo de uso
+  const distribuicao = distribuirNumerosAleatoriamente();
+
+  console.log("Exemplo" + distribuicao);
 
 
   //teste
@@ -277,7 +275,7 @@ async function DestribuirTerritorios(lobbyId)
     let jogador = i % 8; // Determina o jogador atual (0-7)
 
     const TerritorioID = distribuicao[jogador][Math.floor(i / 8)] - 1
-    const Dono =  jogador;
+    const Dono = jogador;
 
     const territorio = {
       id: TerritorioID,
@@ -291,15 +289,15 @@ async function DestribuirTerritorios(lobbyId)
 
   Territorios.sort((a, b) => a.id - b.id);
 
-  console.log("Exemplo"+Territorios);
+  console.log("Exemplo" + Territorios);
   // Atualiza os dados do lobby com os novos dados dos jogadores
- 
+
   PartidaDados.territorios = Territorios;
- 
+
   // Atualiza o lobby no servidor
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
   //Armazenar territorios no DB na primeira vez e chamar a função para aplicar as cores do DB no SVG
-  await Atualizafase(lobbyId,1);
+  await Atualizafase(lobbyId, 1);
 
   return distribuicao;
 
@@ -327,20 +325,20 @@ async function aplicarCores(lobbyId) {
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
     //const Territorios = await DestribuirTerritorios(lobbyId); // Aguarda a resolução da Promise que distribui os territórios
-    const Territorios = PartidaDados.territorios;    
+    const Territorios = PartidaDados.territorios;
 
     for (let i = 0; i < 42; i++) { // Itera por 42 territórios
-      
-      nterritorio = Territorios[i].id 
 
-      console.log(Territorios[i].id +"  "+nterritorio+" "+Territorios[i].dono)
+      nterritorio = Territorios[i].id
+
+      console.log(Territorios[i].id + "  " + nterritorio + " " + Territorios[i].dono)
       console.log(paths[i].id);
       paths[nterritorio].style.fill = PartidaDados.playerSlots[Territorios[i].dono].cor; // Aplica a cor do jogador ao território
       paths[nterritorio].style.stroke = 'white'; // Define a cor da borda do território
       paths[nterritorio].style.strokeWidth = '0.5'; // Define a largura da borda
       alterarTamanhoTerritorio(paths[nterritorio]); // Chama a função para alterar o tamanho do território
 
-    } 
+    }
 
     // console.log('Cores aplicadas aos territórios.');
   } catch (error) {
@@ -350,66 +348,66 @@ async function aplicarCores(lobbyId) {
 
 
 
-async function CoresMain(lobbyId){
+async function CoresMain(lobbyId) {
   const Fase = await Consultarfase(lobbyId);
-  if ( Fase >= 1 ){
+  if (Fase >= 1) {
     return null;
   };
 
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-      if (!PartidaDados) {
-        console.error('Erro ao obter os dados da partida.');
-        return;
-      }
+  if (!PartidaDados) {
+    console.error('Erro ao obter os dados da partida.');
+    return;
+  }
 
-      const playersCor = await playersCores();
-      if (!playersCor) {
-        console.error('Erro ao obter os dados dos jogadores.');
-        return;
-      }
+  const playersCor = await playersCores();
+  if (!playersCor) {
+    console.error('Erro ao obter os dados dos jogadores.');
+    return;
+  }
 
-      const cores = atribuirCores();
-      let Jogadores = [];
+  const cores = atribuirCores();
+  let Jogadores = [];
 
-      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
-        const jogadorId = PartidaDados.playerSlots[i].id;
-        const jogadorNome = PartidaDados.playerSlots[i].nome;
-        const Objetivo = PartidaDados.playerSlots[i].objetivo;
-        const Cor = cores[i]; // Atribui a cor ao jogador
-        
-        // Cria um objeto para representar o jogador com o ID, nome e cor
-        const jogador = {
-          id: jogadorId,
-          nome: jogadorNome,
-          objetivo: Objetivo,
-          cor: Cor
-          
-        };
+  for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+    const jogadorId = PartidaDados.playerSlots[i].id;
+    const jogadorNome = PartidaDados.playerSlots[i].nome;
+    const Objetivo = PartidaDados.playerSlots[i].objetivo;
+    const Cor = cores[i]; // Atribui a cor ao jogador
 
-        // Adiciona o jogador ao array Jogadores
-        Jogadores.push(jogador);
-      }
+    // Cria um objeto para representar o jogador com o ID, nome e cor
+    const jogador = {
+      id: jogadorId,
+      nome: jogadorNome,
+      objetivo: Objetivo,
+      cor: Cor
 
-      // Atualiza os dados do lobby com os novos dados dos jogadores
-      PartidaDados.playerSlots = Jogadores;
-     
-      // Atualiza o lobby no servidor
-      await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-    
-      // Aplicar cores aos territórios
-      //await Atualizafase(lobbyId,1);
+    };
 
-      //console.log("Jogadores atualizados:");
-    
-    
+    // Adiciona o jogador ao array Jogadores
+    Jogadores.push(jogador);
+  }
+
+  // Atualiza os dados do lobby com os novos dados dos jogadores
+  PartidaDados.playerSlots = Jogadores;
+
+  // Atualiza o lobby no servidor
+  await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
+  // Aplicar cores aos territórios
+  //await Atualizafase(lobbyId,1);
+
+  //console.log("Jogadores atualizados:");
+
+
 }
 
-async function Consultarfase(lobbyId){
-const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
-// Consultar a fase atual da partida e retornar
+async function Consultarfase(lobbyId) {
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
+  // Consultar a fase atual da partida e retornar
 
-return PartidaDados.fase;
+  return PartidaDados.fase;
 }
 
 async function Atualizafase(lobbyId, fase) {
@@ -420,8 +418,8 @@ async function Atualizafase(lobbyId, fase) {
   if (PartidaDados.id === lobbyId) {
     // Atualizar o campo "fase"
     PartidaDados.fase = fase;
-   // console.log(JSON.stringify(PartidaDados, null, 2));
-    console.log("Atualizando para fase"+fase+" :"+PartidaDados.fase);
+    // console.log(JSON.stringify(PartidaDados, null, 2));
+    console.log("Atualizando para fase" + fase + " :" + PartidaDados.fase);
     // Enviar os dados atualizados de volta para o servidor
     const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
       method: 'PUT',
@@ -445,18 +443,17 @@ async function Atualizafase(lobbyId, fase) {
   }
 }
 
-async function ImprimirJogadores(lobbyId)
-{
-const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
+async function ImprimirJogadores(lobbyId) {
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby 
 
 
-      for(i=0;i<=7;i++){
-        document.getElementById('nomeJogador'+i).textContent =  PartidaDados.playerSlots[i].id;
-        const spanNomeJogador = document.getElementById('nomeJogador'+i);
-        spanNomeJogador.style.color = PartidaDados.playerSlots[i].cor;
-      }
-    }
-    
+  for (i = 0; i <= 7; i++) {
+    document.getElementById('nomeJogador' + i).textContent = PartidaDados.playerSlots[i].id;
+    const spanNomeJogador = document.getElementById('nomeJogador' + i);
+    spanNomeJogador.style.color = PartidaDados.playerSlots[i].cor;
+  }
+}
+
 function atribuirObjetivos() {
   const Objetivos = [
     '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'
@@ -464,71 +461,69 @@ function atribuirObjetivos() {
   embaralharArray(Objetivos);
   return Objetivos;
 }
- 
 
-async function ObjetivoMain(lobbyId)
-{
+
+async function ObjetivoMain(lobbyId) {
   const Fase = await Consultarfase(lobbyId);
 
-  if ( Fase >= 1 ){
+  if (Fase >= 1) {
     return null;
   };
   console.log("Objetivo Main...");
-    
+
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
   const ObjetivosAleatorios = atribuirObjetivos();
   let Jogadores = [];
 
   for (let i = 0; i < PartidaDados.playerSlots.length; i++) { //percorre a lista de jogadores
-  //console.log(ObjetivosAleatorios[i]); 
-  // Aqui... atribuir aleatoriamente os 16 objetivos aos 8 jogadores
+    //console.log(ObjetivosAleatorios[i]); 
+    // Aqui... atribuir aleatoriamente os 16 objetivos aos 8 jogadores
 
     //teste
-  
-        const jogadorId = PartidaDados.playerSlots[i].id;
-        const jogadorNome = PartidaDados.playerSlots[i].nome;
-        const Objetivo = ObjetivosAleatorios[i];
-        const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
-        //console.log("J"+jogadorId+" Obj:"+Objetivo);
 
-        // Cria um objeto para representar o jogador com o ID, nome e cor
-        const jogador = {
-          id: jogadorId,
-          nome: jogadorNome,
-          objetivo: Objetivo,
-          cor: Cor
-        };
+    const jogadorId = PartidaDados.playerSlots[i].id;
+    const jogadorNome = PartidaDados.playerSlots[i].nome;
+    const Objetivo = ObjetivosAleatorios[i];
+    const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
+    //console.log("J"+jogadorId+" Obj:"+Objetivo);
 
-        // Adiciona o jogador ao array Jogadores
-        Jogadores.push(jogador);
+    // Cria um objeto para representar o jogador com o ID, nome e cor
+    const jogador = {
+      id: jogadorId,
+      nome: jogadorNome,
+      objetivo: Objetivo,
+      cor: Cor
+    };
+
+    // Adiciona o jogador ao array Jogadores
+    Jogadores.push(jogador);
 
   }
-      PartidaDados.playerSlots = Jogadores;
-      
-   //   console.log(JSON.stringify(PartidaDados) + " DADOS");
+  PartidaDados.playerSlots = Jogadores;
 
-      //teste
-      await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+  //   console.log(JSON.stringify(PartidaDados) + " DADOS");
+
+  //teste
+  await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
 }
 
-async function ExibeObjetivo(lobbyId,UsLogado) {
+async function ExibeObjetivo(lobbyId, UsLogado) {
   try {
 
     const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-    
-    for (i=0;i<=7;i++){
-    if (PartidaDados.playerSlots[i].nome == UsLogado)
-      {
-      
+
+    for (i = 0; i <= 7; i++) {
+      if (PartidaDados.playerSlots[i].nome == UsLogado) {
+
         const objetivos = [
-          { numero: 1, descricao: 'Conquistar America do Norte e Africa'},
-          { numero: 2, descricao: 'Conquistar Asia e Africa'},
-          { numero: 3, descricao: 'Conquistar America do Norte e Oceania'},
+          { numero: 1, descricao: 'Conquistar America do Norte e Africa' },
+          { numero: 2, descricao: 'Conquistar Asia e Africa' },
+          { numero: 3, descricao: 'Conquistar America do Norte e Oceania' },
           { numero: 4, descricao: 'Conquistar Europa Ameria do Sul e mais um à sua escolha' },
-          { numero: 5, descricao: 'Conquistar Asia e America do Sul'},
+          { numero: 5, descricao: 'Conquistar Asia e America do Sul' },
           { numero: 6, descricao: 'Conquistar Europa, Oceania e mais um à sua escolha' },
-          { numero: 7, descricao: 'Conquistar 18 territorios, com 2 tropas em cada pelo menos'},
+          { numero: 7, descricao: 'Conquistar 18 territorios, com 2 tropas em cada pelo menos' },
           { numero: 8, descricao: 'Conquistar 24 territorios, a sua escolha' },
           { numero: 9, descricao: 'Destruir Cinza' },
           { numero: 10, descricao: 'Destruir Laraja' },
@@ -540,39 +535,39 @@ async function ExibeObjetivo(lobbyId,UsLogado) {
           { numero: 16, descricao: 'Destruir Vermelho' }
         ];
 
-      //document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
-      const x = PartidaDados.playerSlots[i].objetivo-1;
-      console.log(objetivos[x].numero);
-      document.getElementById('Objetivo').textContent = objetivos[x].descricao;  
+        //document.getElementById('Objetivo').textContent =  PartidaDados.playerSlots[i].objetivo;
+        const x = PartidaDados.playerSlots[i].objetivo - 1;
+        console.log(objetivos[x].numero);
+        document.getElementById('Objetivo').textContent = objetivos[x].descricao;
 
-      return PartidaDados.playerSlots[i].objetivo;
+        return PartidaDados.playerSlots[i].objetivo;
       }
-    else{
-      console.log("Usuario não encontrado");
+      else {
+        console.log("Usuario não encontrado");
+      }
     }
-  }
 
-    
+
   } catch (error) {
-      console.error('Erro:', error);
-      alert('Erro ao autenticar usuário.');
+    console.error('Erro:', error);
+    alert('Erro ao autenticar usuário.');
   }
 }
 
-async function MostrarHTML(element){
-  
+async function MostrarHTML(element) {
+
   element.style.display = 'none';
 }
 
-async function ExibeTurno(lobbyId){
+async function ExibeTurno(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-  
-    document.getElementById('TurnoAtual').textContent = PartidaDados.turno; 
+
+  document.getElementById('TurnoAtual').textContent = PartidaDados.turno;
 }
 
-async function AtualizaTurno(lobbyId,turno) {
+async function AtualizaTurno(lobbyId, turno) {
   // Obter os dados da partida
-  console.log("Atualizando para turno"+turno);
+  console.log("Atualizando para turno" + turno);
 
   const PartidaDados = await dadospartida(lobbyId);
 
@@ -581,7 +576,7 @@ async function AtualizaTurno(lobbyId,turno) {
     // Atualizar o campo "fase"
     PartidaDados.turno = turno;
     //console.log(JSON.stringify(PartidaDados, null, 2));
-    console.log("Atualizando para turno"+turno+" :"+PartidaDados.turno);
+    console.log("Atualizando para turno" + turno + " :" + PartidaDados.turno);
     // Enviar os dados atualizados de volta para o servidor
     const response = await fetch(`https://45.140.193.150:8443/partida/${lobbyId}`, {
       method: 'PUT',
@@ -605,11 +600,10 @@ async function AtualizaTurno(lobbyId,turno) {
   }
 }
 
-async function VerificaTurno(lobbyId)
-{
+async function VerificaTurno(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-   
-  console.log("Turno Verificado:"+PartidaDados.turno);
+
+  console.log("Turno Verificado:" + PartidaDados.turno);
   return PartidaDados.turno;
 }
 
@@ -620,15 +614,15 @@ async function ExibirTropas(lobbyId) {
 
   const PartidaDados = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
   const territorios = PartidaDados.territorios; // Suponho que 'territorios' contém os dados dos territórios
-  
+
   // Array com as coordenadas x e y para cada texto
 
   const coordenadasTextos = [
-    
+
     { x: 69, y: 106 }, // 0
     { x: 58, y: 125 }, //1
     { x: 51, y: 90 }, //2
-    { x: 54, y: 110}, //3
+    { x: 54, y: 110 }, //3
     { x: 39, y: 81 }, //4
     { x: 36, y: 60 }, //5
     { x: 35, y: 43 }, //6
@@ -641,7 +635,7 @@ async function ExibirTropas(lobbyId) {
     { x: 199, y: 20 }, //13
     { x: 165, y: 27 }, //14
     { x: 153, y: 34 }, //15
-    { x: 112, y: 49}, //16
+    { x: 112, y: 49 }, //16
     { x: 181, y: 52 }, //17
     { x: 131, y: 45 }, //18
     { x: 150, y: 56 },  //19
@@ -652,8 +646,8 @@ async function ExibirTropas(lobbyId) {
     { x: 137, y: 83 }, //24
     { x: 162, y: 78 }, //25
     { x: 49, y: 45 }, //26
-    { x: 53, y: 63}, //27
-    { x: 76, y: 17}, //28 
+    { x: 53, y: 63 }, //27
+    { x: 76, y: 17 }, //28 
     { x: 95.5, y: 31 }, //29
     { x: 121, y: 85 }, //30
     { x: 103, y: 90 }, //31
@@ -667,13 +661,13 @@ async function ExibirTropas(lobbyId) {
     { x: 189, y: 104 }, //39
     { x: 143, y: 132 }, //40
     { x: 89, y: 49 } //41
-// Adicione mais coordenadas conforme necessário
+    // Adicione mais coordenadas conforme necessário
   ];
-  
+
   console.log(territorios);
 
 
-  paths.forEach(function(path, i) {
+  paths.forEach(function (path, i) {
     // Obtém as coordenadas para o texto
     const coords = coordenadasTextos[i];
     // Cria um elemento de texto
@@ -707,364 +701,359 @@ async function ExibirTropas(lobbyId) {
   });
 }
 
-async function turnofase1(lobbyId)
-{
+async function turnofase1(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
   const Fase = await Consultarfase(lobbyId);
-  const Turno = PartidaDados.turno; 
+  const Turno = PartidaDados.turno;
 
-  if ( Fase >= 2 ){
+  if (Fase >= 2) {
     return null;
   };
 
-  if ( Fase == 1 && Turno <= 0 ){
+  if (Fase == 1 && Turno <= 0) {
 
-  let Jogadores = [];
-  let QuantidadeTropasJ = [
-    {id:0,tropas:0},
-    {id:1,tropas:0},
-    {id:2,tropas:0},
-    {id:3,tropas:0},
-    {id:4,tropas:0},
-    {id:5,tropas:0},
-    {id:6,tropas:0},
-    {id:7,tropas:0},
-  ];
-  for(i=0;i<8;i++)
-    {
-    // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
-   
-    for (i=0;i<8;i++){
-    for(j=0;j<42;j++){
-      if (PartidaDados.territorios[j].dono == i)
-        {
-        QuantidadeTropasJ[i].tropas = QuantidadeTropasJ[i].tropas+1;
+    let Jogadores = [];
+    let QuantidadeTropasJ = [
+      { id: 0, tropas: 0 },
+      { id: 1, tropas: 0 },
+      { id: 2, tropas: 0 },
+      { id: 3, tropas: 0 },
+      { id: 4, tropas: 0 },
+      { id: 5, tropas: 0 },
+      { id: 6, tropas: 0 },
+      { id: 7, tropas: 0 },
+    ];
+    for (i = 0; i < 8; i++) {
+      // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
 
+      for (i = 0; i < 8; i++) {
+        for (j = 0; j < 42; j++) {
+          if (PartidaDados.territorios[j].dono == i) {
+            QuantidadeTropasJ[i].tropas = QuantidadeTropasJ[i].tropas + 1;
+
+          }
         }
+      }
+
+      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+        const jogadorId = PartidaDados.playerSlots[i].id;
+        const jogadorNome = PartidaDados.playerSlots[i].nome;
+        const Objetivo = PartidaDados.playerSlots[i].objetivo;
+        const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
+        const Tropas = Math.floor(QuantidadeTropasJ[i].tropas / 2); // Dividde por 2 arredonda
+        console.log("Tropas: " + QuantidadeTropasJ[i]);
+
+        // Cria um objeto para representar o jogador com o ID, nome e cor
+        const jogador = {
+          id: jogadorId,
+          nome: jogadorNome,
+          objetivo: Objetivo,
+          cor: Cor,
+          tropas: Tropas
+        };
+
+        // Adiciona o jogador ao array Jogadores
+        Jogadores.push(jogador);
+      }
+
+      // Atualiza os dados do lobby com os novos dados dos jogadores
+
     }
-  }
-
-    for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
-      const jogadorId = PartidaDados.playerSlots[i].id;
-      const jogadorNome = PartidaDados.playerSlots[i].nome;
-      const Objetivo = PartidaDados.playerSlots[i].objetivo;
-      const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
-      const Tropas = Math.floor(QuantidadeTropasJ[i].tropas/2); // Dividde por 2 arredonda
-      console.log("Tropas: "+QuantidadeTropasJ[i]);
-
-      // Cria um objeto para representar o jogador com o ID, nome e cor
-      const jogador = {
-        id: jogadorId,
-        nome: jogadorNome,
-        objetivo: Objetivo,
-        cor: Cor,
-        tropas: Tropas
-      };
-
-      // Adiciona o jogador ao array Jogadores
-      Jogadores.push(jogador);
-    }
-
-    // Atualiza os dados do lobby com os novos dados dos jogadores
-   
-  }
 
     PartidaDados.playerSlots = Jogadores;
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
   };
-    // Ate aqui logica para atualizar o DB com as tropas disponiveis 
-    // Apartir daqui logica para destribuir tropas
+  // Ate aqui logica para atualizar o DB com as tropas disponiveis 
+  // Apartir daqui logica para destribuir tropas
 
-    // Função que destaca o path clicado e desfoca os outros
+  // Função que destaca o path clicado e desfoca os outros
 
-    async function removerEventListeners() {
-      const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
-      const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
-  
-      if (!svgDoc) {
-          console.error('Erro ao acessar o conteúdo do documento SVG.');
-          return;
-      }
-      
-      const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-  
-      paths.forEach(path => {
-          path.removeEventListener('click', handleClick);
-      });
-      console.log("Removido os Eventos");
-  }
-  
-    
-
-  // Função para remover event listeners de todos os paths
-function removerEventListeners(handleClick) {
-
-  const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+  async function removerEventListeners() {
+    const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
     const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
     if (!svgDoc) {
-        console.error('Erro ao acessar o conteúdo do documento SVG.');
-        return;
+      console.error('Erro ao acessar o conteúdo do documento SVG.');
+      return;
     }
 
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
-  paths.forEach(path => {
+    paths.forEach(path => {
       path.removeEventListener('click', handleClick);
-  });
-}
+    });
+    console.log("Removido os Eventos");
+  }
 
-function EsperaClick() {
-  return new Promise(resolve => {
+
+
+  // Função para remover event listeners de todos os paths
+  function removerEventListeners(handleClick) {
+
+    const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+    const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+
+    if (!svgDoc) {
+      console.error('Erro ao acessar o conteúdo do documento SVG.');
+      return;
+    }
+
+    const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+
+    paths.forEach(path => {
+      path.removeEventListener('click', handleClick);
+    });
+  }
+
+  function EsperaClick() {
+    return new Promise(resolve => {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
       if (!svgDoc) {
-          console.error('Erro ao acessar o conteúdo do documento SVG.');
-          resolve(null); // Resolve com null em caso de erro
-          return;
+        console.error('Erro ao acessar o conteúdo do documento SVG.');
+        resolve(null); // Resolve com null em caso de erro
+        return;
       }
 
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
       function handleClick(event) {
-          const clickedPath = event.target;
-          console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-          const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-          // paths[PathA-1].style.opacity = '0.3';
+        const clickedPath = event.target;
+        console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
+        const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+        // paths[PathA-1].style.opacity = '0.3';
 
-          // Remove o event listener deste path após o clique
-          removerEventListeners(handleClick);
-  
-          // Resolve a Promise com o path clicado
-          resolve(clickedPath);
+        // Remove o event listener deste path após o clique
+        removerEventListeners(handleClick);
+
+        // Resolve a Promise com o path clicado
+        resolve(clickedPath);
       }
 
       paths.forEach(path => {
-          path.addEventListener('click', handleClick, { once: true }); // Adiciona o event listener para um único clique
+        path.addEventListener('click', handleClick, { once: true }); // Adiciona o event listener para um único clique
       });
-  });
-}
-
-    //
-
-    for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
-
-      console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
-  
-      function mostrarInput() {
-          // Mostra o container de input
-          document.getElementById('inputContainer').classList.remove('hidden');
-      }
-      
-      function esconderInput() {
-          // Esconde o container de input e limpa o valor do input
-          document.getElementById('inputContainer').classList.add('hidden');
-          document.getElementById('numeroInput').value = ''; // Limpa o input
-      }
-      
-      function esperarInput() {
-          return new Promise((resolve) => {
-              // Cria uma nova promessa que será resolvida quando o input for processado
-              const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
-              const numeroInput = document.getElementById('numeroInput'); // Campo de input
-              
-              function processarInput() {
-                  // Processa o input do usuário
-                  const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
-                  
-                  if (isNaN(numero)) {
-                      // Se o valor não for um número válido, exibe um alerta
-                      alert("Por favor, insira um número válido.");
-                      return;
-                  }
-                  
-                  resolve(numero); // Resolve a promessa com o número inserido
-                  esconderInput(); // Esconde o input
-                  
-                  // Remove o event listener após a resolução da promessa
-                  submitBtn.removeEventListener('click', processarInput);
-              }
-              
-              // Adiciona um event listener para o botão de submissão
-              submitBtn.addEventListener('click', processarInput);
-          });
-      }
-      
-
-      async function atualizarTropasJogador(partidaDados, idJogador, novasTropas) {
-        const jogador = partidaDados.playerSlots.find(jogador => jogador.id === idJogador);
-        if (jogador) {
-          jogador.tropas = novasTropas;
-          
-          const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
-          try {
-            const response = await fetch(url, {
-              method: 'PUT',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(partidaDados)
-            });
-            if (response.ok) {
-              console.log(`Tropas do jogador ${idJogador} atualizadas para ${novasTropas}`);
-            } else {
-              console.error(`Erro ao atualizar a partida: ${response.status} ${response.statusText}`);
-            }
-          } catch (error) {
-            console.error('Erro na requisição:', error);
-          }
-        } else {
-          console.error(`Jogador com ID ${idJogador} não encontrado.`);
-        }
-      }
-      
-      // Função para atualizar as tropas de um território por ID
-      async function atualizarTropasTerritorio(partidaDados,idPartida, territorioId, novoNumeroTropas) {
-      try {
-          // Encontrar o território na lista de territórios da partida
-          const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
-          
-          if (territorio) {
-              // Atualizar as tropas do território encontrado
-              territorio.tropas = novoNumeroTropas;
-              
-              // Montar a URL para a requisição PUT
-              const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
-              
-              // Fazer a requisição PUT para atualizar a partida
-              const response = await fetch(url, {
-                  method: 'PUT',
-                  headers: {
-                      'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
-              });
-              
-              // Verificar se a requisição foi bem-sucedida
-              if (response.ok) {
-                  console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
-              } else {
-                  console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
-                  throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
-              }
-          } else {
-              console.error(`Território com ID ${territorioId} não encontrado.`);
-          }
-      } catch (error) {
-          console.error('Erro ao atualizar tropas do território:', error.message);
-          throw error;
-      }
-     }
-  
- 
-  
-      async function rodadaDeJogadores(lobbyId,PartidaDados2) {
-          // Função assíncrona que gerencia a rodada de jogadores
-          console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
-
-          const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
-          const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
-
-          const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-          
-          while(PartidaDados2.playerSlots[i].tropas > 0){ // Distribuir ate zerar as tropas
-          PartidaDados2 = await dadospartida(lobbyId);
-          for(j=0;j<42;j++){
-            if (PartidaDados.territorios[j].dono != i)
-              {
-              
-                if (!svgDoc) {
-                  console.error('Erro ao acessar o conteúdo do documento SVG.');
-                  return;
-                }
-            
-                for (let path of paths) {
-                  PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-          
-                  paths[PathA-1].style.opacity = '0.3';
-                  paths[PathA-1].style.pointerEvents = "none"; // Ignora o objeto
-
-                  }
-          
-              }
-              
-              }
-          
-          
-          console.log("Roda1");
-          let Territorio1 = await EsperaClick();
-
-          console.log("Territorio Selecionado");
-         // let Territorio2 = await EsperaClick();
-          removerEventListeners();
-
-          Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])
-         // Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
-
-
-          console.log("Identificação:"+Territorio1);
-          
-          //console.log("Tropas"+PartidaDados2.playerSlots[i].tropas);
-
-
-
-          mostrarInput(); // Mostra o input para o jogador
-          const numero = await esperarInput(); // Espera o jogador inserir um número
-
-          console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
-        
-
-          for(j=0;j<42;j++){
-            
-            paths[j].style.opacity = '1.0';
-            paths[j].style.pointerEvents = "auto"; // Ignora o objeto
-
-            console.log("teste");
-          }
-
-          TropasJogador = PartidaDados2.playerSlots[i].tropas-numero;
-          NovaTropasTerritorio = PartidaDados2.territorios[Territorio1-1].tropas + numero; 
-
-         await atualizarTropasJogador(PartidaDados2 ,i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
-          //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
-         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1-1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
-         console.log("Atualizar Turno...");      
-
-
-        }
-        await AtualizaTurno(PartidaDados2.id,PartidaDados2.turno+1);
-
-        }
-        var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-
- 
-      // Inicia a sequência chamando rodadaDeJogadores()
-        await rodadaDeJogadores(lobbyId,PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
-
-        await AtualizaTurno(PartidaDados2.id,0);
-        await Atualizafase(lobbyId,2);
-        }
-        console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
-        
-        console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
-        
-              // Finalizar turno, proximo jogador.
-          
-
+    });
   }
 
+  //
 
-async function turnofase2acima()
-{
-// Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
-// Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
-// logica dos dados 1:1 1:2 1:3.
-// Transferir territorios e Atuzalizar tropas, destribuir as tropas para territorio conquistado
-// Remanejar tropas restantes
-// Finalizar turno, proximo jogador.
+  for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
+
+    console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+
+    function mostrarInput() {
+      // Mostra o container de input
+      document.getElementById('inputContainer').classList.remove('hidden');
+    }
+
+    function esconderInput() {
+      // Esconde o container de input e limpa o valor do input
+      document.getElementById('inputContainer').classList.add('hidden');
+      document.getElementById('numeroInput').value = ''; // Limpa o input
+    }
+
+    function esperarInput() {
+      return new Promise((resolve) => {
+        // Cria uma nova promessa que será resolvida quando o input for processado
+        const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
+        const numeroInput = document.getElementById('numeroInput'); // Campo de input
+
+        function processarInput() {
+          // Processa o input do usuário
+          const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
+
+          if (isNaN(numero)) {
+            // Se o valor não for um número válido, exibe um alerta
+            alert("Por favor, insira um número válido.");
+            return;
+          }
+
+          resolve(numero); // Resolve a promessa com o número inserido
+          esconderInput(); // Esconde o input
+
+          // Remove o event listener após a resolução da promessa
+          submitBtn.removeEventListener('click', processarInput);
+        }
+
+        // Adiciona um event listener para o botão de submissão
+        submitBtn.addEventListener('click', processarInput);
+      });
+    }
+
+
+    async function atualizarTropasJogador(partidaDados, idJogador, novasTropas) {
+      const jogador = partidaDados.playerSlots.find(jogador => jogador.id === idJogador);
+      if (jogador) {
+        jogador.tropas = novasTropas;
+
+        const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
+        try {
+          const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(partidaDados)
+          });
+          if (response.ok) {
+            console.log(`Tropas do jogador ${idJogador} atualizadas para ${novasTropas}`);
+          } else {
+            console.error(`Erro ao atualizar a partida: ${response.status} ${response.statusText}`);
+          }
+        } catch (error) {
+          console.error('Erro na requisição:', error);
+        }
+      } else {
+        console.error(`Jogador com ID ${idJogador} não encontrado.`);
+      }
+    }
+
+    // Função para atualizar as tropas de um território por ID
+    async function atualizarTropasTerritorio(partidaDados, idPartida, territorioId, novoNumeroTropas) {
+      try {
+        // Encontrar o território na lista de territórios da partida
+        const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
+
+        if (territorio) {
+          // Atualizar as tropas do território encontrado
+          territorio.tropas = novoNumeroTropas;
+
+          // Montar a URL para a requisição PUT
+          const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
+
+          // Fazer a requisição PUT para atualizar a partida
+          const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
+          });
+
+          // Verificar se a requisição foi bem-sucedida
+          if (response.ok) {
+            console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
+          } else {
+            console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
+            throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
+          }
+        } else {
+          console.error(`Território com ID ${territorioId} não encontrado.`);
+        }
+      } catch (error) {
+        console.error('Erro ao atualizar tropas do território:', error.message);
+        throw error;
+      }
+    }
+
+
+
+    async function rodadaDeJogadores(lobbyId, PartidaDados2) {
+      // Função assíncrona que gerencia a rodada de jogadores
+      console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+
+      const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+      const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+
+      const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+
+      while (PartidaDados2.playerSlots[i].tropas > 0) { // Distribuir ate zerar as tropas
+        PartidaDados2 = await dadospartida(lobbyId);
+        for (j = 0; j < 42; j++) {
+          if (PartidaDados.territorios[j].dono != i) {
+
+            if (!svgDoc) {
+              console.error('Erro ao acessar o conteúdo do documento SVG.');
+              return;
+            }
+
+            for (let path of paths) {
+              PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+              paths[PathA - 1].style.opacity = '0.3';
+              paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+
+            }
+
+          }
+
+        }
+
+
+        console.log("Roda1");
+        let Territorio1 = await EsperaClick();
+
+        console.log("Territorio Selecionado");
+        // let Territorio2 = await EsperaClick();
+        removerEventListeners();
+
+        Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])
+        // Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
+
+
+        console.log("Identificação:" + Territorio1);
+
+        //console.log("Tropas"+PartidaDados2.playerSlots[i].tropas);
+
+
+
+        mostrarInput(); // Mostra o input para o jogador
+        const numero = await esperarInput(); // Espera o jogador inserir um número
+
+        console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
+
+
+        for (j = 0; j < 42; j++) {
+
+          paths[j].style.opacity = '1.0';
+          paths[j].style.pointerEvents = "auto"; // Ignora o objeto
+
+          console.log("teste");
+        }
+
+        TropasJogador = PartidaDados2.playerSlots[i].tropas - numero;
+        NovaTropasTerritorio = PartidaDados2.territorios[Territorio1 - 1].tropas + numero;
+
+        await atualizarTropasJogador(PartidaDados2, i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
+        //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
+        await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
+        console.log("Atualizar Turno...");
+
+
+      }
+      await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
+
+    }
+    var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+
+    // Inicia a sequência chamando rodadaDeJogadores()
+    await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
+
+    await AtualizaTurno(PartidaDados2.id, 0);
+    await Atualizafase(lobbyId, 2);
+  }
+  console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
+
+  console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
+
+  // Finalizar turno, proximo jogador.
+
+
+}
+
+
+async function turnofase2acima() {
+  // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+  // Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
+  // logica dos dados 1:1 1:2 1:3.
+  // Transferir territorios e Atuzalizar tropas, destribuir as tropas para territorio conquistado
+  // Remanejar tropas restantes
+  // Finalizar turno, proximo jogador.
 }
 
 
@@ -1074,47 +1063,47 @@ const rollBtn = document.getElementById('rollBtn');
 rollBtn.addEventListener('click', rollDice);
 
 function rollDice() {
-    dice.classList.add('rolling');
+  dice.classList.add('rolling');
 
-    // Remove the 'rolling' class after the animation is done
-    setTimeout(() => {
-        dice.classList.remove('rolling');
+  // Remove the 'rolling' class after the animation is done
+  setTimeout(() => {
+    dice.classList.remove('rolling');
 
-        const randNumber = Math.floor(Math.random() * 6) + 1;
-        let xRotation = 0;
-        let yRotation = 0;
+    const randNumber = Math.floor(Math.random() * 6) + 1;
+    let xRotation = 0;
+    let yRotation = 0;
 
-        switch (randNumber) {
-            case 1:
-                xRotation = 0;
-                yRotation = 0;
-                break;
-            case 2:
-                xRotation = 0;
-                yRotation = 180;
-                break;
-            case 3:
-                xRotation = 0;
-                yRotation = -90;
-                break;
-            case 4:
-                xRotation = 0;
-                yRotation = 90;
-                break;
-            case 5:
-                xRotation = -90;
-                yRotation = 0;
-                break;
-            case 6:
-                xRotation = 90;
-                yRotation = 0;
-                break;
-        }
+    switch (randNumber) {
+      case 1:
+        xRotation = 0;
+        yRotation = 0;
+        break;
+      case 2:
+        xRotation = 0;
+        yRotation = 180;
+        break;
+      case 3:
+        xRotation = 0;
+        yRotation = -90;
+        break;
+      case 4:
+        xRotation = 0;
+        yRotation = 90;
+        break;
+      case 5:
+        xRotation = -90;
+        yRotation = 0;
+        break;
+      case 6:
+        xRotation = 90;
+        yRotation = 0;
+        break;
+    }
 
-        dice.style.transform = `rotateX(${xRotation + 1800}deg) rotateY(${yRotation + 1800}deg)`;
+    dice.style.transform = `rotateX(${xRotation + 1800}deg) rotateY(${yRotation + 1800}deg)`;
 
-        console.log(`Número rolado: ${randNumber}`);
-    }, 2000); // The duration of the roll animation
+    console.log(`Número rolado: ${randNumber}`);
+  }, 2000); // The duration of the roll animation
 }
 
 dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
