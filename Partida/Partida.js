@@ -1059,6 +1059,7 @@ async function turnofase1(lobbyId) {
     await AtualizaTurno(PartidaDados2.id, 0);
     await Atualizafase(lobbyId, 2);
     return;
+    }
 
   console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
 
