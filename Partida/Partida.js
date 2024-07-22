@@ -1072,13 +1072,15 @@ async function turnofase1(lobbyId) {
 
 
 async function turnofase2acima() {
-
-  // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
-  // Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
-  // logica dos dados 1:1 1:2 1:3.
-  // Transferir territorios e Atuzalizar tropas, destribuir as tropas para territorio conquistado
-  // Remanejar tropas restantes
-  // Finalizar turno, proximo jogador.
+  // 1 - Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+  // 2 - Distribuir tropas
+  // 3 - Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
+  // 3.1 - Distribuir se vitoria Transferir territorios e Atuzalizar tropas, destribuir as tropas para territorio conquistado
+  // 4 - Remanejar tropas restantes
+  // 5 -Finalizar turno, proximo jogador.
+  // OBS: logica dos dados 1:1 1:2 1:3
+  // Repetir até validar o objetivo
+  
 }
 
 
