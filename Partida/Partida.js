@@ -711,7 +711,7 @@ async function turnofase1(lobbyId) {
     return null;
   };
 
-  if (Fase == 1 && Turno <= 0) {
+  if (Fase == 1 && Turno < 0) {
 
     let Jogadores = [];
     let QuantidadeTropasJ = [
@@ -764,6 +764,7 @@ async function turnofase1(lobbyId) {
     PartidaDados.playerSlots = Jogadores;
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+    Turno=Turno+1;
   };
   // Ate aqui logica para atualizar o DB com as tropas disponiveis 
   // Apartir daqui logica para destribuir tropas
