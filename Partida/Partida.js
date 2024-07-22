@@ -764,8 +764,9 @@ async function turnofase1(lobbyId) {
 
     PartidaDados.playerSlots = Jogadores;
     PartidaDados.turno = PartidaDados.turno+1; 
-    await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     Turno=Turno+1;
+
+    await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
   };
   // Ate aqui logica para atualizar o DB com as tropas disponiveis 
