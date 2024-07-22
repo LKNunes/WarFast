@@ -1067,7 +1067,6 @@ async function turnofase1(lobbyId) {
 
   // Finalizar turno, proximo jogador.
 
-
 }
 
 async function turnofase2acima(lobbyId) {
