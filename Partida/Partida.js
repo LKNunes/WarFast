@@ -705,7 +705,7 @@ async function turnofase1(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
   const Fase = await Consultarfase(lobbyId);
-  const Turno = PartidaDados.turno;
+  var Turno = PartidaDados.turno;
 
   if (Fase >= 2) {
     return null;
