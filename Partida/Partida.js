@@ -764,7 +764,6 @@ async function turnofase1(lobbyId) {
 
     PartidaDados.playerSlots = Jogadores;
     PartidaDados.turno = PartidaDados.turno+1; 
-    Turno=Turno+1;
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
     
