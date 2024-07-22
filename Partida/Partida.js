@@ -703,7 +703,7 @@ async function ExibirTropas(lobbyId) {
 
 async function turnofase1(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-  
+
   const Fase = await Consultarfase(lobbyId);
   const Turno = PartidaDados.turno;
 
@@ -1073,7 +1073,7 @@ async function turnofase1(lobbyId) {
 
 async function turnofase2acima(lobbyId) {
   // 1 - Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
-
+  console.log("Fase 2 - Função");
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
   const Fase = await Consultarfase(lobbyId);
