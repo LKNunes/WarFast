@@ -1073,6 +1073,76 @@ async function turnofase1(lobbyId) {
 
 async function turnofase2acima() {
   // 1 - Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+
+  const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+  const Fase = await Consultarfase(lobbyId);
+  const Turno = PartidaDados.turno;
+
+  
+  if (Fase <= 1) { // Quebra a função caso esteja na fase menor que 1
+    return null;
+  };
+
+  if (Fase == 2 && Turno <= 0) { // So distribui as tropas no turno 0. Verificar se no Turno 0 não aplica mais de 1 vez as tropas. 
+
+    let Jogadores = [];
+    let QuantidadeTropasJ = [
+      { id: 0, tropas: 0 },
+      { id: 1, tropas: 0 },
+      { id: 2, tropas: 0 },
+      { id: 3, tropas: 0 },
+      { id: 4, tropas: 0 },
+      { id: 5, tropas: 0 },
+      { id: 6, tropas: 0 },
+      { id: 7, tropas: 0 },
+    ];
+    for (i = 0; i < 8; i++) {
+      // Liberar tropas de acordo com numero de terrtorios dividido por 2 Ex: Se 7 Territorios 3 tropas.
+
+      for (i = 0; i < 8; i++) {
+        for (j = 0; j < 42; j++) {
+          if (PartidaDados.territorios[j].dono == i) {
+            QuantidadeTropasJ[i].tropas = QuantidadeTropasJ[i].tropas + 1;
+
+          }
+        }
+      }
+
+      for (let i = 0; i < PartidaDados.playerSlots.length; i++) {
+        const jogadorId = PartidaDados.playerSlots[i].id;
+        const jogadorNome = PartidaDados.playerSlots[i].nome;
+        const Objetivo = PartidaDados.playerSlots[i].objetivo;
+        const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
+        const Tropas = Math.floor(QuantidadeTropasJ[i].tropas / 2); // Dividde por 2 arredonda
+        console.log("Tropas: " + QuantidadeTropasJ[i]);
+
+        // Cria um objeto para representar o jogador com o ID, nome e cor
+        const jogador = {
+          id: jogadorId,
+          nome: jogadorNome,
+          objetivo: Objetivo,
+          cor: Cor,
+          tropas: Tropas
+        };
+
+        // Adiciona o jogador ao array Jogadores
+        Jogadores.push(jogador);
+      }
+
+      // Atualiza os dados do lobby com os novos dados dos jogadores
+
+    }
+
+    PartidaDados.playerSlots = Jogadores;
+
+    await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+  };
+
+  //1 fim
+
+  
+
   // 2 - Distribuir tropas
   // 3 - Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
   // 3.1 - Distribuir se vitoria Transferir territorios e Atuzalizar tropas, destribuir as tropas para territorio conquistado
