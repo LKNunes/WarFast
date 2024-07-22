@@ -703,7 +703,7 @@ async function ExibirTropas(lobbyId) {
 
 async function turnofase1(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-  console.log("Fase 2");
+  
   const Fase = await Consultarfase(lobbyId);
   const Turno = PartidaDados.turno;
 
