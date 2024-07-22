@@ -1421,7 +1421,7 @@ async function turnofase2acima(lobbyId) {
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
     
     if (PartidaDados2.turno >= 8){
-    await AtualizaTurno(PartidaDados2.id, 0);
+    await AtualizaTurno(PartidaDados2.id, -1);
     await Atualizafase(lobbyId, 2);
     return;
     }
@@ -1431,7 +1431,7 @@ async function turnofase2acima(lobbyId) {
   var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
   if (PartidaDados4.turno >= 8){
-    await AtualizaTurno(PartidaDados4.id, -1);
+    await AtualizaTurno(PartidaDados4.id, 0);
     await Atualizafase(lobbyId, 2);
     return;
     }
