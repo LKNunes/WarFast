@@ -1059,7 +1059,7 @@ async function turnofase1(lobbyId) {
 
   if (PartidaDados4.turno >= 8){
     await AtualizaTurno(PartidaDados4.id, 0);
-    await Atualizafase(lobbyId, 2);
+ //  await Atualizafase(lobbyId, 2); Comentar essa linha para testar roda1 infinita. 
     return;
     }
 
