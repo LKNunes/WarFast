@@ -712,7 +712,7 @@ async function turnofase1(lobbyId) {
   };
 
   if (Fase == 1 && Turno <= -1) {
-
+    console.log("If -1");
     let Jogadores = [];
     let QuantidadeTropasJ = [
       { id: 0, tropas: 0 },
