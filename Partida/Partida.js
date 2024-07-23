@@ -678,7 +678,7 @@ async function ExibirTropas(lobbyId) {
     text.setAttribute('y', coords.y);
 
     // Adiciona o texto do número do dono do território
-    text.textContent = territorios[i].tropas;
+    text.textContent = territorios[i].id;
     // Define o tamanho da fonte do texto
     text.style.fontSize = '5px'; // Ajuste o tamanho da fonte conforme necessário
     text.style.fontFamily = 'Arial, sans-serif';
@@ -1409,7 +1409,13 @@ async function turnofase2acima(lobbyId) {
 
     async function AtacarTerritorios(lobbyId,PartidaDados3)
     {
-      console.log("i = "+i);
+      console.log("i ="+i);
+
+      let AlvosTerrtorios = [
+        { id: 1, podeAtacar: [2, 3] },
+
+      ];
+
     }
 
     for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
