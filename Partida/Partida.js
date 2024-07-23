@@ -1037,10 +1037,10 @@ async function turnofase1(lobbyId) {
 
 
       }
+
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
     }
-
 
 for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
 
@@ -1048,10 +1048,9 @@ for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
   
     var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-
     // Inicia a sequência chamando rodadaDeJogadores()
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
-    
+
     if (PartidaDados2.turno >= 8){
     await AtualizaTurno(PartidaDados2.id, 0);
     await Atualizafase(lobbyId, 2);
