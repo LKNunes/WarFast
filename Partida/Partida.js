@@ -1407,7 +1407,7 @@ async function turnofase2acima(lobbyId) {
     }
 
 
-    async function AtacarTerritorios(lobbyId,PartidaDados3)
+    async function AtacarTerritorios(lobbyId,PartidaDados3) // Função de ataque do jogador I.
     {
       console.log("i ="+i);
 
