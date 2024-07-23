@@ -1212,163 +1212,161 @@ async function turnofase2acima(lobbyId) {
     });
   }
 
-  //
+  function mostrarInput() {
+    // Mostra o container de input
+    document.getElementById('inputContainer').classList.remove('hidden');
+  }
+
+  function esconderInput() {
+    // Esconde o container de input e limpa o valor do input
+    document.getElementById('inputContainer').classList.add('hidden');
+    document.getElementById('numeroInput').value = ''; // Limpa o input
+  }
+
+   function esperarInput() {
+    return new Promise((resolve) => {
+      // Cria uma nova promessa que será resolvida quando o input for processado
+      const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
+      const numeroInput = document.getElementById('numeroInput'); // Campo de input
+
+      async function processarInput() {
+        // Processa o input do usuário
+        const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
+
+        if (isNaN(numero)) {
+          // Se o valor não for um número válido, exibe um alerta
+          alert("Por favor, insira um número válido.");
+          return;
+        }
+
+        if (numero <= 0) {
+          // Se o valor não for um número válido, exibe um alerta
+          alert("Por favor, insira um número válido.");
+          return;
+        }
+
+        const PartidaDados3 = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
+
+        if (numero > PartidaDados3.playerSlots[PartidaDados3.turno].tropas) {
+          // Se o valor for maior que as tropas disponiveis, exibe um alerta
+          alert("Tropas restantes:"+PartidaDados3.playerSlots[PartidaDados3.turno].tropas);
+          return;
+        }
+
+        resolve(numero); // Resolve a promessa com o número inserido
+        esconderInput(); // Esconde o input
+        await ExibirTropas(lobbyId); // Lentrete( Criar função para atualizar tropas no mapa essa cria mais elementos de texto sobrepostos)
+        // Remove o event listener após a resolução da promessa
+        submitBtn.removeEventListener('click', processarInput);
+      }
+
+      // Adiciona um event listener para o botão de submissão
+      submitBtn.addEventListener('click', processarInput);
+    });
+  }
+
+
+  async function atualizarTropasJogador(partidaDados, idJogador, novasTropas) {
+    const jogador = partidaDados.playerSlots.find(jogador => jogador.id === idJogador);
+    if (jogador) {
+      jogador.tropas = novasTropas;
+
+      const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
+      try {
+        const response = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(partidaDados)
+        });
+        if (response.ok) {
+          console.log(`Tropas do jogador ${idJogador} atualizadas para ${novasTropas}`);
+        } else {
+          console.error(`Erro ao atualizar a partida: ${response.status} ${response.statusText}`);
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    } else {
+      console.error(`Jogador com ID ${idJogador} não encontrado.`);
+    }
+  }
+
+  // Função para atualizar as tropas de um território por ID
+  async function atualizarTropasTerritorio(partidaDados, idPartida, territorioId, novoNumeroTropas) {
+    try {
+      // Encontrar o território na lista de territórios da partida
+      const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
+
+      if (territorio) {
+        // Atualizar as tropas do território encontrado
+        territorio.tropas = novoNumeroTropas;
+
+        // Montar a URL para a requisição PUT
+        const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
+
+        // Fazer a requisição PUT para atualizar a partida
+        const response = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
+        });
+
+        // Verificar se a requisição foi bem-sucedida
+        if (response.ok) {
+          console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
+        } else {
+          console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
+          throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
+        }
+      } else {
+        console.error(`Território com ID ${territorioId} não encontrado.`);
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar tropas do território:', error.message);
+      throw error;
+    }
+  }
+
+
+
+  async function rodadaDeJogadores(lobbyId, PartidaDados2) {
+    // Função assíncrona que gerencia a rodada de jogadores
+    console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+
+    const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+    const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+
+    const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+
+    while (PartidaDados2.playerSlots[i].tropas > 0) { // Distribuir ate zerar as tropas
+      PartidaDados2 = await dadospartida(lobbyId);
+      for (j = 0; j < 42; j++) {
+        if (PartidaDados.territorios[j].dono != i) {
+
+          if (!svgDoc) {
+            console.error('Erro ao acessar o conteúdo do documento SVG.');
+            return;
+          }
+
+          for (let path of paths) {
+            PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+            paths[PathA - 1].style.opacity = '0.5';
+            paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+          }
+
+        }
+
+      }
+
 
   for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
 
     console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
-
-    function mostrarInput() {
-      // Mostra o container de input
-      document.getElementById('inputContainer').classList.remove('hidden');
-    }
-
-    function esconderInput() {
-      // Esconde o container de input e limpa o valor do input
-      document.getElementById('inputContainer').classList.add('hidden');
-      document.getElementById('numeroInput').value = ''; // Limpa o input
-    }
-
-     function esperarInput() {
-      return new Promise((resolve) => {
-        // Cria uma nova promessa que será resolvida quando o input for processado
-        const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
-        const numeroInput = document.getElementById('numeroInput'); // Campo de input
-
-        async function processarInput() {
-          // Processa o input do usuário
-          const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
-
-          if (isNaN(numero)) {
-            // Se o valor não for um número válido, exibe um alerta
-            alert("Por favor, insira um número válido.");
-            return;
-          }
-
-          if (numero <= 0) {
-            // Se o valor não for um número válido, exibe um alerta
-            alert("Por favor, insira um número válido.");
-            return;
-          }
-
-          const PartidaDados3 = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
-
-          if (numero > PartidaDados3.playerSlots[PartidaDados3.turno].tropas) {
-            // Se o valor for maior que as tropas disponiveis, exibe um alerta
-            alert("Tropas restantes:"+PartidaDados3.playerSlots[PartidaDados3.turno].tropas);
-            return;
-          }
-
-          resolve(numero); // Resolve a promessa com o número inserido
-          esconderInput(); // Esconde o input
-          await ExibirTropas(lobbyId); // Lentrete( Criar função para atualizar tropas no mapa essa cria mais elementos de texto sobrepostos)
-          // Remove o event listener após a resolução da promessa
-          submitBtn.removeEventListener('click', processarInput);
-        }
-
-        // Adiciona um event listener para o botão de submissão
-        submitBtn.addEventListener('click', processarInput);
-      });
-    }
-
-
-    async function atualizarTropasJogador(partidaDados, idJogador, novasTropas) {
-      const jogador = partidaDados.playerSlots.find(jogador => jogador.id === idJogador);
-      if (jogador) {
-        jogador.tropas = novasTropas;
-
-        const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
-        try {
-          const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(partidaDados)
-          });
-          if (response.ok) {
-            console.log(`Tropas do jogador ${idJogador} atualizadas para ${novasTropas}`);
-          } else {
-            console.error(`Erro ao atualizar a partida: ${response.status} ${response.statusText}`);
-          }
-        } catch (error) {
-          console.error('Erro na requisição:', error);
-        }
-      } else {
-        console.error(`Jogador com ID ${idJogador} não encontrado.`);
-      }
-    }
-
-    // Função para atualizar as tropas de um território por ID
-    async function atualizarTropasTerritorio(partidaDados, idPartida, territorioId, novoNumeroTropas) {
-      try {
-        // Encontrar o território na lista de territórios da partida
-        const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
-
-        if (territorio) {
-          // Atualizar as tropas do território encontrado
-          territorio.tropas = novoNumeroTropas;
-
-          // Montar a URL para a requisição PUT
-          const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
-
-          // Fazer a requisição PUT para atualizar a partida
-          const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
-          });
-
-          // Verificar se a requisição foi bem-sucedida
-          if (response.ok) {
-            console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
-          } else {
-            console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
-            throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
-          }
-        } else {
-          console.error(`Território com ID ${territorioId} não encontrado.`);
-        }
-      } catch (error) {
-        console.error('Erro ao atualizar tropas do território:', error.message);
-        throw error;
-      }
-    }
-
-
-
-    async function rodadaDeJogadores(lobbyId, PartidaDados2) {
-      // Função assíncrona que gerencia a rodada de jogadores
-      console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
-
-      const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
-      const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
-
-      const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-
-      while (PartidaDados2.playerSlots[i].tropas > 0) { // Distribuir ate zerar as tropas
-        PartidaDados2 = await dadospartida(lobbyId);
-        for (j = 0; j < 42; j++) {
-          if (PartidaDados.territorios[j].dono != i) {
-
-            if (!svgDoc) {
-              console.error('Erro ao acessar o conteúdo do documento SVG.');
-              return;
-            }
-
-            for (let path of paths) {
-              PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-
-              paths[PathA - 1].style.opacity = '0.5';
-              paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
-            }
-
-          }
-
-        }
-
 
         console.log("Roda1");
         let Territorio1 = await EsperaClick();
