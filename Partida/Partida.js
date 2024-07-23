@@ -1444,8 +1444,8 @@ async function turnofase2acima(lobbyId) {
   var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
   if (PartidaDados4.turno >= 8){
-    await AtualizaTurno(PartidaDados4.id, 0);
-    await Atualizafase(lobbyId, 2);
+    await AtualizaTurno(PartidaDados4.id, -1);
+    await Atualizafase(lobbyId, PartidaDados4.turno+1);
     return;
     }
 
