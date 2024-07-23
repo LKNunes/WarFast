@@ -1364,8 +1364,6 @@ async function turnofase2acima(lobbyId) {
 
         }
 
-for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
-
         console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
       
         console.log("Roda1");
@@ -1388,7 +1386,6 @@ for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
         mostrarInput(); // Mostra o input para o jogador
         const numero = await esperarInput(); // Espera o jogador inserir um número
 
-        console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
 
 
         for (j = 0; j < 42; j++) {
@@ -1412,6 +1409,9 @@ for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
     }
+
+for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
+      console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
 
     var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
