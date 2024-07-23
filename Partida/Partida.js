@@ -961,11 +961,9 @@ async function turnofase1(lobbyId) {
     }
   }
 
-
-
   async function rodadaDeJogadores(lobbyId, PartidaDados2) {
     // Função assíncrona que gerencia a rodada de jogadores
-    console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+   // console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
 
     const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
     const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
@@ -1332,11 +1330,9 @@ async function turnofase2acima(lobbyId) {
       }
     }
 
-
-
     async function rodadaDeJogadores(lobbyId, PartidaDados2) {
       // Função assíncrona que gerencia a rodada de jogadores
-      console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
+  //    console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
 
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
@@ -1409,6 +1405,7 @@ async function turnofase2acima(lobbyId) {
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
     }
+
     for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
 
     console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
@@ -1419,7 +1416,7 @@ async function turnofase2acima(lobbyId) {
 
     // Inicia a sequência chamando rodadaDeJogadores()
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
-    
+
     if (PartidaDados2.turno >= 8){
     await AtualizaTurno(PartidaDados2.id, 0);
     await Atualizafase(lobbyId, 2);
