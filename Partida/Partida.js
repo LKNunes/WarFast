@@ -1406,16 +1406,26 @@ async function turnofase2acima(lobbyId) {
 
     }
 
+
+    async function AtacarTerritorios(lobbyId,PartidaDados3)
+    {
+      console.log("i = "+i);
+    }
+
     for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
 
     console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
 
-
     var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-
 
     // Inicia a sequência chamando rodadaDeJogadores()
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
+    
+    var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+    await AtacarTerritorios(lobbyId,PartidaDados3);
+
+
 
     if (PartidaDados2.turno >= 8){
     await AtualizaTurno(PartidaDados2.id, 0);
