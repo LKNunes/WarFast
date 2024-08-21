@@ -1262,7 +1262,7 @@ async function turnofase2acima(lobbyId) {
     const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-    for (j = 0; j < AlvosTerrtorios[0].podeAtacar.length
+    for (j = 0; j < AlvosTerrtorios[19].podeAtacar.length
       ; j++) {
         
         paths[AlvosTerrtorios[0].podeAtacar[j]].style.opacity = '1.0';
