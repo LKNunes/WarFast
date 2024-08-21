@@ -1266,7 +1266,7 @@ async function turnofase2acima(lobbyId) {
       ; j++) {
         paths[PathA - 1].style.opacity = '0.5';
         paths[j].style.pointerEvents = "none"; // Ignora o objeto
-  }
+  }}
 
     function mostrarInput() {
       // Mostra o container de input
