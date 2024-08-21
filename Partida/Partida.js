@@ -1459,7 +1459,8 @@ async function turnofase2acima(lobbyId) {
         //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
         console.log("Atualizar Turno...");
-        
+        var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
         console.log("Atacando...");
         await AtacarTerritorios(lobbyId,PartidaDados3);
     
@@ -1481,7 +1482,6 @@ async function turnofase2acima(lobbyId) {
     // Inicia a sequência chamando rodadaDeJogadores()
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
     
-    var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
     if (PartidaDados2.turno >= 8){
     await AtualizaTurno(PartidaDados2.id, 0);
