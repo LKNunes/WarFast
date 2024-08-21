@@ -1266,8 +1266,8 @@ async function turnofase2acima(lobbyId) {
       ; j++) {
         paths[j+1].style.opacity = '0.5';
         paths[j+1 ].style.pointerEvents = "none"; // Ignora o objeto
-        
-        console.log("Atacando...2");
+
+        console.log("Atacando...Tamanho: "+AlvosTerrtorios[0].podeAtacar.length);
 
   }}
 
