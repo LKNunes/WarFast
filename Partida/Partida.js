@@ -1264,9 +1264,10 @@ async function turnofase2acima(lobbyId) {
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
     for (j = 0; j < AlvosTerrtorios[0].podeAtacar.length
       ; j++) {
+        
         paths[j+1].style.opacity = '0.5';
         paths[j+1 ].style.pointerEvents = "none"; // Ignora o objeto
-
+        console.log('Territorio:'+AlvosTerrtorios[0].podeAtacar[j])
         console.log("Atacando...Tamanho: "+AlvosTerrtorios[0].podeAtacar.length);
 
   }}
