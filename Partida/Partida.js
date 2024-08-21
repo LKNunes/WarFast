@@ -1476,9 +1476,8 @@ async function turnofase2acima(lobbyId) {
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
     
     var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-
+    console.log("Atacando...");
     await AtacarTerritorios(lobbyId,PartidaDados3);
-
 
 
     if (PartidaDados2.turno >= 8){
