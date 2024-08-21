@@ -1265,8 +1265,8 @@ async function turnofase2acima(lobbyId) {
     for (j = 0; j < AlvosTerrtorios[19].podeAtacar.length
       ; j++) {
         
-        paths[AlvosTerrtorios[0].podeAtacar[j]].style.opacity = '1.0';
-        paths[AlvosTerrtorios[0].podeAtacar[j]].style.pointerEvents = "auto"; // Ignora o objeto
+        paths[AlvosTerrtorios[19].podeAtacar[j]].style.opacity = '1.0';
+        paths[AlvosTerrtorios[19].podeAtacar[j]].style.pointerEvents = "auto"; // Ignora o objeto
         console.log('Territorio:'+AlvosTerrtorios[0].podeAtacar[j])
 
   }}
