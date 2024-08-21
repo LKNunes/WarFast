@@ -1455,7 +1455,15 @@ async function turnofase2acima(lobbyId) {
         { id: 41, podeAtacar: [35, 34] },
         { id: 42, podeAtacar: [22, 30, 12, 17] }
           ];
-    
+
+      const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+      const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+
+      const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+      for (j = 0; j < AlvosTerrtorios[0].podeAtacar.length
+        ; j++) {
+          paths[j].style.opacity = '0.5';
+          paths[j].style.pointerEvents = "none"; // Ignora o objeto
     }
 
     for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
