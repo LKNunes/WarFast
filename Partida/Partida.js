@@ -1285,6 +1285,7 @@ async function turnofase2acima(lobbyId) {
     Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
 
     
+
 }
 
     function mostrarInput() {
