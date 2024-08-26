@@ -1265,12 +1265,12 @@ async function turnofase2acima(lobbyId) {
     //let Territorio2 = await EsperaClick();
 
 
-    for (j = 0; j < AlvosTerrtorios[Territorio1-1].podeAtacar.length
+    for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length
       ; j++) {
         
-        paths[AlvosTerrtorios[Territorio1-1].podeAtacar[j]].style.opacity = '1.0';
-        paths[AlvosTerrtorios[Territorio1-1].podeAtacar[j]].style.pointerEvents = "auto"; // Ignora o objeto
-        console.log('Territorio:'+AlvosTerrtorios[Territorio1-1].podeAtacar[j])
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]].style.opacity = '1.0';
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]].style.pointerEvents = "auto"; // Ignora o objeto
+        console.log('Territorio:'+AlvosTerrtorios[Territorio1].podeAtacar[j])
     
   }}
 
@@ -1472,7 +1472,7 @@ async function turnofase2acima(lobbyId) {
         console.log("Atacando...");
         await AtacarTerritorios(lobbyId,PartidaDados3);
         //logica de ataque
-        
+
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
     }
