@@ -993,6 +993,7 @@ async function turnofase1(lobbyId) {
 
 
       console.log("Roda1");
+      
       let Territorio1 = await EsperaClick();
 
       console.log("Territorio Selecionado");
@@ -1260,7 +1261,6 @@ async function turnofase2acima(lobbyId) {
     const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-    EsperaClick();
     let Territorio1 = await EsperaClick();
     //let Territorio2 = await EsperaClick();
 
@@ -1284,6 +1284,28 @@ async function turnofase2acima(lobbyId) {
       document.getElementById('inputContainer').classList.add('hidden');
       document.getElementById('numeroInput').value = ''; // Limpa o input
     }
+
+    function esperarCliqueEmQualquerPath(svgId) {
+      return new Promise((resolve) => {
+        const svgElement = document.getElementById(svgId); // Seleciona o elemento SVG pelo ID
+    
+        function handleClick(event) {
+          if (event.target.tagName === 'path') {
+            resolve(event.target); // Resolve a promessa com o elemento <path> clicado
+            svgElement.removeEventListener('click', handleClick); // Remove o event listener após o clique
+          }
+        }
+    
+        // Adiciona o event listener para o clique em qualquer <path> dentro do SVG
+        svgElement.addEventListener('click', handleClick);
+      });
+    }
+    
+    // Exemplo de uso:
+    esperarCliqueEmQualquerPath('meuSvg').then((pathElement) => {
+      console.log('Um path foi clicado!', pathElement);
+      // Continue com a lógica aqui, usando o pathElement clicado
+    });
 
      function esperarInput() {
       return new Promise((resolve) => {
@@ -1425,7 +1447,7 @@ async function turnofase2acima(lobbyId) {
 
       
         console.log("Roda1");
-        let Territorio1 = await EsperaClick();
+        let Territorio1 = await esperarCliqueEmQualquerPath(paths);
 
         console.log("Territorio Selecionado");
         // let Territorio2 = await EsperaClick();
