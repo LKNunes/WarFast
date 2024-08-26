@@ -1260,7 +1260,7 @@ async function turnofase2acima(lobbyId) {
     const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-
+    EsperaClick();
     let Territorio1 = await EsperaClick();
     //let Territorio2 = await EsperaClick();
 
