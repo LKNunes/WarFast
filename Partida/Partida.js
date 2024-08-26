@@ -1211,6 +1211,9 @@ async function turnofase2acima(lobbyId) {
   async function AtacarTerritorios(lobbyId,PartidaDados3) // Função de ataque do jogador I.
   {
     console.log("i ="+i);
+    let pararLoop = false; // Variável de controle para interromper o loop
+
+    loopInterrompivel('FimAtaqueBTN');
 
     let AlvosTerrtorios = [
       { id: 1, podeAtacar: [2, 3, 4, 32] },
@@ -1284,7 +1287,7 @@ async function turnofase2acima(lobbyId) {
     let Territorio2 = await EsperaClick();
     Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
 
-    
+
 
 }
 
@@ -1408,6 +1411,32 @@ async function turnofase2acima(lobbyId) {
       }
     }
 
+    function esperarCliqueBotao(botaoId) {
+      return new Promise((resolve) => {
+        const botao = document.getElementById(botaoId);
+    
+        function handleClick() {
+          pararLoop = true; // Atualiza a variável de controle para interromper o loop
+          resolve(); // Resolve a promessa para sinalizar que o botão foi clicado
+          botao.removeEventListener('click', handleClick); // Remove o event listener após o clique
+        }
+    
+        // Adiciona o event listener para o clique no botão
+        botao.addEventListener('click', handleClick);
+      });
+    }
+
+    async function loopInterrompivel(botaoId) {
+      while (!pararLoop) {
+        console.log("Executando o loop...");
+        // Aqui você pode colocar a lógica do loop
+    
+        await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
+      }
+    
+      console.log("O loop foi interrompido porque o botão foi clicado!");
+    }
+
     async function rodadaDeJogadores(lobbyId, PartidaDados2) {
       // Função assíncrona que gerencia a rodada de jogadores
   //    console.log("Vez do Jogador: " + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
@@ -1484,8 +1513,11 @@ async function turnofase2acima(lobbyId) {
 
       var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
         console.log("Atacando...");
+
+        
         await AtacarTerritorios(lobbyId,PartidaDados3);
         //logica de ataque
+
 
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
