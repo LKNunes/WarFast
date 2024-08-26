@@ -1464,12 +1464,15 @@ async function turnofase2acima(lobbyId) {
         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
         console.log("Atualizar Turno...");
         //logica de ataque
-        var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+        
+
+      }
+
+      var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
         console.log("Atacando...");
         await AtacarTerritorios(lobbyId,PartidaDados3);
         //logica de ataque
-
-      }
+        
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
     }
