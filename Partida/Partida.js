@@ -1263,9 +1263,8 @@ async function turnofase2acima(lobbyId) {
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
     let Territorio1 = await EsperaClick();
     Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
-
-    //let Territorio2 = await EsperaClick();
-
+    
+    
 
     for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length
       ; j++) {
@@ -1274,7 +1273,11 @@ async function turnofase2acima(lobbyId) {
         paths[AlvosTerrtorios[Territorio1].podeAtacar[j]].style.pointerEvents = "auto"; // Ignora o objeto
         console.log('Territorio:'+AlvosTerrtorios[Territorio1].podeAtacar[j]);
     
-  }}
+  }
+    let Territorio2 = await EsperaClick();
+    Territorio2 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
+
+}
 
     function mostrarInput() {
       // Mostra o container de input
