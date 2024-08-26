@@ -1276,9 +1276,9 @@ async function turnofase2acima(lobbyId) {
     for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length
       ; j++) {
         console.log("Territorio"+Territorio1+" Alvo..."+AlvosTerrtorios[Territorio1].podeAtacar[j]);
-        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]].style.opacity = '1.0';
-        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]].style.pointerEvents = "auto"; // Ignora o objeto
-        console.log('Territorio:'+AlvosTerrtorios[Territorio1].podeAtacar[j]);
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]-1].style.opacity = '1.0';
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]-1].style.pointerEvents = "auto"; // Ignora o objeto
+        console.log('Territorio:'+AlvosTerrtorios[Territorio1].podeAtacar[j]-1);
     
   }
     let Territorio2 = await EsperaClick();
