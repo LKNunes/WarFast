@@ -1420,8 +1420,8 @@ async function turnofase2acima(lobbyId) {
           pararLoop = true; // Atualiza a variável de controle para interromper o loop
           resolve(); // Resolve a promessa para sinalizar que o botão foi clicado
           botao.removeEventListener('click', handleClick); // Remove o event listener após o clique
+          console.log("Finalizado...");
         }
-    
         // Adiciona o event listener para o clique no botão
         botao.addEventListener('click', handleClick);
       });
