@@ -1211,7 +1211,6 @@ async function turnofase2acima(lobbyId) {
   async function AtacarTerritorios(lobbyId,PartidaDados3) // Função de ataque do jogador I.
   {
     console.log("i ="+i);
-    let pararLoop = false; // Variável de controle para interromper o loop
 
     loopInterrompivel('FimAtaqueBTN');
 
@@ -1425,6 +1424,8 @@ async function turnofase2acima(lobbyId) {
         botao.addEventListener('click', handleClick);
       });
     }
+
+    let pararLoop = false; // Variável de controle para interromper o loop
 
     async function loopInterrompivel(botaoId) {
       while (!pararLoop) {
