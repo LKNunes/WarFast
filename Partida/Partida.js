@@ -1262,7 +1262,7 @@ async function turnofase2acima(lobbyId) {
 
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
     let Territorio1 = await EsperaClick();
-    Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])
+    Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
 
     //let Territorio2 = await EsperaClick();
 
