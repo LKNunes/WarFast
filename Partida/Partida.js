@@ -1282,7 +1282,7 @@ async function turnofase2acima(lobbyId) {
     
   }
     let Territorio2 = await EsperaClick();
-    Territorio2 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
+    Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
 
 }
 
