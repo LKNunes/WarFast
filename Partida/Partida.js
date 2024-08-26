@@ -1213,6 +1213,7 @@ async function turnofase2acima(lobbyId) {
     console.log("i ="+i);
 
     loopInterrompivel('FimAtaqueBTN');
+    esperarCliqueBotao('FimAtaqueBTN');
 
     let AlvosTerrtorios = [
       { id: 1, podeAtacar: [2, 3, 4, 32] },
