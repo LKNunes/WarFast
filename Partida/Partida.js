@@ -1157,8 +1157,6 @@ async function turnofase2acima(lobbyId) {
     console.log("Removido os Eventos");
   }
 
-
-
   // Função para remover event listeners de todos os paths
   function removerEventListeners(handleClick) {
 
@@ -1463,15 +1461,12 @@ async function turnofase2acima(lobbyId) {
         var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
         console.log("Atacando...");
         await AtacarTerritorios(lobbyId,PartidaDados3);
-        sleep(10000);
         //logica de ataque
 
       }
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
     }
-
-
     
 
     for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
