@@ -1208,12 +1208,12 @@ async function turnofase2acima(lobbyId) {
     });
   }
 
-  async function AtacarTerritorios(lobbyId,PartidaDados3) // Função de ataque do jogador I.
+  async function AtacarTerritorios(lobbyId,PartidaDados3,botaoId) // Função de ataque do jogador I.
   {
-    console.log("i ="+i);
+    while (!pararLoop) {
+   esperarCliqueBotao('FimAtaqueBTN');
 
-    loopInterrompivel('FimAtaqueBTN');
-    esperarCliqueBotao('FimAtaqueBTN');
+    console.log("i ="+i);
 
     let AlvosTerrtorios = [
       { id: 1, podeAtacar: [2, 3, 4, 32] },
@@ -1287,8 +1287,8 @@ async function turnofase2acima(lobbyId) {
     let Territorio2 = await EsperaClick();
     Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
 
-
-
+    await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
+    } 
 }
 
     function mostrarInput() {
@@ -1517,7 +1517,7 @@ async function turnofase2acima(lobbyId) {
         console.log("Atacando...");
 
         
-        await AtacarTerritorios(lobbyId,PartidaDados3);
+        await AtacarTerritorios(lobbyId,PartidaDados3,"FimAtaqueBTN");
         //logica de ataque
 
 
