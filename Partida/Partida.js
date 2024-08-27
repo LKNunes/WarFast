@@ -1265,9 +1265,7 @@ async function turnofase2acima(lobbyId) {
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-      let Territorio1 = await EsperaClick();
-      Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
-
+      
       for (j = 0; j < 42; j++) {
         for (let path of paths) {
           PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
@@ -1296,6 +1294,8 @@ async function turnofase2acima(lobbyId) {
         }
 
       }
+      let Territorio1 = await EsperaClick();
+      Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
 
       for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length // Lopping para mostrar os territorios atacaveis
