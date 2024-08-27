@@ -973,7 +973,7 @@ async function turnofase1(lobbyId) {
     while (PartidaDados2.playerSlots[i].tropas > 0) { // Distribuir ate zerar as tropas
       PartidaDados2 = await dadospartida(lobbyId);
       for (j = 0; j < 42; j++) {
-        if (PartidaDados.territorios[j].dono != i) {
+        if (PartidaDados.territorios[j].dono != i) { // Somente tira a opacidade dos que não são donos
 
           if (!svgDoc) {
             console.error('Erro ao acessar o conteúdo do documento SVG.');
@@ -1277,6 +1277,25 @@ async function turnofase2acima(lobbyId) {
         }
       }
 
+      for (j = 0; j < 42; j++) {
+        if (PartidaDados.territorios[j].dono != PartidaDados2.turno) { // Somente tira a opacidade dos que não são donos
+
+          if (!svgDoc) {
+            console.error('Erro ao acessar o conteúdo do documento SVG.');
+            return;
+          }
+
+          for (let path of paths) {
+            PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+            paths[PathA - 1].style.opacity = '0.5';
+            paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+          }
+
+        }
+
+      }
+
       var PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length // Lopping para mostrar os territorios atacaveis
@@ -1515,9 +1534,7 @@ async function turnofase2acima(lobbyId) {
         await atualizarTropasJogador(PartidaDados2, i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
         //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
-        console.log("Atualizar Turno...");
-        //logica de ataque
-        
+        console.log("Atualizar Turno...");        
 
       }
 
