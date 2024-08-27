@@ -1288,7 +1288,10 @@ async function turnofase2acima(lobbyId) {
     let Territorio2 = await EsperaClick();
     Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
 
+      
+    
     await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
+
     } 
 }
 
@@ -1433,7 +1436,6 @@ async function turnofase2acima(lobbyId) {
       while (!pararLoop) {
         console.log("Executando o loop...");
         // Aqui você pode colocar a lógica do loop
-    
         await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
       }
     
