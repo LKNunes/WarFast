@@ -1276,9 +1276,10 @@ async function turnofase2acima(lobbyId) {
           paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
         }
       }
+      var PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       for (j = 0; j < 42; j++) {
-        if (PartidaDados.territorios[j].dono != i) { // Somente tira a opacidade dos que não são donos
+        if (PartidaDados.territorios[j].dono != PartidaDados2.turno) { // Somente tira a opacidade dos que não são donos
 
           if (!svgDoc) {
             console.error('Erro ao acessar o conteúdo do documento SVG.');
@@ -1296,7 +1297,6 @@ async function turnofase2acima(lobbyId) {
 
       }
 
-      var PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length // Lopping para mostrar os territorios atacaveis
         ; j++) {
