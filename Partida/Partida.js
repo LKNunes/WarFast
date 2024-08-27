@@ -1281,7 +1281,7 @@ async function turnofase2acima(lobbyId) {
 
       for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length // Lopping para mostrar os territorios atacaveis
         ; j++) {
-      if  (PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono || dadospartida.turno)
+      if  (PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono != dadospartida.turno)
       {
         console.log("Territorio" + Territorio1 + " Alvo..." + AlvosTerrtorios[Territorio1].podeAtacar[j]);
         paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.opacity = '1.0'; //Deixar objeto em destaque
