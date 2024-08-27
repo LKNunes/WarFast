@@ -1210,9 +1210,10 @@ async function turnofase2acima(lobbyId) {
 
   async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
-    esperarCliqueBotao('FimAtaqueBTN');
 
     while (!pararLoop) {
+
+      esperarCliqueBotao('FimAtaqueBTN');
 
       console.log("i =" + i);
 
