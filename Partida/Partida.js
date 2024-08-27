@@ -1270,8 +1270,8 @@ async function turnofase2acima(lobbyId) {
         for (let path of paths) {
           PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
 
-          paths[PathA - 1].style.opacity = '0.5'; // Deixa o mapa apagado
-          paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+          paths[PathA - 1].style.opacity = '1.0'; // Deixa o mapa apagado
+          paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
         }
       }
 
