@@ -1176,39 +1176,61 @@ async function turnofase2acima(lobbyId) {
     });
   }
 
-  function EsperaClick() {
-    return new Promise(resolve => {
+  function EsperaClick(botaoId) {
+    return new Promise((resolve) => {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
-
-      
-
+  
       if (!svgDoc) {
         console.error('Erro ao acessar o conteúdo do documento SVG.');
         resolve(null); // Resolve com null em caso de erro
         return;
       }
-
+  
       const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-
+  
       function handleClick(event) {
         const clickedPath = event.target;
-        console.log('Path clicado:', clickedPath.getAttribute('inkscape:label')); // Mostra no console o ID do path clicado
-        const PathA = clickedPath.getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-        // paths[PathA-1].style.opacity = '0.3';
-
+        console.log('Path clicado:', clickedPath.getAttribute('inkscape:label'));
+        
         // Remove o event listener deste path após o clique
         removerEventListeners(handleClick);
-
+        
         // Resolve a Promise com o path clicado
         resolve(clickedPath);
       }
-
+  
+      function handleButtonClick() {
+        console.log('Botão clicado, interrompendo espera de clique no path.');
+        
+        // Remove todos os event listeners dos paths
+        removerEventListeners(handleClick);
+        
+        // Resolve a Promise com null ou algum valor que identifique o clique do botão
+        resolve(null);
+      }
+  
+      function removerEventListeners(handler) {
+        paths.forEach(path => {
+          path.removeEventListener('click', handler);
+        });
+      }
+  
+      // Adiciona o event listener para um único clique nos paths
       paths.forEach(path => {
-        path.addEventListener('click', handleClick, { once: true }); // Adiciona o event listener para um único clique
+        path.addEventListener('click', handleClick, { once: true });
       });
+  
+      // Adiciona o event listener no botão
+      const botao = document.getElementById(botaoId);
+      if (botao) {
+        botao.addEventListener('click', handleButtonClick, { once: true });
+      } else {
+        console.error('Botão não encontrado.');
+      }
     });
   }
+  
 
   async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
@@ -1298,7 +1320,7 @@ async function turnofase2acima(lobbyId) {
         }
 
       }
-      let Territorio1 = await EsperaClick();
+      let Territorio1 = await EsperaClick('FimAtaqueBTN');
       Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
       for (j = 0; j < 42; j++) {
@@ -1321,7 +1343,7 @@ async function turnofase2acima(lobbyId) {
         console.log('Territorio:' + AlvosTerrtorios[Territorio1].podeAtacar[j]);
       }
       }
-      let Territorio2 = await EsperaClick();
+      let Territorio2 = await EsperaClick('FimAtaqueBTN');
       Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
       for (j = 0; j < 42; j++) {
