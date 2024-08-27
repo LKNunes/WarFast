@@ -1208,92 +1208,97 @@ async function turnofase2acima(lobbyId) {
     });
   }
 
-  async function AtacarTerritorios(lobbyId,PartidaDados3,botaoId) // Função de ataque do jogador I.
+  async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
     esperarCliqueBotao('FimAtaqueBTN');
 
     while (!pararLoop) {
 
-    console.log("i ="+i);
+      console.log("i =" + i);
 
-    let AlvosTerrtorios = [
-      { id: 1, podeAtacar: [2, 3, 4, 32] },
-      { id: 2, podeAtacar: [1, 4 ] },
-      { id: 3, podeAtacar: [1, 4, 5 ] },
-      { id: 4, podeAtacar: [3, 1, 2 ] },
-      { id: 5, podeAtacar: [3, 6, 28] },
-      { id: 6, podeAtacar: [5, 28, 27, 7] },
-      { id: 7, podeAtacar: [6, 27, 8, 9] },
-      { id: 8, podeAtacar: [9, 7, 27, 29] },
-      { id: 9, podeAtacar: [8, 7, 14] },
-      { id: 10, podeAtacar: [29, 27, 28 ] },
-      { id: 11, podeAtacar: [14, 13, 15 ] },
-      { id: 12, podeAtacar: [30, 19, 42, 17] },
-      { id: 13, podeAtacar: [14, 11, 15, 18] },
-      { id: 14, podeAtacar: [38, 18, 13, 11] },
-      { id: 15, podeAtacar: [11, 13, 18, 23, 16] },
-      { id: 16, podeAtacar: [15, 23, 20, 19] },
-      { id: 17, podeAtacar: [12, 19, 21, 22, 42] },
-      { id: 18, podeAtacar: [14, 13, 15, 23] },
-      { id: 19, podeAtacar: [16, 20, 25, 21 ,17, 12] },
-      { id: 20, podeAtacar: [16, 23, 26, 25 ,19] },
-      { id: 21, podeAtacar: [22, 17, 19, 25 ,31, 32] },
-      { id: 22, podeAtacar: [42, 17, 21, 32] },
-      { id: 23, podeAtacar: [24, 26, 20, 16 ,15, 18] },
-      { id: 24, podeAtacar: [26, 23, 40, 39] },
-      { id: 25, podeAtacar: [31, 34, 26, 20 ,19] },
-      { id: 26, podeAtacar: [24, 23, 20, 25] },
-      { id: 27, podeAtacar: [10, 28, 6, 7, 8] },
-      { id: 28, podeAtacar: [10, 27, 6, 5] },
-      { id: 29, podeAtacar: [10, 27, 8, 30] },
-      { id: 30, podeAtacar: [29, 42, 12] },
-      { id: 31, podeAtacar: [21, 25, 32, 34] },
-      { id: 32, podeAtacar: [1, 22, 21, 31 ,34, 33] },
-      { id: 33, podeAtacar: [35, 34, 32] },
-      { id: 34, podeAtacar: [31, 25, 32, 33 ,35] },
-      { id: 35, podeAtacar: [41, 34, 33] },
-      { id: 36, podeAtacar: [39, 40, 37] },
-      { id: 37, podeAtacar: [40, 36] },
-      { id: 38, podeAtacar: [14, 18] },
-      { id: 39, podeAtacar: [40, 36] },
-      { id: 40, podeAtacar: [24, 39, 37, 36] },
-      { id: 41, podeAtacar: [35, 34] },
-      { id: 42, podeAtacar: [22, 30, 12, 17] }
-        ];
+      let AlvosTerrtorios = [
+        { id: 1, podeAtacar: [2, 3, 4, 32] },
+        { id: 2, podeAtacar: [1, 4] },
+        { id: 3, podeAtacar: [1, 4, 5] },
+        { id: 4, podeAtacar: [3, 1, 2] },
+        { id: 5, podeAtacar: [3, 6, 28] },
+        { id: 6, podeAtacar: [5, 28, 27, 7] },
+        { id: 7, podeAtacar: [6, 27, 8, 9] },
+        { id: 8, podeAtacar: [9, 7, 27, 29] },
+        { id: 9, podeAtacar: [8, 7, 14] },
+        { id: 10, podeAtacar: [29, 27, 28] },
+        { id: 11, podeAtacar: [14, 13, 15] },
+        { id: 12, podeAtacar: [30, 19, 42, 17] },
+        { id: 13, podeAtacar: [14, 11, 15, 18] },
+        { id: 14, podeAtacar: [38, 18, 13, 11] },
+        { id: 15, podeAtacar: [11, 13, 18, 23, 16] },
+        { id: 16, podeAtacar: [15, 23, 20, 19] },
+        { id: 17, podeAtacar: [12, 19, 21, 22, 42] },
+        { id: 18, podeAtacar: [14, 13, 15, 23] },
+        { id: 19, podeAtacar: [16, 20, 25, 21, 17, 12] },
+        { id: 20, podeAtacar: [16, 23, 26, 25, 19] },
+        { id: 21, podeAtacar: [22, 17, 19, 25, 31, 32] },
+        { id: 22, podeAtacar: [42, 17, 21, 32] },
+        { id: 23, podeAtacar: [24, 26, 20, 16, 15, 18] },
+        { id: 24, podeAtacar: [26, 23, 40, 39] },
+        { id: 25, podeAtacar: [31, 34, 26, 20, 19] },
+        { id: 26, podeAtacar: [24, 23, 20, 25] },
+        { id: 27, podeAtacar: [10, 28, 6, 7, 8] },
+        { id: 28, podeAtacar: [10, 27, 6, 5] },
+        { id: 29, podeAtacar: [10, 27, 8, 30] },
+        { id: 30, podeAtacar: [29, 42, 12] },
+        { id: 31, podeAtacar: [21, 25, 32, 34] },
+        { id: 32, podeAtacar: [1, 22, 21, 31, 34, 33] },
+        { id: 33, podeAtacar: [35, 34, 32] },
+        { id: 34, podeAtacar: [31, 25, 32, 33, 35] },
+        { id: 35, podeAtacar: [41, 34, 33] },
+        { id: 36, podeAtacar: [39, 40, 37] },
+        { id: 37, podeAtacar: [40, 36] },
+        { id: 38, podeAtacar: [14, 18] },
+        { id: 39, podeAtacar: [40, 36] },
+        { id: 40, podeAtacar: [24, 39, 37, 36] },
+        { id: 41, podeAtacar: [35, 34] },
+        { id: 42, podeAtacar: [22, 30, 12, 17] }
+      ];
 
-    const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
-    const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+      const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+      const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
-    const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
-    let Territorio1 = await EsperaClick();
-    Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
-    
-    for (j = 0; j < 42; j++) {
-    for (let path of paths) {
-      PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+      const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+      let Territorio1 = await EsperaClick();
+      Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
-      paths[PathA - 1].style.opacity = '0.5';
-      paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
-    }
-  }
+      for (j = 0; j < 42; j++) {
+        for (let path of paths) {
+          PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
 
-    for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length
-      ; j++) {
-        console.log("Territorio"+Territorio1+" Alvo..."+AlvosTerrtorios[Territorio1].podeAtacar[j]);
-        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]-1].style.opacity = '1.0';
-        paths[AlvosTerrtorios[Territorio1].podeAtacar[j]-1].style.pointerEvents = "auto"; // Ignora o objeto
-        console.log('Territorio:'+AlvosTerrtorios[Territorio1].podeAtacar[j]);
-    
-  }
-    let Territorio2 = await EsperaClick();
-    Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0])-1;
+          paths[PathA - 1].style.opacity = '0.5'; // Deixa o mapa apagado
+          paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+        }
+      }
+
+      var PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+      for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length // Lopping para mostrar os territorios atacaveis
+        ; j++) {
+
+        console.log("Territorio" + Territorio1 + " Alvo..." + AlvosTerrtorios[Territorio1].podeAtacar[j]);
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.opacity = '1.0';
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.pointerEvents = "auto"; // Ignora o objeto
+        console.log("Dono"+ PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono+" Turno"+dadospartida.turno);
+        PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono = dadospartida.turno;
+        console.log('Territorio:' + AlvosTerrtorios[Territorio1].podeAtacar[j]);
+
+      }
+      let Territorio2 = await EsperaClick();
+      Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
       
-    
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
-    } 
-}
+      await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
+
+    }
+  }
 
     function mostrarInput() {
       // Mostra o container de input
