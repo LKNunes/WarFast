@@ -1330,6 +1330,11 @@ async function turnofase2acima(lobbyId) {
           paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
         }
       }
+      
+      if (pararLoop) {
+        console.log("O loop foi interrompido pelo clique no botão.");
+        break;
+      }
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
