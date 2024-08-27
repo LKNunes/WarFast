@@ -1181,6 +1181,11 @@ async function turnofase2acima(lobbyId) {
       const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
       const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
 
+      if (pararLoop) {
+        console.log("O loop foi interrompido pelo clique no botão.");
+        break;
+      }
+
       if (!svgDoc) {
         console.error('Erro ao acessar o conteúdo do documento SVG.');
         resolve(null); // Resolve com null em caso de erro
