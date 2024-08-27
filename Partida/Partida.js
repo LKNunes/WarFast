@@ -1321,7 +1321,14 @@ async function turnofase2acima(lobbyId) {
       let Territorio2 = await EsperaClick();
       Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
-      
+      for (j = 0; j < 42; j++) {
+        for (let path of paths) {
+          PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+          paths[PathA - 1].style.opacity = '0.5'; // Deixa o mapa apagado
+          paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+        }
+      }
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
