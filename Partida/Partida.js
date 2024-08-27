@@ -1231,6 +1231,61 @@ async function turnofase2acima(lobbyId) {
     });
   }
   
+  function rolarDados(numDados) {
+    let resultados = [];
+    for (let i = 0; i < numDados; i++) {
+        resultados.push(Math.floor(Math.random() * 6) + 1);
+    }
+    return resultados.sort((a, b) => b - a);
+}
+
+function simularAtaque(atacanteUnidades, defensorUnidades) {
+    // O atacante pode usar até 3 dados, mas só se tiver mais de 3 unidades
+    let dadosAtaque = Math.min(3, atacanteUnidades - 1);
+    
+    // O defensor pode usar até 3 dados, mas só se tiver 3 ou mais unidades
+    let dadosDefesa = Math.min(3, defensorUnidades);
+    
+    // Rolando os dados
+    let ataqueResultados = rolarDados(dadosAtaque);
+    let defesaResultados = rolarDados(dadosDefesa);
+    
+    console.log("Atacante rolou: " + ataqueResultados);
+    console.log("Defensor rolou: " + defesaResultados);
+    
+    // Comparando os resultados
+    let perdasAtacante = 0;
+    let perdasDefensor = 0;
+    
+    for (let i = 0; i < Math.min(dadosAtaque, dadosDefesa); i++) {
+        if (ataqueResultados[i] > defesaResultados[i]) {
+            perdasDefensor++;
+        } else {
+            perdasAtacante++;
+        }
+    }
+    
+    console.log("Atacante perdeu " + perdasAtacante + " unidades.");
+    console.log("Defensor perdeu " + perdasDefensor + " unidades.");
+    
+    return {
+        perdasAtacante: perdasAtacante,
+        perdasDefensor: perdasDefensor
+    };
+}
+
+// Exemplo de uso:
+let atacanteUnidades = 4;  // O atacante deve ter ao menos 4 unidades para usar 3 dados
+let defensorUnidades = 3;  // O defensor deve ter 3 unidades para usar 3 dados
+
+let resultado = simularAtaque(atacanteUnidades, defensorUnidades);
+
+atacanteUnidades -= resultado.perdasAtacante;
+defensorUnidades -= resultado.perdasDefensor;
+
+console.log("Unidades restantes do atacante: " + atacanteUnidades);
+console.log("Unidades restantes do defensor: " + defensorUnidades);
+
 
   async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
@@ -1390,9 +1445,13 @@ async function turnofase2acima(lobbyId) {
 
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
+
+
       Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
       Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
       
+      simularAtaque(Tropa1,Tropa2);
+
       T=1;
 
       atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1+T)
@@ -1402,6 +1461,8 @@ async function turnofase2acima(lobbyId) {
 
     }
   }
+
+    
 
     function mostrarInput() {
       // Mostra o container de input
