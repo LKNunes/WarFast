@@ -1450,12 +1450,13 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
       Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
       
-      simularAtaque(Tropa1,Tropa2);
+      let resultado = simularAtaque(Tropa1,Tropa2);
 
-      T=1;
+      Tropa1-=resultado.perdasAtacante;
+      Tropa2-=resultado.perdasDefensor;
 
-      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1+T)
-      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2-T)
+      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1);
+      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2);
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
