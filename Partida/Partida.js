@@ -1321,6 +1321,10 @@ async function turnofase2acima(lobbyId) {
 
       }
       let Territorio1 = await EsperaClick('FimAtaqueBTN');
+      if (pararLoop) {
+        console.log("O loop foi interrompido pelo clique no botão.");
+        break;
+      }
       Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
       for (j = 0; j < 42; j++) {
@@ -1344,6 +1348,10 @@ async function turnofase2acima(lobbyId) {
       }
       }
       let Territorio2 = await EsperaClick('FimAtaqueBTN');
+      if (pararLoop) {
+        console.log("O loop foi interrompido pelo clique no botão.");
+        break;
+      }
       Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
       for (j = 0; j < 42; j++) {
