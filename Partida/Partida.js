@@ -1281,14 +1281,14 @@ async function turnofase2acima(lobbyId) {
 
       for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length // Lopping para mostrar os territorios atacaveis
         ; j++) {
-          //PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono = dadospartida.turno;
-        
+      if  (PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono || dadospartida.turno)
+      {
         console.log("Territorio" + Territorio1 + " Alvo..." + AlvosTerrtorios[Territorio1].podeAtacar[j]);
-        paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.opacity = '1.0';
-        paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.pointerEvents = "auto"; // Ignora o objeto
-        console.log("Dono"+ PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono+" Turno"+PartidaDados.turno);
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.opacity = '1.0'; Deixar objeto em destaque
+        paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.pointerEvents = "auto"; // Não ignorar objeto
+        console.log("Dono"+ PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono+" Turno"+PartidaDados.turno); // Ideal seria saber quem esta jogando e não ir pelo turno, corrigir futuralmente.
         console.log('Territorio:' + AlvosTerrtorios[Territorio1].podeAtacar[j]);
-
+      }
       }
       let Territorio2 = await EsperaClick();
       Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
