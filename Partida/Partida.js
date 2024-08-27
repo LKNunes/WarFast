@@ -1390,13 +1390,13 @@ async function turnofase2acima(lobbyId) {
 
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-      Tropa1 = PartidaDados5.territorios[territorio1].tropas;
-      Tropa2 = PartidaDados5.territorios[territorio2].tropas;
+      Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
+      Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
       
       T=1;
 
-      atualizarTropasTerritorio(PartidaDados5,lobbyId,territorio1,Tropa1+T)
-      atualizarTropasTerritorio(PartidaDados5,lobbyId,territorio2,Tropa2-T)
+      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1+T)
+      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2-T)
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
