@@ -1208,6 +1208,7 @@ async function turnofase2acima(lobbyId) {
         
         // Resolve a Promise com null ou algum valor que identifique o clique do botão
         resolve(null);
+        break;
       }
   
       function removerEventListeners(handler) {
