@@ -1332,7 +1332,7 @@ async function turnofase2acima(lobbyId) {
             paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
           }
         }
-
+        pararLoop = false;
         break;
       }
       Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
@@ -1369,7 +1369,7 @@ async function turnofase2acima(lobbyId) {
             paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
           }
         }
-
+        pararLoop = false;
         break;
       }
       Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
