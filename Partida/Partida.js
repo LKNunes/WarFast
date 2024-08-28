@@ -1282,14 +1282,14 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
 async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidadetropas){
   try {
     // Encontrar o território na lista de territórios da partida
-    const territorio = partidaDados.territorios.find(territorio => territorio.id === Territorio1);
+    const Territorio1 = partidaDados.territorios.find(Territorio1 => Territorio1.id === Territorio1);
     const territorio2 = partidaDados.territorios.find(territorio2 => territorio2.id === Territorio2);
 
     if (territorio) {
       // Atualizar as tropas do território encontrado
-      territorio.tropas -= quantidadetropas;
+      Territorio1.tropas -= quantidadetropas;
       territorio2.tropas += quantidadetropas;
-      console.log(""+territorio+" "+territorio2);
+      console.log(""+Territorio1+" "+territorio2);
       // Montar a URL para a requisição PUT
       const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
 
