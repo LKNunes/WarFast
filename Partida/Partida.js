@@ -1051,7 +1051,7 @@ async function turnofase1(lobbyId) {
 
     // Inicia a sequência chamando rodadaDeJogadores()
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
-    await aplicarCores(lobbyId);
+    
 
     if (PartidaDados2.turno >= 8){
     await AtualizaTurno(PartidaDados2.id, 0);
@@ -1718,6 +1718,7 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
         //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
         // console.log("Atualizar Turno...");        
+        await ExibirTropas(lobbyId);//aplicação tropas
 
       }
 
