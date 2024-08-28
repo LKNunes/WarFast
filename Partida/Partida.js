@@ -664,7 +664,7 @@ async function ExibirTropas(lobbyId) {
     // Adicione mais coordenadas conforme necessário
   ];
 
-  console.log(territorios);
+  //console.log(territorios);
 
    const textosExistentes = svgDoc.querySelectorAll('text');
   textosExistentes.forEach(text => text.remove());
