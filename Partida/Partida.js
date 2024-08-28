@@ -1452,6 +1452,8 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
       const preloader = document.getElementById('preloader');
 
       await ExibirTropas(lobbyId);//aplicação tropas
+      await aplicarCores(lobbyId);
+
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
