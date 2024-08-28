@@ -1572,10 +1572,10 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
 
           // Verificar se a requisição foi bem-sucedida
           if (response.ok) {
-            console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
+            console.log(` Território ${territorioId} dominado por ${turno}`);
           } else {
             console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
-            throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
+            throw new Error(`Erro ao atualizar tropas do território ${territorioId}`); 
           }
         } else {
           console.error(`Território com ID ${territorioId} não encontrado.`);
