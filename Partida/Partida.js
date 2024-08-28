@@ -1279,6 +1279,44 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
     };
 }
 
+async function Remanejar(PartidaDados5,lobbyId,Territorio1,Territorio2,quantidadetropas){
+  try {
+    // Encontrar o território na lista de territórios da partida
+    const territorio = PartidaDados5.territorios.find(territorio => territorio.id === Territorio1);
+    const territorio2 = PartidaDados5.territorios.find(territorio2 => territorio2.id === Territorio2);
+
+    if (territorio) {
+      // Atualizar as tropas do território encontrado
+      territorio.tropas -= quantidadetropas;
+      territorio2.tropas += quantidadetropas;
+      console.log(""+territorio+" "+territorio2);
+      // Montar a URL para a requisição PUT
+      const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
+
+      // Fazer a requisição PUT para atualizar a partida
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
+      });
+
+      // Verificar se a requisição foi bem-sucedida
+      if (response.ok) {
+        console.log(` Território ${territorioId} dominado por ${turno}`);
+      } else {
+        console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
+        throw new Error(`Erro ao atualizar tropas do território ${territorioId}`); 
+      }
+    } else {
+      console.error(`Território com ID ${territorioId} não encontrado.`);
+    }
+  } catch (error) {
+    console.error('Erro ao atualizar tropas do território:', error.message);
+    throw error;
+  }
+}
 
   async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
@@ -1451,6 +1489,8 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
   
       if (Tropa2 == 0 && Tropa1 >= 1){
        await DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i); 
+       let quantidadetropas = 1; // Quantidade de tropas para remanejar, 1 para teste
+       await Remanejar(PartidaDados5,lobbyId,Territorio1,Territorio2,quantidadetropas);
       }
       const preloader = document.getElementById('preloader');
 
