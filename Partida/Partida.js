@@ -1538,13 +1538,13 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
           if (isNaN(numero)) {
             // Se o valor não for um número válido, exibe um alerta
-            alert("Por favor, insira um número válido.");
+            console.log("Por favor, insira um número válido.");
             return;
           }
 
           if (numero <= 0) {
             // Se o valor não for um número válido, exibe um alerta
-            alert("Por favor, insira um número válido.");
+            console.log("Por favor, insira um número válido.");
             return;
           }
 
@@ -1552,7 +1552,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
           if (numero > PartidaDados3.territorios[Territorio1].tropas-1) {
             // Se o valor for maior que as tropas disponiveis, exibe um alerta
-            alert("Tropas para remanejar:"+PartidaDados3.territorios[Territorio1].tropas-1);
+            console.log("Tropas para remanejar:"+PartidaDados3.territorios[Territorio1].tropas-1);
             return;
           }
 
