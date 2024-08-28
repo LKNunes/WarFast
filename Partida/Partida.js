@@ -1279,10 +1279,13 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
     };
 }
 
-async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
+async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) 
+{
+
   while (!pararLoop2) {
 
     esperarCliqueBotao2('FinalizarBTN');
+
     console.log("i =" + i);
 
     const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
@@ -1319,7 +1322,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       }
 
     }
-    
+
     let Territorio1 = await EsperaClick('FinalizarBTN');
     
     if (pararLoop2) {
@@ -1852,7 +1855,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
         const botao = document.getElementById(botaoId);
     
         function handleClick() {
-          pararLoop = true; // Atualiza a variável de controle para interromper o loop
+          pararLoop2 = true; // Atualiza a variável de controle para interromper o loop
           resolve(); // Resolve a promessa para sinalizar que o botão foi clicado
           botao.removeEventListener('click', handleClick); // Remove o event listener após o clique
           console.log("Finalizado...");
