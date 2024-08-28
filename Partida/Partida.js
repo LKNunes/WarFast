@@ -1657,7 +1657,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
       document.getElementById('numeroInput').value = ''; // Limpa o input
     }
 
-    function esperarInputremanejamento(Territorio1,Territorio2) {
+   async function esperarInputremanejamento(Territorio1,Territorio2) {
       return new Promise((resolve) => {
         // Cria uma nova promessa que será resolvida quando o input for processado
 
