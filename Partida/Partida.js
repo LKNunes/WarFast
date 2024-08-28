@@ -1285,7 +1285,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
     const Territorio1 = partidaDados.territorios.find(Territorio1 => Territorio1.id === Territorio1);
     const territorio2 = partidaDados.territorios.find(territorio2 => territorio2.id === Territorio2);
 
-    if (territorio) {
+    if (Territorio1) {
       // Atualizar as tropas do território encontrado
       Territorio1.tropas -= quantidadetropas;
       territorio2.tropas += quantidadetropas;
