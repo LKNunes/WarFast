@@ -1440,7 +1440,10 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         }
       }
       
-    
+      if (pararLoop) {
+        console.log("O loop foi interrompido pelo clique no botão.");
+        break;
+      }
 
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
@@ -1460,13 +1463,10 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       }
 
       
-      await ExibirTropas(lobbyId);
+      //await ExibirTropas(lobbyId);
       
       console.log("Atualizar Tropas");
-      if (pararLoop) {
-        console.log("O loop foi interrompido pelo clique no botão.");
-        break;
-      }
+
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
     }
