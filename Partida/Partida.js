@@ -1279,11 +1279,11 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
     };
 }
 
-async function Remanejar(PartidaDados5,lobbyId,Territorio1,Territorio2,quantidadetropas){
+async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidadetropas){
   try {
     // Encontrar o território na lista de territórios da partida
-    const territorio = PartidaDados5.territorios.find(territorio => territorio.id === Territorio1);
-    const territorio2 = PartidaDados5.territorios.find(territorio2 => territorio2.id === Territorio2);
+    const territorio = partidaDados.territorios.find(territorio => territorio.id === Territorio1);
+    const territorio2 = partidaDados.territorios.find(territorio2 => territorio2.id === Territorio2);
 
     if (territorio) {
       // Atualizar as tropas do território encontrado
