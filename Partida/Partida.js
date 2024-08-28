@@ -1320,6 +1320,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
 
     }
     let Territorio1 = await EsperaClick('FinalizarBTN');
+    
     if (pararLoop2) {
       console.log("O loop foi interrompido pelo clique no botão.");
     
@@ -1334,17 +1335,18 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       pararLoop2 = false;
       break;
     }
+
     Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
     for (j = 0; j < 42; j++) {
       for (let path of paths) {
         PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
 
-        paths[PathA - 1].style.opacity = '0.5'; // Deixa o mapa apagado
-        paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+        paths[PathA - 1].style.opacity = '1.0'; // Deixa o mapa apagado
+        paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
       }
     }
-
+    
     for (j = 0; j < 42; j++) {
       if (PartidaDados.territorios[j].dono != i) { // Somente tira a opacidade dos que não são donos
 
@@ -1352,10 +1354,10 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
           console.error('Erro ao acessar o conteúdo do documento SVG.');
           return;
         }
-
+        
         for (let path of paths) {
           PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
-
+          console.log('Aqui deveria mostrar todos do dono')
           paths[PathA - 1].style.opacity = '0.5';
           paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
         }
