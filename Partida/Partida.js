@@ -1051,7 +1051,8 @@ async function turnofase1(lobbyId) {
 
     // Inicia a sequência chamando rodadaDeJogadores()
     await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
-    
+    await aplicarCores(lobbyId);
+
     if (PartidaDados2.turno >= 8){
     await AtualizaTurno(PartidaDados2.id, 0);
     await Atualizafase(lobbyId, 2);
