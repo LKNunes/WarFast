@@ -1463,7 +1463,6 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       }
       const preloader = document.getElementById('preloader');
 
-      await aplicarCores(lobbyId); //aplicação visual
       await ExibirTropas(lobbyId);//aplicação tropas
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
@@ -1518,7 +1517,6 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
           resolve(numero); // Resolve a promessa com o número inserido
           esconderInput(); // Esconde o input
           ExibirTropas(lobbyId); // Lentrete( Criar função para atualizar tropas no mapa essa cria mais elementos de texto sobrepostos)
-          aplicarCores(lobbyId);
           // Remove o event listener após a resolução da promessa
           submitBtn.removeEventListener('click', processarInput);
         }
