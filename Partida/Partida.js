@@ -1489,7 +1489,11 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
   
       if (Tropa2 == 0 && Tropa1 >= 1){
        await DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i); 
-       let quantidadetropas = 1; // Quantidade de tropas para remanejar, 1 para teste
+      // let quantidadetropas = 1; // Quantidade de tropas para remanejar, 1 para teste
+
+       mostrarInput(); // Mostra o input para o jogador
+       const quantidadetropas = await esperarInput(); // Espera o jogador inserir um número
+
        await Remanejar(PartidaDados5,lobbyId,Territorio1,Territorio2,quantidadetropas);
       }
       const preloader = document.getElementById('preloader');
