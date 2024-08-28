@@ -1276,18 +1276,6 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
     };
 }
 
-// Exemplo de uso:
-let atacanteUnidades = 4;  // O atacante deve ter ao menos 4 unidades para usar 3 dados
-let defensorUnidades = 3;  // O defensor deve ter 3 unidades para usar 3 dados
-
-let resultado = simularAtaque(atacanteUnidades, defensorUnidades);
-
-atacanteUnidades -= resultado.perdasAtacante;
-defensorUnidades -= resultado.perdasDefensor;
-
-console.log("Unidades restantes do atacante: " + atacanteUnidades);
-console.log("Unidades restantes do defensor: " + defensorUnidades);
-
 
   async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
