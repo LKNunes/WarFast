@@ -561,7 +561,7 @@ async function MostrarHTML(element) {
 
 async function ExibeTurno(lobbyId) {
   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-  console.log("Turno Atual: "+PartidaDados.turno);
+  //console.log("Turno Atual: "+PartidaDados.turno);
   document.getElementById('TurnoAtual').textContent = PartidaDados.turno;
 }
 
