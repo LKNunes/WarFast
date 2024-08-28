@@ -1459,8 +1459,10 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       if (Tropa2 == 0 && Tropa1 >= 1){
         DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
       }
+      const preloader = document.getElementById('preloader');
 
       await aplicarCores(lobbyId); //aplicação visual
+      await MostrarHTML(preloader);
 
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
