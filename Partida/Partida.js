@@ -1445,8 +1445,6 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
 
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
-
-
       Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
       Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
       
@@ -1457,6 +1455,10 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
 
       atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1);
       atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2);
+  
+      if (tropa2 == 0 || tropa1 >= 1){
+        DominaTerritorio(PartidaDados5,lobbyId,territorio2,i);
+      }
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
@@ -1547,6 +1549,42 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       }
     }
 
+    async function DominaTerritorio(partidaDados, idPartida, territorioId, turno) {
+      try {
+        // Encontrar o território na lista de territórios da partida
+        const territorio = partidaDados.territorios.find(territorio => territorio.id === territorioId);
+
+        if (territorio) {
+          // Atualizar as tropas do território encontrado
+          territorio.dono = turno;
+
+          // Montar a URL para a requisição PUT
+          const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
+
+          // Fazer a requisição PUT para atualizar a partida
+          const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(partidaDados) // Enviar toda a partida com o território modificado
+          });
+
+          // Verificar se a requisição foi bem-sucedida
+          if (response.ok) {
+            console.log(`Tropas do território ${territorioId} atualizadas para ${novoNumeroTropas}`);
+          } else {
+            console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
+            throw new Error(`Erro ao atualizar tropas do território ${territorioId}`);
+          }
+        } else {
+          console.error(`Território com ID ${territorioId} não encontrado.`);
+        }
+      } catch (error) {
+        console.error('Erro ao atualizar tropas do território:', error.message);
+        throw error;
+      }
+    }
     // Função para atualizar as tropas de um território por ID
     async function atualizarTropasTerritorio(partidaDados, idPartida, territorioId, novoNumeroTropas) {
       try {
