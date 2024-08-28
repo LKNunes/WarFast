@@ -1444,7 +1444,7 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         console.log("O loop foi interrompido pelo clique no botão.");
         break;
       }
-
+      console.log("teste1");
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
@@ -1461,7 +1461,7 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       if (Tropa2 == 0 && Tropa1 >= 1){
         DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
       }
-      
+
       
       await ExibirTropas(lobbyId);
       
