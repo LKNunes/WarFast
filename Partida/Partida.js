@@ -1279,6 +1279,132 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
     };
 }
 
+async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
+  while (!pararLoop) {
+
+    esperarCliqueBotao('FinalizarBTN');
+
+    const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
+    const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
+
+    const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
+    
+    for (j = 0; j < 42; j++) {
+      for (let path of paths) {
+        PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+        paths[PathA - 1].style.opacity = '1.0'; // Deixa o mapa apagado
+        paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
+      }
+    }
+
+    var PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+    for (j = 0; j < 42; j++) {
+      if (PartidaDados.territorios[j].dono != i) { // Somente tira a opacidade dos que não são donos
+
+        if (!svgDoc) {
+          console.error('Erro ao acessar o conteúdo do documento SVG.');
+          return;
+        }
+
+        for (let path of paths) {
+          PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+          paths[PathA - 1].style.opacity = '0.5';
+          paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+        }
+
+      }
+
+    }
+    let Territorio1 = await EsperaClick('FimAtaqueBTN');
+    if (pararLoop) {
+      console.log("O loop foi interrompido pelo clique no botão.");
+    
+      for (j = 0; j < 42; j++) {
+        for (let path of paths) {
+          PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+          paths[PathA - 1].style.opacity = '1.0'; // Deixa o mapa apagado
+          paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
+        }
+      }
+      pararLoop = false;
+      break;
+    }
+    Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
+
+    for (j = 0; j < 42; j++) {
+      for (let path of paths) {
+        PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+        paths[PathA - 1].style.opacity = '0.5'; // Deixa o mapa apagado
+        paths[PathA - 1].style.pointerEvents = "none"; // Ignora o objeto
+      }
+    }
+
+    for (j = 0; j < AlvosTerrtorios[Territorio1].podeAtacar.length // Lopping para mostrar os territorios atacaveis
+      ; j++) {
+    if  (PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono != i)
+    {
+      //console.log("Territorio" + Territorio1 + " Alvo..." + AlvosTerrtorios[Territorio1].podeAtacar[j]);
+      paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.opacity = '1.0'; //Deixar objeto em destaque
+      paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.pointerEvents = "auto"; // Não ignorar objeto
+      //console.log("Dono"+ PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono+" Turno"+PartidaDados.turno); // Ideal seria saber quem esta jogando e não ir pelo turno, corrigir futuralmente.
+      //console.log('Territorio:' + AlvosTerrtorios[Territorio1].podeAtacar[j]);
+    }
+    }
+    let Territorio2 = await EsperaClick('FimAtaqueBTN');
+    if (pararLoop) {
+      console.log("O loop foi interrompido pelo clique no botão.");
+
+      for (j = 0; j < 42; j++) {
+        for (let path of paths) {
+          PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+          paths[PathA - 1].style.opacity = '1.0'; // Deixa o mapa apagado
+          paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
+        }
+      }
+      pararLoop = false;
+      break;
+    }
+    Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
+
+    for (j = 0; j < 42; j++) {
+      for (let path of paths) {
+        PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
+
+        paths[PathA - 1].style.opacity = '1.0'; // Deixa o mapa apagado
+        paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
+      }
+    }
+    
+    if (pararLoop) {
+      console.log("O loop foi interrompido pelo clique no botão.");
+      break;
+    }
+
+    var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
+    Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
+    Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
+    
+    mostrarInput(); // Mostra o input para o jogador
+
+    const quantidadetropas = await esperarInputremanejamento(Territorio1,Territorio2); // Espera o jogador inserir um número
+    
+    esconderInput()
+
+    await Remanejar(PartidaDados5,lobbyId,Territorio1,Territorio2,quantidadetropas);
+
+
+    await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
+
+  }
+}
+
 async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidadetropas){
   try {
     // Encontrar o território na lista de territórios da partida
@@ -1409,7 +1535,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
       let Territorio1 = await EsperaClick('FimAtaqueBTN');
       if (pararLoop) {
         console.log("O loop foi interrompido pelo clique no botão.");
-
+      
         for (j = 0; j < 42; j++) {
           for (let path of paths) {
             PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
@@ -1822,7 +1948,9 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
         
         await AtacarTerritorios(lobbyId,PartidaDados3,"FimAtaqueBTN");
         //logica de ataque
+        var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
+        await RemajenarTerritorio(lobbyId,PartidaDados4,"FinalizarBTN") // Função para remanejar depois de atacar
 
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
