@@ -1241,7 +1241,7 @@ async function turnofase2acima(lobbyId) {
     return resultados.sort((a, b) => b - a);
 }
 
-function simularAtaque(atacanteUnidades, defensorUnidades) {
+async function simularAtaque(atacanteUnidades, defensorUnidades) {
     // O atacante pode usar até 3 dados, mas só se tiver mais de 3 unidades
     let dadosAtaque = Math.min(3, atacanteUnidades - 1);
     
@@ -1450,7 +1450,7 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
       Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
       
-      let resultado = simularAtaque(Tropa1,Tropa2);
+      let resultado = await simularAtaque(Tropa1,Tropa2);
 
       Tropa1-=resultado.perdasAtacante;
       Tropa2-=resultado.perdasDefensor;
