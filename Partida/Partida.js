@@ -1677,8 +1677,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
           if (numero <= 0) {
             // Se o valor não for um número válido, exibe um alerta
             console.log("Por favor, insira um número válido.");
-            break;
-            return;
+            resolve(numero); // Resolve a promessa com o número inserido
           }
 
           const PartidaDados3 = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
