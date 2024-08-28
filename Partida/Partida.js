@@ -1287,8 +1287,8 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
     if (territorio && territorio2) {
       // Atualizar as tropas do território encontrado
-      territorio.tropas += quantidadetropas;
-      territorio2.tropas -= quantidadetropas;
+      territorio.tropas -= quantidadetropas;
+      territorio2.tropas += quantidadetropas;
 
       // Montar a URL para a requisição PUT
       const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
