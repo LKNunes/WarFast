@@ -1464,8 +1464,9 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       const preloader = document.getElementById('preloader');
 
       await aplicarCores(lobbyId); //aplicação visual
+      console.log("Atualizar Cores");
       await ExibirTropas(lobbyId);
-
+      console.log("Atualizar Tropas");
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
     }
