@@ -1280,9 +1280,9 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
 }
 
 async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
-  while (!pararLoop) {
+  while (!pararLoop2) {
 
-    esperarCliqueBotao('FinalizarBTN');
+    esperarCliqueBotao2('FinalizarBTN');
     console.log("i =" + i);
 
     const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
@@ -1320,7 +1320,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
 
     }
     let Territorio1 = await EsperaClick('FinalizarBTN');
-    if (pararLoop) {
+    if (pararLoop2) {
       console.log("O loop foi interrompido pelo clique no botão.");
     
       for (j = 0; j < 42; j++) {
@@ -1331,7 +1331,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
           paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
         }
       }
-      pararLoop = false;
+      pararLoop2 = false;
       break;
     }
     Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
@@ -1364,7 +1364,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
 
     }
     let Territorio2 = await EsperaClick('FinalizarBTN');
-    if (pararLoop) {
+    if (pararLoop2) {
       console.log("O loop foi interrompido pelo clique no botão.");
 
       for (j = 0; j < 42; j++) {
@@ -1375,7 +1375,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
           paths[PathA - 1].style.pointerEvents = "auto"; // Ignora o objeto
         }
       }
-      pararLoop = false;
+      pararLoop2 = false;
       break;
     }
     Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
@@ -1389,7 +1389,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       }
     }
     
-    if (pararLoop) {
+    if (pararLoop2) {
       console.log("O loop foi interrompido pelo clique no botão.");
       break;
     }
@@ -1850,6 +1850,21 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
       }
     }
 
+    function esperarCliqueBotao2(botaoId) {
+      return new Promise((resolve) => {
+        const botao = document.getElementById(botaoId);
+    
+        function handleClick() {
+          pararLoop = true; // Atualiza a variável de controle para interromper o loop
+          resolve(); // Resolve a promessa para sinalizar que o botão foi clicado
+          botao.removeEventListener('click', handleClick); // Remove o event listener após o clique
+          console.log("Finalizado...");
+        }
+        // Adiciona o event listener para o clique no botão
+        botao.addEventListener('click', handleClick);
+      });
+    }
+
     function esperarCliqueBotao(botaoId) {
       return new Promise((resolve) => {
         const botao = document.getElementById(botaoId);
@@ -1866,6 +1881,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
     }
 
     let pararLoop = false; // Variável de controle para interromper o loop
+    let pararLoop2 = false; // Variável de controle para interromper o loop
 
     async function loopInterrompivel(botaoId) {
       while (!pararLoop) {
