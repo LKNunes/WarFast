@@ -1283,6 +1283,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
   while (!pararLoop) {
 
     esperarCliqueBotao('FinalizarBTN');
+    console.log("i =" + i);
 
     const svgObject = document.getElementById('svgObject'); // Obtém o objeto SVG pelo ID
     const svgDoc = svgObject.contentDocument; // Obtém o documento interno do objeto SVG
