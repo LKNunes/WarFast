@@ -1447,7 +1447,7 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
       atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2);
   
       if (Tropa2 == 0 && Tropa1 >= 1){
-        DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
+       await DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
       }
       const preloader = document.getElementById('preloader');
 
