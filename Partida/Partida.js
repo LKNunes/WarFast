@@ -1015,6 +1015,7 @@ async function turnofase1(lobbyId) {
       mostrarInput(); // Mostra o input para o jogador
       const numero = await esperarInput(); // Espera o jogador inserir um número
 
+
       console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
 
 
@@ -1031,7 +1032,10 @@ async function turnofase1(lobbyId) {
 
       await atualizarTropasJogador(PartidaDados2, i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
       //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
-      await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
+      await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10   
+      
+      await aplicarCores(lobbyId);
+
       console.log("Atualizar Turno...");
 
 
@@ -1507,6 +1511,7 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
           resolve(numero); // Resolve a promessa com o número inserido
           esconderInput(); // Esconde o input
           ExibirTropas(lobbyId); // Lentrete( Criar função para atualizar tropas no mapa essa cria mais elementos de texto sobrepostos)
+
           // Remove o event listener após a resolução da promessa
           submitBtn.removeEventListener('click', processarInput);
         }
