@@ -1460,6 +1460,9 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
       }
 
+      await aplicarCores(lobbyId); //aplicação visual
+
+
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
     }
