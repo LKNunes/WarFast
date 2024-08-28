@@ -1550,7 +1550,7 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
         if (territorio) {
           // Atualizar as tropas do território encontrado
           territorio.dono = turno;
-
+          console.log(""+turno+" "+territorio.dono);
           // Montar a URL para a requisição PUT
           const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
 
