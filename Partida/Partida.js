@@ -1319,7 +1319,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       }
 
     }
-    let Territorio1 = await EsperaClick('FimAtaqueBTN');
+    let Territorio1 = await EsperaClick('FinalizarBTN');
     if (pararLoop) {
       console.log("O loop foi interrompido pelo clique no botão.");
     
@@ -1363,7 +1363,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       }
 
     }
-    let Territorio2 = await EsperaClick('FimAtaqueBTN');
+    let Territorio2 = await EsperaClick('FinalizarBTN');
     if (pararLoop) {
       console.log("O loop foi interrompido pelo clique no botão.");
 
