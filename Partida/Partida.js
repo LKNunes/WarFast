@@ -1461,9 +1461,9 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       if (Tropa2 == 0 && Tropa1 >= 1){
         DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
       }
-
       
-      //await ExibirTropas(lobbyId);
+      
+      await ExibirTropas(lobbyId);
       
       console.log("Atualizar Tropas");
 
