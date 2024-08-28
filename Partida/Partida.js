@@ -666,7 +666,7 @@ async function ExibirTropas(lobbyId) {
 
   console.log(territorios);
 
-  const textosExistentes = svgDoc.querySelectorAll('text');
+   const textosExistentes = svgDoc.querySelectorAll('text');
   textosExistentes.forEach(text => text.remove());
 
   paths.forEach(function (path, i) {
@@ -1225,11 +1225,11 @@ async function turnofase2acima(lobbyId) {
   
       // Adiciona o event listener no botão
       const botao = document.getElementById(botaoId);
-     // if (botao) {
-      //  botao.addEventListener('click', handleButtonClick, { once: true });
-      //} else {
-       // console.error('Botão não encontrado.');
-     // }
+      if (botao) {
+        botao.addEventListener('click', handleButtonClick, { once: true });
+      } else {
+        console.error('Botão não encontrado.');
+      }
     });
   }
   
@@ -1241,7 +1241,7 @@ async function turnofase2acima(lobbyId) {
     return resultados.sort((a, b) => b - a);
 }
 
-async function simularAtaque(atacanteUnidades, defensorUnidades) {
+function simularAtaque(atacanteUnidades, defensorUnidades) {
     // O atacante pode usar até 3 dados, mas só se tiver mais de 3 unidades
     let dadosAtaque = Math.min(3, atacanteUnidades - 1);
     
@@ -1444,28 +1444,27 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         console.log("O loop foi interrompido pelo clique no botão.");
         break;
       }
-      console.log("teste1");
+
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
       Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
       
-      let resultado = await simularAtaque(Tropa1,Tropa2);
+      let resultado = simularAtaque(Tropa1,Tropa2);
 
       Tropa1-=resultado.perdasAtacante;
       Tropa2-=resultado.perdasDefensor;
 
-      await atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1);
-      await atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2);
+      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1);
+      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2);
   
       if (Tropa2 == 0 && Tropa1 >= 1){
         DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
       }
+      const preloader = document.getElementById('preloader');
 
-      
+      await aplicarCores(lobbyId); //aplicação visual
       await ExibirTropas(lobbyId);
-      
-      console.log("Atualizar Tropas");
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
