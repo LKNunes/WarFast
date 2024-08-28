@@ -1686,10 +1686,10 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         }
 
       
-        console.log("Roda1");
+      //  console.log("Roda1");
         let Territorio1 = await EsperaClick();
 
-        console.log("Territorio Selecionado");
+        //console.log("Territorio Selecionado");
         // let Territorio2 = await EsperaClick();
         removerEventListeners();
 
@@ -1697,7 +1697,7 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         // Territorio2 = Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]
 
 
-        console.log("Identificação:" + Territorio1);
+       // console.log("Identificação:" + Territorio1);
 
         //console.log("Tropas"+PartidaDados2.playerSlots[i].tropas);
 
@@ -1706,7 +1706,7 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         mostrarInput(); // Mostra o input para o jogador
         const numero = await esperarInput(); // Espera o jogador inserir um número
 
-        console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
+        //console.log("Número inserido pelo jogador " + PartidaDados.playerSlots[i].id + ": " + numero); // Exibe o número inserido pelo jogador no console
 
 
         for (j = 0; j < 42; j++) {
@@ -1714,7 +1714,7 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
           paths[j].style.opacity = '1.0';
           paths[j].style.pointerEvents = "auto"; // Ignora o objeto
 
-          console.log("teste");
+          //console.log("teste");
         }
 
         TropasJogador = PartidaDados2.playerSlots[i].tropas - numero;
@@ -1723,12 +1723,12 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         await atualizarTropasJogador(PartidaDados2, i, TropasJogador); // Atualiza as tropas do jogador com ID 0 para 5
         //          console.log("Objeto:"+PartidaDados2.territorios[Territorio1].id+" "+Territorio1+" "+numero+"");
         await atualizarTropasTerritorio(PartidaDados2, lobbyId, Territorio1 - 1, NovaTropasTerritorio); // Atualiza as tropas do território com ID 2 para 10    
-        console.log("Atualizar Turno...");        
+        // console.log("Atualizar Turno...");        
 
       }
 
       var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-        console.log("Atacando...");
+        // console.log("Atacando...");
 
         
         await AtacarTerritorios(lobbyId,PartidaDados3,"FimAtaqueBTN");
