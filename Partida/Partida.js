@@ -1462,7 +1462,7 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
       }
 
-      await aplicarCores(lobbyId); //aplicação visual
+      //await aplicarCores(lobbyId); //aplicação visual
       console.log("Atualizar Cores");
       await ExibirTropas(lobbyId);
       console.log("Atualizar Tropas");
