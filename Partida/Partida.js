@@ -1225,11 +1225,11 @@ async function turnofase2acima(lobbyId) {
   
       // Adiciona o event listener no botão
       const botao = document.getElementById(botaoId);
-      if (botao) {
-        botao.addEventListener('click', handleButtonClick, { once: true });
-      } else {
-        console.error('Botão não encontrado.');
-      }
+     // if (botao) {
+      //  botao.addEventListener('click', handleButtonClick, { once: true });
+      //} else {
+       // console.error('Botão não encontrado.');
+     // }
     });
   }
   
