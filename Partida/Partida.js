@@ -1335,7 +1335,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       pararLoop2 = false;
       break;
     }
-
+    console.log(""+Territorio1)
     Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
     for (j = 0; j < 42; j++) {
