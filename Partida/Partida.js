@@ -1455,8 +1455,8 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
       Tropa1-=resultado.perdasAtacante;
       Tropa2-=resultado.perdasDefensor;
 
-      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1);
-      atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2);
+      await atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio1,Tropa1);
+      await atualizarTropasTerritorio(PartidaDados5,lobbyId,Territorio2,Tropa2);
   
       if (Tropa2 == 0 && Tropa1 >= 1){
         DominaTerritorio(PartidaDados5,lobbyId,Territorio2,i);
