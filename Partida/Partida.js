@@ -1304,13 +1304,13 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
       // Verificar se a requisição foi bem-sucedida
       if (response.ok) {
-        console.log(` Território ${territorioId} dominado por ${turno}`);
+        console.log(` Território ${Territorio1} dominado por ${turno}`);
       } else {
-        console.error(`Erro ao atualizar tropas do território ${territorioId}: ${response.status} - ${response.statusText}`);
-        throw new Error(`Erro ao atualizar tropas do território ${territorioId}`); 
+        console.error(`Erro ao atualizar tropas do território ${Territorio1}: ${response.status} - ${response.statusText}`);
+        throw new Error(`Erro ao atualizar tropas do território ${Territorio1}`); 
       }
     } else {
-      console.error(`Território com ID ${territorioId} não encontrado.`);
+      console.error(`Território com ID ${Territorio1} não encontrado.`);
     }
   } catch (error) {
     console.error('Erro ao atualizar tropas do território:', error.message);
