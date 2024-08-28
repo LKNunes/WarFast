@@ -1282,14 +1282,14 @@ function simularAtaque(atacanteUnidades, defensorUnidades) {
 async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidadetropas){
   try {
     // Encontrar o território na lista de territórios da partida
-    const Territorio1 = partidaDados.territorios.find(Territorio1 => Territorio1.id === Territorio1);
+    const territorio = partidaDados.territorios.find(territorio => territorio.id === Territorio1);
     const territorio2 = partidaDados.territorios.find(territorio2 => territorio2.id === Territorio2);
 
-    if (Territorio1) {
+    if (territorio && territorio2) {
       // Atualizar as tropas do território encontrado
-      Territorio1.tropas -= quantidadetropas;
-      territorio2.tropas += quantidadetropas;
-      console.log(""+Territorio1+" "+territorio2);
+      territorio.tropas += quantidadetropas;
+      territorio2.tropas -= quantidadetropas;
+
       // Montar a URL para a requisição PUT
       const url = `https://45.140.193.150:8443/partida/${partidaDados.id}`;
 
@@ -1304,13 +1304,13 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
       // Verificar se a requisição foi bem-sucedida
       if (response.ok) {
-        console.log(` Território ${Territorio1} dominado por ${turno}`);
+        console.log(`Remanejado ${quantidadetropas} do território ${territorio} para o  territorio ${territorio2}`);
       } else {
-        console.error(`Erro ao atualizar tropas do território ${Territorio1}: ${response.status} - ${response.statusText}`);
-        throw new Error(`Erro ao atualizar tropas do território ${Territorio1}`); 
+        console.error(`Erro ao atualizar tropas do território ${territorio}: ${response.status} - ${response.statusText}`);
+        throw new Error(`Erro ao atualizar tropas do território ${territorio}`);
       }
     } else {
-      console.error(`Território com ID ${Territorio1} não encontrado.`);
+      console.error(`Território com ID ${territorio} não encontrado.`);
     }
   } catch (error) {
     console.error('Erro ao atualizar tropas do território:', error.message);
