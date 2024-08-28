@@ -1492,9 +1492,14 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
       // let quantidadetropas = 1; // Quantidade de tropas para remanejar, 1 para teste
 
        mostrarInput(); // Mostra o input para o jogador
-       const quantidadetropas = await esperarInput(); // Espera o jogador inserir um número
+
+       const quantidadetropas = await esperarInputremanejamento(Territorio1,Territorio2); // Espera o jogador inserir um número
+       
+       esconderInput()
 
        await Remanejar(PartidaDados5,lobbyId,Territorio1,Territorio2,quantidadetropas);
+
+       
       }
       const preloader = document.getElementById('preloader');
 
@@ -1520,7 +1525,50 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
       document.getElementById('numeroInput').value = ''; // Limpa o input
     }
 
-    
+    function esperarInputremanejamento() {
+      return new Promise((resolve) => {
+        // Cria uma nova promessa que será resolvida quando o input for processado
+
+        const submitBtn = document.getElementById('submitBtn'); // Botão de submissão
+        const numeroInput = document.getElementById('numeroInput'); // Campo de input
+
+        async function processarInput() {
+          // Processa o input do usuário
+          const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
+
+          if (isNaN(numero)) {
+            // Se o valor não for um número válido, exibe um alerta
+            alert("Por favor, insira um número válido.");
+            return;
+          }
+
+          if (numero <= 0) {
+            // Se o valor não for um número válido, exibe um alerta
+            alert("Por favor, insira um número válido.");
+            return;
+          }
+
+          const PartidaDados3 = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
+
+          if (numero > PartidaDados3.territorios[Territorio1].tropas) {
+            // Se o valor for maior que as tropas disponiveis, exibe um alerta
+            alert("Tropas restantes:"+PartidaDados3.playerSlots[PartidaDados3.turno].tropas);
+            return;
+          }
+
+          resolve(numero); // Resolve a promessa com o número inserido
+          esconderInput(); // Esconde o input
+          ExibirTropas(lobbyId); // Lentrete( Criar função para atualizar tropas no mapa essa cria mais elementos de texto sobrepostos)
+
+          // Remove o event listener após a resolução da promessa
+          submitBtn.removeEventListener('click', processarInput);
+        }
+
+        // Adiciona um event listener para o botão de submissão
+        submitBtn.addEventListener('click', processarInput);
+      });
+    }
+
      function esperarInput() {
       return new Promise((resolve) => {
         // Cria uma nova promessa que será resolvida quando o input for processado
