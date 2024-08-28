@@ -1550,9 +1550,9 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
           const PartidaDados3 = await dadospartida(lobbyId); // Assume que a função dadospartida retorna um objeto com os dados da partida
 
-          if (numero > PartidaDados3.territorios[Territorio1].tropas) {
+          if (numero > PartidaDados3.territorios[Territorio1].tropas+1) {
             // Se o valor for maior que as tropas disponiveis, exibe um alerta
-            alert("Tropas restantes:"+PartidaDados3.playerSlots[PartidaDados3.turno].tropas);
+            alert("Tropas para remanejar:"+PartidaDados3.territorios[Territorio1].tropas+1);
             return;
           }
 
