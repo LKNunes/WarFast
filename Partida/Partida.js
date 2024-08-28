@@ -1407,11 +1407,11 @@ console.log("Unidades restantes do defensor: " + defensorUnidades);
         ; j++) {
       if  (PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono != i)
       {
-        console.log("Territorio" + Territorio1 + " Alvo..." + AlvosTerrtorios[Territorio1].podeAtacar[j]);
+        //console.log("Territorio" + Territorio1 + " Alvo..." + AlvosTerrtorios[Territorio1].podeAtacar[j]);
         paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.opacity = '1.0'; //Deixar objeto em destaque
         paths[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].style.pointerEvents = "auto"; // Não ignorar objeto
-        console.log("Dono"+ PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono+" Turno"+PartidaDados.turno); // Ideal seria saber quem esta jogando e não ir pelo turno, corrigir futuralmente.
-        console.log('Territorio:' + AlvosTerrtorios[Territorio1].podeAtacar[j]);
+        //console.log("Dono"+ PartidaDados.territorios[AlvosTerrtorios[Territorio1].podeAtacar[j] - 1].dono+" Turno"+PartidaDados.turno); // Ideal seria saber quem esta jogando e não ir pelo turno, corrigir futuralmente.
+        //console.log('Territorio:' + AlvosTerrtorios[Territorio1].podeAtacar[j]);
       }
       }
       let Territorio2 = await EsperaClick('FimAtaqueBTN');
