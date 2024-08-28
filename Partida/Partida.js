@@ -1335,7 +1335,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       pararLoop2 = false;
       break;
     }
-    console.log(""+Territorio1);
+
     Territorio1 = parseInt(Territorio1.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
 
     for (j = 0; j < 42; j++) {
@@ -1397,9 +1397,6 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
     }
 
     var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-
-    Tropa1 = PartidaDados5.territorios[Territorio1].tropas;
-    Tropa2 = PartidaDados5.territorios[Territorio2].tropas;
     
     mostrarInput(); // Mostra o input para o jogador
 
@@ -1408,7 +1405,6 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
     esconderInput()
 
     await Remanejar(PartidaDados5,lobbyId,Territorio1,Territorio2,quantidadetropas);
-
 
     await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
@@ -1681,6 +1677,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
           if (numero <= 0) {
             // Se o valor não for um número válido, exibe um alerta
             console.log("Por favor, insira um número válido.");
+            break;
             return;
           }
 
