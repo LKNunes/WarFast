@@ -1552,7 +1552,9 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
           if (numero > PartidaDados3.territorios[Territorio1].tropas-1) {
             // Se o valor for maior que as tropas disponiveis, exibe um alerta
-            console.log("Tropas para remanejar:"+PartidaDados3.territorios[Territorio1].tropas);
+            TropasR = PartidaDados3.territorios[Territorio1].tropas;
+            TropasR-=1;
+            console.log("Tropas para remanejar:"+TropasR);
             return;
           }
 
