@@ -1319,6 +1319,7 @@ async function RemajenarTerritorio(lobbyId,PartidaDados4,botaoId) {
       }
 
     }
+    
     let Territorio1 = await EsperaClick('FinalizarBTN');
     
     if (pararLoop2) {
@@ -1643,8 +1644,6 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
     }
   }
-
-    
 
     function mostrarInput() {
       // Mostra o container de input
