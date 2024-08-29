@@ -20,6 +20,8 @@
     height: 100px;
 }
 
+
+
 #dice {
     width: 100px;
     height: 100px;
@@ -72,7 +74,7 @@
     100% { transform: rotateX(360deg) rotateY(2160deg); }
 }
 
-.preloader {
+.ppreloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -90,7 +92,7 @@
 text {
   cursor: default;
 }
-.loader {
+.lloader {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
@@ -105,11 +107,26 @@ text {
   100% { transform: rotate(360deg); }
 }
 
+.input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* Espaço entre o input e o botão */
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* Inicialmente invisível */
+  visibility: hidden; /* Oculto inicialmente */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Animação de transição */
+}
 
 .hidden {
   display: none;
 }
-
 
     .container { 
       display: flex;
