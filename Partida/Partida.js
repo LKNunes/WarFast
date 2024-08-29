@@ -1902,9 +1902,11 @@ async function turnofase2acima(lobbyId) {
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
     while (PartidaDados2.playerSlots[i].tropas > 0) { // Distribuir ate zerar as tropas
+      
       PartidaDados2 = await dadospartida(lobbyId);
+
       for (j = 0; j < 42; j++) {
-        if (PartidaDados.territorios[j].dono != i) {
+        if (PartidaDados2.territorios[j].dono != i) {
 
           if (!svgDoc) {
             console.error('Erro ao acessar o conteúdo do documento SVG.');
