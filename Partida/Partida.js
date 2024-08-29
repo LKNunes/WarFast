@@ -1976,6 +1976,7 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
 
         await RemajenarTerritorio(lobbyId,PartidaDados4,"FinalizarBTN") // Função para remanejar depois de atacar
 
+
       await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
     }
@@ -2010,15 +2011,6 @@ async function Remanejar(partidaDados,lobbyId,Territorio1,Territorio2,quantidade
   console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
 
   // Finalizar turno, proximo jogador.
-  
-
-  // 2 fim
-  // 3 - Atacar territorio, cada territorio pode atacar os proximos, desde que tenha 2 ou mais tropas.
-  // 3.1 - Distribuir se vitoria Transferir territorios e Atuzalizar tropas, destribuir as tropas para territorio conquistado
-  // 4 - Remanejar tropas restantes
-  // 5 -Finalizar turno, proximo jogador.
-  // OBS: logica dos dados 1:1 1:2 1:3
-  // Repetir até validar o objetivo
   
 }
 
