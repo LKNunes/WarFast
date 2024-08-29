@@ -1871,7 +1871,6 @@ async function turnofase2acima(lobbyId) {
         pararLoop = true; // Atualiza a variável de controle para interromper o loop
         resolve(); // Resolve a promessa para sinalizar que o botão foi clicado
         botao.removeEventListener('click', handleClick); // Remove o event listener após o clique
-        console.log("Finalizado...");
       }
       // Adiciona o event listener para o clique no botão
       botao.addEventListener('click', handleClick);
@@ -1950,6 +1949,7 @@ async function turnofase2acima(lobbyId) {
     await AtacarTerritorios(lobbyId, PartidaDados3, "FimAtaqueBTN");
     var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
+    
     await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
   }
