@@ -8,7 +8,7 @@ async function login() {
         }); 
 
         if (!response.ok) throw new Error('Erro ao buscar usuários');
-
+ 
         const usuarios = await response.json();
         const usuarioExistente = usuarios.find(u => u.usuario === usuario);
 
