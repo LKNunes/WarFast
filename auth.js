@@ -5,7 +5,7 @@ async function login() {
     try { 
         const response = await fetch('https://45.140.193.150:8443/usuarios', {
             method: 'GET',
-        }); 
+        });  
     
         if (!response.ok) throw new Error('Erro ao buscar usuários');
  
