@@ -1709,7 +1709,7 @@ async function turnofase2acima(lobbyId) {
       async function processarInput() {
         // Processa o input do usuário
         const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
-        generateNumberList(numero-1);
+        await generateNumberList(numero);
         console.log(numero);
         if (isNaN(numero)) {
           // Se o valor não for um número válido, exibe um alerta
