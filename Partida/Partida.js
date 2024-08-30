@@ -1442,9 +1442,12 @@ async function turnofase2acima(lobbyId) {
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       mostrarInput(); // Mostra o input para o jogador
+       
+      await generateNumberList(numero);
+      console.log(numero);
 
       const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
-
+     
       esconderInput()
 
       await Remanejar(PartidaDados5, lobbyId, Territorio1, Territorio2, quantidadetropas);
@@ -1666,7 +1669,9 @@ async function turnofase2acima(lobbyId) {
         // let quantidadetropas = 1; // Quantidade de tropas para remanejar, 1 para teste
 
         mostrarInput(); // Mostra o input para o jogador
-
+              
+      await generateNumberList(numero);
+      console.log(numero);
         const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
 
         esconderInput()
@@ -1709,8 +1714,7 @@ async function turnofase2acima(lobbyId) {
       async function processarInput() {
         // Processa o input do usuário
         const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
-        await generateNumberList(numero);
-        console.log(numero);
+    
         if (isNaN(numero)) {
           // Se o valor não for um número válido, exibe um alerta
           console.log("Por favor, insira um número válido.");
