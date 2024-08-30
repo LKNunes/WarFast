@@ -1447,8 +1447,6 @@ async function turnofase2acima(lobbyId) {
 
       const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
       
-      await generateNumberList(quantidadetropas);
-      console.log("QUANTIDADE "+quantidadetropas);
       
       esconderInput()
 
@@ -1715,7 +1713,9 @@ async function turnofase2acima(lobbyId) {
       async function processarInput() {
         // Processa o input do usuário
         const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
-    
+        await generateNumberList(numero);
+      console.log("QUANTIDADE "+numero);
+      
         if (isNaN(numero)) {
           // Se o valor não for um número válido, exibe um alerta
           console.log("Por favor, insira um número válido.");
