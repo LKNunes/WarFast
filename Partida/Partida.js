@@ -1,5 +1,38 @@
 
 // Exemplo de uso:
+document.addEventListener('DOMContentLoaded', () => {
+  const numberList = document.getElementById('number-list');
+
+  // Gera a lista de números
+  for (let i = 1; i <= 20; i++) { // Adicionando mais números para demonstração
+      const li = document.createElement('li');
+      li.textContent = i;
+      li.dataset.value = i; // Adiciona o valor como um atributo de dados
+      numberList.appendChild(li);
+  }
+
+  // Adiciona eventos de clique na lista de números
+  numberList.addEventListener('click', (event) => {
+      if (event.target.tagName === 'LI') {
+          numberList.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+          event.target.classList.add('selected');
+      }
+  });
+
+  // Adiciona eventos aos botões
+  document.getElementById('confirm-button').addEventListener('click', () => {
+      const selected = document.querySelector('#number-list .selected');
+      if (selected) {
+          alert(`Número selecionado: ${selected.dataset.value}`);
+      } else {
+          alert('Nenhum número selecionado.');
+      }
+  });
+
+  document.getElementById('cancel-button').addEventListener('click', () => {
+      numberList.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+  });
+});
 
 
 
@@ -1668,7 +1701,7 @@ async function turnofase2acima(lobbyId) {
       async function processarInput() {
         // Processa o input do usuário
         const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
-
+        
         if (isNaN(numero)) {
           // Se o valor não for um número válido, exibe um alerta
           console.log("Por favor, insira um número válido.");
