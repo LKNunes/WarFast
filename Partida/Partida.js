@@ -1921,7 +1921,7 @@ async function turnofase2acima(lobbyId) {
 
         }
 
-      }
+      } 
 
       let Territorio1 = await EsperaClick();
 
