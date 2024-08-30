@@ -1446,8 +1446,9 @@ async function turnofase2acima(lobbyId) {
     
 
       const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
+      
       await generateNumberList(quantidadetropas);
-      console.log(quantidadetropas);
+      console.log("QUANTIDADE "+quantidadetropas);
       esconderInput()
 
       await Remanejar(PartidaDados5, lobbyId, Territorio1, Territorio2, quantidadetropas);
@@ -1671,7 +1672,7 @@ async function turnofase2acima(lobbyId) {
         mostrarInput(); // Mostra o input para o jogador
      
         const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
- await generateNumberList(quantidadetropas);
+        await generateNumberList(quantidadetropas);
       console.log(quantidadetropas);
         esconderInput()
 
@@ -1976,6 +1977,8 @@ async function turnofase2acima(lobbyId) {
 
       mostrarInput(); // Mostra o input para o jogador
       const numero = await esperarInput(); // Espera o jogador inserir um número
+
+
 
       for (j = 0; j < 42; j++) {
 
