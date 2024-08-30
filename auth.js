@@ -23,8 +23,8 @@ async function login() {
         console.error('Erro:', error);
         alert('Erro ao autenticar usuário.');
     }
-} 
-    
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const logarLink = document.getElementById('logarLink');
     const inscreverLink = document.getElementById('inscreverLink');
