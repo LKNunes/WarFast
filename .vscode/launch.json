@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "msedge",
+            "name": "https://45.140.193.150/",
+            "request": "launch",
+            "url": "https://45.140.193.150/"
+        }
+    ]
+}
