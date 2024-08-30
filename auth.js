@@ -24,7 +24,7 @@ async function login() {
         alert('Erro ao autenticar usuário.');
     }
 } 
- 
+  
 document.addEventListener('DOMContentLoaded', () => {
     const logarLink = document.getElementById('logarLink');
     const inscreverLink = document.getElementById('inscreverLink');
