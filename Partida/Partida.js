@@ -16,7 +16,7 @@ async function playersCores() {
     const response = await fetch('https://45.140.193.150:8443/partida', {
       method: 'GET',
     });
-
+ 
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
     const playersPartida = await response.json();
