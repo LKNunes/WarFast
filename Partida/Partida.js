@@ -1449,6 +1449,7 @@ async function turnofase2acima(lobbyId) {
       
       await generateNumberList(quantidadetropas);
       console.log("QUANTIDADE "+quantidadetropas);
+      
       esconderInput()
 
       await Remanejar(PartidaDados5, lobbyId, Territorio1, Territorio2, quantidadetropas);
