@@ -1669,7 +1669,6 @@ async function turnofase2acima(lobbyId) {
         // let quantidadetropas = 1; // Quantidade de tropas para remanejar, 1 para teste
 
         mostrarInput(); // Mostra o input para o jogador
-              
      
         const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
  await generateNumberList(quantidadetropas);
