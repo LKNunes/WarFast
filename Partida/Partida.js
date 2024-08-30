@@ -1688,14 +1688,12 @@ async function turnofase2acima(lobbyId) {
     // Mostra o container de input
     document.getElementById('inputContainer').classList.remove('hidden');
     document.getElementById('inputContainer2').classList.remove('hidden');
-
   }
 
   function esconderInput() {
     // Esconde o container de input e limpa o valor do input
     document.getElementById('inputContainer').classList.add('hidden');
     document.getElementById('inputContainer2').classList.add('hidden');
-
     document.getElementById('numeroInput').value = ''; // Limpa o input
   }
 
