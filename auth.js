@@ -25,7 +25,6 @@ async function login() {
     }
 }  
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const logarLink = document.getElementById('logarLink');
     const inscreverLink = document.getElementById('inscreverLink');
