@@ -1,39 +1,41 @@
 
-// Exemplo de uso:
-document.addEventListener('DOMContentLoaded', () => {
+function generateNumberList(maxNumber) {
   const numberList = document.getElementById('number-list');
+  numberList.innerHTML = ''; // Limpa a lista existente
 
-  // Gera a lista de números
-  for (let i = 1; i <= 20; i++) { // Adicionando mais números para demonstração
-      const li = document.createElement('li');
-      li.textContent = i;
-      li.dataset.value = i; // Adiciona o valor como um atributo de dados
-      numberList.appendChild(li);
+  // Gera a lista de números de forma decrescente
+  for (let i = maxNumber; i >= 1; i--) {
+    const li = document.createElement('li');
+    li.textContent = i;
+    li.dataset.value = i; // Adiciona o valor como um atributo de dados
+    numberList.appendChild(li);
   }
 
   // Adiciona eventos de clique na lista de números
   numberList.addEventListener('click', (event) => {
-      if (event.target.tagName === 'LI') {
-          numberList.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
-          event.target.classList.add('selected');
-      }
+    if (event.target.tagName === 'LI') {
+      numberList.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+      event.target.classList.add('selected');
+    }
   });
+}
 
-  // Adiciona eventos aos botões
+// Adiciona eventos aos botões
+document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('confirm-button').addEventListener('click', () => {
-      const selected = document.querySelector('#number-list .selected');
-      if (selected) {
-          alert(`Número selecionado: ${selected.dataset.value}`);
-      } else {
-          alert('Nenhum número selecionado.');
-      }
+    const selected = document.querySelector('#number-list .selected');
+    if (selected) {
+      alert(`Número selecionado: ${selected.dataset.value}`);
+    } else {
+      alert('Nenhum número selecionado.');
+    }
   });
 
   document.getElementById('cancel-button').addEventListener('click', () => {
-      numberList.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+    const numberList = document.getElementById('number-list');
+    numberList.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
   });
 });
-
 
 
 function sleep(ms) {
