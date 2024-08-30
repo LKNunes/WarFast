@@ -2,7 +2,7 @@ async function login() {
     const usuario = document.getElementById('usuarioLogin').value;
     const senha = document.getElementById('senhaLogin').value;
 
-    try {
+    try { 
         const response = await fetch('https://45.140.193.150:8443/usuarios', {
             method: 'GET',
         }); 
