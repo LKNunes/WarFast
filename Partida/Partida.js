@@ -10,7 +10,6 @@ function generateNumberList(maxNumber) {
     li.dataset.value = i; // Adiciona o valor como um atributo de dados
     numberList.appendChild(li);
   }
-
   // Adiciona eventos de clique na lista de números
   numberList.addEventListener('click', (event) => {
     if (event.target.tagName === 'LI') {
