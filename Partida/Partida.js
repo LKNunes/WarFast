@@ -405,14 +405,15 @@ async function CoresMain(lobbyId) {
     const jogadorNome = PartidaDados.playerSlots[i].nome;
     const Objetivo = PartidaDados.playerSlots[i].objetivo;
     const Cor = cores[i]; // Atribui a cor ao jogador
+    const Cartas = ['','','','',''];  
 
     // Cria um objeto para representar o jogador com o ID, nome e cor
     const jogador = {
       id: jogadorId,
       nome: jogadorNome,
       objetivo: Objetivo,
-      cor: Cor
-
+      cor: Cor,
+      cartas: Cartas
     };
 
     // Adiciona o jogador ao array Jogadores
@@ -745,7 +746,7 @@ async function turnofase1(lobbyId) {
   console.log("If -1 = " + Turno);
 
   if (Fase == 1 && Turno == -1) {
-    let cartas = [];
+
     let Jogadores = [];
     let QuantidadeTropasJ = [
       { id: 0, tropas: 0 },
@@ -775,7 +776,6 @@ async function turnofase1(lobbyId) {
         const Objetivo = PartidaDados.playerSlots[i].objetivo;
         const Cor = PartidaDados.playerSlots[i].cor; // Atribui a cor ao jogador
         const Tropas = Math.floor(QuantidadeTropasJ[i].tropas / 2); // Dividde por 2 arredonda
-        const Cartas = cartas["","","","",""];
         console.log("Tropas: " + QuantidadeTropasJ[i]);
 
         // Cria um objeto para representar o jogador com o ID, nome e cor
@@ -784,8 +784,7 @@ async function turnofase1(lobbyId) {
           nome: jogadorNome,
           objetivo: Objetivo,
           cor: Cor,
-          tropas: Tropas,
-          cartas: Cartas
+          tropas: Tropas
         };
 
         // Adiciona o jogador ao array Jogadores
