@@ -1671,13 +1671,21 @@ async function turnofase2acima(lobbyId) {
      
         const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
         await generateNumberList(quantidadetropas);
-      console.log(quantidadetropas);
+        console.log(quantidadetropas);
         esconderInput()
 
         await Remanejar(PartidaDados5, lobbyId, Territorio1, Territorio2, quantidadetropas);
-
+        
 
       }
+
+      // if (Tropa1 < 0) {   // Perdeu no dado
+      //  Carta = await DestribuirCarta(lobbyId);
+      //  PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+      //  PartidaDados.jogador[turno].cartas[1] = Carta;
+      //  await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+      // }
+
       const preloader = document.getElementById('preloader');
 
       await ExibirTropas(lobbyId);//aplicação tropas
