@@ -745,7 +745,7 @@ async function turnofase1(lobbyId) {
   console.log("If -1 = " + Turno);
 
   if (Fase == 1 && Turno == -1) {
-
+    let cartas = [];
     let Jogadores = [];
     let QuantidadeTropasJ = [
       { id: 0, tropas: 0 },
