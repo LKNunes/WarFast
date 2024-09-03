@@ -1503,7 +1503,7 @@ async function turnofase2acima(lobbyId) {
       esperarCliqueBotao('FimAtaqueBTN');
 
       console.log("i =" + i);
-
+      
       let AlvosTerrtorios = [
         { id: 1, podeAtacar: [2, 3, 4, 32] },
         { id: 2, podeAtacar: [1, 4] },
@@ -1996,9 +1996,12 @@ async function turnofase2acima(lobbyId) {
 
     var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await AtacarTerritorios(lobbyId, PartidaDados3, "FimAtaqueBTN");
+    
     var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
+   
     
+
     await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
   }
