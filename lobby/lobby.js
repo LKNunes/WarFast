@@ -66,11 +66,14 @@ async function comecarPartida(joinExistingGame = false) {
     const jogadorId = i; // Gera um ID único para cada jogador
     const jogadorNome = LobbyDados.playerSlots[i]; // Obtém o nome do jogador do lobby
     const Objetivo = i;
+    const Cartas = ['','','','',''];  
+
     // Cria um objeto para representar o jogador com o ID e o nome
     const jogador = {
       id: jogadorId,
       nome: jogadorNome,
-      objetivo: Objetivo
+      objetivo: Objetivo,
+      cartas: Cartas
     };
 
     // Adiciona o jogador ao array Jogadores
