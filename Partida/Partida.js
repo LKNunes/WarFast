@@ -192,9 +192,6 @@ function pausecomp(millis) {
   do { curDate = new Date(); }
   while (curDate - date < millis);
 }
-
-
-
 // Função para alterar o tamanho de um território ao passar o mouse sobre ele
 function alterarTamanhoTerritorio(territorio) {
   territorio.addEventListener('mouseenter', function () {
@@ -2038,7 +2035,6 @@ async function turnofase2acima(lobbyId) {
   // Finalizar turno, proximo jogador.
 
 }
-
 
 const dice = document.getElementById('dice');
 const rollBtn = document.getElementById('rollBtn');
