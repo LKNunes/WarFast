@@ -2046,47 +2046,23 @@ const rollBtn = document.getElementById('rollBtn');
 rollBtn.addEventListener('click', rollDice);
 
 function rollDice() {
-  dice.classList.add('rolling');
+  const randNumber = Math.floor(Math.random() * 6) + 1;
+  const rotations = [
+    { x: 0, y: 0 },
+    { x: 0, y: 180 },
+    { x: 0, y: -90 },
+    { x: 0, y: 90 },
+    { x: -90, y: 0 },
+    { x: 90, y: 0 }
+  ];
 
-  // Remove the 'rolling' class after the animation is done
+  dice.classList.add('rolling');
   setTimeout(() => {
     dice.classList.remove('rolling');
-
-    const randNumber = Math.floor(Math.random() * 6) + 1;
-    let xRotation = 0;
-    let yRotation = 0;
-
-    switch (randNumber) {
-      case 1:
-        xRotation = 0;
-        yRotation = 0;
-        break;
-      case 2:
-        xRotation = 0;
-        yRotation = 180;
-        break;
-      case 3:
-        xRotation = 0;
-        yRotation = -90;
-        break;
-      case 4:
-        xRotation = 0;
-        yRotation = 90;
-        break;
-      case 5:
-        xRotation = -90;
-        yRotation = 0;
-        break;
-      case 6:
-        xRotation = 90;
-        yRotation = 0;
-        break;
-    }
-
-    dice.style.transform = `rotateX(${xRotation + 1800}deg) rotateY(${yRotation + 1800}deg)`;
-
+    const { x, y } = rotations[randNumber - 1];
+    dice.style.transform = `rotateX(${x + 1800}deg) rotateY(${y + 1800}deg)`;
     console.log(`Número rolado: ${randNumber}`);
-  }, 2000); // The duration of the roll animation
+  }, 2000);
 }
 
 dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
