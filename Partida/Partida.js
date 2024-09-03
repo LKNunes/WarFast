@@ -378,7 +378,6 @@ async function aplicarCores(lobbyId) {
 }
 
 
-
 async function CoresMain(lobbyId) {
   const Fase = await Consultarfase(lobbyId);
   if (Fase >= 1) {
