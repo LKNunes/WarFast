@@ -344,7 +344,23 @@ async function DestribuirTerritorios(lobbyId) {
 
 
   //teste
-  let Cartas = [];
+
+  let Cartas = [
+    { id: 1, letra: 'Q' }, { id: 2, letra: 'Q' }, { id: 3, letra: 'Q' }, { id: 4, letra: 'Q' },
+    { id: 5, letra: 'Q' }, { id: 6, letra: 'Q' }, { id: 7, letra: 'Q' }, { id: 8, letra: 'Q' },
+    { id: 9, letra: 'Q' }, { id: 10, letra: 'Q' }, { id: 11, letra: 'Q' }, { id: 12, letra: 'Q' },
+    { id: 13, letra: 'Q' }, { id: 14, letra: 'Q' },
+    { id: 15, letra: 'C' }, { id: 16, letra: 'C' }, { id: 17, letra: 'C' }, { id: 18, letra: 'C' },
+    { id: 19, letra: 'C' }, { id: 20, letra: 'C' }, { id: 21, letra: 'C' }, { id: 22, letra: 'C' },
+    { id: 23, letra: 'C' }, { id: 24, letra: 'C' }, { id: 25, letra: 'C' }, { id: 26, letra: 'C' },
+    { id: 27, letra: 'C' }, { id: 28, letra: 'C' },
+    { id: 29, letra: 'T' }, { id: 30, letra: 'T' }, { id: 31, letra: 'T' }, { id: 32, letra: 'T' },
+    { id: 33, letra: 'T' }, { id: 34, letra: 'T' }, { id: 35, letra: 'T' }, { id: 36, letra: 'T' },
+    { id: 37, letra: 'T' }, { id: 38, letra: 'T' }, { id: 39, letra: 'T' }, { id: 40, letra: 'T' },
+    { id: 41, letra: 'T' }, { id: 42, letra: 'T' },
+    { id: 43, letra: 'X' }
+  ];
+
   let Territorios = [];
 
   for (let i = 0; i < 42; i++) {
