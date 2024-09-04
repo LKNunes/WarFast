@@ -72,7 +72,6 @@ async function playersCores() {
       console.error('Lobby não encontrado');
       alert('Lobby não encontrado.');
       return null;
-
     }
 
   } catch (error) {
