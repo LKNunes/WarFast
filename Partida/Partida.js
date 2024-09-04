@@ -344,7 +344,7 @@ async function DestribuirTerritorios(lobbyId) {
 
 
   //teste
-
+  let Cartas = [];
   let Territorios = [];
 
   for (let i = 0; i < 42; i++) {
@@ -369,7 +369,7 @@ async function DestribuirTerritorios(lobbyId) {
   // Atualiza os dados do lobby com os novos dados dos jogadores
 
   PartidaDados.territorios = Territorios;
-
+  PartidaDados.cartas = Cartas;
   // Atualiza o lobby no servidor
   await atualizarParcialmenteLobby(lobbyId, PartidaDados);
   //Armazenar territorios no DB na primeira vez e chamar a função para aplicar as cores do DB no SVG
