@@ -1751,7 +1751,7 @@ async function turnofase2acima(lobbyId) {
         await Remanejar(PartidaDados5, lobbyId, Territorio1, Territorio2, quantidadetropas);
         
 
-      }
+      } 
 
       DestribuirCarta(lobbyId)
       {
