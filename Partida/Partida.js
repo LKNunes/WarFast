@@ -1753,41 +1753,37 @@ async function turnofase2acima(lobbyId) {
 
       } 
 
-      DestribuirCarta(lobbyId)
-      {
-      PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-      let Cartas = [] ;
-      Cartas = PartidaDados.cartas;
-      function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
-      }
-      const removeCartaById = (id) => {
-        const index = Cartas.findIndex(carta => carta.id === id);
-        if (index !== -1) {
-          Cartas.splice(index, 1);
+      async function DestribuirCarta(lobbyId){
+        PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+        let Cartas = [] ;
+          Cartas = PartidaDados.cartas;
+        function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
         }
-      };
-      id = getRandomIntInclusive(1, 43);
+        const removeCartaById = (id) => {
+          const index = Cartas.findIndex(carta => carta.id === id);
+          if (index !== -1) {
+            return Cartas.splice(index, 1)[0];
+          }
+          return null;
+        };
+        id = getRandomIntInclusive(1, 43);
 
-      removeCartaById(id);
-
-      let CartasPlayer = PartidaDados.playerSlots[i].cartas;
-      for (let j = 0; j < CartasPlayer.length; j++) {
-        if (CartasPlayer[j] == "") {
-          PartidaDados.playerSlots[i].cartas[j] = id;
-        }
-      }
-
-      }
-
-       if (Tropa1 < 0) {   
-        Carta = await DestribuirCarta(lobbyId);
-      //  PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-      //  PartidaDados.jogador[turno].cartas[1] = Carta;
-      //  await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-       }
+      
+        let CartasPlayer = PartidaDados.playerSlots[i].cartas;
+      
+        for (i = 0; i < CartasPlayer.length; i++) {
+          if (CartasPlayer[i] == "") {
+            CartasPlayer[i] = removeCartaById(id);
+            }}
+        PartidaDados.playerSlots[i].cartas = CartasPlayer;
+        PartidaDados.cartas = Cartas;
+          }
+          if (Tropa1 < 0) {   
+            Carta = await DestribuirCarta(lobbyId);
+          }
 
       const preloader = document.getElementById('preloader');
 
