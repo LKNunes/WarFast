@@ -157,9 +157,10 @@ async function dadospartida(lobbyId) {
       const fase = LobbyExistente.fase;
       const turno = LobbyExistente.turno;
       const playerSlots = LobbyExistente.playerSlots;
+      const cartas = LobbyExistente.cartas;
       const territorios = LobbyExistente.territorios;
 
-      return { id, leaderId, lobbyName, fase, turno, playerSlots, territorios };
+      return { id, leaderId, lobbyName, fase, turno, cartas, playerSlots, territorios };
 
       // Chamar a função para exibir as informações no HTML
     } else {
