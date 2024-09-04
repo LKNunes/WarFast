@@ -1781,7 +1781,8 @@ async function turnofase2acima(lobbyId) {
         PartidaDados.playerSlots[i].cartas = CartasPlayer;
         PartidaDados.cartas = Cartas;
           }
-          if (Tropa1 < 0) {   
+          if (Tropa1 < 0) {  
+            console.log("Dentro do Looping de Cartas");
             Carta = await DestribuirCarta(lobbyId);
           }
 
