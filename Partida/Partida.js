@@ -466,7 +466,13 @@ async function CoresMain(lobbyId) {
     const jogadorNome = PartidaDados.playerSlots[i].nome;
     const Objetivo = PartidaDados.playerSlots[i].objetivo;
     const Cor = cores[i]; // Atribui a cor ao jogador
-    const Cartas = ['','','','',''];  
+    const Cartas = [
+      { id: 1, carta: '' },
+      { id: 2, carta: '' },
+      { id: 3, carta: '' },
+      { id: 4, carta: '' },
+      { id: 5, carta: '' },
+    ];
 
     // Cria um objeto para representar o jogador com o ID, nome e cor
     const jogador = {
@@ -1747,12 +1753,41 @@ async function turnofase2acima(lobbyId) {
 
       }
 
-      // if (Tropa1 < 0) {   // Perdeu no dado
-      //  Carta = await DestribuirCarta(lobbyId);
+      DestribuirCarta(lobbyId)
+      {
+      PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+      let Cartas = [] ;
+      Cartas = PartidaDados.cartas;
+      function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
+      }
+      const removeCartaById = (id) => {
+        const index = Cartas.findIndex(carta => carta.id === id);
+        if (index !== -1) {
+          Cartas.splice(index, 1);
+        }
+      };
+      id = getRandomIntInclusive(1, 43);
+
+      removeCartaById(id);
+
+      let CartasPlayer = PartidaDados.playerSlots[i].cartas;
+      for (let j = 0; j < CartasPlayer.length; j++) {
+        if (CartasPlayer[j] == "") {
+          PartidaDados.playerSlots[i].cartas[j] = id;
+        }
+      }
+
+      }
+
+       if (Tropa1 < 0) {   
+        Carta = await DestribuirCarta(lobbyId);
       //  PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
       //  PartidaDados.jogador[turno].cartas[1] = Carta;
       //  await atualizarParcialmenteLobby(lobbyId, PartidaDados);
-      // }
+       }
 
       const preloader = document.getElementById('preloader');
 
