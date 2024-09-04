@@ -1752,7 +1752,7 @@ async function turnofase2acima(lobbyId) {
         
 
       } 
-
+      console.log(""+Tropa1+ Tropa2);
       async function DestribuirCarta(lobbyId){
         PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
         let Cartas = [] ;
@@ -1781,9 +1781,9 @@ async function turnofase2acima(lobbyId) {
         PartidaDados.playerSlots[i].cartas = CartasPlayer;
         PartidaDados.cartas = Cartas;
           }
-          if (Tropa1 < 0) {  
+          if (Tropa1 == 0 && Tropa2 >= 1) {
             console.log("Dentro do Looping de Cartas");
-            Carta = await DestribuirCarta(lobbyId);
+            await DestribuirCarta(lobbyId);
           }
 
       const preloader = document.getElementById('preloader');
