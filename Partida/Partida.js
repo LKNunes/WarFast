@@ -64,8 +64,53 @@ async function playersCores() {
       const id = LobbyExistente.id;
       const leaderId = LobbyExistente.leaderId;
       const lobbyName = LobbyExistente.lobbyName;
+      const cartas = [
+        { id: 1, tipo: 'Q' },
+        { id: 2, tipo: 'Q' },
+        { id: 3, tipo: 'Q' },
+        { id: 4, tipo: 'Q' },
+        { id: 5, tipo: 'Q' },
+        { id: 6, tipo: 'Q' },
+        { id: 7, tipo: 'Q' },
+        { id: 8, tipo: 'Q' },
+        { id: 9, tipo: 'Q' },
+        { id: 10, tipo: 'Q' },
+        { id: 11, tipo: 'Q' },
+        { id: 12, tipo: 'Q' },
+        { id: 13, tipo: 'Q' },
+        { id: 14, tipo: 'Q' },
+        { id: 15, tipo: 'T' },
+        { id: 16, tipo: 'T' },
+        { id: 17, tipo: 'T' },
+        { id: 18, tipo: 'T' },
+        { id: 19, tipo: 'T' },
+        { id: 20, tipo: 'T' },
+        { id: 21, tipo: 'T' },
+        { id: 22, tipo: 'T' },
+        { id: 23, tipo: 'T' },
+        { id: 24, tipo: 'T' },
+        { id: 25, tipo: 'T' },
+        { id: 26, tipo: 'T' },
+        { id: 27, tipo: 'T' },
+        { id: 28, tipo: 'C' },
+        { id: 29, tipo: 'C' },
+        { id: 30, tipo: 'C' },
+        { id: 31, tipo: 'C' },
+        { id: 32, tipo: 'C' },
+        { id: 33, tipo: 'C' },
+        { id: 34, tipo: 'C' },
+        { id: 35, tipo: 'C' },
+        { id: 36, tipo: 'C' },
+        { id: 37, tipo: 'C' },
+        { id: 38, tipo: 'C' },
+        { id: 39, tipo: 'C' },
+        { id: 40, tipo: 'C' },
+        { id: 41, tipo: 'C' },
+        { id: 42, tipo: 'C' },
+        { id: 43, tipo: 'X' },
+      ];
       const playerSlots = LobbyExistente.playerSlots;
-      return { id, leaderId, lobbyName, playerSlots };
+      return { id, leaderId, lobbyName,cartas , playerSlots };
 
       // Chamar a função para exibir as informações no HTML
     } else {
