@@ -1752,7 +1752,7 @@ async function turnofase2acima(lobbyId) {
         
 
       } 
-      console.log("TROPAS:"+Tropa1+" 2: "+ Tropa2);
+      console.log("TROPAS:"+resultado.perdasAtacante+" 2: "+ resultado.perdasDefensor);
       async function DestribuirCarta(lobbyId){
         PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
         let Cartas = [] ;
