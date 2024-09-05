@@ -1818,6 +1818,7 @@ let Dominou = false;
         }}
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
+    atualizarParcialmenteLobby(lobbyId, PartidaDados);
       }
 
   async function esperarInputremanejamento(Territorio1, Territorio2) {
