@@ -1819,7 +1819,7 @@ let Dominou = false;
     for (i = 1; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") { 
         letra = CartaRemovida.letra;
-        CartasPlayer[i].push(CartaRemovida);
+        CartasPlayer[i].letra = letra;
         }}
 
     console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
