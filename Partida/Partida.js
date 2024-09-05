@@ -1787,8 +1787,10 @@ let Dominou = false;
     
    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     let Cartas = [] ;
-    console.log("dentro da função DestribuirCarta");
+    console.log("Inicio da função DestribuirCarta");
       Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
+    console.log(""+Cartas);
+
     function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -1806,9 +1808,12 @@ let Dominou = false;
     }
 
     id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
+    console.log(""+id);
 
     let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
-  
+    
+    console.log(""+CartasPlayer);
+
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
         CartasPlayer[i] = removeCartaById(id);
