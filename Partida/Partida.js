@@ -1795,7 +1795,7 @@ let Dominou = false;
     const removeCartaById = (id) => {
       const index = Cartas.findIndex(carta => carta.id === id);
       if (index !== -1) {
-        console.log("Cartas Removidas? "+Cartas.splice(index, 1)[0];)
+        console.log("Cartas Removidas? "+Cartas.splice(index, 1)[0])
         return Cartas.splice(index, 1)[0];
       }
       return null;
