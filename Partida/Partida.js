@@ -1816,12 +1816,14 @@ let Dominou = false;
     console.log(JSON.stringify(CartaRemovida, null, 2)); // Carta removida
     console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
 
-
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
-        CartasPlayer[i] = CartaRemovida;
+        removerCartaPorId(CartasPlayer, id);
+        CartaRemovida.id = id;
+        CartasPlayer[i].push(CartaRemovida);
         }}
-        console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
+
+    console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
