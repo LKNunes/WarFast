@@ -1783,7 +1783,7 @@ let Dominou = false;
     document.getElementById('numeroInput').value = ''; // Limpa o input
   }
 
-  async function DestribuirCarta(lobbyId){
+  async function DestribuirCarta(lobbyId,j){
     
    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     
@@ -1807,16 +1807,16 @@ let Dominou = false;
     Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
     const id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
 
-    let CartasPlayer = PartidaDados.playerSlots[PartidaDados.turno-1].cartas; // recebe as cartas do Jogador
+    let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
     
     const CartaRemovida = await removerCartaPorId(Cartas,id);
     
    // console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
 
-    for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
-      if (CartasPlayer[i].letra == "") { 
+    for (j = 0; j < CartasPlayer.length; j++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
+      if (CartasPlayer[j].letra == "") { 
         const letra = CartaRemovida.letra;
-        CartasPlayer[i].letra = letra;
+        CartasPlayer[j].letra = letra;
         console.log(JSON.stringify(  letra, null, 2)); // Exibe o objeto como uma string JSON formatada
 
         }}
