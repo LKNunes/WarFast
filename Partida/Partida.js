@@ -1796,15 +1796,13 @@ let Dominou = false;
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
     }
-    function removeCartaById(id) {
-      const index = Cartas.findIndex(carta => carta.id === id);
-      if (index !== -1) {
-        console.log("Cartas Removidas? "+Cartas.splice(index, 1)[0])
-        return Cartas.splice(index, 1)[0];
-      }
-      console.log("Cartas Removidas? "+ null)
 
-      return null;
+    function removerCartaPorId(cartas, id) {
+      const index = cartas.findIndex(carta => carta.id === id); // Encontra o índice da carta pelo ID
+      if (index !== -1) {
+        return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
+      }
+      return null; // Retorna null se a carta não for encontrada
     }
 
     id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
@@ -1816,7 +1814,7 @@ let Dominou = false;
 
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
-        CartasPlayer[i] = removeCartaById(id);
+        CartasPlayer[i] = removerCartaPorId(Cartas,id);
         }}
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
