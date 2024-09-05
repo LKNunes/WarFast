@@ -467,11 +467,11 @@ async function CoresMain(lobbyId) {
     const Objetivo = PartidaDados.playerSlots[i].objetivo;
     const Cor = cores[i]; // Atribui a cor ao jogador
     const Cartas = [
-      { id: 1, carta: '' },
-      { id: 2, carta: '' },
-      { id: 3, carta: '' },
-      { id: 4, carta: '' },
-      { id: 5, carta: '' },
+      { id: 1, letra: '' },
+      { id: 2, letra: '' },
+      { id: 3, letra: '' },
+      { id: 4, letra: '' },
+      { id: 5, letra: '' },
     ];
 
     // Cria um objeto para representar o jogador com o ID, nome e cor
