@@ -1784,6 +1784,7 @@ let Dominou = false;
   }
 
   async function DestribuirCarta(lobbyId){
+
    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     let Cartas = [] ;
       Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
@@ -1807,7 +1808,7 @@ let Dominou = false;
   
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
-        CartasPlayer[i] = removeCartaById(id);
+        CartasPlayer[i] = removeCartaById;
         }}
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
