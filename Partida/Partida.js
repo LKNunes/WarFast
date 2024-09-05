@@ -1811,10 +1811,12 @@ let Dominou = false;
     let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
     
     console.log(""+CartasPlayer);
+    CartaRemovida = removerCartaPorId(Cartas,id);
+    console.log(""+CartaRemovida);
 
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
-        CartasPlayer[i] = removerCartaPorId(Cartas,id);
+        CartasPlayer[i] = CartaRemovida;
         }}
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
