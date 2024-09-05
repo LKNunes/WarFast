@@ -2185,4 +2185,4 @@ function JuntaNomeTelefone2(p1, p2){
   return p1+p2;
 }
 
-console.log(JuntaNomeTelefone2(2,3));
+console.log(JuntaNomeTelefone2(2,"3"));
