@@ -1799,6 +1799,8 @@ let Dominou = false;
         console.log("Cartas Removidas? "+Cartas.splice(index, 1)[0])
         return Cartas.splice(index, 1)[0];
       }
+      console.log("Cartas Removidas? "+ null)
+
       return null;
     }
 
