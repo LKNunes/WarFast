@@ -1812,7 +1812,7 @@ let Dominou = false;
     
     console.log(""+CartasPlayer);
     const CartaRemovida = removerCartaPorId(Cartas,id);
-    console.log(JSON.stringify(cartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
+    console.log(JSON.stringify(CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
 
 
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
