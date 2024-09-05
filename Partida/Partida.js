@@ -1817,6 +1817,8 @@ let Dominou = false;
       if (CartasPlayer[i] == "") { 
         const letra = CartaRemovida.letra;
         CartasPlayer[i].letra = letra;
+        console.log(JSON.stringify(  letra, null, 2)); // Exibe o objeto como uma string JSON formatada
+
         }}
     
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
