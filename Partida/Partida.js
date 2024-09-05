@@ -1808,7 +1808,7 @@ let Dominou = false;
     id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
     console.log(""+id);
 
-    let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
+    var CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
     
     console.log(""+CartasPlayer);
     const CartaRemovida = await removerCartaPorId(Cartas,id);
