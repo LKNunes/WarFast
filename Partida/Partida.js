@@ -1812,17 +1812,19 @@ let Dominou = false;
     
     console.log(""+CartasPlayer);
     const CartaRemovida = removerCartaPorId(Cartas,id);
-    console.log(JSON.stringify(CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
+    
+    console.log(JSON.stringify(CartaRemovida, null, 2)); // Carta removida
+    console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
 
 
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
         CartasPlayer[i] = CartaRemovida;
         }}
+        console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
-    console.log(JSON.stringify( PartidaDados.playerSlots[i].cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
