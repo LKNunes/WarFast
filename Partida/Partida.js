@@ -1811,10 +1811,12 @@ let Dominou = false;
 
     var id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
     var CartaRemovida = await removerCartaPorId(Cartas,id);
-    
+    console.log("Fora do While"+id);
+
    while(CartaRemovida == null){
      id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
      CartaRemovida = await removerCartaPorId(Cartas,id);
+     console.log("Precisou do While"+id);
    } 
     console.log(JSON.stringify( CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
 
