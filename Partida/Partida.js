@@ -1806,9 +1806,9 @@ let Dominou = false;
       
     Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
     const id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
-    console.log(JSON.stringify(  PartidaDados.turno, null, 2)); // Exibe o objeto como uma string JSON formatada
+    console.log(JSON.stringify(  letra, null, 2)); // Exibe o objeto como uma string JSON formatada
 
-    let CartasPlayer = PartidaDados.playerSlots[PartidaDados.turno].cartas; // recebe as cartas do Jogador
+    let CartasPlayer = PartidaDados.playerSlots[PartidaDados.turno-1].cartas; // recebe as cartas do Jogador
     
     const CartaRemovida = await removerCartaPorId(Cartas,id);
     
