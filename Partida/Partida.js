@@ -1809,15 +1809,11 @@ let Dominou = false;
 
     const id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
 
-    while (id == null)
-       id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
-      {
-
     let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
     
     const CartaRemovida = await removerCartaPorId(Cartas,id);
     
-   // console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
+    console.log(JSON.stringify( CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     for (j = 0; j < CartasPlayer.length; j++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[j].letra == "") { 
@@ -1829,8 +1825,6 @@ let Dominou = false;
     
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
-
-    console.log(JSON.stringify(  CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     console.log(JSON.stringify(  PartidaDados.playerSlots[PartidaDados.turno].cartas = CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
     console.log(JSON.stringify(     PartidaDados.cartas = Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
