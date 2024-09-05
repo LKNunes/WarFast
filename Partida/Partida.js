@@ -1797,7 +1797,7 @@ let Dominou = false;
       return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
     }
 
-    function removerCartaPorId(cartas, id) {
+    async function removerCartaPorId(cartas, id) {
       const index = cartas.findIndex(carta => carta.id === id); // Encontra o índice da carta pelo ID
       if (index !== -1) {
         return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
