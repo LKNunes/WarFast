@@ -1804,8 +1804,14 @@ let Dominou = false;
     let Cartas = [] ;
     console.log("Inicio da função DestribuirCarta");
       
+
     Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
+
     const id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
+
+    while (id == null)
+       id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
+      {
 
     let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
     
