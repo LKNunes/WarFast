@@ -1811,14 +1811,14 @@ let Dominou = false;
     let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
     
     console.log(""+CartasPlayer);
-    const CartaRemovida = removerCartaPorId(Cartas,id);
+    const CartaRemovida = await removerCartaPorId(Cartas,id);
     
     console.log(JSON.stringify(CartaRemovida, null, 2)); // Carta removida
     console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
-        removerCartaPorId(CartasPlayer, id);
+        await removerCartaPorId(CartasPlayer, id);
         CartaRemovida.id = id;
         CartasPlayer[i].push(CartaRemovida);
         }}
