@@ -1568,6 +1568,7 @@ async function turnofase2acima(lobbyId) {
     }
   }
 
+let Dominou = false;
 
   async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
@@ -1753,7 +1754,6 @@ async function turnofase2acima(lobbyId) {
 
       } 
       console.log("TROPAS:"+resultado.perdasAtacante+" 2: "+ resultado.perdasDefensor);
-      let Dominou = false;
       async function DestribuirCarta(lobbyId){
         PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
         let Cartas = [] ;
@@ -1783,8 +1783,8 @@ async function turnofase2acima(lobbyId) {
         PartidaDados.cartas = Cartas;
           }
           if (resultado.perdasAtacante == 0 && resultado.perdasDefensor >= 1) {
-            Dominou = true
-            console.log("Dentro do Looping de Cartas");
+            Dominou = true;
+            console.log("True domominou na rodada");
           }
 
       const preloader = document.getElementById('preloader');
