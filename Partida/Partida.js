@@ -2180,9 +2180,3 @@ function rollDice() {
 
 dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
 
-
-function JuntaNomeTelefone2(p1, p2){
-  return p1+p2;
-}
-
-console.log(JuntaNomeTelefone2(1.5,3));
