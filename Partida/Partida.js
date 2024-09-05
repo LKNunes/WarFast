@@ -1753,6 +1753,7 @@ async function turnofase2acima(lobbyId) {
 
       } 
       console.log("TROPAS:"+resultado.perdasAtacante+" 2: "+ resultado.perdasDefensor);
+      let Dominou = false;
       async function DestribuirCarta(lobbyId){
         PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
         let Cartas = [] ;
@@ -1782,14 +1783,15 @@ async function turnofase2acima(lobbyId) {
         PartidaDados.cartas = Cartas;
           }
           if (resultado.perdasAtacante == 0 && resultado.perdasDefensor >= 1) {
+            Dominou = true
             console.log("Dentro do Looping de Cartas");
-            await DestribuirCarta(lobbyId);
           }
 
       const preloader = document.getElementById('preloader');
 
       await ExibirTropas(lobbyId);//aplicação tropas
       await aplicarCores(lobbyId);
+      await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
 
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
