@@ -1805,7 +1805,7 @@ let Dominou = false;
       return null; // Retorna null se a carta não for encontrada
     }
 
-    id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
+    const id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
     console.log(""+id);
 
     var CartasPlayer = PartidaDados.playerSlots[turno].cartas; // recebe as cartas do Jogador
@@ -1818,7 +1818,7 @@ let Dominou = false;
 
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") { 
-        letra = CartaRemovida.letra;
+        const letra = CartaRemovida.letra;
         CartasPlayer[i].letra = letra;
         }}
 
