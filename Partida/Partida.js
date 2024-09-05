@@ -1806,13 +1806,16 @@ let Dominou = false;
       
 
     Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
+    let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
+
 
     const id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
-
-    let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
-    
     const CartaRemovida = await removerCartaPorId(Cartas,id);
     
+   while(CartaRemovida == null){
+     id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
+     CartaRemovida = await removerCartaPorId(Cartas,id);
+   } 
     console.log(JSON.stringify( CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     for (j = 0; j < CartasPlayer.length; j++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
