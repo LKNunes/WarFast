@@ -1787,6 +1787,7 @@ let Dominou = false;
     
    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     let Cartas = [] ;
+    console.log("dentro da função DestribuirCarta");
       Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
     function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
       min = Math.ceil(min);
