@@ -1818,8 +1818,8 @@ let Dominou = false;
         const letra = CartaRemovida.letra;
         CartasPlayer[j].letra = letra;
         console.log(JSON.stringify(  letra, null, 2)); // Exibe o objeto como uma string JSON formatada
-
-        }}
+        break;
+      }}
     
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
