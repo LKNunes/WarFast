@@ -1783,7 +1783,7 @@ let Dominou = false;
     document.getElementById('numeroInput').value = ''; // Limpa o input
   }
 
-  async function DestribuirCarta(lobbyId){
+  async function DestribuirCarta(lobbyId,turno){
     
    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     let Cartas = [] ;
@@ -2130,7 +2130,7 @@ let Dominou = false;
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
     
     if (Dominou == true) {
-      await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
+      await DestribuirCarta(lobbyId,turno); // Função deve ficar no final da rodada.
       console.log("Destribuindo Carta...");
     }
   
