@@ -2111,6 +2111,12 @@ let Dominou = false;
     var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
     
+    if (Dominou == true) {
+      await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
+      console.log("Destribuindo Carta...");
+    }
+  
+    Dominou = false;
 
     await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
@@ -2143,12 +2149,7 @@ let Dominou = false;
     return;
   }
 
-  if (Dominou == true) {
-    await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
-    console.log("Destribuindo Carta...");
-  }
 
-  Dominou = false;
 
   console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
 
