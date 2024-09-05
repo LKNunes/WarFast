@@ -2182,7 +2182,7 @@ dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
 
 let NomeGlobal = null;
 function JuntaNomeTelefone(Nome, telefone){
- const NomeGlobal = Nome+telefone;
+  NomeGlobal = Nome+telefone;
 }
 
 JuntaNomeTelefone("Lucas","Telefone");
