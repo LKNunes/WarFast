@@ -2180,7 +2180,7 @@ function rollDice() {
 
 dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
 
-const NomeGlobal = null;
+let NomeGlobal = null;
 function JuntaNomeTelefone(Nome, telefone){
  const NomeGlobal = Nome+telefone;
 }
