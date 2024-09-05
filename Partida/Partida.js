@@ -1791,9 +1791,6 @@ let Dominou = false;
       
     Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
 
-    console.log(JSON.stringify(Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
-
-
     function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
       min = Math.ceil(min);
       max = Math.floor(max);
