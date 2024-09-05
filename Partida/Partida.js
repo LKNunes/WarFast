@@ -64,6 +64,7 @@ async function playersCores() {
       const id = LobbyExistente.id;
       const leaderId = LobbyExistente.leaderId;
       const lobbyName = LobbyExistente.lobbyName;
+      /*
       const cartas = [
         { id: 1, tipo: 'Q' },
         { id: 2, tipo: 'Q' },
@@ -109,6 +110,7 @@ async function playersCores() {
         { id: 42, tipo: 'C' },
         { id: 43, tipo: 'X' },
       ];
+      */
       const playerSlots = LobbyExistente.playerSlots;
       return { id, leaderId, lobbyName,cartas , playerSlots };
 
