@@ -2111,7 +2111,10 @@ let Dominou = false;
     var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
     
-    await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
+    if (Dominou == true) {
+      await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
+    }
+
     Dominou = false;
     await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
@@ -2176,3 +2179,19 @@ function rollDice() {
 }
 
 dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
+
+const NomeGlobal = null;
+function JuntaNomeTelefone(Nome, telefone){
+  NomeGlobal = Nome+telefone;
+}
+
+JuntaNomeTelefone("Lucas","Telefone");
+
+console.log(NomeGlobal);
+
+
+function JuntaNomeTelefone2(Nome, telefone){
+  return Nome+telefone;
+}
+
+console.log(JuntaNomeTelefone2("Lucas","Telefone"))
