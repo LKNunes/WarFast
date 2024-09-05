@@ -2189,7 +2189,6 @@ JuntaNomeTelefone("Lucas","Telefone");
 
 console.log(NomeGlobal);
 
-
 function JuntaNomeTelefone2(Nome, telefone){
   return Nome+telefone;
 }
