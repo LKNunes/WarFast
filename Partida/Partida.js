@@ -1814,7 +1814,7 @@ let Dominou = false;
    // console.log(JSON.stringify( CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
-      if (CartasPlayer[i] == "") { 
+      if (CartasPlayer[i].letra == "") { 
         const letra = CartaRemovida.letra;
         CartasPlayer[i].letra = letra;
         console.log(JSON.stringify(  letra, null, 2)); // Exibe o objeto como uma string JSON formatada
@@ -2132,7 +2132,8 @@ let Dominou = false;
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
     
     if (Dominou == true) {
-      await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
+      console.log("Jogador? "+i);
+      await DestribuirCarta(lobbyId,i); // Função deve ficar no final da rodada.
       console.log("Destribuindo Carta...");
     }
   
