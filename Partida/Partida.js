@@ -1788,7 +1788,8 @@ let Dominou = false;
    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     let Cartas = [] ;
     console.log("Inicio da função DestribuirCarta");
-      Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
+      
+    Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
 
     console.log(JSON.stringify(Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
 
@@ -1821,11 +1822,13 @@ let Dominou = false;
       if (CartasPlayer[i] == "") {
         CartasPlayer[i] = CartaRemovida;
         }}
-        console.log(JSON.stringify(Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
+    console.log(JSON.stringify( PartidaDados.cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
+
     atualizarParcialmenteLobby(lobbyId, PartidaDados);
+
       }
 
   async function esperarInputremanejamento(Territorio1, Territorio2) {
