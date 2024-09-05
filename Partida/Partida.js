@@ -1784,7 +1784,7 @@ let Dominou = false;
   }
 
   async function DestribuirCarta(lobbyId){
-    PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     let Cartas = [] ;
       Cartas = PartidaDados.cartas;
     function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
