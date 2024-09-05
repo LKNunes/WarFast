@@ -1825,7 +1825,7 @@ let Dominou = false;
 
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
-    console.log(JSON.stringify( PartidaDados.cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
+    console.log(JSON.stringify( PartidaDados.playerSlots[i].cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
