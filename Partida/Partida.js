@@ -1784,7 +1784,7 @@ let Dominou = false;
   }
 
   async function DestribuirCarta(lobbyId){
-
+    
    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     let Cartas = [] ;
       Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
@@ -1793,14 +1793,14 @@ let Dominou = false;
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
     }
-    const removeCartaById = (id) => {
+    function removeCartaById(id) {
       const index = Cartas.findIndex(carta => carta.id === id);
       if (index !== -1) {
         console.log("Cartas Removidas? "+Cartas.splice(index, 1)[0])
         return Cartas.splice(index, 1)[0];
       }
       return null;
-    };
+    }
 
     id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
 
@@ -1808,7 +1808,7 @@ let Dominou = false;
   
     for (i = 0; i < CartasPlayer.length; i++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
       if (CartasPlayer[i] == "") {
-        CartasPlayer[i] = removeCartaById;
+        CartasPlayer[i] = removeCartaById(id);
         }}
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
