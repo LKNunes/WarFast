@@ -2180,17 +2180,9 @@ function rollDice() {
 
 dice.style.transform = 'rotateX(15deg) rotateY(15deg)';
 
-let NomeGlobal = null;
-function JuntaNomeTelefone(Nome, telefone){
-  NomeGlobal = Nome+telefone;
+
+function JuntaNomeTelefone2(p1, p2){
+  return p1+p2;
 }
 
-JuntaNomeTelefone("Lucas","Telefone");
-
-console.log(NomeGlobal);
-
-function JuntaNomeTelefone2(Nome, telefone){
-  return Nome+telefone;
-}
-
-console.log(JuntaNomeTelefone2("Lucas","Telefone"))
+console.log(JuntaNomeTelefone2(2,3));
