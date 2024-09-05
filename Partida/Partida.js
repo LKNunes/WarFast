@@ -1821,6 +1821,8 @@ let Dominou = false;
       if (CartasPlayer[i] == "") {
         CartasPlayer[i] = CartaRemovida;
         }}
+        console.log(JSON.stringify(Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
+
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
     atualizarParcialmenteLobby(lobbyId, PartidaDados);
