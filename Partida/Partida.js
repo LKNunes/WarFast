@@ -2145,6 +2145,7 @@ let Dominou = false;
 
   if (Dominou == true) {
     await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
+    console.log("Destribuindo Carta...");
   }
 
   Dominou = false;
