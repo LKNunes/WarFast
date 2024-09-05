@@ -1754,34 +1754,7 @@ let Dominou = false;
 
       } 
       console.log("TROPAS:"+resultado.perdasAtacante+" 2: "+ resultado.perdasDefensor);
-      async function DestribuirCarta(lobbyId){
-        PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-        let Cartas = [] ;
-          Cartas = PartidaDados.cartas;
-        function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
-          min = Math.ceil(min);
-          max = Math.floor(max);
-          return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
-        }
-        const removeCartaById = (id) => {
-          const index = Cartas.findIndex(carta => carta.id === id);
-          if (index !== -1) {
-            return Cartas.splice(index, 1)[0];
-          }
-          return null;
-        };
-        id = getRandomIntInclusive(1, 43);
-
-      
-        let CartasPlayer = PartidaDados.playerSlots[i].cartas;
-      
-        for (i = 0; i < CartasPlayer.length; i++) {
-          if (CartasPlayer[i] == "") {
-            CartasPlayer[i] = removeCartaById(id);
-            }}
-        PartidaDados.playerSlots[i].cartas = CartasPlayer;
-        PartidaDados.cartas = Cartas;
-          }
+    
           if (resultado.perdasAtacante == 0 && resultado.perdasDefensor >= 1) {
             Dominou = true;
             console.log("True domominou na rodada");
@@ -1791,8 +1764,6 @@ let Dominou = false;
 
       await ExibirTropas(lobbyId);//aplicação tropas
       await aplicarCores(lobbyId);
-      await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
-
 
       await new Promise((resolve) => setTimeout(resolve, 100)); // Pequeno atraso para evitar travamento do navegador
 
@@ -1811,6 +1782,35 @@ let Dominou = false;
     document.getElementById('inputContainer2').classList.add('hidden');
     document.getElementById('numeroInput').value = ''; // Limpa o input
   }
+
+  async function DestribuirCarta(lobbyId){
+    PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+    let Cartas = [] ;
+      Cartas = PartidaDados.cartas;
+    function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
+    }
+    const removeCartaById = (id) => {
+      const index = Cartas.findIndex(carta => carta.id === id);
+      if (index !== -1) {
+        return Cartas.splice(index, 1)[0];
+      }
+      return null;
+    };
+    id = getRandomIntInclusive(1, 43);
+
+  
+    let CartasPlayer = PartidaDados.playerSlots[i].cartas;
+  
+    for (i = 0; i < CartasPlayer.length; i++) {
+      if (CartasPlayer[i] == "") {
+        CartasPlayer[i] = removeCartaById(id);
+        }}
+    PartidaDados.playerSlots[i].cartas = CartasPlayer;
+    PartidaDados.cartas = Cartas;
+      }
 
   async function esperarInputremanejamento(Territorio1, Territorio2) {
     return new Promise((resolve) => {
@@ -2109,9 +2109,9 @@ let Dominou = false;
     
     var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
-   
     
-
+    await DestribuirCarta(lobbyId); // Função deve ficar no final da rodada.
+    Dominou = false;
     await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
 
   }
