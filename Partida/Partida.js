@@ -1789,7 +1789,9 @@ let Dominou = false;
     let Cartas = [] ;
     console.log("Inicio da função DestribuirCarta");
       Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
-    console.log(""+Cartas);
+
+    console.log(JSON.stringify(Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
+
 
     function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
       min = Math.ceil(min);
