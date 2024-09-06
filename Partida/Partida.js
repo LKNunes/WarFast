@@ -1568,7 +1568,7 @@ async function turnofase2acima(lobbyId) {
     }
   }
 
-let Dominou = false;
+  let Dominou = false;
 
   async function AtacarTerritorios(lobbyId, PartidaDados3, botaoId) // Função de ataque do jogador I.
   {
@@ -2058,6 +2058,44 @@ let Dominou = false;
     });
   }
 
+  async function ContaCartasparatrocar(lobbyId,jogador)
+  {
+    PartidaDados = await dadospartida(lobbyId);
+    var Circulo = 0;
+    var Quadrado = 0;
+    var Triangulo = 0;
+    var Coringa = 0;
+    
+    for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo += 1;}
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado += 1;}
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Circulo += 1;}
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "X"){Coringa += 1;}
+    }
+
+    // Quero um if que valide se tenho 3 cartas repetidas, o coringa vale para Triangulo, curculo e quadrado
+    if ((Circulo >= 3 || Quadrado >= 3 || Triangulo >= 3) &&
+        (Coringa >= 1 || (Circulo >= 1 && Quadrado >= 1 && Triangulo >= 1))) {
+      const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+      if (!confirmacao) {
+        return false;
+      }
+    }
+
+    // Quero um if que valide se tenho 3 cartas diferentes 1 de cada, o coringa vale para Triangulo, curculo e quadrado
+    if ((Circulo >= 1 && Quadrado >= 1 && Triangulo >= 1) ||
+        (Coringa >= 1 && (Circulo >= 1 || Quadrado >= 1 || Triangulo >= 1))) {
+          const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+          if (!confirmacao) {
+            return false;
+          }    
+        }
+    
+
+
+
+  }
+
   let pararLoop = false; // Variável de controle para interromper o loop
   let pararLoop2 = false; // Variável de controle para interromper o loop
 
@@ -2102,6 +2140,8 @@ let Dominou = false;
         }
 
       } 
+
+      await ContaCartasparatrocar((lobbyId,i));
 
       let Territorio1 = await EsperaClick();
 
