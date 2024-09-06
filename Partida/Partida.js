@@ -2077,13 +2077,13 @@ async function turnofase2acima(lobbyId) {
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "X"){Coringa += 1;}
     }
 
-    If (Coringa == 1)
+    if (Coringa == 1)
     {
     Triangulo += 1;
     Quadrado  += 1;
     Circulo += 1;
 
-    If (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
+    if (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
     {
       const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
       if (!confirmacao) {
@@ -2091,7 +2091,7 @@ async function turnofase2acima(lobbyId) {
       }
     }
 
-    If (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
+    if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
     {
       const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
       if (!confirmacao) {
@@ -2103,7 +2103,7 @@ async function turnofase2acima(lobbyId) {
     }
     elseif (Coringa == 0)
     {
-      If (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
+      if (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
       {
         const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
         if (!confirmacao) {
@@ -2111,7 +2111,7 @@ async function turnofase2acima(lobbyId) {
         }
       }
 
-      If (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
+      if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
       {
         const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
         if (!confirmacao) {
