@@ -2065,7 +2065,7 @@ async function turnofase2acima(lobbyId) {
         }
         return null;
   }
-
+  console.log("Começo cartas");
   const PartidaDados = await dadospartida(lobbyId);
   let Quadrado=0, Ciculo=0, Triangulo=0;
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
