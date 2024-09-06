@@ -2081,6 +2081,7 @@ async function turnofase2acima(lobbyId) {
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C")
         {
           await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+          console.log("Removido");
           var remove=remove+1;
           if (remove=3){break;}
         }
@@ -2094,6 +2095,7 @@ async function turnofase2acima(lobbyId) {
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q")
           {
             await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+            console.log("Removido");
             var remove=remove+1;
             if (remove=3){break;}
           }
@@ -2107,6 +2109,7 @@ async function turnofase2acima(lobbyId) {
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T")
           {
             await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+            console.log("Removido");
             var remove=remove+1;
             if (remove=3){break;}
           }
@@ -2119,16 +2122,19 @@ async function turnofase2acima(lobbyId) {
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T")
       {
         await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+        console.log("Removido");
         RemoveT = RemoveT + 1;
       }
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q")
         {
           await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+          console.log("Removido");
           RemoveT = RemoveT + 1;
         }
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C")
           {
            await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+           console.log("Removido");
             RemoveT = RemoveT + 1;
           }
 
