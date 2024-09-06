@@ -2090,6 +2090,10 @@ async function turnofase2acima(lobbyId) {
 
     }
 
+
+  
+    console.log(Cartasremover);
+
     if (Coringa == 1)
     {
 
@@ -2147,7 +2151,6 @@ async function turnofase2acima(lobbyId) {
       }
     }
 
-    console.log(Cartasremover);
 
 
   }
