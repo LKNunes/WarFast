@@ -2085,7 +2085,8 @@ async function turnofase2acima(lobbyId) {
       console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'C')
         {
-          await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+          //await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+          PartidaDados.playerSlots[jogador].cartas[j].letra = "";
           console.log("Removido");
           var remove=remove+1;
           if (remove=3){break;}
@@ -2099,7 +2100,9 @@ async function turnofase2acima(lobbyId) {
       for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'Q')
           {
-            await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+           // await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+            PartidaDados.playerSlots[jogador].cartas[j].letra = "";
+
             console.log("Removido");
             var remove=remove+1;
             if (remove=3){break;}
@@ -2113,7 +2116,9 @@ async function turnofase2acima(lobbyId) {
       for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T')
           {
-            await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+         //   await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+         PartidaDados.playerSlots[jogador].cartas[j].letra = "";
+
             console.log("Removido");
             var remove=remove+1;
             if (remove=3){break;}
@@ -2126,19 +2131,25 @@ async function turnofase2acima(lobbyId) {
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T')
       {
-        await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+      //  await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+      PartidaDados.playerSlots[jogador].cartas[j].letra = "";
+
         console.log("Removido");
         RemoveT = RemoveT + 1;
       }
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'Q')
         {
-          await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+      //    await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+      PartidaDados.playerSlots[jogador].cartas[j].letra = "";
+
           console.log("Removido");
           RemoveT = RemoveT + 1;
         }
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'C')
           {
-           await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+      //     await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+      PartidaDados.playerSlots[jogador].cartas[j].letra = "";
+
            console.log("Removido");
             RemoveT = RemoveT + 1;
           }
