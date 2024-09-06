@@ -2079,10 +2079,10 @@ async function turnofase2acima(lobbyId) {
     let Cartasremover = [];
     
     for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id,",");} 
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado += 1; Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id,",");}
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Circulo += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id,",");}
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "X"){Coringa += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id,",");}
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);} 
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado += 1; Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);}
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Circulo += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);}
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "X"){Coringa += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);}
 
       console.log( Triangulo, Quadrado, Circulo, Coringa);
       console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
