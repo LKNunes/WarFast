@@ -2124,7 +2124,7 @@ async function turnofase2acima(lobbyId) {
 }
 
 
-  }
+  
 
   let pararLoop = false; // Variável de controle para interromper o loop
   let pararLoop2 = false; // Variável de controle para interromper o loop
