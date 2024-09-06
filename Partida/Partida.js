@@ -2141,7 +2141,7 @@ async function turnofase2acima(lobbyId) {
 
       } 
 
-      await ContaCartasparatrocar((lobbyId,i));
+      await ContaCartasparatrocar(lobbyId,i);
 
       let Territorio1 = await EsperaClick();
 
