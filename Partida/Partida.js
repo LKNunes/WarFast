@@ -2069,6 +2069,11 @@ async function turnofase2acima(lobbyId) {
     }
 
     // Função para atualizar o banco de dados JSON
+    async function atualizarBancoDeDados(lobbyId, dadosAtualizados) {
+        // Implementa a lógica de atualização do banco JSON aqui
+        // Isso pode ser uma chamada de API ou uma função interna que persiste os dados
+        return await atualizarPartida(lobbyId, dadosAtualizados);
+    }
 
     const PartidaDados = await dadospartida(lobbyId);
     let Circulo = 0, Quadrado = 0, Triangulo = 0, Coringa = 0;
@@ -2138,10 +2143,11 @@ async function turnofase2acima(lobbyId) {
         });
 
         // Atualizar o banco de dados com o novo estado
-        await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+        await atualizarBancoDeDados(lobbyId, PartidaDados);
         console.log("Cartas removidas e banco de dados atualizado.");
     }
 }
+
 
 
   
