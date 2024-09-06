@@ -2081,6 +2081,7 @@ async function turnofase2acima(lobbyId) {
   if (Ciculo>=3){
   var remove=0;
     for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+      console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C")
         {
           await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
