@@ -2096,7 +2096,7 @@ async function turnofase2acima(lobbyId) {
 
     if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
     {
-      const confirmacao = window.confirm("Você tem 3 Cartas alternada, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+      const confirmacao = window.confirm("Você tem 3 Cartas alternada1, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
       if (!confirmacao) {
         return false;
       }
@@ -2116,7 +2116,7 @@ async function turnofase2acima(lobbyId) {
 
       if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
       {
-        const confirmacao = window.confirm("Você tem 3 Cartas alternada, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+        const confirmacao = window.confirm("Você tem 3 Cartas alternada2, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
         if (!confirmacao) {
           return false;
         }
