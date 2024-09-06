@@ -2072,9 +2072,9 @@ async function turnofase2acima(lobbyId) {
   console.log(PartidaDados.playerSlots[jogador].cartas);
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
     console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
-    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Ciculo=Ciculo+1;} 
-    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado = Quadrado+1;}
-    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo = Triangulo+1;} 
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'C'){Ciculo=Ciculo+1;} 
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'Q'){Quadrado = Quadrado+1;}
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T'){Triangulo = Triangulo+1;} 
     console.log("Dentro do for função2");
   }
 
@@ -2082,7 +2082,7 @@ async function turnofase2acima(lobbyId) {
   var remove=0;
     for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
       console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C")
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'C')
         {
           await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
           console.log("Removido");
@@ -2096,7 +2096,7 @@ async function turnofase2acima(lobbyId) {
     {
       var remove=0;
       for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
-        if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q")
+        if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'Q')
           {
             await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
             console.log("Removido");
@@ -2110,7 +2110,7 @@ async function turnofase2acima(lobbyId) {
     {
       var remove=0;
       for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
-        if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T")
+        if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T')
           {
             await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
             console.log("Removido");
@@ -2123,19 +2123,19 @@ async function turnofase2acima(lobbyId) {
   else if(Triangulo>=1 && Ciculo>=1 && Quadrado>=1){} // Se tiver 3 diferentes entra no looping
   let RemoveT = 0, RemoveQ = 0, RemoveC = 0;
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
-    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T")
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T')
       {
         await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
         console.log("Removido");
         RemoveT = RemoveT + 1;
       }
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q")
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'Q')
         {
           await  removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
           console.log("Removido");
           RemoveT = RemoveT + 1;
         }
-        if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C")
+        if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'C')
           {
            await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
            console.log("Removido");
