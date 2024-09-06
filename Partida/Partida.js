@@ -2069,12 +2069,13 @@ async function turnofase2acima(lobbyId) {
   console.log("Dentro da função");
   const PartidaDados = await dadospartida(lobbyId);
   let Quadrado=0, Ciculo=0, Triangulo=0;
+  console.log(ParidaDados.playerSlots[jogador].cartas);
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
     console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Ciculo=Ciculo+1;} 
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado = Quadrado+1;}
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo = Triangulo+1;} 
-    console.log("Dentro do for função");
+    console.log("Dentro do for função2");
   }
 
   if (Ciculo>=3){
