@@ -2061,14 +2061,21 @@ async function turnofase2acima(lobbyId) {
   async function ContaCartasparatrocar(lobbyId,jogador)
   {
 
+    async function removerCartaPorId(cartas, id) {
+      const index = cartas.findIndex(carta => carta.id === id); // Encontra o índice da carta pelo ID
+      if (index !== -1) {
+        return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
+      }
+      return null; // Retorna null se a carta não for encontrada
+    }
+
+
+
     const PartidaDados = await dadospartida(lobbyId);
     var Circulo = 0;
     var Quadrado = 0;
     var Triangulo = 0;
     var Coringa = 0;
-    
-
-    
 
     for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo += 1;}
@@ -2080,64 +2087,37 @@ async function turnofase2acima(lobbyId) {
       console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
     }
 
-    if (Coringa == 1)
-    {
-
-
-    if (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
-    {
-      const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+    let cartasParaRemover = [];
+    if (Triangulo >= 3) {
+      cartasParaRemover.push(...PartidaDados.playerSlots[jogador].cartas.filter(carta => carta.letra === "T").slice(0, 3).map(carta => carta.id));
+    }
+    if (Quadrado >= 3) {
+      cartasParaRemover.push(...PartidaDados.playerSlots[jogador].cartas.filter(carta => carta.letra === "Q").slice(0, 3).map(carta => carta.id));
+    }
+    if (Circulo >= 3) {
+      cartasParaRemover.push(...PartidaDados.playerSlots[jogador].cartas.filter(carta => carta.letra === "C").slice(0, 3).map(carta => carta.id));
+    }
+    if (Coringa == 1) {
+      const confirmacao = window.confirm(`Você tem 3 Cartas repetidas, Deseja prosseguir com a troca dos IDs: ${cartasParaRemover.join(", ")}?\n\nOk: Sim\nCancelar: N o`);
+      if (!confirmacao) {
+        return false;
+      }
+    }
+    if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1) {
+      const confirmacao = window.confirm(`Você tem 3 Cartas alternadas, Deseja prosseguir com a troca dos IDs: ${cartasParaRemover.join(", ")}?\n\nOk: Sim\nCancelar: N o`);
+      if (!confirmacao) {
+        return false;
+      }
+    }
+    if (Triangulo >= 1 && Quadrado >= 1 || Circulo >= 1 && Quadrado >= 1 || Triangulo >= 1 && Circulo >= 1) {
+      const confirmacao = window.confirm(`Você tem 3 Cartas alternadas, Deseja prosseguir com a troca dos IDs: ${cartasParaRemover.join(", ")}?\n\nOk: Sim\nCancelar: N o`);
       if (!confirmacao) {
         return false;
       }
     }
 
-    if (Triangulo >= 2 ||  Quadrado >= 2 || Circulo >= 2 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
-        }
-      }
-
-    if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1  )
-    {
-      const confirmacao = window.confirm("Você tem 3 Cartas alternada1, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-      if (!confirmacao) {
-        return false;
-      }
-    }
-
-    if (Triangulo >= 1 && Quadrado >= 1 || Circulo >= 1 && Quadrado >= 1 || Triangulo >= 1 && Circulo >= 1 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas alternada1, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
-        }
-      }
-
-
-    }
-    if (Coringa == 0)
-    {
-      if (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
-        }
-      }
-
-      if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas alternada2, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
-        }
-      }
-    }
-
-
+    // Remove as cartas identificadas
+    cartasParaRemover.forEach(id => removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, id));
 
 
   }
