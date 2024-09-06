@@ -2195,9 +2195,10 @@ async function turnofase2acima(lobbyId) {
         }
 
       }
-
+      console.log("teste1");
       await ContaCartasparatrocar(lobbyId, i);
 
+      console.log("teste2");
       let Territorio1 = await EsperaClick();
 
       await removerEventListeners();
