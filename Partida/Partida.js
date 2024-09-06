@@ -2072,7 +2072,7 @@ async function turnofase2acima(lobbyId) {
     async function atualizarBancoDeDados(lobbyId, dadosAtualizados) {
         // Implementa a lógica de atualização do banco JSON aqui
         // Isso pode ser uma chamada de API ou uma função interna que persiste os dados
-        return await atualizarPartida(lobbyId, dadosAtualizados);
+        return await atualizarParcialmenteLobby(lobbyId, dadosAtualizados);
     }
 
     const PartidaDados = await dadospartida(lobbyId);
