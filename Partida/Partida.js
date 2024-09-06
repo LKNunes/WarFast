@@ -2069,8 +2069,8 @@ async function turnofase2acima(lobbyId) {
   console.log("Dentro da função");
   const PartidaDados = await dadospartida(lobbyId);
   let Quadrado=0, Ciculo=0, Triangulo=0;
-  console.log(PartidaDados.playerSlots[jogador].cartas);
-  for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+  
+  for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
     console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'C'){Ciculo=Ciculo+1;} 
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'Q'){Quadrado = Quadrado+1;}
@@ -2080,7 +2080,7 @@ async function turnofase2acima(lobbyId) {
 
   if (Ciculo>=3){
   var remove=0;
-    for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+    for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
       console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'C')
         {
@@ -2095,7 +2095,7 @@ async function turnofase2acima(lobbyId) {
   else if (Quadrado>=3)
     {
       var remove=0;
-      for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+      for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'Q')
           {
             await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
@@ -2109,7 +2109,7 @@ async function turnofase2acima(lobbyId) {
   else if (Triangulo>=3)
     {
       var remove=0;
-      for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+      for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
         if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T')
           {
             await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
@@ -2122,7 +2122,7 @@ async function turnofase2acima(lobbyId) {
     } // se tiver 3 triangulos entra no looping
   else if(Triangulo>=1 && Ciculo>=1 && Quadrado>=1){} // Se tiver 3 diferentes entra no looping
   let RemoveT = 0, RemoveQ = 0, RemoveC = 0;
-  for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+  for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T')
       {
         await removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
