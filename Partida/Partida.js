@@ -2101,7 +2101,7 @@ async function turnofase2acima(lobbyId) {
 
 
     }
-    elseif (Coringa == 0)
+    if (Coringa == 0)
     {
       if (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
       {
