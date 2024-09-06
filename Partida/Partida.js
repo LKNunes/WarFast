@@ -1,3 +1,20 @@
+const consoleBox = document.getElementById('consoleBox');
+
+        // Sobrescrevendo a função console.log
+                (function() {
+                            const oldLog = console.log; // Mantém a referência da função original
+
+                                        console.log = function(...args) {
+                                                        // Chama a função console.log original
+                                                                        oldLog.apply(console, args);
+
+                                                                                        // Adiciona a mensagem na caixa de texto
+                                                                                                        args.forEach(arg => {
+                                                                                                                            const message = document.createElement('div');
+                                                                                                                                                message.textContent = arg;
+                                                                                                                                                                    consoleBox.appendChild(message);
+                                                                                                                                                                                    });
+
 
 function generateNumberList(maxNumber) {
   const numberList = document.getElementById('number-list');
