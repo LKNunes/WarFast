@@ -2069,7 +2069,7 @@ async function turnofase2acima(lobbyId) {
   console.log("Dentro da função");
   const PartidaDados = await dadospartida(lobbyId);
   let Quadrado=0, Ciculo=0, Triangulo=0;
-  console.log(ParidaDados.playerSlots[jogador].cartas);
+  console.log(PartidaDados.playerSlots[jogador].cartas);
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
     console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Ciculo=Ciculo+1;} 
