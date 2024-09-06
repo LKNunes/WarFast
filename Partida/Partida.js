@@ -2060,7 +2060,8 @@ async function turnofase2acima(lobbyId) {
 
   async function ContaCartasparatrocar(lobbyId,jogador)
   {
-    PartidaDados = await dadospartida(lobbyId);
+
+    const PartidaDados = await dadospartida(lobbyId);
     var Circulo = 0;
     var Quadrado = 0;
     var Triangulo = 0;
