@@ -2088,6 +2088,7 @@ async function turnofase2acima(lobbyId) {
     }
 
     let cartasParaRemover = [];
+
     if (Triangulo >= 3) {
       cartasParaRemover.push(...PartidaDados.playerSlots[jogador].cartas.filter(carta => carta.letra === "T").slice(0, 3).map(carta => carta.id));
     }
@@ -2115,7 +2116,7 @@ async function turnofase2acima(lobbyId) {
         return false;
       }
     }
-
+    console.log(cartasParaRemover);
     // Remove as cartas identificadas
     cartasParaRemover.forEach(id => removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, id));
 
