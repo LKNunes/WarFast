@@ -2126,7 +2126,7 @@ async function turnofase2acima(lobbyId) {
       }
       remove=0;
     } // se tiver 3 triangulos entra no looping
-  else if(Triangulo>=1 && Ciculo>=1 && Quadrado>=1){} // Se tiver 3 diferentes entra no looping
+  else if(Triangulo>=1 && Ciculo>=1 && Quadrado>=1){ // Se tiver 3 diferentes entra no looping
   let RemoveT = 0, RemoveQ = 0, RemoveC = 0;
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
     if (PartidaDados.playerSlots[jogador].cartas[j].letra == 'T')
@@ -2155,6 +2155,7 @@ async function turnofase2acima(lobbyId) {
           }
 
           if (RemoveT+RemoveQ+RemoveC == 3){console.log("Removido");break;}
+        }
         
         await atualizarParcialmenteLobby(lobbyId, PartidaDados);
   }
