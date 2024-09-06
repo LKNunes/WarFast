@@ -2134,7 +2134,7 @@ async function turnofase2acima(lobbyId) {
 
           if (RemoveT+RemoveQ+RemoveC == 3){console.log("Removido");break;}
         
-          atualizarParcialmenteLobby(lobbyId, PartidaDados);
+        await atualizarParcialmenteLobby(lobbyId, PartidaDados);
   }
 
   }
