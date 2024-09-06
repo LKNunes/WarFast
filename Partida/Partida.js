@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
- 
+
 async function playersCores() {
   try {
 
@@ -50,7 +50,7 @@ async function playersCores() {
     const response = await fetch('https://45.140.193.150:8443/partida', {
       method: 'GET',
     });
- 
+
     if (!response.ok) throw new Error('Erro ao buscar lobbies');
 
     const playersPartida = await response.json();
@@ -110,7 +110,7 @@ async function playersCores() {
         { id: 43, tipo: 'X' },
       ];
       const playerSlots = LobbyExistente.playerSlots;
-      return { id, leaderId, lobbyName,cartas , playerSlots };
+      return { id, leaderId, lobbyName, cartas, playerSlots };
 
       // Chamar a função para exibir as informações no HTML
     } else {
@@ -146,7 +146,7 @@ async function dadospartida(lobbyId) {
 
     const LobbyExistente = Lobs.find(u => u.id === lobbyId);
 
-   // console.log("Lobbies recebidos:", LobbyExistente); // Log para verificar os lobbies recebidos
+    // console.log("Lobbies recebidos:", LobbyExistente); // Log para verificar os lobbies recebidos
 
 
     if (LobbyExistente) {
@@ -1494,7 +1494,7 @@ async function turnofase2acima(lobbyId) {
       }
 
       Territorio2 = parseInt(Territorio2.getAttribute('inkscape:label').slice(4).match(/\d+/)[0]) - 1;
-      
+
       for (j = 0; j < 42; j++) {
         for (let path of paths) {
           PathA = paths[j].getAttribute('inkscape:label').slice(4).match(/\d+/)[0];
@@ -1512,14 +1512,14 @@ async function turnofase2acima(lobbyId) {
       var PartidaDados5 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
       mostrarInput(); // Mostra o input para o jogador
-       
-    
+
+
 
       const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
-      
+
       await generateNumberList(quantidadetropas);
-      console.log("QUANTIDADE "+quantidadetropas);
-      
+      console.log("QUANTIDADE " + quantidadetropas);
+
       esconderInput()
 
       await Remanejar(PartidaDados5, lobbyId, Territorio1, Territorio2, quantidadetropas);
@@ -1578,7 +1578,7 @@ async function turnofase2acima(lobbyId) {
       esperarCliqueBotao('FimAtaqueBTN');
 
       console.log("i =" + i);
-      
+
       let AlvosTerrtorios = [
         { id: 1, podeAtacar: [2, 3, 4, 32] },
         { id: 2, podeAtacar: [1, 4] },
@@ -1743,22 +1743,22 @@ async function turnofase2acima(lobbyId) {
         // let quantidadetropas = 1; // Quantidade de tropas para remanejar, 1 para teste
 
         mostrarInput(); // Mostra o input para o jogador
-     
+
         const quantidadetropas = await esperarInputremanejamento(Territorio1, Territorio2); // Espera o jogador inserir um número
         await generateNumberList(quantidadetropas);
         console.log(quantidadetropas);
         esconderInput()
 
         await Remanejar(PartidaDados5, lobbyId, Territorio1, Territorio2, quantidadetropas);
-        
 
-      } 
-      console.log("TROPAS:"+resultado.perdasAtacante+" 2: "+ resultado.perdasDefensor);
-    
-          if (resultado.perdasAtacante == 0 && resultado.perdasDefensor >= 1) {
-            Dominou = true;
-            console.log("True domominou na rodada");
-          }
+
+      }
+      console.log("TROPAS:" + resultado.perdasAtacante + " 2: " + resultado.perdasDefensor);
+
+      if (resultado.perdasAtacante == 0 && resultado.perdasDefensor >= 1) {
+        Dominou = true;
+        console.log("True domominou na rodada");
+      }
 
       const preloader = document.getElementById('preloader');
 
@@ -1783,10 +1783,10 @@ async function turnofase2acima(lobbyId) {
     document.getElementById('numeroInput').value = ''; // Limpa o input
   }
 
-  async function DestribuirCarta(lobbyId,j){
-    
-   const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
-    
+  async function DestribuirCarta(lobbyId, j) {
+
+    const PartidaDados = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
+
     function getRandomIntInclusive(min, max) {// Função para escolher um ID de 1 a 43
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -1801,42 +1801,43 @@ async function turnofase2acima(lobbyId) {
       return null; // Retorna null se a carta não for encontrada
     }
 
-    let Cartas = [] ;
+    let Cartas = [];
     console.log("Inicio da função DestribuirCarta");
-      
+
 
     Cartas = PartidaDados.cartas; // Carrega todas as Cartas 
     let CartasPlayer = PartidaDados.playerSlots[i].cartas; // recebe as cartas do Jogador
 
 
     var id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
-    var CartaRemovida = await removerCartaPorId(Cartas,id);
-    console.log("Fora do While"+id);
+    var CartaRemovida = await removerCartaPorId(Cartas, id);
+    console.log("Fora do While" + id);
 
-   while(CartaRemovida == null){
-     id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
-     CartaRemovida = await removerCartaPorId(Cartas,id);
-     console.log("Precisou do While"+id);
-   } 
-    console.log(JSON.stringify( CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
+    while (CartaRemovida == null) {
+      id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
+      CartaRemovida = await removerCartaPorId(Cartas, id);
+      console.log("Precisou do While" + id);
+    }
+    console.log(JSON.stringify(CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     for (j = 0; j < CartasPlayer.length; j++) { // percorre as cartas para encontrar Slot Vazio e adiciona a carta
-      if (CartasPlayer[j].letra == "") { 
+      if (CartasPlayer[j].letra == "") {
         const letra = CartaRemovida.letra;
         CartasPlayer[j].letra = letra;
-        console.log(JSON.stringify(  letra, null, 2)); // Exibe o objeto como uma string JSON formatada
+        console.log(JSON.stringify(letra, null, 2)); // Exibe o objeto como uma string JSON formatada
         break;
-      }}
-    
+      }
+    }
+
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     PartidaDados.cartas = Cartas;
 
-    console.log(JSON.stringify(  PartidaDados.playerSlots[PartidaDados.turno].cartas = CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
-    console.log(JSON.stringify(     PartidaDados.cartas = Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
+    console.log(JSON.stringify(PartidaDados.playerSlots[PartidaDados.turno].cartas = CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
+    console.log(JSON.stringify(PartidaDados.cartas = Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
-      }
+  }
 
   async function esperarInputremanejamento(Territorio1, Territorio2) {
     return new Promise((resolve) => {
@@ -1848,7 +1849,7 @@ async function turnofase2acima(lobbyId) {
       async function processarInput() {
         // Processa o input do usuário
         const numero = parseInt(numeroInput.value, 10); // Converte o valor do input para um número inteiro
-    
+
         if (isNaN(numero)) {
           // Se o valor não for um número válido, exibe um alerta
           console.log("Por favor, insira um número válido.");
@@ -2058,99 +2059,69 @@ async function turnofase2acima(lobbyId) {
     });
   }
 
-  async function ContaCartasparatrocar(lobbyId,jogador)
-  {
-
+  async function ContaCartasparatrocar(lobbyId, jogador) {
     async function removerCartaPorId(cartas, id) {
-      const index = cartas.findIndex(carta => carta.id === id); // Encontra o índice da carta pelo ID
-      if (index !== -1) {
-        return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
-      }
-      return null; // Retorna null se a carta não for encontrada
+        const index = cartas.findIndex(carta => carta.id === id);
+        if (index !== -1) {
+            return cartas.splice(index, 1)[0];
+        }
+        return null;
     }
-
-
 
     const PartidaDados = await dadospartida(lobbyId);
-    var Circulo = 0;
-    var Quadrado = 0;
-    var Triangulo = 0;
-    var Coringa = 0;
+    let Circulo = 0, Quadrado = 0, Triangulo = 0, Coringa = 0;
     let Cartasremover = [];
-    
-    for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);} 
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado += 1; Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);}
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Circulo += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);}
-      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "X"){Coringa += 1;Cartasremover.push(PartidaDados.playerSlots[jogador].cartas[j].id);}
 
-      console.log( Triangulo, Quadrado, Circulo, Coringa);
-      console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
-
-
+    // Contagem das cartas e preenchimento do array Cartasremover
+    for (let carta of PartidaDados.playerSlots[jogador].cartas) {
+        switch (carta.letra) {
+            case "T":
+                Triangulo++;
+                break;
+            case "Q":
+                Quadrado++;
+                break;
+            case "C":
+                Circulo++;
+                break;
+            case "X":
+                Coringa++;
+                break;
+        }
+        Cartasremover.push(carta.id);
     }
 
-
-  
+    console.log(Triangulo, Quadrado, Circulo, Coringa);
     console.log(Cartasremover);
 
-    if (Coringa == 1)
-    {
-
-
-    if (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
-    {
-      const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-      if (!confirmacao) {
-        return false;
-      }
+    // Função para verificar e confirmar troca de cartas
+    function confirmarTroca(mensagem) {
+        return window.confirm(`${mensagem}\n\nOk: Sim\nCancelar: Não`);
     }
 
-    if (Triangulo >= 2 ||  Quadrado >= 2 || Circulo >= 2 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
+    // Lógica de troca
+    if (Coringa > 0) {
+        // Quando há coringa
+        if ((Triangulo >= 2 || Quadrado >= 2 || Circulo >= 2) && confirmarTroca("Você tem 3 cartas repetidas com o coringa, deseja prosseguir com a troca?")) {
+            return true;
         }
-      }
 
-    if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1  )
-    {
-      const confirmacao = window.confirm("Você tem 3 Cartas alternada1, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-      if (!confirmacao) {
-        return false;
-      }
+        if ((Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1) && confirmarTroca("Você tem 3 cartas alternadas com o coringa, deseja prosseguir com a troca?")) {
+            return true;
+        }
+    } else {
+        // Quando não há coringa
+        if ((Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3) && confirmarTroca("Você tem 3 cartas repetidas, deseja prosseguir com a troca?")) {
+            return true;
+        }
+
+        if ((Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1) && confirmarTroca("Você tem 3 cartas alternadas, deseja prosseguir com a troca?")) {
+            return true;
+        }
     }
 
-    if (Triangulo >= 1 && Quadrado >= 1 || Circulo >= 1 && Quadrado >= 1 || Triangulo >= 1 && Circulo >= 1 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas alternada1, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
-        }
-      }
-
-
-    }
-    if (Coringa == 0)
-    {
-      if (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
-        }
-      }
-
-      if (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
-      {
-        const confirmacao = window.confirm("Você tem 3 Cartas alternada2, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-        if (!confirmacao) {
-          return false;
-        }
-      }
-    }
-
+    return false;
+}
 
 
   }
@@ -2178,7 +2149,7 @@ async function turnofase2acima(lobbyId) {
     const paths = svgDoc.querySelectorAll('path'); // Seleciona todos os elementos 'path' no documento SVG
 
     while (PartidaDados2.playerSlots[i].tropas > 0) { // Distribuir ate zerar as tropas
-      
+
       PartidaDados2 = await dadospartida(lobbyId);
 
       for (j = 0; j < 42; j++) {
@@ -2198,9 +2169,9 @@ async function turnofase2acima(lobbyId) {
 
         }
 
-      } 
+      }
 
-      await ContaCartasparatrocar(lobbyId,i);
+      await ContaCartasparatrocar(lobbyId, i);
 
       let Territorio1 = await EsperaClick();
 
@@ -2231,16 +2202,16 @@ async function turnofase2acima(lobbyId) {
 
     var PartidaDados3 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await AtacarTerritorios(lobbyId, PartidaDados3, "FimAtaqueBTN");
-    
+
     var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
     await RemajenarTerritorio(lobbyId, PartidaDados4, "FinalizarBTN") // Função para remanejar depois de atacar
-    
+
     if (Dominou == true) {
-      console.log("Jogador? "+i);
-      await DestribuirCarta(lobbyId,i); // Função deve ficar no final da rodada.
+      console.log("Jogador? " + i);
+      await DestribuirCarta(lobbyId, i); // Função deve ficar no final da rodada.
       console.log("Destribuindo Carta...");
     }
-  
+
     Dominou = false;
 
     await AtualizaTurno(PartidaDados2.id, PartidaDados2.turno + 1);
