@@ -2068,6 +2068,8 @@ async function turnofase2acima(lobbyId) {
         return null;
     }
 
+    // Função para atualizar o banco de dados JSON
+
     const PartidaDados = await dadospartida(lobbyId);
     let Circulo = 0, Quadrado = 0, Triangulo = 0, Coringa = 0;
     let Cartasremover = [];
@@ -2103,24 +2105,42 @@ async function turnofase2acima(lobbyId) {
     if (Coringa > 0) {
         // Quando há coringa
         if ((Triangulo >= 2 || Quadrado >= 2 || Circulo >= 2) && confirmarTroca("Você tem 3 cartas repetidas com o coringa, deseja prosseguir com a troca?")) {
+            removerCartasUsadas();
             return true;
         }
 
         if ((Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1) && confirmarTroca("Você tem 3 cartas alternadas com o coringa, deseja prosseguir com a troca?")) {
+            removerCartasUsadas();
             return true;
         }
     } else {
         // Quando não há coringa
         if ((Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3) && confirmarTroca("Você tem 3 cartas repetidas, deseja prosseguir com a troca?")) {
+            removerCartasUsadas();
             return true;
         }
 
         if ((Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1) && confirmarTroca("Você tem 3 cartas alternadas, deseja prosseguir com a troca?")) {
+            removerCartasUsadas();
             return true;
         }
     }
 
     return false;
+
+    // Função para remover cartas usadas e atualizar o banco JSON
+    async function removerCartasUsadas() {
+        let cartasJogador = PartidaDados.playerSlots[jogador].cartas;
+
+        // Remover as cartas do array de cartas do jogador
+        Cartasremover.forEach(id => {
+            removerCartaPorId(cartasJogador, id);
+        });
+
+        // Atualizar o banco de dados com o novo estado
+        await atualizarParcialmenteLobby(lobbyId, PartidaDados);
+        console.log("Cartas removidas e banco de dados atualizado.");
+    }
 }
 
 
