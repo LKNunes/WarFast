@@ -106,8 +106,7 @@ async function playersCores() {
         { id: 39, tipo: 'C' },
         { id: 40, tipo: 'C' },
         { id: 41, tipo: 'C' },
-        { id: 42, tipo: 'C' },
-        { id: 43, tipo: 'X' },
+        { id: 42, tipo: 'C' }
       ];
       const playerSlots = LobbyExistente.playerSlots;
       return { id, leaderId, lobbyName, cartas, playerSlots };
@@ -357,8 +356,7 @@ async function DestribuirTerritorios(lobbyId) {
     { id: 29, letra: 'T' }, { id: 30, letra: 'T' }, { id: 31, letra: 'T' }, { id: 32, letra: 'T' },
     { id: 33, letra: 'T' }, { id: 34, letra: 'T' }, { id: 35, letra: 'T' }, { id: 36, letra: 'T' },
     { id: 37, letra: 'T' }, { id: 38, letra: 'T' }, { id: 39, letra: 'T' }, { id: 40, letra: 'T' },
-    { id: 41, letra: 'T' }, { id: 42, letra: 'T' },
-    { id: 43, letra: 'X' }
+    { id: 41, letra: 'T' }, { id: 42, letra: 'T' }
   ];
 
   let Territorios = [];
