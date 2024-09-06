@@ -2077,6 +2077,7 @@ async function turnofase2acima(lobbyId) {
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "X"){Coringa += 1;}
 
       console.log( Triangulo, Quadrado, Circulo, Coringa);
+      console.log(PartidaDados.playerSlots[jogador].cartas[j].letra);
     }
 
     if (Coringa == 1)
