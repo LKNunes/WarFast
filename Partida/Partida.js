@@ -2067,6 +2067,9 @@ async function turnofase2acima(lobbyId) {
     var Triangulo = 0;
     var Coringa = 0;
     
+
+    
+
     for (j = 0; j < PartidaDados.playerSlots[jogador].cartas.length; j++) {
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo += 1;}
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado += 1;}
@@ -2074,24 +2077,49 @@ async function turnofase2acima(lobbyId) {
       if (PartidaDados.playerSlots[jogador].cartas[j].letra == "X"){Coringa += 1;}
     }
 
-    // Quero um if que valide se tenho 3 cartas repetidas, o coringa vale para Triangulo, curculo e quadrado
-    if ((Circulo >= 3 || Quadrado >= 3 || Triangulo >= 3) &&
-        (Coringa >= 1 || (Circulo >= 1 && Quadrado >= 1 && Triangulo >= 1))) {
+    If (Coringa == 1)
+    {
+    Triangulo += 1;
+    Quadrado  += 1;
+    Circulo += 1;
+
+    If (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
+    {
       const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
       if (!confirmacao) {
         return false;
       }
     }
 
-    // Quero um if que valide se tenho 3 cartas diferentes 1 de cada, o coringa vale para Triangulo, curculo e quadrado
-    if ((Circulo >= 1 && Quadrado >= 1 && Triangulo >= 1) ||
-        (Coringa >= 1 && (Circulo >= 1 || Quadrado >= 1 || Triangulo >= 1))) {
-          const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
-          if (!confirmacao) {
-            return false;
-          }    
+    If (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
+    {
+      const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+      if (!confirmacao) {
+        return false;
+      }
+    }
+
+
+    }
+    elseif (Coringa == 0)
+    {
+      If (Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3 )
+      {
+        const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+        if (!confirmacao) {
+          return false;
         }
-    
+      }
+
+      If (Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1 )
+      {
+        const confirmacao = window.confirm("Você tem 3 Cartas repetidas, Deseja prosseguir com a troca?\n\nOk: Sim\nCancelar: N o");
+        if (!confirmacao) {
+          return false;
+        }
+      }
+    }
+
 
 
 
