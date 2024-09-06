@@ -2064,87 +2064,18 @@ async function turnofase2acima(lobbyId) {
             return cartas.splice(index, 1)[0];
         }
         return null;
-    }
+  }
 
-    // Função para atualizar o banco de dados JSON
-    async function atualizarBancoDeDados(lobbyId, dadosAtualizados) {
-        // Implementa a lógica de atualização do banco JSON aqui
-        // Isso pode ser uma chamada de API ou uma função interna que persiste os dados
-        return await atualizarParcialmenteLobby(lobbyId, dadosAtualizados);
-    }
+  const PartidaDados = await dadospartida(lobbyId);
 
-    const PartidaDados = await dadospartida(lobbyId);
-    let Circulo = 0, Quadrado = 0, Triangulo = 0, Coringa = 0;
-    let Cartasremover = [];
+  for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){} 
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){}
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){}
+    
+  }
 
-    // Contagem das cartas e preenchimento do array Cartasremover
-    for (let carta of PartidaDados.playerSlots[jogador].cartas) {
-        switch (carta.letra) {
-            case "T":
-                Triangulo++;
-                break;
-            case "Q":
-                Quadrado++;
-                break;
-            case "C":
-                Circulo++;
-                break;
-            case "X":
-                Coringa++;
-                break;
-        }
-        Cartasremover.push(carta.id);
-    }
-
-    console.log(Triangulo, Quadrado, Circulo, Coringa);
-    console.log(Cartasremover);
-
-    // Função para verificar e confirmar troca de cartas
-    function confirmarTroca(mensagem) {
-        return window.confirm(`${mensagem}\n\nOk: Sim\nCancelar: Não`);
-    }
-
-    // Lógica de troca
-    if (Coringa > 0) {
-        // Quando há coringa
-        if ((Triangulo >= 2 || Quadrado >= 2 || Circulo >= 2) && confirmarTroca("Você tem 3 cartas repetidas com o coringa, deseja prosseguir com a troca?")) {
-            removerCartasUsadas();
-            return true;
-        }
-
-        if ((Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1) && confirmarTroca("Você tem 3 cartas alternadas com o coringa, deseja prosseguir com a troca?")) {
-            removerCartasUsadas();
-            return true;
-        }
-    } else {
-        // Quando não há coringa
-        if ((Triangulo >= 3 || Quadrado >= 3 || Circulo >= 3) && confirmarTroca("Você tem 3 cartas repetidas, deseja prosseguir com a troca?")) {
-            removerCartasUsadas();
-            return true;
-        }
-
-        if ((Triangulo >= 1 && Quadrado >= 1 && Circulo >= 1) && confirmarTroca("Você tem 3 cartas alternadas, deseja prosseguir com a troca?")) {
-            removerCartasUsadas();
-            return true;
-        }
-    }
-
-    return false;
-
-    // Função para remover cartas usadas e atualizar o banco JSON
-    async function removerCartasUsadas() {
-        let cartasJogador = PartidaDados.playerSlots[jogador].cartas;
-
-        // Remover as cartas do array de cartas do jogador
-        Cartasremover.forEach(id => {
-            removerCartaPorId(cartasJogador, id);
-        });
-
-        // Atualizar o banco de dados com o novo estado
-        await atualizarBancoDeDados(lobbyId, PartidaDados);
-        console.log("Cartas removidas e banco de dados atualizado.");
-    }
-}
+  }
 
 
 
