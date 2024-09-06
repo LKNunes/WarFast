@@ -2067,12 +2067,72 @@ async function turnofase2acima(lobbyId) {
   }
 
   const PartidaDados = await dadospartida(lobbyId);
-
+  let Quadrado=0, Ciculo=0, Triangulo=0;
   for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
-    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){} 
-    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){}
-    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){}
-    
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C"){Ciculo=Ciculo+1;} 
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q"){Quadrado = Quadrado+1;}
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T"){Triangulo = Triangulo+1;} 
+  }
+
+  if (Ciculo>=3){
+  var remove=0;
+    for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C")
+        {
+          removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+          var remove=remove+1;
+          if (remove=3){break;}
+        }
+    }
+    remove=0;
+  }// se tiver 3 Circulos entra no looping
+  else if (Quadrado>=3)
+    {
+      var remove=0;
+      for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+        if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q")
+          {
+            removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+            var remove=remove+1;
+            if (remove=3){break;}
+          }
+      }
+      remove=0;
+    }// se tiver 3 Quadrados entra no looping
+  else if (Triangulo>=3)
+    {
+      var remove=0;
+      for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+        if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T")
+          {
+            removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+            var remove=remove+1;
+            if (remove=3){break;}
+          }
+      }
+      remove=0;
+    } // se tiver 3 triangulos entra no looping
+  else if(Triangulo>=1 && Ciculo>=1 && Quadrado>=1){} // Se tiver 3 diferentes entra no looping
+  let RemoveT = 0, RemoveQ = 0, RemoveC = 0;
+  for (j = 0; j < PartidaDados.playerSlots[jogador].cartas; j++) {
+    if (PartidaDados.playerSlots[jogador].cartas[j].letra == "T")
+      {
+        removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+        RemoveT = RemoveT + 1;
+      }
+      if (PartidaDados.playerSlots[jogador].cartas[j].letra == "Q")
+        {
+          removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+          RemoveT = RemoveT + 1;
+        }
+        if (PartidaDados.playerSlots[jogador].cartas[j].letra == "C")
+          {
+            removerCartaPorId(PartidaDados.playerSlots[jogador].cartas, PartidaDados.playerSlots[jogador].cartas[j].id);
+            RemoveT = RemoveT + 1;
+          }
+
+          if (RemoveT+RemoveQ+RemoveC == 3){break;}
+        
   }
 
   }
