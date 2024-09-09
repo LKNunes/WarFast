@@ -18,7 +18,7 @@ function generateNumberList(maxNumber) {
     }
   });
 }
-
+let Vencedor = false;
 // Adiciona eventos aos botões
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('confirm-button').addEventListener('click', () => {
@@ -2268,7 +2268,8 @@ async function turnofase2acima(lobbyId) {
 
   }
 
-
+while(Vencedor == false){
+  
   for (i = PartidaDados.turno; i < 8; i++) { // Looping da Vez do Jogador
 
     console.log("Vez do Jogador:" + PartidaDados.playerSlots[i].id); // Exibe o ID do jogador atual no console
@@ -2276,15 +2277,19 @@ async function turnofase2acima(lobbyId) {
     var PartidaDados2 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
 
     // Inicia a sequência chamando rodadaDeJogadores()
-    await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
 
+    await rodadaDeJogadores(lobbyId, PartidaDados2); // Espera a função assíncrona finalizar antes de continuar o loop
 
     if (PartidaDados2.turno >= 8) {
       await AtualizaTurno(PartidaDados2.id, 0);
       await Atualizafase(lobbyId, 2);
+
       return;
     }
   }
+
+
+
   console.log("Todos os jogadores inseriram seus números."); // Exibe no console que todos os jogadores inseriram seus números
 
   var PartidaDados4 = await dadospartida(lobbyId); // Aguarda a resolução da Promise e obtém os dados do lobby
@@ -2294,7 +2299,7 @@ async function turnofase2acima(lobbyId) {
     await Atualizafase(lobbyId, PartidaDados4.fase + 1);
     return;
   }
-
+}
 
 
   console.log("...Final do turno teste"); // Exibe uma mensagem indicando o final do turno
