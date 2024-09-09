@@ -1794,13 +1794,19 @@ async function turnofase2acima(lobbyId) {
     async function removerCartaPorId(cartas, id) {
       const index = cartas.findIndex(carta => carta.id === id); // Encontra o índice da carta pelo ID
       if (index !== -1) {
-        return cartas[id].letra = "";
-
-//        return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
+        
+        return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
       }
       return null; // Retorna null se a carta não for encontrada
     }
-
+    async function copiarCartaPorId(cartas, id) {
+      const index = cartas.findIndex(carta => carta.id === id); // Encontra o índice da carta pelo ID
+      if (index !== -1) {
+        return cartas[index]; // Retorna a carta sem removê-la do array
+      }
+      return null; // Retorna null se a carta não for encontrada
+    }
+    
     let Cartas = [];
     console.log("Inicio da função DestribuirCarta");
 
@@ -1810,12 +1816,12 @@ async function turnofase2acima(lobbyId) {
 
 
     var id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
-    var CartaRemovida = await removerCartaPorId(Cartas, id);
+    var CartaRemovida = await copiarCartaPorId(Cartas, id);
     console.log("Fora do While" + id);
 
     while (CartaRemovida == null) {
       id = getRandomIntInclusive(1, 43); // escolhe um numero aleatorio de 1 a 43
-      CartaRemovida = await removerCartaPorId(Cartas, id);
+      CartaRemovida = await copiarCartaPorId(Cartas, id);
       console.log("Precisou do While" + id);
     }
     console.log(JSON.stringify(CartaRemovida, null, 2)); // Exibe o objeto como uma string JSON formatada
