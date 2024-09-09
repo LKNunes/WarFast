@@ -2297,7 +2297,7 @@ while(Vencedor == false){
   if (PartidaDados4.turno >= 8) {
     await AtualizaTurno(PartidaDados4.id, -1);
     await Atualizafase(lobbyId, PartidaDados4.fase + 1);
-    return;
+   // return;
   }
 }
 
