@@ -1794,7 +1794,9 @@ async function turnofase2acima(lobbyId) {
     async function removerCartaPorId(cartas, id) {
       const index = cartas.findIndex(carta => carta.id === id); // Encontra o índice da carta pelo ID
       if (index !== -1) {
-        return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
+        return cartas[id].letra = "";
+
+//        return cartas.splice(index, 1)[0]; // Remove a carta e a retorna
       }
       return null; // Retorna null se a carta não for encontrada
     }
