@@ -2097,7 +2097,7 @@ async function turnofase2acima(lobbyId) {
           PartidaDados.playerSlots[jogador].cartas[j].letra = "";
           console.log("Removido");
           var remove=remove+1;
-          if (remove=3){break;}
+          if (remove==3){break;}
         }
     }
     remove=0;
@@ -2113,7 +2113,7 @@ async function turnofase2acima(lobbyId) {
 
             console.log("Removido");
             var remove=remove+1;
-            if (remove=3){break;}
+            if (remove==3){break;}
           }
       }
       remove=0;
@@ -2129,7 +2129,7 @@ async function turnofase2acima(lobbyId) {
 
             console.log("Removido");
             var remove=remove+1;
-            if (remove=3){break;}
+            if (remove==3){break;}
           }
       }
       remove=0;
