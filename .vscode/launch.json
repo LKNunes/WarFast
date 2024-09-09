@@ -4,7 +4,7 @@
         "name": "Launch Chrome",
         "request": "launch",
         "type": "chrome",
-        "url": "https://45.140.193.150/",
+        "url": "https://45.140.193.150/Partida/Partida.html?id=1725896807485",
         "webRoot": "${workspaceFolder}"
     }
     ]
