@@ -2239,7 +2239,7 @@ async function turnofase2acima(lobbyId) {
         paths[j].style.pointerEvents = "auto"; // Ignora o objeto
 
       }
-      const PartidaDados2 = await dadospartida(lobbyId);
+       PartidaDados2 = await dadospartida(lobbyId);
 
       TropasJogador = PartidaDados2.playerSlots[i].tropas - numero;
       NovaTropasTerritorio = PartidaDados2.territorios[Territorio1 - 1].tropas + numero;
