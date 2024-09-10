@@ -1838,8 +1838,8 @@ async function turnofase2acima(lobbyId) {
     PartidaDados.playerSlots[i].cartas = CartasPlayer;
     //PartidaDados.cartas = Cartas;
 
-    console.log(JSON.stringify(PartidaDados.playerSlots[PartidaDados.turno].cartas = CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
-    console.log(JSON.stringify(PartidaDados.cartas = Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
+   //console.log(JSON.stringify(PartidaDados.playerSlots[PartidaDados.turno].cartas = CartasPlayer, null, 2)); // Exibe o objeto como uma string JSON formatada
+   // console.log(JSON.stringify(PartidaDados.cartas = Cartas, null, 2)); // Exibe o objeto como uma string JSON formatada
 
     await atualizarParcialmenteLobby(lobbyId, PartidaDados);
 
